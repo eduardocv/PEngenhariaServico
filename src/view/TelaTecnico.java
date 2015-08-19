@@ -140,8 +140,8 @@ public class TelaTecnico extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnNovo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -152,7 +152,7 @@ public class TelaTecnico extends javax.swing.JDialog {
                         .addComponent(btnVisualisar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVoltar)))
-                .addGap(65, 65, 65))
+                .addGap(27, 27, 27))
         );
 
         jLabel1.setText("Pesquisa por Nome:");
@@ -176,8 +176,8 @@ public class TelaTecnico extends javax.swing.JDialog {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(116, 116, 116)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
@@ -192,7 +192,7 @@ public class TelaTecnico extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)))
@@ -247,33 +247,10 @@ public class TelaTecnico extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Selecione um técnico!");
         }
     }//GEN-LAST:event_btnVisualisarActionPerformed
-
-    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
-
-    }//GEN-LAST:event_txtPesquisaActionPerformed
-
-    private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
-        List<Tecnico> e = new ArrayList<>();
-        TecnicoDAO tecnicoDAO = new TecnicoDAO();
-        tecnicoDAO.buscarPorTecnico(txtPesquisa.getText());
-        atualizaTabelaTecnicos();
-        for (Tecnico tecnico : tecnicoDAO.listarTecnicos()) {
-            if (tecnico.getNome().startsWith(txtPesquisa.getText())) {
-                e.add(tecnico);
-
-            }
-        }
-//        TecnicoDAO tDAO = new TecnicoDAO();
-//        tDAO.buscarPorTecnico(txtPesquisa.getText());
-
-        mostraTela(e);
-        atualizaTabelaTecnicos();
-    }//GEN-LAST:event_txtPesquisaKeyReleased
     private void mostraTela(List<Tecnico> listarTecnicos) {
-        DefaultTableModel model = (DefaultTableModel) this.tbTecnicoLab.getModel();
+        DefaultTableModel model =  (DefaultTableModel) this.tbTecnicoLab.getModel();
         model.setRowCount(listarTecnicos.size());
         for (int i = 0; i < 4; i++) {    // i < tbTecnicoLab.getHeight()
-
             model.setValueAt(listarTecnicos.get(i).getIdTecnico(), i, 0);
             model.setValueAt(listarTecnicos.get(i).getNome(), i, 1);
             model.setValueAt(listarTecnicos.get(i).getEmail(), i, 2);
@@ -324,6 +301,15 @@ int linha = tbTecnicoLab.getSelectedRow();
                 atualizaTabelaTecnicos();
             }
     }//GEN-LAST:event_tbTecnicoLabMouseClicked
+
+    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisaActionPerformed
+
+    private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
+        String nome = txtPesquisa.getText();
+        buscaNome(nome);
+    }//GEN-LAST:event_txtPesquisaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -403,5 +389,20 @@ int linha = tbTecnicoLab.getSelectedRow();
         }
 
     }
+    
+ public void buscaNome(String nome) {
+     TecnicoDAO tecnicoDAO = new TecnicoDAO();   
+     
+        List<Tecnico> listarTecnicos = tecnicoDAO.listarTecnicos();
+        DefaultTableModel model = (DefaultTableModel) this.tbTecnicoLab.getModel();
+        model.setNumRows(0);
+        for (int i = 0; i < listarTecnicos.size(); i++) {
+//model.addRow(new Object[]{});
+            model.setValueAt(listarTecnicos.get(i).getIdTecnico(), i, 0);
+            model.setValueAt(listarTecnicos.get(i).getNome(), i, 1);
+            model.setValueAt(listarTecnicos.get(i).getEmail(), i, 2);
+            model.setValueAt(listarTecnicos.get(i).getStatus(), i, 3);
+        }
+ }
 
 }
