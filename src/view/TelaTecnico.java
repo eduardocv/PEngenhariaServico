@@ -248,7 +248,7 @@ public class TelaTecnico extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnVisualisarActionPerformed
     private void mostraTela(List<Tecnico> listarTecnicos) {
-        DefaultTableModel model =  (DefaultTableModel) this.tbTecnicoLab.getModel();
+        DefaultTableModel model = (DefaultTableModel) this.tbTecnicoLab.getModel();
         model.setRowCount(listarTecnicos.size());
         for (int i = 0; i < 4; i++) {    // i < tbTecnicoLab.getHeight()
             model.setValueAt(listarTecnicos.get(i).getIdTecnico(), i, 0);
@@ -291,15 +291,15 @@ public class TelaTecnico extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAtivarActionPerformed
 
     private void tbTecnicoLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTecnicoLabMouseClicked
-int linha = tbTecnicoLab.getSelectedRow();
+        int linha = tbTecnicoLab.getSelectedRow();
         if (tbTecnicoLab.getValueAt(linha, 3).equals("Ativo")) {
-                btnAtivar.setText("Desativar");
-                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-                } else {
-                 btnAtivar.setText("Ativar");
-                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-                atualizaTabelaTecnicos();
-            }
+            btnAtivar.setText("Desativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+        } else {
+            btnAtivar.setText("Ativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+            atualizaTabelaTecnicos();
+        }
     }//GEN-LAST:event_tbTecnicoLabMouseClicked
 
     private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
@@ -389,20 +389,28 @@ int linha = tbTecnicoLab.getSelectedRow();
         }
 
     }
-    
- public void buscaNome(String nome) {
-     TecnicoDAO tecnicoDAO = new TecnicoDAO();   
-     
+
+    public void buscaNome(String nome) {
+        TecnicoDAO tecnicoDAO = new TecnicoDAO();
+        List<Tecnico> filtrada = new ArrayList();
         List<Tecnico> listarTecnicos = tecnicoDAO.listarTecnicos();
+        String nomeDigitadoTemp = nome.toLowerCase();
+        for (Tecnico tec : listarTecnicos) {
+            String nomeTemp = tec.getNome().toLowerCase();
+            System.out.println(nomeTemp + " - " + nomeDigitadoTemp);
+            if (nomeTemp.contains(nomeDigitadoTemp)) {
+                filtrada.add(tec);
+            }
+        }
         DefaultTableModel model = (DefaultTableModel) this.tbTecnicoLab.getModel();
         model.setNumRows(0);
-        for (int i = 0; i < listarTecnicos.size(); i++) {
-//model.addRow(new Object[]{});
-            model.setValueAt(listarTecnicos.get(i).getIdTecnico(), i, 0);
-            model.setValueAt(listarTecnicos.get(i).getNome(), i, 1);
-            model.setValueAt(listarTecnicos.get(i).getEmail(), i, 2);
-            model.setValueAt(listarTecnicos.get(i).getStatus(), i, 3);
+        for (int i = 0; i < filtrada.size(); i++) {
+            model.addRow(new Object[]{});
+            model.setValueAt(filtrada.get(i).getIdTecnico(), i, 0);
+            model.setValueAt(filtrada.get(i).getNome(), i, 1);
+            model.setValueAt(filtrada.get(i).getEmail(), i, 2);
+            model.setValueAt(filtrada.get(i).getStatus(), i, 3);
         }
- }
+    }
 
 }
