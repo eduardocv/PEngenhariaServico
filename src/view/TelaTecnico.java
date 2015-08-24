@@ -397,7 +397,7 @@ public class TelaTecnico extends javax.swing.JDialog {
         String nomeDigitadoTemp = nome.toLowerCase();
         for (Tecnico tec : listarTecnicos) {
             String nomeTemp = tec.getNome().toLowerCase();
-            System.out.println(nomeTemp + " - " + nomeDigitadoTemp);
+            //System.out.println(nomeTemp + " - " + nomeDigitadoTemp);
             if (nomeTemp.contains(nomeDigitadoTemp)) {
                 filtrada.add(tec);
             }
