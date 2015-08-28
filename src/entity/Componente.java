@@ -13,7 +13,7 @@ public class Componente {
 
     @Override
     public String toString() {
-        return "Código: "  + codComponente + "  // Descrição: " + componente;
+        return codComponente + "  " + componente;
     }
     public int getIdComponente() {
         return idComponente;

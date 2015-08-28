@@ -13,7 +13,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Código: "  + codProduto + "  // Descrição: " + produto;
+        return codProduto + "  " + produto;
     }
     
     
