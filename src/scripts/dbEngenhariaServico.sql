@@ -138,11 +138,16 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 insert into produto values(1,'I07PLA046','Placa Transceptora RF2','Ativo');
 insert into produto values(2,'I07PLA055','Placa Mtouch (flat)','Ativo');
 insert into produto values(3,'I07PLA060','Placa Mtouch (usb)','Ativo');
+insert into produto values(4,'I12IMP013','Impressora DAS 6 Botões','Ativo');
+insert into produto values(5,'I12DSP011','Painel GAS OFF 5D','Ativo');
+insert into produto values(6,'I12IMP013','Impressora DAS 6 Botões','Ativo');
 -- TÉCNICO EM LABORATORIO --
 insert into tecnico values(1,'Eduardo C. Vieira','eduardo.vieira@specto.com.br','Ativo');
 insert into tecnico values(2,'Joel J. Lopes','joel.lopes@specto.com.br','Ativo');
 -- COMPONENTE --
-insert into componente values(1,'I12IMP013','Impressora DAS 6 Botões','Ativo');
+insert into componente values(1,'U03008','CI Max 232','Ativo');
+insert into componente values(2,'I07BAT02','Bateria 3,6V','Ativo');
+insert into componente values(3,'Z0099','SMD PIC','Ativo');
 -- REMETENTE --
 insert into remetente values(1,'Não Identificado','--------','  ','(00) 0000-0000','Ativo');
 insert into remetente values(2,'Maintenance','suporte@maintenance.com.br','RT','(21) 2215-6354','Ativo');
