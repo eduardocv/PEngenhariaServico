@@ -131,7 +131,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        TelaCadManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaCadManutencaoLaboratorio(null, true);
+        TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true);
         telaCadManutecaoLaboratorio.setVisible(true);
 
     }//GEN-LAST:event_btnCadastrarActionPerformed

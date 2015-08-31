@@ -13,16 +13,16 @@ import javax.swing.JOptionPane;
  *
  * @author Ruivinho
  */
-public class TelaCadastroComponente extends javax.swing.JDialog {
+public class TelaNovoComponente extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaCadastroComponente
      */
-    public TelaCadastroComponente(java.awt.Frame parent, boolean modal) {
+    public TelaNovoComponente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-TelaCadastroComponente(java.awt.Frame parent, boolean modal, Componente componente, boolean novo){
+TelaNovoComponente(java.awt.Frame parent, boolean modal, Componente componente, boolean novo){
         super(parent,modal);
         initComponents();
         this.novo = novo;
@@ -157,20 +157,21 @@ TelaCadastroComponente(java.awt.Frame parent, boolean modal, Componente componen
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroComponente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNovoComponente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroComponente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNovoComponente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroComponente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNovoComponente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroComponente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNovoComponente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaCadastroComponente dialog = new TelaCadastroComponente(new javax.swing.JFrame(), true);
+                TelaNovoComponente dialog = new TelaNovoComponente(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -234,7 +234,7 @@ public class TelaProdutos extends javax.swing.JDialog {
         if (lstProdutos.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Favor selecionar um produto");
         } else {
-            TelaDetalhesProduto telaDetalhesProduto = new TelaDetalhesProduto(null, true);
+            TelaVisualisarProduto telaDetalhesProduto = new TelaVisualisarProduto(null, true);
             telaDetalhesProduto.setVisible(true);
         }
     }//GEN-LAST:event_btnDetalhesActionPerformed
@@ -260,7 +260,7 @@ public class TelaProdutos extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Favor selecionar um produto");
         } else {
             produto = (Produto) lstProdutos.getSelectedValue();
-            TelaCadastroProduto telaCadastroProduto = new TelaCadastroProduto(null, true);
+            TelaNovoProduto telaCadastroProduto = new TelaNovoProduto(null, true);
             telaCadastroProduto.setVisible(true);
             //   atualizaLista();
             //   atualizaListaProdutos();
@@ -268,7 +268,7 @@ public class TelaProdutos extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        TelaCadastroProduto telaCadastroProduto = new TelaCadastroProduto(null, true);
+        TelaNovoProduto telaCadastroProduto = new TelaNovoProduto(null, true);
         telaCadastroProduto.setVisible(true);
         //        atualizaLista();
     }//GEN-LAST:event_btnCadastrarActionPerformed

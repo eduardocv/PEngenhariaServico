@@ -11,16 +11,16 @@ import entity.Remetente;
  *
  * @author Ruivinho
  */
-public class TelaDetalhesRemetente extends javax.swing.JDialog {
+public class TelaVisualisarRemetente extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaDetalhesRemetente
      */
-    public TelaDetalhesRemetente(java.awt.Frame parent, boolean modal) {
+    public TelaVisualisarRemetente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-    public TelaDetalhesRemetente(java.awt.Frame parent, boolean modal, Remetente remetente) {
+    public TelaVisualisarRemetente(java.awt.Frame parent, boolean modal, Remetente remetente) {
         super(parent, modal);
         initComponents();
         lblNome.setText(remetente.getNome());
@@ -119,20 +119,21 @@ public class TelaDetalhesRemetente extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesRemetente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualisarRemetente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesRemetente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualisarRemetente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesRemetente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualisarRemetente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesRemetente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualisarRemetente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaDetalhesRemetente dialog = new TelaDetalhesRemetente(new javax.swing.JFrame(), true);
+                TelaVisualisarRemetente dialog = new TelaVisualisarRemetente(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

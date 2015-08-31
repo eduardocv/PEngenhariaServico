@@ -6,15 +6,15 @@ import java.util.List;
 
 
 
-public class TelaDetalhesProduto extends javax.swing.JDialog {
+public class TelaVisualisarProduto extends javax.swing.JDialog {
 
    
-    public TelaDetalhesProduto(java.awt.Frame parent, boolean modal) {
+    public TelaVisualisarProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
              
     }
-public TelaDetalhesProduto(java.awt.Frame parent, boolean modal, Produto produto) {
+public TelaVisualisarProduto(java.awt.Frame parent, boolean modal, Produto produto) {
         super(parent, modal);
         initComponents();
         lblCodigo.setText(produto.getCodProduto());
@@ -123,20 +123,21 @@ this.dispose();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualisarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualisarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualisarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualisarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaDetalhesProduto dialog = new TelaDetalhesProduto(new javax.swing.JFrame(), true);
+                TelaVisualisarProduto dialog = new TelaVisualisarProduto(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

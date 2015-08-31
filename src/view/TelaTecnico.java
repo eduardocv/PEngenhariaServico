@@ -210,7 +210,7 @@ public class TelaTecnico extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        TelaCadastroTecnico telaCadastroTecnico = new TelaCadastroTecnico(null, true);//, true, null);
+        TelaNovoTecnico telaCadastroTecnico = new TelaNovoTecnico(null, true);//, true, null);
         telaCadastroTecnico.setVisible(true);
         atualizaTabelaTecnicos();
 
@@ -226,7 +226,7 @@ public class TelaTecnico extends javax.swing.JDialog {
                 int id = Integer.parseInt(tbTecnicoLab.getValueAt(linha, 0).toString());
                 TecnicoDAO dao = new TecnicoDAO();
                 Tecnico tecnico = dao.getTecnicoById(id);
-                TelaCadastroTecnico telaCadastroTecnico = new TelaCadastroTecnico(null, true, false, tecnico);
+                TelaNovoTecnico telaCadastroTecnico = new TelaNovoTecnico(null, true, false, tecnico);
                 telaCadastroTecnico.setVisible(true);
                 atualizaTabelaTecnicos();
             } else {

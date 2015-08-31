@@ -208,7 +208,7 @@ public class TelaComponetes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        TelaCadastroComponente telaCadastroComponente = new TelaCadastroComponente(null, true);
+        TelaNovoComponente telaCadastroComponente = new TelaNovoComponente(null, true);
         telaCadastroComponente.setVisible(true);
         atualizaListaComponentes();
 
@@ -228,7 +228,7 @@ public class TelaComponetes extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Favor selecionar um componente");
         } else {
             componente = (Componente) lstComponentes.getSelectedValue();
-            TelaCadastroComponente telaCadastroComponente = new TelaCadastroComponente(null, true, componente, false);
+            TelaNovoComponente telaCadastroComponente = new TelaNovoComponente(null, true, componente, false);
             telaCadastroComponente.setVisible(true);
             atualizaListaComponentes();
             
@@ -255,7 +255,7 @@ public class TelaComponetes extends javax.swing.JDialog {
         if (lstComponentes.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Favor selecionar um componente");
         } else {
-            TelaDetalhesProduto telaDetalhesProduto = new TelaDetalhesProduto(null, true);
+            TelaVisualisarProduto telaDetalhesProduto = new TelaVisualisarProduto(null, true);
             telaDetalhesProduto.setVisible(true);
         }
     }//GEN-LAST:event_btnDetalhesActionPerformed

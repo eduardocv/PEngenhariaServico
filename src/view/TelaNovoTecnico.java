@@ -9,13 +9,13 @@ import javax.swing.JOptionPane;
  *
  * @author Ruivinho
  */
-public class TelaCadastroTecnico extends javax.swing.JDialog {
+public class TelaNovoTecnico extends javax.swing.JDialog {
 
-       public TelaCadastroTecnico(java.awt.Frame parent, boolean modal) {
+       public TelaNovoTecnico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-//    TelaCadastroTecnico(java.awt.Frame parent, boolean modal, Tecnico tecnico, boolean novo){
+//    TelaNovoTecnico(java.awt.Frame parent, boolean modal, Tecnico tecnico, boolean novo){
 //        super(parent,modal);
 //        initComponents();
 //        this.novo = novo;
@@ -23,7 +23,7 @@ public class TelaCadastroTecnico extends javax.swing.JDialog {
 //        txtNome.setText(tecnico.getNome());
 //        txtEmail.setText(tecnico.getEmail());
 //    }
-    public TelaCadastroTecnico(java.awt.Frame parent, boolean modal, boolean novo, Tecnico tecnico) {
+    public TelaNovoTecnico(java.awt.Frame parent, boolean modal, boolean novo, Tecnico tecnico) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -160,20 +160,21 @@ public class TelaCadastroTecnico extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNovoTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNovoTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNovoTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNovoTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaCadastroTecnico dialog = new TelaCadastroTecnico(new javax.swing.JFrame(), true);
+                TelaNovoTecnico dialog = new TelaNovoTecnico(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

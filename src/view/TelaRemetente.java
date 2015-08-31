@@ -65,7 +65,7 @@ public class TelaRemetente extends javax.swing.JDialog {
         });
 
         btnDetalhes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
-        btnDetalhes.setText("Detalhes");
+        btnDetalhes.setText("Visualisar");
         btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDetalhesActionPerformed(evt);
@@ -185,7 +185,7 @@ public class TelaRemetente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        TelaCadastroRemetente telaCadastroRemetente = new TelaCadastroRemetente(null, true);
+        TelaNovoRemetente telaCadastroRemetente = new TelaNovoRemetente(null, true);
         telaCadastroRemetente.setVisible(true);
         atualizaListaRemetente();
     }//GEN-LAST:event_btnNovoActionPerformed
@@ -196,7 +196,7 @@ public class TelaRemetente extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Favor selecionar um Remetente");
         } else {
             remetente = (Remetente) lstRemetentes.getSelectedValue();
-            TelaCadastroRemetente telaCadastroRemetente = new TelaCadastroRemetente(null, true, remetente, false);
+            TelaNovoRemetente telaCadastroRemetente = new TelaNovoRemetente(null, true, remetente, false);
             telaCadastroRemetente.setVisible(true);
             atualizaListaRemetente();
         }
@@ -208,7 +208,7 @@ public class TelaRemetente extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Favor selecionar um Remetente");
         } else {
 
-            TelaDetalhesRemetente telaDetalhesRemetente = new TelaDetalhesRemetente(null, true, (Remetente) lstRemetentes.getSelectedValue());
+            TelaVisualisarRemetente telaDetalhesRemetente = new TelaVisualisarRemetente(null, true, (Remetente) lstRemetentes.getSelectedValue());
             telaDetalhesRemetente.setVisible(true);
             atualizaListaRemetente();
         }
