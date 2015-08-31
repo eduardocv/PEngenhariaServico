@@ -28,9 +28,9 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstManutLaboratorio = new javax.swing.JList();
         btnVoltar = new javax.swing.JButton();
-        btnDetalhes1 = new javax.swing.JButton();
-        btnAtivar = new javax.swing.JToggleButton();
-        btnAlterar1 = new javax.swing.JButton();
+        btnVisualizar = new javax.swing.JButton();
+        btnRelatorios = new javax.swing.JToggleButton();
+        btnAlterar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         txtPesquisa = new javax.swing.JTextField();
 
@@ -46,27 +46,27 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             }
         });
 
-        btnDetalhes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
-        btnDetalhes1.setText("Visualisar");
-        btnDetalhes1.addActionListener(new java.awt.event.ActionListener() {
+        btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
+        btnVisualizar.setText("Visualizar");
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetalhes1ActionPerformed(evt);
+                btnVisualizarActionPerformed(evt);
             }
         });
 
-        btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/List.png"))); // NOI18N
-        btnAtivar.setText("Relatórios");
-        btnAtivar.addActionListener(new java.awt.event.ActionListener() {
+        btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/List.png"))); // NOI18N
+        btnRelatorios.setText("Relatórios");
+        btnRelatorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtivarActionPerformed(evt);
+                btnRelatoriosActionPerformed(evt);
             }
         });
 
-        btnAlterar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Modify.png"))); // NOI18N
-        btnAlterar1.setText("Alterar");
-        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Modify.png"))); // NOI18N
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterar1ActionPerformed(evt);
+                btnAlterarActionPerformed(evt);
             }
         });
 
@@ -90,13 +90,13 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAlterar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDetalhes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnAtivar, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRelatorios, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar1, btnAtivar, btnDetalhes1, btnNovo, btnVoltar});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnNovo, btnRelatorios, btnVisualizar, btnVoltar});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,11 +108,11 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
                 .addGap(34, 34, 34)
                 .addComponent(btnNovo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAlterar1)
+                .addComponent(btnAlterar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtivar)
+                .addComponent(btnRelatorios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDetalhes1)
+                .addComponent(btnVisualizar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVoltar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -148,23 +148,17 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnDetalhes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhes1ActionPerformed
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
         
-    }//GEN-LAST:event_btnDetalhes1ActionPerformed
+    }//GEN-LAST:event_btnVisualizarActionPerformed
 
-    private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
-        if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
-            btnAtivar.setText("Desativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-        } else {
-            btnAtivar.setText("Ativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-        }
-    }//GEN-LAST:event_btnAtivarActionPerformed
+    private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
+        
+    }//GEN-LAST:event_btnRelatoriosActionPerformed
 
-    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
        
-    }//GEN-LAST:event_btnAlterar1ActionPerformed
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
          TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true);
@@ -215,10 +209,10 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar1;
-    private javax.swing.JToggleButton btnAtivar;
-    private javax.swing.JButton btnDetalhes1;
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JToggleButton btnRelatorios;
+    private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -29,7 +29,7 @@ public class TelaTecnico extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         btnNovo = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
-        btnVisualisar = new javax.swing.JButton();
+        btnVisualizar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbTecnicoLab = new javax.swing.JTable();
@@ -61,11 +61,11 @@ public class TelaTecnico extends javax.swing.JDialog {
             }
         });
 
-        btnVisualisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
-        btnVisualisar.setText("Visualisar");
-        btnVisualisar.addActionListener(new java.awt.event.ActionListener() {
+        btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
+        btnVisualizar.setText("Visualizar");
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVisualisarActionPerformed(evt);
+                btnVisualizarActionPerformed(evt);
             }
         });
 
@@ -129,12 +129,12 @@ public class TelaTecnico extends javax.swing.JDialog {
                     .addComponent(btnVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVisualisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAtivar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnNovo, btnVisualisar});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnNovo, btnVisualizar});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +149,7 @@ public class TelaTecnico extends javax.swing.JDialog {
                         .addGap(9, 9, 9)
                         .addComponent(btnAtivar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnVisualisar)
+                        .addComponent(btnVisualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVoltar)))
                 .addGap(27, 27, 27))
@@ -235,7 +235,7 @@ public class TelaTecnico extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void btnVisualisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualisarActionPerformed
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
         int linha = tbTecnicoLab.getSelectedRow();
         if (linha != -1) {
             int id = Integer.parseInt(tbTecnicoLab.getValueAt(linha, 0).toString());
@@ -246,7 +246,7 @@ public class TelaTecnico extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione um técnico!");
         }
-    }//GEN-LAST:event_btnVisualisarActionPerformed
+    }//GEN-LAST:event_btnVisualizarActionPerformed
     private void mostraTela(List<Tecnico> listarTecnicos) {
         DefaultTableModel model = (DefaultTableModel) this.tbTecnicoLab.getModel();
         model.setRowCount(listarTecnicos.size());
@@ -357,7 +357,7 @@ public class TelaTecnico extends javax.swing.JDialog {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnAtivar;
     private javax.swing.JButton btnNovo;
-    private javax.swing.JButton btnVisualisar;
+    private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -61,10 +61,10 @@
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnVoltar" linkSize="3" alignment="1" max="32767" attributes="0"/>
                           <Component id="btnNovo" linkSize="3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnAlterar1" linkSize="3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnDetalhes1" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnAlterar" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnVisualizar" linkSize="3" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="btnAtivar" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRelatorios" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
@@ -81,11 +81,11 @@
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="btnNovo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnAlterar1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAlterar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnAtivar" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRelatorios" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnDetalhes1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnVisualizar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -121,18 +121,18 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoltarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnDetalhes1">
+        <Component class="javax.swing.JButton" name="btnVisualizar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/View.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Visualisar"/>
+            <Property name="text" type="java.lang.String" value="Visualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDetalhes1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btnAtivar">
+        <Component class="javax.swing.JToggleButton" name="btnRelatorios">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/List.png"/>
@@ -140,10 +140,10 @@
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtivarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRelatoriosActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAlterar1">
+        <Component class="javax.swing.JButton" name="btnAlterar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/Modify.png"/>
@@ -151,7 +151,7 @@
             <Property name="text" type="java.lang.String" value="Alterar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterar1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNovo">
