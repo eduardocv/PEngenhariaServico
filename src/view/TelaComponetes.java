@@ -36,13 +36,13 @@ public class TelaComponetes extends javax.swing.JDialog {
 
         gbtnBuscaCodItem = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        btnCadastrar = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
-        btnInativar = new javax.swing.JButton();
-        btnDetalhes = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstComponentes = new javax.swing.JList();
-        btnVoltar = new javax.swing.JButton();
+        btnVoltar1 = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
+        btnAlterar1 = new javax.swing.JButton();
+        btnAtivar = new javax.swing.JToggleButton();
+        btnVisualizar = new javax.swing.JButton();
         rbtnCodigo = new javax.swing.JRadioButton();
         rbtnItem = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
@@ -52,40 +52,45 @@ public class TelaComponetes extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Componentes");
 
-        btnCadastrar.setText("Cadastrar");
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
-            }
-        });
-
-        btnAlterar.setText("Alterar");
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
-            }
-        });
-
-        btnInativar.setText("INATIVAR");
-        btnInativar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInativarActionPerformed(evt);
-            }
-        });
-
-        btnDetalhes.setText("Detalhes");
-        btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetalhesActionPerformed(evt);
-            }
-        });
-
         jScrollPane1.setViewportView(lstComponentes);
 
-        btnVoltar.setText("Voltar");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
+        btnVoltar1.setText("Voltar");
+        btnVoltar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
+                btnVoltar1ActionPerformed(evt);
+            }
+        });
+
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Create.png"))); // NOI18N
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+
+        btnAlterar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Modify.png"))); // NOI18N
+        btnAlterar1.setText("Alterar");
+        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterar1ActionPerformed(evt);
+            }
+        });
+
+        btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png"))); // NOI18N
+        btnAtivar.setText("Desativar");
+        btnAtivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtivarActionPerformed(evt);
+            }
+        });
+
+        btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
+        btnVisualizar.setText("Visualizar");
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarActionPerformed(evt);
             }
         });
 
@@ -95,40 +100,40 @@ public class TelaComponetes extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(403, 403, 403)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnInativar, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnDetalhes, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(btnVoltar))
-                .addGap(19, 19, 19))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnVoltar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAlterar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnAtivar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(403, 403, 403)))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnCadastrar, btnDetalhes, btnInativar, btnVoltar});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAlterar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnInativar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnDetalhes)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVoltar)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(52, 52, 52)
+                    .addComponent(btnNovo)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnAlterar1)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnAtivar)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnVisualizar)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnVoltar1)
+                    .addContainerGap(52, Short.MAX_VALUE)))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAlterar, btnCadastrar, btnDetalhes, btnInativar, btnVoltar});
 
         gbtnBuscaCodItem.add(rbtnCodigo);
         rbtnCodigo.setSelected(true);
@@ -167,25 +172,24 @@ public class TelaComponetes extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(51, 51, 51))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(93, 93, 93)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(rbtnCodigo)
                         .addGap(18, 18, 18)
-                        .addComponent(rbtnItem)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(51, 51, 51))
+                        .addComponent(rbtnItem))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,58 +211,9 @@ public class TelaComponetes extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        TelaNovoComponente telaCadastroComponente = new TelaNovoComponente(null, true);
-        telaCadastroComponente.setVisible(true);
-        atualizaListaComponentes();
-
-    }//GEN-LAST:event_btnCadastrarActionPerformed
-
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
-
     private void rbtnCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnCodigoActionPerformed
-
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        Componente componente = new Componente();
-        if (lstComponentes.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "Favor selecionar um componente");
-        } else {
-            componente = (Componente) lstComponentes.getSelectedValue();
-            TelaNovoComponente telaCadastroComponente = new TelaNovoComponente(null, true, componente, false);
-            telaCadastroComponente.setVisible(true);
-            atualizaListaComponentes();
-            
-        }
-
-    }//GEN-LAST:event_btnAlterarActionPerformed
-
-    private void btnInativarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInativarActionPerformed
-        if (lstComponentes.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "Favor selecionar um componente");
-        } else {
-
-            int excluir = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir", "EXCLUSÃO", JOptionPane.YES_NO_OPTION);
-            if (excluir == 0) {
-                ComponenteDAO componenteDAO = new ComponenteDAO();
-                Componente componente = (Componente) lstComponentes.getSelectedValue();
-                componenteDAO.delete(componente.getIdComponente());
-                atualizaListaComponentes();
-            }
-        }
-    }//GEN-LAST:event_btnInativarActionPerformed
-
-    private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
-        if (lstComponentes.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "Favor selecionar um componente");
-        } else {
-            TelaVisualizarProduto telaDetalhesProduto = new TelaVisualizarProduto(null, true);
-            telaDetalhesProduto.setVisible(true);
-        }
-    }//GEN-LAST:event_btnDetalhesActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
@@ -284,6 +239,49 @@ public class TelaComponetes extends javax.swing.JDialog {
     private void rbtnItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnItemActionPerformed
+
+    private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVoltar1ActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+      TelaNovoComponente telaCadastroComponente = new TelaNovoComponente(null, true);
+        telaCadastroComponente.setVisible(true);
+        atualizaListaComponentes();
+
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
+        Componente componente = new Componente();
+        if (lstComponentes.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Favor selecionar um componente");
+        } else {
+            componente = (Componente) lstComponentes.getSelectedValue();
+            TelaNovoComponente telaCadastroComponente = new TelaNovoComponente(null, true, componente, false);
+            telaCadastroComponente.setVisible(true);
+            atualizaListaComponentes();
+            
+        }
+    }//GEN-LAST:event_btnAlterar1ActionPerformed
+
+    private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
+        if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
+            btnAtivar.setText("Desativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+        } else {
+            btnAtivar.setText("Ativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+        }
+    }//GEN-LAST:event_btnAtivarActionPerformed
+
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
+        if (lstComponentes.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Favor selecionar um componente");
+        } else {
+            TelaVisualizarProduto telaDetalhesProduto = new TelaVisualizarProduto(null, true);
+            telaDetalhesProduto.setVisible(true);
+        }
+    }//GEN-LAST:event_btnVisualizarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -328,11 +326,11 @@ public class TelaComponetes extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnDetalhes;
-    private javax.swing.JButton btnInativar;
-    private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton btnAlterar1;
+    private javax.swing.JToggleButton btnAtivar;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnVisualizar;
+    private javax.swing.JButton btnVoltar1;
     private javax.swing.ButtonGroup gbtnBuscaCodItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
