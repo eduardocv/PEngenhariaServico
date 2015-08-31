@@ -208,7 +208,7 @@ public class TelaRemetente extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Favor selecionar um Remetente");
         } else {
 
-            TelaVisualisarRemetente telaDetalhesRemetente = new TelaVisualisarRemetente(null, true, (Remetente) lstRemetentes.getSelectedValue());
+            TelaVisualizarRemetente telaDetalhesRemetente = new TelaVisualizarRemetente(null, true, (Remetente) lstRemetentes.getSelectedValue());
             telaDetalhesRemetente.setVisible(true);
             atualizaListaRemetente();
         }

@@ -1,6 +1,6 @@
 package view;
 
-import view.TelaVisualisarTecnico;
+import view.TelaVisualizarTecnico;
 import dao.TecnicoDAO;
 import entity.Tecnico;
 import java.util.ArrayList;
@@ -241,7 +241,7 @@ public class TelaTecnico extends javax.swing.JDialog {
             int id = Integer.parseInt(tbTecnicoLab.getValueAt(linha, 0).toString());
             TecnicoDAO tecnicoDAO = new TecnicoDAO();
             tecnico = tecnicoDAO.getTecnicoById(id);
-            TelaVisualisarTecnico telaVisualisarTecnico = new TelaVisualisarTecnico(null, true, tecnico);
+            TelaVisualizarTecnico telaVisualisarTecnico = new TelaVisualizarTecnico(null, true, tecnico);
             telaVisualisarTecnico.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione um técnico!");

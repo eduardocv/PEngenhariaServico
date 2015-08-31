@@ -234,7 +234,7 @@ public class TelaProdutos extends javax.swing.JDialog {
         if (lstProdutos.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Favor selecionar um produto");
         } else {
-            TelaVisualisarProduto telaDetalhesProduto = new TelaVisualisarProduto(null, true);
+            TelaVisualizarProduto telaDetalhesProduto = new TelaVisualizarProduto(null, true);
             telaDetalhesProduto.setVisible(true);
         }
     }//GEN-LAST:event_btnDetalhesActionPerformed

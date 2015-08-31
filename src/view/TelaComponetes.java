@@ -255,7 +255,7 @@ public class TelaComponetes extends javax.swing.JDialog {
         if (lstComponentes.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Favor selecionar um componente");
         } else {
-            TelaVisualisarProduto telaDetalhesProduto = new TelaVisualisarProduto(null, true);
+            TelaVisualizarProduto telaDetalhesProduto = new TelaVisualizarProduto(null, true);
             telaDetalhesProduto.setVisible(true);
         }
     }//GEN-LAST:event_btnDetalhesActionPerformed
