@@ -35,7 +35,7 @@ public class TelaRemetente extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         btnNovo = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
-        btnDetalhes = new javax.swing.JButton();
+        btnVisualizar = new javax.swing.JButton();
         btnAtivar = new javax.swing.JToggleButton();
         btnVoltar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -64,11 +64,11 @@ public class TelaRemetente extends javax.swing.JDialog {
             }
         });
 
-        btnDetalhes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
-        btnDetalhes.setText("Visualisar");
-        btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
+        btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
+        btnVisualizar.setText("Visualizar");
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetalhesActionPerformed(evt);
+                btnVisualizarActionPerformed(evt);
             }
         });
 
@@ -120,7 +120,7 @@ public class TelaRemetente extends javax.swing.JDialog {
                         .addComponent(btnVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnAtivar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -133,7 +133,7 @@ public class TelaRemetente extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtivar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDetalhes)
+                .addComponent(btnVisualizar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVoltar)
                 .addGap(0, 8, Short.MAX_VALUE))
@@ -202,7 +202,7 @@ public class TelaRemetente extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
         Remetente remetente = new Remetente();
         if (lstRemetentes.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Favor selecionar um Remetente");
@@ -212,7 +212,7 @@ public class TelaRemetente extends javax.swing.JDialog {
             telaDetalhesRemetente.setVisible(true);
             atualizaListaRemetente();
         }
-    }//GEN-LAST:event_btnDetalhesActionPerformed
+    }//GEN-LAST:event_btnVisualizarActionPerformed
 
     private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
         if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
@@ -291,8 +291,8 @@ public class TelaRemetente extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JToggleButton btnAtivar;
-    private javax.swing.JButton btnDetalhes;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

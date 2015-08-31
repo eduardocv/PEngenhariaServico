@@ -34,13 +34,13 @@ public class TelaProdutos extends javax.swing.JDialog {
 
         rbtnItem = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
-        btnCadastrar = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
-        btnInativar = new javax.swing.JButton();
-        btnDetalhes = new javax.swing.JButton();
-        btnVoltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstProdutos = new javax.swing.JList();
+        btnVoltar1 = new javax.swing.JButton();
+        btnVisualizar = new javax.swing.JButton();
+        btnAtivar = new javax.swing.JToggleButton();
+        btnAlterar1 = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -56,85 +56,83 @@ public class TelaProdutos extends javax.swing.JDialog {
             }
         });
 
-        btnCadastrar.setText("Cadastrar");
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
-            }
-        });
-
-        btnAlterar.setText("Alterar");
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
-            }
-        });
-
-        btnInativar.setText("INATIVAR");
-        btnInativar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInativarActionPerformed(evt);
-            }
-        });
-
-        btnDetalhes.setText("Detalhes");
-        btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetalhesActionPerformed(evt);
-            }
-        });
-
-        btnVoltar.setText("Voltar");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
-            }
-        });
-
         jScrollPane1.setViewportView(lstProdutos);
+
+        btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
+        btnVoltar1.setText("Voltar");
+        btnVoltar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltar1ActionPerformed(evt);
+            }
+        });
+
+        btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
+        btnVisualizar.setText("Visualizar");
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarActionPerformed(evt);
+            }
+        });
+
+        btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png"))); // NOI18N
+        btnAtivar.setText("Desativar");
+        btnAtivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtivarActionPerformed(evt);
+            }
+        });
+
+        btnAlterar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Modify.png"))); // NOI18N
+        btnAlterar1.setText("Alterar");
+        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterar1ActionPerformed(evt);
+            }
+        });
+
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Create.png"))); // NOI18N
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1)
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnInativar, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnDetalhes, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(btnVoltar))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnVoltar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAlterar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVisualizar))
+                    .addComponent(btnAtivar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnCadastrar, btnDetalhes, btnInativar, btnVoltar});
-
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAlterar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnInativar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnDetalhes)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVoltar))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addComponent(btnNovo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAlterar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtivar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVisualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVoltar1)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAlterar, btnCadastrar, btnDetalhes, btnInativar, btnVoltar});
 
         jLabel1.setText("Pesquisa por:");
 
@@ -171,11 +169,14 @@ public class TelaProdutos extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,20 +227,20 @@ public class TelaProdutos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnCodigoActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+    private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
+    }//GEN-LAST:event_btnVoltar1ActionPerformed
 
-    private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
-        if (lstProdutos.getSelectedIndex() == -1) {
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
+       if (lstProdutos.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Favor selecionar um produto");
         } else {
             TelaVisualizarProduto telaDetalhesProduto = new TelaVisualizarProduto(null, true);
             telaDetalhesProduto.setVisible(true);
         }
-    }//GEN-LAST:event_btnDetalhesActionPerformed
+    }//GEN-LAST:event_btnVisualizarActionPerformed
 
-    private void btnInativarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInativarActionPerformed
+    private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
         //        if (lstProdutos.getSelectedIndex() == -1) {
         //            JOptionPane.showMessageDialog(null, "Favor selecionar um produto");
         //        } else {
@@ -252,9 +253,9 @@ public class TelaProdutos extends javax.swing.JDialog {
         //                atualizaLista();
         //            }
         //        }
-    }//GEN-LAST:event_btnInativarActionPerformed
+    }//GEN-LAST:event_btnAtivarActionPerformed
 
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
         Produto produto = new Produto();
         if (lstProdutos.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Favor selecionar um produto");
@@ -265,13 +266,12 @@ public class TelaProdutos extends javax.swing.JDialog {
             //   atualizaLista();
             //   atualizaListaProdutos();
         }
-    }//GEN-LAST:event_btnAlterarActionPerformed
+    }//GEN-LAST:event_btnAlterar1ActionPerformed
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        TelaNovoProduto telaCadastroProduto = new TelaNovoProduto(null, true);
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+          TelaNovoProduto telaCadastroProduto = new TelaNovoProduto(null, true);
         telaCadastroProduto.setVisible(true);
-        //        atualizaLista();
-    }//GEN-LAST:event_btnCadastrarActionPerformed
+    }//GEN-LAST:event_btnNovoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,11 +316,11 @@ public class TelaProdutos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnDetalhes;
-    private javax.swing.JButton btnInativar;
-    private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton btnAlterar1;
+    private javax.swing.JToggleButton btnAtivar;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnVisualizar;
+    private javax.swing.JButton btnVoltar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
