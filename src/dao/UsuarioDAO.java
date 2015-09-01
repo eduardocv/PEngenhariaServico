@@ -146,6 +146,7 @@ public class UsuarioDAO extends MySQL {
                 usuario.setIdUsuario(rs.getInt("idUsuario"));
                 usuario.setNome(rs.getString("nome"));
                 usuario.setCPF(rs.getString("cpf"));
+                
                 usuario.setPerfil(EnumPerfil.ADMINISTRADOR.getPerfil(rs.getInt("perfil")));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setStatus(rs.getString("status"));
@@ -219,6 +220,7 @@ public class UsuarioDAO extends MySQL {
                 usuario.setIdUsuario(rs.getInt("idUsuario"));
                 usuario.setNome(rs.getString("nome"));
                 usuario.setCPF(rs.getString("cpf"));
+                
                 usuario.setPerfil(EnumPerfil.ADMINISTRADOR.getPerfil(rs.getInt("perfil")));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setStatus(rs.getString("status"));
