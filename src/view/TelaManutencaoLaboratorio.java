@@ -153,7 +153,8 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVisualizarActionPerformed
 
     private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
-        
+TelaRelatorios telaRelatorios = new TelaRelatorios(null, true);
+telaRelatorios.setVisible(true);
     }//GEN-LAST:event_btnRelatoriosActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
