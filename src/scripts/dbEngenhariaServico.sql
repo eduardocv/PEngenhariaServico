@@ -18,23 +18,23 @@ CREATE SCHEMA IF NOT EXISTS `dbEngenhariaServico` DEFAULT CHARACTER SET utf8 COL
 USE `dbEngenhariaServico` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuario`
+-- Table `dbEngenhariaServico`.`usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`usuario` (
-  `matricula` INT(11) NOT NULL AUTO_INCREMENT,
+  `idUsuario` INT(11) NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(15) NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `CPF` VARCHAR(45) NOT NULL,
   `perfil` INT(11) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(240) NOT NULL,
-  PRIMARY KEY (`matricula`))
+  PRIMARY KEY (`idUsuario`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Produto`
+-- Table `dbEngenhariaServico`.`Produto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Produto` (
   `idProduto` INT NOT NULL AUTO_INCREMENT,
@@ -46,7 +46,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Remetente`
+-- Table `dbEngenhariaServico`.`Remetente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Remetente` (
   `idRemetente` INT NOT NULL AUTO_INCREMENT,
@@ -60,7 +60,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Tecnico`
+-- Table `dbEngenhariaServico`.`Tecnico`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Tecnico` (
   `idTecnico` INT NOT NULL AUTO_INCREMENT,
@@ -72,7 +72,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`ManutencaoLaboratorio`
+-- Table `dbEngenhariaServico`.`ManutencaoLaboratorio`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`ManutencaoLaboratorio` (
   `idManutencaoLaboratorio` INT NOT NULL AUTO_INCREMENT,
@@ -105,7 +105,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Componente`
+-- Table `dbEngenhariaServico`.`Componente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Componente` (
   `idComponente` INT NOT NULL AUTO_INCREMENT,
@@ -117,7 +117,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Produto_has_ManutencaoLaboratorio`
+-- Table `dbEngenhariaServico`.`Produto_has_ManutencaoLaboratorio`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Produto_has_ManutencaoLaboratorio` (
   `Produto_idProduto` INT NOT NULL,
@@ -151,8 +151,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- INSERT no Banco --
 -- USUARIO --
-INSERT INTO `dbEngenhariaServico`.`usuario` (`matricula`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('1', 'Ativo', 'Adm', '999999', '0', 'adm', '123');
-INSERT INTO `dbEngenhariaServico`.`usuario` (`matricula`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('2', 'Ativo', 'Usuario', '123654', '1', 'user', '123');
+INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('1', 'Ativo', 'Adm', '999999', '0', 'adm', '123');
+INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('2', 'Ativo', 'Usuario', '123654', '1', 'user', '123');
+
+
 
 -- PRODUTO --
 insert into produto values(1,'I07PLA046','Placa Transceptora RF2','Ativo');

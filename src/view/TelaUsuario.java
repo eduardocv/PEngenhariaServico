@@ -67,20 +67,20 @@ public class TelaUsuario extends javax.swing.JDialog {
 
         tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1234", "Osama", "0711666", null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
-                "Matrícula", "Nome", "CPF", "Perfil", "Status"
+                "ID", "Nome", "CPF", "Perfil", "Status"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -241,7 +241,7 @@ public class TelaUsuario extends javax.swing.JDialog {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             Usuario usuario = usuarioDAO.getUsuarioById(id);
 
-            if (usuario.getMatricula() == 1) {
+            if (usuario.getIdUsuario() == 1) {
                 JOptionPane.showMessageDialog(rootPane, "Não é possível alterar esse usuário!");
             } else {
                 TelaNovoUsuario telaNovoUsuario = new TelaNovoUsuario(null, true, novo, usuario);
@@ -269,7 +269,7 @@ public class TelaUsuario extends javax.swing.JDialog {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             usuario = usuarioDAO.getUsuarioById(id);
 
-            if (usuario.getMatricula() == 1) {
+            if (usuario.getIdUsuario() == 1) {
                 JOptionPane.showMessageDialog(rootPane, "Não é possível desativar esse usuário!");
 
             } else {
@@ -314,7 +314,7 @@ public class TelaUsuario extends javax.swing.JDialog {
         DefaultTableModel model = (DefaultTableModel) this.tblUsuario.getModel();
         model.setRowCount(mostraUsuarios.size());
         for (int i = 0; i < mostraUsuarios.size(); i++) {
-            model.setValueAt(mostraUsuarios.get(i).getMatricula(), i, 0);
+            model.setValueAt(mostraUsuarios.get(i).getIdUsuario(), i, 0);
             model.setValueAt(mostraUsuarios.get(i).getNome(), i, 1);
             model.setValueAt(mostraUsuarios.get(i).getCPF(), i, 2);
             model.setValueAt(mostraUsuarios.get(i).getPerfil(), i, 3);
@@ -336,7 +336,7 @@ public class TelaUsuario extends javax.swing.JDialog {
         //laço para inserir os dados dos objetos na Tabela
         for (int i = 0; i < listarUsuarios.size(); i++) {
 
-            model.setValueAt(listarUsuarios.get(i).getMatricula(), i, 0);
+            model.setValueAt(listarUsuarios.get(i).getIdUsuario(), i, 0);
             model.setValueAt(listarUsuarios.get(i).getNome(), i, 1);
             model.setValueAt(listarUsuarios.get(i).getCPF(), i, 2);
             model.setValueAt(listarUsuarios.get(i).getPerfil().getDescricao(), i, 3);

@@ -76,7 +76,7 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblMatricula" min="-2" pref="67" max="-2" attributes="0"/>
+                              <Component id="lblIdUsuario" min="-2" pref="67" max="-2" attributes="0"/>
                               <Component id="txtNome" max="32767" attributes="0"/>
                               <Component id="txtEmail" max="32767" attributes="0"/>
                               <Component id="cbPerfil" pref="166" max="32767" attributes="0"/>
@@ -101,7 +101,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel1" max="32767" attributes="0"/>
-                      <Component id="lblMatricula" max="32767" attributes="0"/>
+                      <Component id="lblIdUsuario" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -144,7 +144,7 @@
             <Property name="text" type="java.lang.String" value="Matr&#xed;cula:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblMatricula">
+        <Component class="javax.swing.JLabel" name="lblIdUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>

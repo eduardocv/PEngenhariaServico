@@ -178,7 +178,7 @@ public class TelaLogin extends javax.swing.JFrame {
              
          } else{
             
-             if(usuario.getMatricula() == 1){
+             if(usuario.getIdUsuario() == 1){
                   JOptionPane.showMessageDialog(null, "Este usuário não pode ser alterado!");
              }
              else if(usuario.getStatus().equals("Desativado")){

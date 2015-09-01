@@ -32,11 +32,11 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
 
             this.usuario = new Usuario();
 
-            lblMatricula.setText(pegarMatricula() + "");
+            lblIdUsuario.setText(pegarMatricula() + "");
 
         } else {
 
-            lblMatricula.setText(this.usuario.getMatricula() + "");
+            lblIdUsuario.setText(this.usuario.getIdUsuario() + "");
             txtNome.setText(this.usuario.getNome());
             ftxtCPF.setText(this.usuario.getCPF());
             txtEmail.setText(this.usuario.getEmail());
@@ -56,7 +56,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblMatricula = new javax.swing.JLabel();
+        lblIdUsuario = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -80,7 +80,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
 
         jLabel1.setText("Matrícula:");
 
-        lblMatricula.setText("-");
+        lblIdUsuario.setText("-");
 
         jLabel4.setText("Nome:");
 
@@ -133,7 +133,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNome)
                             .addComponent(txtEmail)
                             .addComponent(cbPerfil, 0, 166, Short.MAX_VALUE)
@@ -152,7 +152,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblIdUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -228,7 +228,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
 
                 dao.insert(usuario);
                 limparTela();
-                lblMatricula.setText(pegarMatricula()+"");
+                lblIdUsuario.setText(pegarMatricula()+"");
 
             } else {
 
@@ -260,11 +260,11 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
     public int pegarMatricula() {
         UsuarioDAO daoUsuario = new UsuarioDAO();
         List<Usuario> listaUsuarios = daoUsuario.listarUsuarios();
-        int matricula = 0;
+        int idUsuario = 0;
         for (Usuario usuario : listaUsuarios) {
-            matricula = usuario.getMatricula();
+            idUsuario = usuario.getIdUsuario();
         }
-        return matricula + 1;
+        return idUsuario + 1;
     }
 
     /**
@@ -325,7 +325,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblMatricula;
+    private javax.swing.JLabel lblIdUsuario;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtSenha;

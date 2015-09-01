@@ -10,7 +10,7 @@ public class Usuario {
     private String CPF;
     private EnumPerfil Perfil;
     private String email;
-    private int matricula;
+    private int idUsuario;
     private String status;
     private String senha;
 
@@ -69,12 +69,12 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getMatricula() {
-        return matricula;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
+    public void setIdUsuario(int matricula) {
+        this.idUsuario = idUsuario;
     }
     
     
