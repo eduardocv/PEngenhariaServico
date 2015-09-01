@@ -152,7 +152,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- INSERT no Banco --
 -- USUARIO --
 INSERT INTO `dbEngenhariaServico`.`usuario` (`matricula`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('1', 'Ativo', 'Adm', '999999', '0', 'adm', '123');
-INSERT INTO `dbEngenhariaServico`.`usuario` (`matricula`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('2', 'Ativo', 'Usuario', '123654', '0', 'user', '123');
+INSERT INTO `dbEngenhariaServico`.`usuario` (`matricula`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('2', 'Ativo', 'Usuario', '123654', '1', 'user', '123');
 
 -- PRODUTO --
 insert into produto values(1,'I07PLA046','Placa Transceptora RF2','Ativo');
