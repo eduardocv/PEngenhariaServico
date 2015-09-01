@@ -10,15 +10,20 @@ package view;
  *
  * @author eduardo.vieira
  */
-public class TelaPrincipal extends javax.swing.JFrame {
-
-    /**
+public class TelaPrincipal extends javax.swing.JDialog {
+ /**
      * Creates new form TelaPrincipal
      */
-    public TelaPrincipal() {
+   
+    public TelaPrincipal(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        this.setLocationRelativeTo(parent);
         initComponents();
+        
     }
 
+
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,7 +173,7 @@ telaProdutos.setVisible(true);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+   //             new TelaPrincipal().setVisible(true);
             }
         });
     }
