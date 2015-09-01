@@ -20,7 +20,7 @@ USE `dbEngenhariaServico` ;
 -- -----------------------------------------------------
 -- Table `mydb`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbmonarchyfiles`.`usuario` (
+CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`usuario` (
   `matricula` INT(11) NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(15) NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
@@ -151,7 +151,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- INSERT no Banco --
 -- USUARIO --
-INSERT INTO `mydb`.`usuario` (`matricula`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('1', 'Ativo', 'Adm', '999999', '0', 'adm', '123');
+INSERT INTO `dbEngenhariaServico`.`usuario` (`matricula`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('1', 'Ativo', 'Adm', '999999', '0', 'adm', '123');
 -- PRODUTO --
 insert into produto values(1,'I07PLA046','Placa Transceptora RF2','Ativo');
 insert into produto values(2,'I07PLA055','Placa Mtouch (flat)','Ativo');
