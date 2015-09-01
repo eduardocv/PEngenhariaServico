@@ -214,8 +214,8 @@ public class TelaUsuario extends javax.swing.JDialog {
 
     private void btnPesquisarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarUsuarioActionPerformed
         List<Usuario> u = new ArrayList<Usuario>();
-        UsuarioDAO dao = new UsuarioDAO();
-        for (Usuario usuario : dao.listarUsuarios()) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        for (Usuario usuario : usuarioDAO.listarUsuarios()) {
             if (usuario.getNome().startsWith(txtPesquisarUsuario.getText())) {
                 u.add(usuario);
             }
