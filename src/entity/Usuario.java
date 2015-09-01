@@ -73,7 +73,7 @@ public class Usuario {
         return idUsuario;
     }
 
-    public void setIdUsuario(int matricula) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
     
