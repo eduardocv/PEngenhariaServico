@@ -49,7 +49,7 @@ public class TelaInicial extends javax.swing.JDialog {
             }
         }
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -194,6 +194,9 @@ public class TelaInicial extends javax.swing.JDialog {
 
     private void btnLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoffActionPerformed
 this.dispose();
+TelaLogin telaLogin = new TelaLogin();
+telaLogin.setVisible(true);
+
     }//GEN-LAST:event_btnLogoffActionPerformed
 
     /**
