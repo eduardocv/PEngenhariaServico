@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import dao.UsuarioDAO;
@@ -13,10 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author taynara_muren
- */
+
 public class TelaLogin extends javax.swing.JFrame {
 
     /**
@@ -155,8 +148,8 @@ public class TelaLogin extends javax.swing.JFrame {
                 TelaInicial telaInicial = new TelaInicial(this, false, usuario);
                 this.dispose();
                 
-//                telaPrincipal.setVisible(true);
- //               telaPrincipal.setVisible(true);
+                telaInicial.setVisible(true);
+                telaInicial.setVisible(true);
             }
                  
         } else if (email.equals("") || senha.equals("")){
@@ -173,26 +166,26 @@ public class TelaLogin extends javax.swing.JFrame {
     private void lblEsqueceuSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEsqueceuSenhaMouseClicked
         String email = txtUsuario.getText();; 
         
-        UsuarioDAO dao = new UsuarioDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
         
-        Usuario objUsuario = dao.getLogin(email);
+        Usuario usuario = usuarioDAO.getLogin(email);
         
-         if (objUsuario == null) {
+         if (usuario == null) {
              JOptionPane.showMessageDialog(null, "Usuário incorreto!");
              
          } else{
             
-             if(objUsuario.getMatricula() == 1){
+             if(usuario.getMatricula() == 1){
                   JOptionPane.showMessageDialog(null, "Este usuário não pode ser alterado!");
              }
-             else if(objUsuario.getStatus().equals("Desativado")){
+             else if(usuario.getStatus().equals("Desativado")){
                  JOptionPane.showMessageDialog(rootPane, "Usuário desativado!");
                 
             }  else {                   
                  String senhaAlterada;
-                 senhaAlterada = objUsuario.getCPF().substring(0, 3);
-                 senhaAlterada += objUsuario.getCPF().substring(4, 7);
-                 objUsuario.setSenha(senhaAlterada);
+                 senhaAlterada = usuario.getCPF().substring(0, 3);
+                 senhaAlterada += usuario.getCPF().substring(4, 7);
+                 usuario.setSenha(senhaAlterada);
                               
                  JOptionPane.showMessageDialog(null, "Senha alterada! \nNova senha: 6 primeiros dígitos do seu CPF.");
              }

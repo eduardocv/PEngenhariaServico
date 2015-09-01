@@ -30,19 +30,20 @@ public class TelaInicial extends javax.swing.JDialog {
             if(!usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)){
                 
                  btnUsuarios.setEnabled(false);
-                 btnComponentes.setEnabled(false);
-                 btnManutencaoLaboratorio.setEnabled(false);
-                 btnRemetentes.setEnabled(false);
-                 btnTecnicos.setEnabled(false);
-                 btnProdutos.setEnabled(false);
+                 btnComponentes.setEnabled(true);
+                 btnManutencaoLaboratorio.setEnabled(true);
+                 btnRemetentes.setEnabled(true);
+                 btnTecnicos.setEnabled(true);
+                 btnProdutos.setEnabled(true);
                  
                  
             } else {
-                 btnComponentes.setEnabled(false);
-                 btnManutencaoLaboratorio.setEnabled(false);
-                 btnRemetentes.setEnabled(false);
-                 btnTecnicos.setEnabled(false);
-                 btnProdutos.setEnabled(false);
+                 btnUsuarios.setEnabled(true);
+                 btnComponentes.setEnabled(true);
+                 btnManutencaoLaboratorio.setEnabled(true);
+                 btnRemetentes.setEnabled(true);
+                 btnTecnicos.setEnabled(true);
+                 btnProdutos.setEnabled(true);
             }
         }
     }
