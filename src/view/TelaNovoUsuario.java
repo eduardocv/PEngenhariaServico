@@ -27,19 +27,19 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.novo = novo;
-        objUsuario = usuario;
+        this.usuario = usuario;
         if (novo) {
 
-            objUsuario = new Usuario();
+            this.usuario = new Usuario();
 
             lblMatricula.setText(pegarMatricula() + "");
 
         } else {
 
-            lblMatricula.setText(objUsuario.getMatricula() + "");
-            txtNome.setText(objUsuario.getNome());
-            ftxtCPF.setText(objUsuario.getCPF());
-            txtEmail.setText(objUsuario.getEmail());
+            lblMatricula.setText(this.usuario.getMatricula() + "");
+            txtNome.setText(this.usuario.getNome());
+            ftxtCPF.setText(this.usuario.getCPF());
+            txtEmail.setText(this.usuario.getEmail());
             btnSalvar.setText("Alterar");
         }
     }
@@ -67,6 +67,8 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         ftxtCPF = new javax.swing.JFormattedTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JTextField();
 
         jLabel3.setText("jLabel3");
 
@@ -112,6 +114,8 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
+        jLabel2.setText("Senha:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -125,14 +129,16 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNome)
                             .addComponent(txtEmail)
                             .addComponent(cbPerfil, 0, 166, Short.MAX_VALUE)
-                            .addComponent(ftxtCPF)))
+                            .addComponent(ftxtCPF)
+                            .addComponent(txtSenha)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(btnSalvar)
@@ -163,11 +169,15 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnVoltar))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,17 +205,18 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     boolean novo;
-    Usuario objUsuario;
+    Usuario usuario;
     String senha;
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        objUsuario.setNome(txtNome.getText());
-        objUsuario.setCPF(ftxtCPF.getText());
-        objUsuario.setEmail(txtEmail.getText());
-        objUsuario.setPerfil((EnumPerfil) cbPerfil.getSelectedItem());
-        objUsuario.setStatus("Ativo");
-        senha = objUsuario.getCPF().substring(0, 3);
-        senha += objUsuario.getCPF().substring(4, 7);
-        objUsuario.setSenha(senha);
+        usuario.setNome(txtNome.getText());
+        usuario.setCPF(ftxtCPF.getText());
+        usuario.setEmail(txtEmail.getText());
+        usuario.setPerfil((EnumPerfil) cbPerfil.getSelectedItem());
+        usuario.setStatus("Ativo");
+        usuario.setSenha(txtSenha.getText());
+       // senha = usuario.getCPF().substring(0, 3);
+       // senha += usuario.getCPF().substring(4, 7);
+       // usuario.setSenha(senha);
         UsuarioDAO dao = new UsuarioDAO();
 
         if (txtNome.getText().equals("") || ftxtCPF.getText().equals("") || txtEmail.getText().equals("")) {
@@ -215,13 +226,13 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         } else {
             if (novo) {
 
-                dao.insert(objUsuario);
+                dao.insert(usuario);
                 limparTela();
                 lblMatricula.setText(pegarMatricula()+"");
 
             } else {
 
-                dao.update(objUsuario);
+                dao.update(usuario);
                 limparTela();
                 
             }
@@ -243,6 +254,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         ftxtCPF.setText("");
         txtEmail.setText("");
         txtNome.setText("");
+        txtSenha.setText("");
     }
 
     public int pegarMatricula() {
@@ -306,6 +318,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
     private javax.swing.JComboBox cbPerfil;
     private javax.swing.JFormattedTextField ftxtCPF;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -315,5 +328,6 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel lblMatricula;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

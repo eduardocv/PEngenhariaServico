@@ -26,7 +26,7 @@ public class TelaUsuario extends javax.swing.JDialog {
         atualizaTabelaUsuarios();
     }
     boolean novo = true;
-    Usuario objUsuario;
+    Usuario usuario;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -225,9 +225,9 @@ public class TelaUsuario extends javax.swing.JDialog {
 
     private void btnNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoUsuarioActionPerformed
         novo = true;
-        TelaNovoUsuario cUsuario = new TelaNovoUsuario(null, true, novo, null);
+        TelaNovoUsuario telaNovoUsuario = new TelaNovoUsuario(null, true, novo, null);
 
-        cUsuario.setVisible(true);
+        telaNovoUsuario.setVisible(true);
         atualizaTabelaUsuarios();
     }//GEN-LAST:event_btnNovoUsuarioActionPerformed
 
@@ -238,14 +238,14 @@ public class TelaUsuario extends javax.swing.JDialog {
         } else if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
             novo = false;
             int id = Integer.parseInt(tblUsuario.getValueAt(linha, 0).toString());
-            UsuarioDAO dao = new UsuarioDAO();
-            Usuario usuario = dao.getUsuarioById(id);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Usuario usuario = usuarioDAO.getUsuarioById(id);
 
             if (usuario.getMatricula() == 1) {
                 JOptionPane.showMessageDialog(rootPane, "Não é possível alterar esse usuário!");
             } else {
-                TelaNovoUsuario cUsuario = new TelaNovoUsuario(null, true, novo, usuario);
-                cUsuario.setVisible(true);
+                TelaNovoUsuario telaNovoUsuario = new TelaNovoUsuario(null, true, novo, usuario);
+                telaNovoUsuario.setVisible(true);
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Não é possível alterar um usuário desativado!");
@@ -266,18 +266,18 @@ public class TelaUsuario extends javax.swing.JDialog {
         } else {
             int id = Integer.parseInt(tblUsuario.getValueAt(linha, 0).toString());
 
-            UsuarioDAO uDAO = new UsuarioDAO();
-            objUsuario = uDAO.getUsuarioById(id);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            usuario = usuarioDAO.getUsuarioById(id);
 
-            if (objUsuario.getMatricula() == 1) {
+            if (usuario.getMatricula() == 1) {
                 JOptionPane.showMessageDialog(rootPane, "Não é possível desativar esse usuário!");
 
             } else {
                 if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
-                    objUsuario.setStatus("Desativado");
+                    usuario.setStatus("Desativado");
 
                 } else {
-                    objUsuario.setStatus("Ativo");
+                    usuario.setStatus("Ativo");
                 }
 
                 if (btnAtivarUsuario.getText().equalsIgnoreCase("Ativar")) {
@@ -288,7 +288,7 @@ public class TelaUsuario extends javax.swing.JDialog {
                     btnAtivarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
                 }
 
-                uDAO.atualizaStatus(objUsuario);
+                usuarioDAO.atualizaStatus(usuario);
             }
         }
         atualizaTabelaUsuarios();
@@ -324,8 +324,8 @@ public class TelaUsuario extends javax.swing.JDialog {
     }
 
     private void atualizaTabelaUsuarios() {
-        UsuarioDAO dao = new UsuarioDAO();
-        List<Usuario> listarUsuarios = dao.listarUsuarios();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        List<Usuario> listarUsuarios = usuarioDAO.listarUsuarios();
 
         //pega o modelo da Tabela e coloca na variavel "model"
         DefaultTableModel model
