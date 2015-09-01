@@ -142,17 +142,17 @@ public class TelaLogin extends javax.swing.JFrame {
         String email = txtUsuario.getText();
         String senha = txtSenha.getText();       
         
-        UsuarioDAO dao = new UsuarioDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-        Usuario objUsuario = dao.getLoginSenha(email, senha);
+        Usuario usuario = usuarioDAO.getLoginSenha(email, senha);
 
-        if (objUsuario != null) {
+        if (usuario != null) {
 
-            if(objUsuario.getStatus().equals("Desativado")){
+            if(usuario.getStatus().equals("Desativado")){
                 JOptionPane.showMessageDialog(rootPane, "Usuário desativado!");
                 
             }  else {
-//                TelaPrincipal telaPrincipal = new TelaPrincipal(this, false, objUsuario);
+                TelaInicial telaInicial = new TelaInicial(this, false, usuario);
                 this.dispose();
                 
 //                telaPrincipal.setVisible(true);

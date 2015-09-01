@@ -3,27 +3,50 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
 
+import entity.Usuario;
+import entity.EnumPerfil;
+import view.TelaInicial;
 /**
  *
  * @author eduardo.vieira
  */
-public class TelaPrincipal extends javax.swing.JDialog {
- /**
-     * Creates new form TelaPrincipal
+public class TelaInicial extends javax.swing.JDialog {
+
+    /**
+     * Creates new form TelaInicial
      */
-   
-    public TelaPrincipal(java.awt.Frame parent, boolean modal) {
+    
+     public TelaInicial(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
-        this.setLocationRelativeTo(parent);
         initComponents();
+        setLocationRelativeTo(null);
         
+      
+               
+        if(usuario!=null){        
+
+            if(!usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)){
+                
+                 btnUsuarios.setEnabled(false);
+                 btnComponentes.setEnabled(false);
+                 btnManutencaoLaboratorio.setEnabled(false);
+                 btnRemetentes.setEnabled(false);
+                 btnTecnicos.setEnabled(false);
+                 btnProdutos.setEnabled(false);
+                 
+                 
+            } else {
+                 btnComponentes.setEnabled(false);
+                 btnManutencaoLaboratorio.setEnabled(false);
+                 btnRemetentes.setEnabled(false);
+                 btnTecnicos.setEnabled(false);
+                 btnProdutos.setEnabled(false);
+            }
+        }
     }
 
-
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,9 +61,9 @@ public class TelaPrincipal extends javax.swing.JDialog {
         btnManutencaoLaboratorio = new javax.swing.JButton();
         btnProdutos = new javax.swing.JButton();
         btnComponentes = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("GSV");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnTecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/TecLab3.png"))); // NOI18N
         btnTecnicos.addActionListener(new java.awt.event.ActionListener() {
@@ -77,24 +100,32 @@ public class TelaPrincipal extends javax.swing.JDialog {
             }
         });
 
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/User group.png"))); // NOI18N
+        btnUsuarios.setText("Usuários");
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnManutencaoLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRemetentes, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnProdutos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(btnComponentes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnProdutos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnManutencaoLaboratorio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTecnicos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRemetentes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnComponentes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnComponentes, btnManutencaoLaboratorio, btnProdutos, btnRemetentes, btnTecnicos});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -108,40 +139,43 @@ public class TelaPrincipal extends javax.swing.JDialog {
                 .addComponent(btnRemetentes, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUsuarios)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnComponentes, btnManutencaoLaboratorio, btnProdutos, btnRemetentes});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnComponentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComponentesActionPerformed
-TelaComponetes telaComponentes = new TelaComponetes(null,true);
-telaComponentes.setVisible(true);
-    }//GEN-LAST:event_btnComponentesActionPerformed
-
-    private void btnManutencaoLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManutencaoLaboratorioActionPerformed
-TelaManutencaoLaboratorio telaManutencaoLaboratorio = new TelaManutencaoLaboratorio(null,true);
-telaManutencaoLaboratorio.setVisible(true);
-
-    }//GEN-LAST:event_btnManutencaoLaboratorioActionPerformed
-
-    private void btnRemetentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemetentesActionPerformed
-TelaRemetente telaRemetente = new TelaRemetente(null,true);
-telaRemetente.setVisible(true);
-
-    }//GEN-LAST:event_btnRemetentesActionPerformed
-
     private void btnTecnicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTecnicosActionPerformed
-TelaTecnico telaTecnico = new TelaTecnico(null,true);
-telaTecnico.setVisible(true);
+        TelaTecnico telaTecnico = new TelaTecnico(null, true);
+        telaTecnico.setVisible(true);
     }//GEN-LAST:event_btnTecnicosActionPerformed
 
+    private void btnRemetentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemetentesActionPerformed
+        TelaRemetente telaRemetente = new TelaRemetente(null, true);
+        telaRemetente.setVisible(true);
+    }//GEN-LAST:event_btnRemetentesActionPerformed
+
+    private void btnManutencaoLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManutencaoLaboratorioActionPerformed
+        TelaManutencaoLaboratorio telaManutencaoLaboratorio = new TelaManutencaoLaboratorio(null, true);
+        telaManutencaoLaboratorio.setVisible(true);
+    }//GEN-LAST:event_btnManutencaoLaboratorioActionPerformed
+
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
-TelaProdutos telaProdutos = new TelaProdutos(null,true);
-telaProdutos.setVisible(true);
+        TelaProdutos telaProdutos = new TelaProdutos(null, true);
+        telaProdutos.setVisible(true);
     }//GEN-LAST:event_btnProdutosActionPerformed
+
+    private void btnComponentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComponentesActionPerformed
+        TelaComponetes telaComponentes = new TelaComponetes(null, true);
+        telaComponentes.setVisible(true);
+    }//GEN-LAST:event_btnComponentesActionPerformed
+
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        TelaUsuario telaUsuario = new TelaUsuario(null, true);
+        telaUsuario.setVisible(true);
+    }//GEN-LAST:event_btnUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,20 +194,27 @@ telaProdutos.setVisible(true);
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-   //             new TelaPrincipal().setVisible(true);
+                TelaInicial dialog = new TelaInicial(new javax.swing.JFrame(), true, null);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -184,5 +225,6 @@ telaProdutos.setVisible(true);
     private javax.swing.JButton btnProdutos;
     private javax.swing.JButton btnRemetentes;
     private javax.swing.JButton btnTecnicos;
+    private javax.swing.JButton btnUsuarios;
     // End of variables declaration//GEN-END:variables
 }
