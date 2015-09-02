@@ -186,10 +186,11 @@ public class TelaLogin extends javax.swing.JFrame {
                 
             }  else {                   
                  String senhaAlterada;
-                 senhaAlterada = usuario.getCPF().substring(0, 3);
+                 senhaAlterada = usuario.getSenha();
+             //    senhaAlterada = usuario.getCPF().substring(0, 3);
                  senhaAlterada += usuario.getCPF().substring(4, 7);
                  usuario.setSenha(senhaAlterada);
-                              
+                // ir no bd e fazer essa porra funcionar               
                  JOptionPane.showMessageDialog(null, "Senha alterada! \nNova senha: 6 primeiros dígitos do seu CPF.");
              }
          }
