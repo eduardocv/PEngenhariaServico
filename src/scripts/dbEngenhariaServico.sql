@@ -175,3 +175,4 @@ insert into remetente values(1,'Não Identificado','--------','  ','(00) 0000-00
 insert into remetente values(2,'Maintenance','suporte@maintenance.com.br','RT','(21) 2215-6354','Ativo');
 insert into remetente values(3,'Ricardo Souto','ricardo@spectp.com.br','TR','(11) 1111-1111','Ativo');
 
+-- select * from usuario;
