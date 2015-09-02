@@ -40,7 +40,10 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
             txtNome.setText(this.usuario.getNome());
             ftxtCPF.setText(this.usuario.getCPF());
             txtEmail.setText(this.usuario.getEmail());
+            cbPerfil.setSelectedItem(this.usuario.getPerfil());
+            txtSenha.setText("*****");//this.usuario.getSenha());
             btnSalvar.setText("Alterar");
+            jPanel1.setBorder(null);
         }
     }
 
@@ -78,7 +81,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("CadastroUsuario"));
         jPanel1.setToolTipText("");
 
-        jLabel1.setText("Matrícula:");
+        jLabel1.setText("ID:");
 
         lblIdUsuario.setText("-");
 
@@ -206,7 +209,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
 
     boolean novo;
     Usuario usuario;
-    String senha;
+    //String senha;
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         usuario.setNome(txtNome.getText());
         usuario.setCPF(ftxtCPF.getText());
@@ -227,16 +230,18 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
             if (novo) {
 
                 dao.insert(usuario);
+                JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
                 limparTela();
                 lblIdUsuario.setText(pegarMatricula()+"");
+                
 
             } else {
-
+                JOptionPane.showMessageDialog(this, "Alterado com sucesso!");
                 dao.update(usuario);
                 limparTela();
                 
             }
-            JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
+            
             
              if(!novo){
                 try {
