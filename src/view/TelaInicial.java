@@ -83,7 +83,7 @@ public class TelaInicial extends javax.swing.JDialog {
             }
         });
 
-        btnManutencaoLaboratorio.setText("Manutenção Laboratório");
+        btnManutencaoLaboratorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/manutencao.jpg"))); // NOI18N
         btnManutencaoLaboratorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManutencaoLaboratorioActionPerformed(evt);
