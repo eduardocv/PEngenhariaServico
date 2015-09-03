@@ -76,7 +76,7 @@ public class TelaInicial extends javax.swing.JDialog {
             }
         });
 
-        btnRemetentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Remetentes1.jpg"))); // NOI18N
+        btnRemetentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/remetentes.jpg"))); // NOI18N
         btnRemetentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemetentesActionPerformed(evt);
