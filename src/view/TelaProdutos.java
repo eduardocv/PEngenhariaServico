@@ -10,13 +10,11 @@ import javax.swing.JOptionPane;
 public class TelaProdutos extends javax.swing.JDialog {
 
     public TelaProdutos(java.awt.Frame parent, boolean modal) {
-    //  super(parent, modal);
-    //  this.setLocationRelativeTo(parent);
+        initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-        initComponents();
         atualizaListaProdutos();
-        
+
     }
 
     public void atualizaListaProdutos() {
