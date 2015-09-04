@@ -167,7 +167,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void lblEsqueceuSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEsqueceuSenhaMouseClicked
-        String email = txtUsuario.getText();; 
+        String email = txtUsuario.getText(); 
         
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         
