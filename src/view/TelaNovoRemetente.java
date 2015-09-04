@@ -16,8 +16,10 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
     }
 
     public TelaNovoRemetente(java.awt.Frame parent, boolean modal, Remetente remetente, boolean novo) {
-        super(parent, modal);
+     // super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
         this.novo = novo;
         this.remetente = remetente;
         txtNome.setText(remetente.getNome());

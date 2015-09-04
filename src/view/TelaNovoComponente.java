@@ -19,12 +19,16 @@ public class TelaNovoComponente extends javax.swing.JDialog {
      * Creates new form TelaCadastroComponente
      */
     public TelaNovoComponente(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+     // super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 TelaNovoComponente(java.awt.Frame parent, boolean modal, Componente componente, boolean novo){
-        super(parent,modal);
+     // super(parent,modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
         this.novo = novo;
         this.componente = componente;
         txtCodigo.setText(componente.getCodComponente());

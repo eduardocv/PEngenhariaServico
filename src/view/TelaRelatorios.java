@@ -15,8 +15,10 @@ public class TelaRelatorios extends javax.swing.JDialog {
      * Creates new form TelaRelatorios
      */
     public TelaRelatorios(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+     // super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**

@@ -22,8 +22,10 @@ public class TelaRemetente extends javax.swing.JDialog {
      * Creates new form TelaRemetente
      */
     public TelaRemetente(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    //  super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
         atualizaListaRemetente();
     }
 

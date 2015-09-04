@@ -17,15 +17,19 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
      * Creates new form TelaDetalhesRemetente
      */
     public TelaVisualizarRemetente(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
     }
+
     public TelaVisualizarRemetente(java.awt.Frame parent, boolean modal, Remetente remetente) {
-        super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
         lblNome.setText(remetente.getNome());
         lblEmail.setText(remetente.getEmail());
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

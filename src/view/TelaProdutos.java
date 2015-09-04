@@ -13,6 +13,7 @@ public class TelaProdutos extends javax.swing.JDialog {
     //  super(parent, modal);
     //  this.setLocationRelativeTo(parent);
         setLocationRelativeTo(null);
+        this.setResizable(false);
         initComponents();
         atualizaListaProdutos();
         

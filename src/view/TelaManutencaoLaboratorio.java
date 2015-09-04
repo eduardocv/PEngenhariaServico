@@ -11,8 +11,10 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
      * Creates new form TelaManutencaoLaboratorio
      */
     public TelaManutencaoLaboratorio(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+      //super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**

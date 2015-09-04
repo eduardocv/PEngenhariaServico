@@ -1,4 +1,3 @@
-
 package view;
 
 import dao.UsuarioDAO;
@@ -18,9 +17,9 @@ public class TelaUsuario extends javax.swing.JDialog {
      * Creates new form TelaNovoUsuario
      */
     public TelaUsuario(java.awt.Dialog parent, boolean modal) {
-        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
         btnAtivarUsuario.setText("Ativar");
 
         atualizaTabelaUsuarios();

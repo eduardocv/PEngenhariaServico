@@ -15,19 +15,14 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
     }
-//    TelaNovoTecnico(java.awt.Frame parent, boolean modal, Tecnico tecnico, boolean novo){
-//        super(parent,modal);
-//        initComponents();
-//        this.novo = novo;
-//        this.tecnico = tecnico;
-//        txtNome.setText(tecnico.getNome());
-//        txtEmail.setText(tecnico.getEmail());
-//    }
+
     public TelaNovoTecnico(java.awt.Frame parent, boolean modal, boolean novo, Tecnico tecnico) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
 
         this.novo = novo;
         this.tecnico = tecnico;

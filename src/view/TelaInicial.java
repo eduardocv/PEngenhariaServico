@@ -18,6 +18,7 @@ public class TelaInicial extends javax.swing.JDialog {
         //super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
 
         if (usuario != null) {
 

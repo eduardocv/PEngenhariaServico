@@ -23,9 +23,10 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
      * Creates new form CadastroUsuario
      */
     public TelaNovoUsuario(java.awt.Dialog parent, boolean modal, boolean novo, Usuario usuario) {
-        super(parent, modal);
+     // super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
         this.novo = novo;
         this.usuario = usuario;
         if (novo) {

@@ -1,25 +1,25 @@
-
 package view;
+
 import dao.ProdutoDAO;
 import entity.Produto;
 import java.util.List;
 
-
-
 public class TelaVisualizarProduto extends javax.swing.JDialog {
 
-   
     public TelaVisualizarProduto(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
         initComponents();
-             
+        setLocationRelativeTo(null);
+        this.setResizable(false);
+
     }
-public TelaVisualizarProduto(java.awt.Frame parent, boolean modal, Produto produto) {
-        super(parent, modal);
+
+    public TelaVisualizarProduto(java.awt.Frame parent, boolean modal, Produto produto) {
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
         lblCodigo.setText(produto.getCodProduto());
         lblDescricao.setText(produto.getProduto());
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -103,7 +103,7 @@ public TelaVisualizarProduto(java.awt.Frame parent, boolean modal, Produto produ
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     /**
@@ -160,6 +160,5 @@ this.dispose();
     private javax.swing.JLabel lblDescricao;
     private javax.swing.JLabel lblObs;
     // End of variables declaration//GEN-END:variables
-
 
 }

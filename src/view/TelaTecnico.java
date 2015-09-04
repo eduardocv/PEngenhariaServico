@@ -15,9 +15,9 @@ import javax.swing.table.DefaultTableModel;
 public class TelaTecnico extends javax.swing.JDialog {
 
     public TelaTecnico(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
         atualizaTabelaTecnicos();
     }
     Tecnico tecnico;

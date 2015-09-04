@@ -21,8 +21,10 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
      * Creates new form TelaManutencaoLaboratorio
      */
     public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+     // super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
         atualizaProduto();
         atualizaRemetente();
         lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));

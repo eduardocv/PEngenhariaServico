@@ -10,9 +10,9 @@ public class TelaVisualizarTecnico extends javax.swing.JDialog {
 
     
     public TelaVisualizarTecnico(java.awt.Frame parent, boolean modal, Tecnico tecnico) {
-        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
        
         lblNome.setText(tecnico.getNome());
         lblEmail.setText(tecnico.getEmail());

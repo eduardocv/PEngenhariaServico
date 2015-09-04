@@ -15,7 +15,8 @@ public class TelaComponetes extends javax.swing.JDialog {
         //this.setLocationRelativeTo(parent);
         initComponents();
         atualizaListaComponentes();
-        setLocation(null);
+        setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
   
