@@ -103,10 +103,12 @@ public class TelaTecnico extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tbTecnicoLab);
         if (tbTecnicoLab.getColumnModel().getColumnCount() > 0) {
-            tbTecnicoLab.getColumnModel().getColumn(0).setMinWidth(22);
+            tbTecnicoLab.getColumnModel().getColumn(0).setMinWidth(33);
             tbTecnicoLab.getColumnModel().getColumn(0).setPreferredWidth(22);
             tbTecnicoLab.getColumnModel().getColumn(0).setMaxWidth(22);
+            tbTecnicoLab.getColumnModel().getColumn(3).setMinWidth(66);
             tbTecnicoLab.getColumnModel().getColumn(3).setPreferredWidth(22);
+            tbTecnicoLab.getColumnModel().getColumn(3).setMaxWidth(66);
         }
 
         btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png"))); // NOI18N

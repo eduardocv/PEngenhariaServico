@@ -40,30 +40,19 @@ public class TelaUsuario extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtPesquisarUsuario = new javax.swing.JTextField();
-        btnPesquisarUsuario = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuario = new javax.swing.JTable();
         btnNovoUsuario = new javax.swing.JButton();
         btnAlterarUsuario = new javax.swing.JButton();
         btnAtivarUsuario = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        lblEmpresaUsuario = new javax.swing.JLabel();
         btnVoltarUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Usuários");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de Usuário"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela de Usuários"));
 
         jLabel1.setText("Pesquisar:");
-
-        btnPesquisarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Find.png"))); // NOI18N
-        btnPesquisarUsuario.setText("Pesquisar");
-        btnPesquisarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarUsuarioActionPerformed(evt);
-            }
-        });
 
         tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,7 +69,7 @@ public class TelaUsuario extends javax.swing.JDialog {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -101,6 +90,17 @@ public class TelaUsuario extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(tblUsuario);
+        if (tblUsuario.getColumnModel().getColumnCount() > 0) {
+            tblUsuario.getColumnModel().getColumn(0).setMinWidth(33);
+            tblUsuario.getColumnModel().getColumn(0).setPreferredWidth(22);
+            tblUsuario.getColumnModel().getColumn(0).setMaxWidth(22);
+            tblUsuario.getColumnModel().getColumn(3).setMinWidth(88);
+            tblUsuario.getColumnModel().getColumn(3).setPreferredWidth(22);
+            tblUsuario.getColumnModel().getColumn(3).setMaxWidth(88);
+            tblUsuario.getColumnModel().getColumn(4).setMinWidth(66);
+            tblUsuario.getColumnModel().getColumn(4).setPreferredWidth(22);
+            tblUsuario.getColumnModel().getColumn(4).setMaxWidth(66);
+        }
 
         btnNovoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/New document.png"))); // NOI18N
         btnNovoUsuario.setText("Novo");
@@ -125,10 +125,6 @@ public class TelaUsuario extends javax.swing.JDialog {
                 btnAtivarUsuarioActionPerformed(evt);
             }
         });
-
-        jLabel2.setText("Empresa:");
-
-        lblEmpresaUsuario.setText("-");
 
         btnVoltarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
         btnVoltarUsuario.setText("Voltar");
@@ -156,15 +152,10 @@ public class TelaUsuario extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblEmpresaUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPesquisarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPesquisarUsuario))
+                        .addComponent(txtPesquisarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -177,10 +168,7 @@ public class TelaUsuario extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtPesquisarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisarUsuario)
-                    .addComponent(jLabel2)
-                    .addComponent(lblEmpresaUsuario))
+                    .addComponent(txtPesquisarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
@@ -211,17 +199,6 @@ public class TelaUsuario extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnPesquisarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarUsuarioActionPerformed
-        List<Usuario> u = new ArrayList<Usuario>();
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        for (Usuario usuario : usuarioDAO.listarUsuarios()) {
-            if (usuario.getNome().startsWith(txtPesquisarUsuario.getText())) {
-                u.add(usuario);
-            }
-        }
-        mostraTela(u);
-    }//GEN-LAST:event_btnPesquisarUsuarioActionPerformed
 
     private void btnNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoUsuarioActionPerformed
         novo = true;
@@ -393,13 +370,10 @@ public class TelaUsuario extends javax.swing.JDialog {
     private javax.swing.JButton btnAlterarUsuario;
     private javax.swing.JButton btnAtivarUsuario;
     private javax.swing.JButton btnNovoUsuario;
-    private javax.swing.JButton btnPesquisarUsuario;
     private javax.swing.JButton btnVoltarUsuario;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblEmpresaUsuario;
     private javax.swing.JTable tblUsuario;
     private javax.swing.JTextField txtPesquisarUsuario;
     // End of variables declaration//GEN-END:variables
