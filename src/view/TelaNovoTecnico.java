@@ -14,6 +14,7 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
        public TelaNovoTecnico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 //    TelaNovoTecnico(java.awt.Frame parent, boolean modal, Tecnico tecnico, boolean novo){
 //        super(parent,modal);

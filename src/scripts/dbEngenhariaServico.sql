@@ -151,8 +151,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- INSERT no Banco --
 -- USUARIO --
-INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('1', 'Ativo', 'Adm', '999999', '0', 'adm', '123');
-INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('2', 'Ativo', 'Usuario', '123654', '1', 'user', '123');
+INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('1', 'Ativo', 'Administrador', '80295312068', '0', 'admin', 'admin');
+INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('2', 'Ativo', 'Usuario', '12345678900', '1', 'user', 'user');
 
 
 

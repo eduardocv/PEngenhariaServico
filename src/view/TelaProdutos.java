@@ -10,10 +10,12 @@ import javax.swing.JOptionPane;
 public class TelaProdutos extends javax.swing.JDialog {
 
     public TelaProdutos(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        this.setLocationRelativeTo(parent);
+    //  super(parent, modal);
+    //  this.setLocationRelativeTo(parent);
+        setLocationRelativeTo(null);
         initComponents();
         atualizaListaProdutos();
+        
     }
 
     public void atualizaListaProdutos() {
@@ -232,7 +234,7 @@ public class TelaProdutos extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
-       if (lstProdutos.getSelectedIndex() == -1) {
+        if (lstProdutos.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Favor selecionar um produto");
         } else {
             TelaVisualizarProduto telaDetalhesProduto = new TelaVisualizarProduto(null, true);
@@ -269,7 +271,7 @@ public class TelaProdutos extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAlterar1ActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-          TelaNovoProduto telaCadastroProduto = new TelaNovoProduto(null, true);
+        TelaNovoProduto telaCadastroProduto = new TelaNovoProduto(null, true);
         telaCadastroProduto.setVisible(true);
     }//GEN-LAST:event_btnNovoActionPerformed
 

@@ -6,14 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.Spring;
 
 public class TelaComponetes extends javax.swing.JDialog {
 
     public TelaComponetes(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        this.setLocationRelativeTo(parent);
+        //super(parent, modal);
+        //this.setLocationRelativeTo(parent);
         initComponents();
         atualizaListaComponentes();
+        setLocation(null);
     }
 
   

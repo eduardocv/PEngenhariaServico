@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import entity.Usuario;
 import entity.EnumPerfil;
 import view.TelaInicial;
+
 /**
  *
  * @author eduardo.vieira
@@ -17,39 +14,35 @@ public class TelaInicial extends javax.swing.JDialog {
     /**
      * Creates new form TelaInicial
      */
-    
-     public TelaInicial(java.awt.Frame parent, boolean modal, Usuario usuario) {
-        super(parent, modal);
+    public TelaInicial(java.awt.Frame parent, boolean modal, Usuario usuario) {
+        //super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        
-      
-               
-        if(usuario!=null){        
 
-            if(!usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)){
-                
-                 btnUsuarios.setEnabled(false);
-                 btnComponentes.setEnabled(true);
-                 btnManutencaoLaboratorio.setEnabled(true);
-                 btnRemetentes.setEnabled(true);
-                 btnTecnicos.setEnabled(true);
-                 btnProdutos.setEnabled(true);
-                 btnLogoff.setEnabled(true);
-                 
-                 
+        if (usuario != null) {
+
+            if (!usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
+
+                btnUsuarios.setEnabled(false);
+                btnComponentes.setEnabled(true);
+                btnManutencaoLaboratorio.setEnabled(true);
+                btnRemetentes.setEnabled(true);
+                btnTecnicos.setEnabled(true);
+                btnProdutos.setEnabled(true);
+                btnLogoff.setEnabled(true);
+
             } else {
-                 btnUsuarios.setEnabled(true);
-                 btnComponentes.setEnabled(true);
-                 btnManutencaoLaboratorio.setEnabled(true);
-                 btnRemetentes.setEnabled(true);
-                 btnTecnicos.setEnabled(true);
-                 btnProdutos.setEnabled(true);
-                 btnLogoff.setEnabled(true);
+                btnUsuarios.setEnabled(true);
+                btnComponentes.setEnabled(true);
+                btnManutencaoLaboratorio.setEnabled(true);
+                btnRemetentes.setEnabled(true);
+                btnTecnicos.setEnabled(true);
+                btnProdutos.setEnabled(true);
+                btnLogoff.setEnabled(true);
             }
         }
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,9 +185,9 @@ public class TelaInicial extends javax.swing.JDialog {
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoffActionPerformed
-this.dispose();
-TelaLogin telaLogin = new TelaLogin();
-telaLogin.setVisible(true);
+        this.dispose();
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.setVisible(true);
 
     }//GEN-LAST:event_btnLogoffActionPerformed
 
