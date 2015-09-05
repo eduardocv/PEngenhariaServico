@@ -33,7 +33,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
 
             this.usuario = new Usuario();
 
-            lblIdUsuario.setText(pegarMatricula() + "");
+            lblIdUsuario.setText(pegarId() + "");
 
         } else {
 
@@ -221,7 +221,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
        // senha = usuario.getCPF().substring(0, 3);
        // senha += usuario.getCPF().substring(4, 7);
        // usuario.setSenha(senha);
-        UsuarioDAO dao = new UsuarioDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
 
         if (txtNome.getText().equals("") || ftxtCPF.getText().equals("") || txtEmail.getText().equals("")) {
 
@@ -230,15 +230,15 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         } else {
             if (novo) {
 
-                dao.insert(usuario);
+                usuarioDAO.insert(usuario);
                 JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
                 limparTela();
-                lblIdUsuario.setText(pegarMatricula()+"");
+                lblIdUsuario.setText(pegarId()+"");
                 
 
             } else {
                 JOptionPane.showMessageDialog(this, "Alterado com sucesso!");
-                dao.update(usuario);
+                usuarioDAO.update(usuario);
                 limparTela();
                 
             }
@@ -263,9 +263,9 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         txtSenha.setText("");
     }
 
-    public int pegarMatricula() {
-        UsuarioDAO daoUsuario = new UsuarioDAO();
-        List<Usuario> listaUsuarios = daoUsuario.listarUsuarios();
+    public int pegarId() {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        List<Usuario> listaUsuarios = usuarioDAO.listarUsuarios();
         int idUsuario = 0;
         for (Usuario usuario : listaUsuarios) {
             idUsuario = usuario.getIdUsuario();

@@ -18,7 +18,7 @@ public class TelaInicial extends javax.swing.JDialog {
         //super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        this.setResizable(false);
+      //  this.setResizable(false);
 
         if (usuario != null) {
 
@@ -62,6 +62,7 @@ public class TelaInicial extends javax.swing.JDialog {
         btnLogoff = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnTecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/TecLab3.png"))); // NOI18N
         btnTecnicos.addActionListener(new java.awt.event.ActionListener() {
