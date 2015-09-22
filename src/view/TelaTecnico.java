@@ -222,7 +222,7 @@ public class TelaTecnico extends javax.swing.JDialog {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         int linha = tbTecnicoLab.getSelectedRow();
         if (linha == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione o técnico que deseja alterar!");
+            JOptionPane.showMessageDialog(rootPane, "Selecione o técnico que deseja alterar !!!");
         } else {
             if (tbTecnicoLab.getValueAt(linha, 3).equals("Ativo")) {
                 int id = Integer.parseInt(tbTecnicoLab.getValueAt(linha, 0).toString());
@@ -232,7 +232,7 @@ public class TelaTecnico extends javax.swing.JDialog {
                 telaCadastroTecnico.setVisible(true);
                 atualizaTabelaTecnicos();
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Não é possível alterar um técnico Desativado!");
+                JOptionPane.showMessageDialog(rootPane, "Não é possível alterar um técnico Desativado !!!");
             }
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
@@ -246,7 +246,7 @@ public class TelaTecnico extends javax.swing.JDialog {
             TelaVisualizarTecnico telaVisualisarTecnico = new TelaVisualizarTecnico(null, true, tecnico);
             telaVisualisarTecnico.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um técnico!");
+            JOptionPane.showMessageDialog(rootPane, "Selecione um técnico !!!");
         }
     }//GEN-LAST:event_btnVisualizarActionPerformed
     private void mostraTela(List<Tecnico> listarTecnicos) {
@@ -286,7 +286,7 @@ public class TelaTecnico extends javax.swing.JDialog {
             tecnicoDAO.update(tecnico);
             atualizaTabelaTecnicos();
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione a empresa que deseja Ativar/Desativar!");
+            JOptionPane.showMessageDialog(null, "Selecione o técnico que deseja Ativar/Desativar !!!");
         }
 
 
