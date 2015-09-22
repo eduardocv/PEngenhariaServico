@@ -149,12 +149,10 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
--- INSERT no Banco --
+------------------------------ INSERT no Banco ---------------------------------------------------
 -- USUARIO --
 INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('1', 'Ativo', 'Administrador', '80295312068', '0', 'admin', 'admin');
 INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('2', 'Ativo', 'Usuario', '12345678900', '1', 'user', 'user');
-
-
 
 -- PRODUTO --
 insert into produto values(1,'I07PLA046','Placa Transceptora RF2','Ativo');
@@ -175,4 +173,9 @@ insert into remetente values(1,'Não Identificado','--------','  ','(00) 0000-00
 insert into remetente values(2,'Maintenance','suporte@maintenance.com.br','RT','(21) 2215-6354','Ativo');
 insert into remetente values(3,'Ricardo Souto','ricardo@spectp.com.br','TR','(11) 1111-1111','Ativo');
 
--- select * from usuario;
+-- select * from dbEngenhariaServico.usuario;
+-- select * from dbEngenhariaServico.tecnico;
+-- select * from dbEngenhariaServico.componente;
+-- select * from dbEngenhariaServico.produto;
+
+---------------------------------------------------------------------------------------------------
