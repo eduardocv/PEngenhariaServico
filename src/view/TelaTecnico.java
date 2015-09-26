@@ -1,13 +1,13 @@
 package view;
 
-import view.TelaVisualizarTecnico;
+//import view.TelaVisualizarTecnico;
 import dao.TecnicoDAO;
 import entity.Tecnico;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.LayeredHighlighter;
+//import javax.swing.text.LayeredHighlighter;
 
 /**
  *
@@ -19,6 +19,7 @@ public class TelaTecnico extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
+       // btnAtivar.setText("Ativar");
         atualizaTabelaTecnicos();
     }
     Tecnico tecnico;

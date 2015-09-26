@@ -1,26 +1,35 @@
-
 package view;
 
 import entity.Tecnico;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
-
 public class TelaVisualizarTecnico extends javax.swing.JDialog {
 
-    
     public TelaVisualizarTecnico(java.awt.Frame parent, boolean modal, Tecnico tecnico) {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-       
+
+        //  lblIdTecnico.setText(Integer.parseInt(tecnico.getIdTecnico()));
+        // tentando por a porra do ID na tela    
         lblNome.setText(tecnico.getNome());
         lblEmail.setText(tecnico.getEmail());
-        lblStatus.setText(tecnico.getStatus());
-        
-    }
 
-    
+        if (tecnico.getStatus().equals("Ativo")) {
+            lblStatus.setText(tecnico.getStatus());
+            lblStatus.setForeground(Color.green);
+          // lblStatus.setSize(20, 100);
+            // lblStatus.setBackground(Color.yellow);
+
+        } else {
+            lblStatus.setText(tecnico.getStatus());
+            lblStatus.setForeground(Color.red);
+        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,7 +69,7 @@ public class TelaVisualizarTecnico extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setText("Matricula:");
+        jLabel3.setText("ID:");
 
         lblIdTecnico.setText("-");
 
@@ -77,21 +86,20 @@ public class TelaVisualizarTecnico extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3))
+                            .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel4)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblIdTecnico)
-                            .addComponent(lblNome)
-                            .addComponent(lblEmail)
-                            .addComponent(lblStatus)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3))
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblIdTecnico)
+                                    .addComponent(lblNome)
+                                    .addComponent(lblEmail)
+                                    .addComponent(lblStatus)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
+                        .addGap(155, 155, 155)
                         .addComponent(btnVoltar)))
                 .addContainerGap(152, Short.MAX_VALUE))
         );
@@ -106,7 +114,7 @@ public class TelaVisualizarTecnico extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblNome))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblEmail))
@@ -114,16 +122,16 @@ public class TelaVisualizarTecnico extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(lblStatus))
-                .addGap(5, 5, 5)
+                .addGap(18, 18, 18)
                 .addComponent(btnVoltar)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**

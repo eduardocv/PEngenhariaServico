@@ -128,7 +128,7 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
             
         } else {
             tecnicoDAO.update(tecnico);
-            JOptionPane.showMessageDialog(null, "Alteração efetuado com sucesso");
+            JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso!");
             this.dispose();
             
         }
