@@ -170,8 +170,8 @@ public Remetente getRemetenteById(int id) {
         Remetente remetente = null;
         try {
 
-            PreparedStatement ps = c.prepareStatement("SELECT idTecnico, nome, email, status from Tecnico"
-                    + " WHERE idTecnico = ? ");
+            PreparedStatement ps = c.prepareStatement("SELECT idRemetente, nome, email, status from Remetente"
+                    + " WHERE idRemetente = ? ");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

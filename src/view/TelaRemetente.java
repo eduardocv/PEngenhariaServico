@@ -88,22 +88,22 @@ Remetente remetente;
 
         tbRemetente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "E-mail", "Status"
+                "ID", "Nome", "Tipo", "E-mail", "Telefone", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, true, true, true, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -116,6 +116,14 @@ Remetente remetente;
             }
         });
         jScrollPane1.setViewportView(tbRemetente);
+        if (tbRemetente.getColumnModel().getColumnCount() > 0) {
+            tbRemetente.getColumnModel().getColumn(0).setMinWidth(33);
+            tbRemetente.getColumnModel().getColumn(0).setPreferredWidth(22);
+            tbRemetente.getColumnModel().getColumn(0).setMaxWidth(22);
+            tbRemetente.getColumnModel().getColumn(5).setMinWidth(66);
+            tbRemetente.getColumnModel().getColumn(5).setPreferredWidth(22);
+            tbRemetente.getColumnModel().getColumn(5).setMaxWidth(66);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -205,7 +213,7 @@ Remetente remetente;
         if (linha == -1) {
             JOptionPane.showMessageDialog(rootPane, "Selecione o remetente que deseja alterar !!!");
         } else {
-            if (tbRemetente.getValueAt(linha, 3).equals("Ativo")) {
+            if (tbRemetente.getValueAt(linha, 4).equals("Ativo")) {
                 int id = Integer.parseInt(tbRemetente.getValueAt(linha, 0).toString());
                 RemetenteDAO remetenteDAO = new RemetenteDAO();
                 Remetente remetente = remetenteDAO.getRemetenteById(id);
@@ -247,7 +255,7 @@ Remetente remetente;
 
     private void tbRemetenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRemetenteMouseClicked
         int linha = tbRemetente.getSelectedRow();
-        if (tbRemetente.getValueAt(linha, 3).equals("Ativo")) {
+        if (tbRemetente.getValueAt(linha, 4).equals("Ativo")) {
             btnAtivar.setText("Desativar");
             btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
         } else {
@@ -332,8 +340,10 @@ List<Remetente> listaRemetentes = new ArrayList<Remetente>();
         for (int i = 0; i < listarRemetentes.size(); i++) {
             model.setValueAt(listarRemetentes.get(i).getIdRemetente(), i, 0);
             model.setValueAt(listarRemetentes.get(i).getNome(), i, 1);
-            model.setValueAt(listarRemetentes.get(i).getEmail(), i, 2);
-            model.setValueAt(listarRemetentes.get(i).getStatus(), i, 3);
+            model.setValueAt(listarRemetentes.get(i).getTipo(), i, 2);
+            model.setValueAt(listarRemetentes.get(i).getEmail(), i, 3);
+            model.setValueAt(listarRemetentes.get(i).getTelefone(), i, 4);
+            model.setValueAt(listarRemetentes.get(i).getStatus(), i, 5);
         }
         
     }
@@ -354,8 +364,10 @@ List<Remetente> listaRemetentes = new ArrayList<Remetente>();
             model.addRow(new Object[]{});
             model.setValueAt(filtrada.get(i).getIdRemetente(), i, 0);
             model.setValueAt(filtrada.get(i).getNome(), i, 1);
-            model.setValueAt(filtrada.get(i).getEmail(), i, 2);
-            model.setValueAt(filtrada.get(i).getStatus(), i, 3);
+            model.setValueAt(filtrada.get(i).getTipo(), i, 2);
+            model.setValueAt(filtrada.get(i).getEmail(), i, 3);
+            model.setValueAt(filtrada.get(i).getTelefone(), i, 4);
+            model.setValueAt(filtrada.get(i).getStatus(), i, 5);
         }
     }
 }

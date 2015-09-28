@@ -169,7 +169,7 @@ insert into componente values(1,'U03008','CI Max 232','Ativo');
 insert into componente values(2,'I07BAT02','Bateria 3,6V','Ativo');
 insert into componente values(3,'Z0099','SMD PIC','Ativo');
 -- REMETENTE --
-insert into remetente values(1,'Não Identificado','--------','  ','(00) 0000-0000','Ativo');
+insert into remetente values(1,'Não Identificado','--','  ','(00) 0000-0000','Ativo');
 insert into remetente values(2,'Maintenance','suporte@maintenance.com.br','RT','(21) 2215-6354','Ativo');
 insert into remetente values(3,'Ricardo Souto','ricardo@spectp.com.br','TR','(11) 1111-1111','Ativo');
 
