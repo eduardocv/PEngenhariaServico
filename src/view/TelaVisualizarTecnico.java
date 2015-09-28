@@ -75,6 +75,7 @@ public class TelaVisualizarTecnico extends javax.swing.JDialog {
 
         jLabel4.setText("Status:");
 
+        lblStatus.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lblStatus.setText("-");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,7 +125,7 @@ public class TelaVisualizarTecnico extends javax.swing.JDialog {
                     .addComponent(lblStatus))
                 .addGap(18, 18, 18)
                 .addComponent(btnVoltar)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();

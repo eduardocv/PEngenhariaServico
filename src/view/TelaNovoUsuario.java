@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import dao.UsuarioDAO;
@@ -13,14 +9,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author felipe_tubandt
- */
+
 public class TelaNovoUsuario extends javax.swing.JDialog {
 
     /**
-     * Creates new form CadastroUsuario
+     * Creates new form NovoUsuario
      */
     public TelaNovoUsuario(java.awt.Dialog parent, boolean modal, boolean novo, Usuario usuario) {
      // super(parent, modal);
