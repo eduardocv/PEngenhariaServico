@@ -213,7 +213,7 @@ Remetente remetente;
         if (linha == -1) {
             JOptionPane.showMessageDialog(rootPane, "Selecione o remetente que deseja alterar !!!");
         } else {
-            if (tbRemetente.getValueAt(linha, 4).equals("Ativo")) {
+            if (tbRemetente.getValueAt(linha, 5).equals("Ativo")) {
                 int id = Integer.parseInt(tbRemetente.getValueAt(linha, 0).toString());
                 RemetenteDAO remetenteDAO = new RemetenteDAO();
                 Remetente remetente = remetenteDAO.getRemetenteById(id);
@@ -227,12 +227,22 @@ Remetente remetente;
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
-        if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
-            btnAtivar.setText("Desativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-        } else {
+        int linha = tbRemetente.getSelectedRow();
+        if (linha != -1){
+            int id = Integer.parseInt(tbRemetente.getValueAt(linha, 0).toString());
+            RemetenteDAO remetenteDAO = new RemetenteDAO();
+            remetente = remetenteDAO.getRemetenteById(id);
+        }
+        if (remetente.getStatus().equals("Ativo")) {
+            remetente.setStatus("Inativo");
             btnAtivar.setText("Ativar");
             btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+            atualizaTabelaRemetentes();
+        } else {
+            remetente.setStatus("Ativo");
+            btnAtivar.setText("Desativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+            atualizaTabelaRemetentes();
         }
     }//GEN-LAST:event_btnAtivarActionPerformed
 
@@ -255,7 +265,7 @@ Remetente remetente;
 
     private void tbRemetenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRemetenteMouseClicked
         int linha = tbRemetente.getSelectedRow();
-        if (tbRemetente.getValueAt(linha, 4).equals("Ativo")) {
+        if (tbRemetente.getValueAt(linha, 3).equals("Ativo")) {
             btnAtivar.setText("Desativar");
             btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
         } else {
