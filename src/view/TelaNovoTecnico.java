@@ -18,7 +18,6 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-
         this.novo = novo;
         this.tecnico = tecnico;
         if (novo) {
@@ -127,9 +126,7 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
             tecnicoDAO.update(tecnico);
             JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso!");
             this.dispose();
-
         }
-
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

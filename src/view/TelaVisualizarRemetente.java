@@ -1,33 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import entity.Remetente;
+import java.awt.Color;
 
 /**
  *
- * @author Ruivinho
+ * @author Eduardo C. Vieira
  */
 public class TelaVisualizarRemetente extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaDetalhesRemetente
      */
-    public TelaVisualizarRemetente(java.awt.Frame parent, boolean modal) {
-        initComponents();
-        setLocationRelativeTo(null);
-        this.setResizable(false);
-    }
+
 
     public TelaVisualizarRemetente(java.awt.Frame parent, boolean modal, Remetente remetente) {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
+        lblIdRemetente.setText(remetente.getIdRemetente()+ "");
         lblNome.setText(remetente.getNome());
         lblEmail.setText(remetente.getEmail());
+        
+        if (remetente.getStatus().equals("Ativo")){
+            lblStatus.setText(remetente.getStatus());
+            lblStatus.setForeground(Color.green);
+        }else{
+            lblStatus.setText(remetente.getStatus());
+            lblStatus.setForeground(Color.red);
+        }
     }
 
     /**
@@ -44,6 +46,10 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblIdRemetente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,30 +69,50 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
 
         lblEmail.setText("-");
 
+        jLabel4.setText("Status:");
+
+        lblStatus.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lblStatus.setText("-");
+
+        jLabel3.setText("ID:");
+
+        lblIdRemetente.setText("-");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNome)
-                            .addComponent(lblEmail)))
+                            .addComponent(lblStatus)
+                            .addComponent(lblEmail)
+                            .addComponent(lblNome)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(btnVoltar)))
-                .addContainerGap(152, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addGap(36, 36, 36)
+                        .addComponent(lblIdRemetente)
+                        .addGap(2, 2, 2)))
+                .addGap(65, 65, 65)
+                .addComponent(btnVoltar)
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblIdRemetente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblNome))
@@ -94,8 +120,15 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblEmail))
-                .addGap(30, 30, 30)
-                .addComponent(btnVoltar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btnVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(lblStatus))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -139,7 +172,7 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaVisualizarRemetente dialog = new TelaVisualizarRemetente(new javax.swing.JFrame(), true);
+                TelaVisualizarRemetente dialog = new TelaVisualizarRemetente(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -155,7 +188,11 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblIdRemetente;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblStatus;
     // End of variables declaration//GEN-END:variables
 }

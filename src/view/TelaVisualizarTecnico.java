@@ -2,9 +2,12 @@ package view;
 
 import entity.Tecnico;
 import java.awt.Color;
-//import java.awt.Font;
-//import java.util.ArrayList;
-//import javax.swing.JFrame;
+
+
+/**
+ *
+ * @author Eduardo C. Vieira
+ */
 
 public class TelaVisualizarTecnico extends javax.swing.JDialog {
 

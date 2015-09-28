@@ -13,10 +13,12 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
     public TelaNovoRemetente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
-    public TelaNovoRemetente(java.awt.Frame parent, boolean modal, Remetente remetente, boolean novo) {
-     // super(parent, modal);
+    public TelaNovoRemetente(java.awt.Frame parent, boolean modal,boolean novo ,Remetente remetente) {
+        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
@@ -26,6 +28,17 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
         txtEmail.setText(remetente.getEmail());
         cbTipo.setSelectedItem(remetente.getTipo().toString());
         txtTelefone.setText(remetente.getTelefone());
+        if (novo) {
+            remetente = new Remetente();
+
+        } else {
+            txtNome.setText(remetente.getNome());
+            cbTipo.setSelectedItem(remetente.getTipo());
+            txtEmail.setText(remetente.getEmail());
+            txtTelefone.setText(remetente.getTelefone());
+
+            btnSalvar.setText("Alterar");
+        }
 
     }
 
@@ -158,17 +171,16 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
         remetente.setTipo(cbTipo.getSelectedItem().toString());
         remetente.setTelefone(txtTelefone.getText());
         remetente.setEmail(txtEmail.getText());
-        RemetenteDAO remetenteDAO = new RemetenteDAO();
-
+        remetente.setStatus("Ativo");
         if (novo) {
             remetenteDAO.insert(remetente);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
+            limparTela();
         } else {
             remetenteDAO.update(remetente);
             JOptionPane.showMessageDialog(this, "Alteração efetuada com sucesso!");
+            this.dispose();
         }
-
-
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -227,5 +239,13 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
  Remetente remetente = new Remetente();
+    RemetenteDAO remetenteDAO = new RemetenteDAO();
     boolean novo = true;
+
+    public void limparTela() {
+        txtNome.setText("");
+        txtEmail.setText("");
+        txtTelefone.setText("");
+
+    }
 }

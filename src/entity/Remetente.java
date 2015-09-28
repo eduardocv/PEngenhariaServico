@@ -11,6 +11,15 @@ public class Remetente {
    private String tipo;
    private String email;
    private String telefone;
+   private String Status;
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
 
     @Override
     public String toString() {

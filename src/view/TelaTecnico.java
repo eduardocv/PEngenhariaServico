@@ -1,20 +1,21 @@
 package view;
 
-//import view.TelaVisualizarTecnico;
 import dao.TecnicoDAO;
 import entity.Tecnico;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-//import javax.swing.text.LayeredHighlighter;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author eduardo.vieira
  */
 public class TelaTecnico extends javax.swing.JDialog {
-
+    /**
+     * Creates new form TelaTecnico
+     */
     public TelaTecnico(java.awt.Frame parent, boolean modal) {
         initComponents();
         setLocationRelativeTo(null);
@@ -22,7 +23,6 @@ public class TelaTecnico extends javax.swing.JDialog {
         btnAtivar.setText("Ativar");
         atualizaTabelaTecnicos();
     }
-    //boolean novo = true;
     Tecnico tecnico;
 
     @SuppressWarnings("unchecked")
