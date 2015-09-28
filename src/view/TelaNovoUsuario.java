@@ -22,13 +22,12 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-        
         this.novo = novo;
         this.usuario = usuario;
         if (novo) {
             usuario = new Usuario();
             lblIdUsuario.setText(pegarId() + "");
-
+// não esta pegando o novo ID do usuário.
         } else {
 
             lblIdUsuario.setText(this.usuario.getIdUsuario() + "");
