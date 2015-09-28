@@ -1,4 +1,3 @@
-
 package view;
 
 import dao.UsuarioDAO;
@@ -9,23 +8,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
 public class TelaNovoUsuario extends javax.swing.JDialog {
 
-    /**
-     * Creates new form NovoUsuario
-     */
-    public TelaNovoUsuario(java.awt.Dialog parent, boolean modal, boolean novo, Usuario usuario) {
-     // super(parent, modal);
+    public TelaNovoUsuario(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
+    }
+
+    public TelaNovoUsuario(java.awt.Dialog parent, boolean modal, boolean novo, Usuario usuario) {
+        super(parent, modal);
+        initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
+        
         this.novo = novo;
         this.usuario = usuario;
         if (novo) {
-
-            this.usuario = new Usuario();
-
+            usuario = new Usuario();
             lblIdUsuario.setText(pegarId() + "");
 
         } else {
@@ -36,8 +37,8 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
             txtEmail.setText(this.usuario.getEmail());
             cbPerfil.setSelectedItem(this.usuario.getPerfil());
             txtSenha.setText("*****");//this.usuario.getSenha());
+            
             btnSalvar.setText("Alterar");
-            jPanel1.setBorder(null);
         }
     }
 
@@ -89,7 +90,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
 
         cbPerfil.setModel(new javax.swing.DefaultComboBoxModel(EnumPerfil.values()));
 
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/OK.png"))); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Save.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +120,11 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnVoltar)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnSalvar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -135,13 +140,8 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
                             .addComponent(txtEmail)
                             .addComponent(cbPerfil, 0, 166, Short.MAX_VALUE)
                             .addComponent(ftxtCPF)
-                            .addComponent(txtSenha)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addComponent(btnVoltar)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                            .addComponent(txtSenha))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,18 +194,13 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jPanel1.getAccessibleContext().setAccessibleName("Novo Usuário");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
-
-    boolean novo;
-    Usuario usuario;
-    //String senha;
+   
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         usuario.setNome(txtNome.getText());
         usuario.setCPF(ftxtCPF.getText());
@@ -213,33 +208,21 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         usuario.setPerfil((EnumPerfil) cbPerfil.getSelectedItem());
         usuario.setStatus("Ativo");
         usuario.setSenha(txtSenha.getText());
-       // senha = usuario.getCPF().substring(0, 3);
-       // senha += usuario.getCPF().substring(4, 7);
-       // usuario.setSenha(senha);
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-
+       
         if (txtNome.getText().equals("") || ftxtCPF.getText().equals("") || txtEmail.getText().equals("")) {
-
             JOptionPane.showMessageDialog(rootPane, "Por favor preencha todos os campos!");
-
         } else {
             if (novo) {
-
                 usuarioDAO.insert(usuario);
                 JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
                 limparTela();
-                lblIdUsuario.setText(pegarId()+"");
-                
-
+                lblIdUsuario.setText(pegarId() + "");
             } else {
                 JOptionPane.showMessageDialog(this, "Alterado com sucesso!");
                 usuarioDAO.update(usuario);
                 limparTela();
-                
             }
-            
-            
-             if(!novo){
+            if (!novo) {
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException ex) {
@@ -248,26 +231,15 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
                 this.dispose();
             }
         }
-
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    public void limparTela() {
-        ftxtCPF.setText("");
-        txtEmail.setText("");
-        txtNome.setText("");
-        txtSenha.setText("");
-    }
-
     public int pegarId() {
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        List<Usuario> listaUsuarios = usuarioDAO.listarUsuarios();
+         List<Usuario> listaUsuarios = usuarioDAO.listarUsuarios();
         int idUsuario = 0;
         for (Usuario usuario : listaUsuarios) {
             idUsuario = usuario.getIdUsuario();
         }
         return idUsuario + 1;
     }
-
     /**
      * @param args the command line arguments
      */
@@ -331,4 +303,14 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
+Usuario usuario = new Usuario();
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    boolean novo = true;
+
+    public void limparTela() {
+        ftxtCPF.setText("");
+        txtEmail.setText("");
+        txtNome.setText("");
+        txtSenha.setText("");
+    }
 }

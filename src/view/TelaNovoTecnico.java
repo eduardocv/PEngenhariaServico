@@ -1,17 +1,12 @@
-
 package view;
 
 import dao.TecnicoDAO;
 import entity.Tecnico;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Ruivinho
- */
 public class TelaNovoTecnico extends javax.swing.JDialog {
 
-       public TelaNovoTecnico(java.awt.Frame parent, boolean modal) {
+    public TelaNovoTecnico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -28,14 +23,15 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
         this.tecnico = tecnico;
         if (novo) {
             tecnico = new Tecnico();
-            
+
         } else {
             txtNome.setText(tecnico.getNome());
             txtEmail.setText(tecnico.getEmail());
-            
+
             btnSalvar.setText("Alterar");
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,7 +63,7 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
             }
         });
 
-        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Redo.png"))); // NOI18N
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,21 +76,22 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNome)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addComponent(btnVoltar)
-                .addGap(54, 54, 54)
-                .addComponent(btnSalvar)
-                .addGap(85, 85, 85))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNome)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(btnVoltar)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnSalvar)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,17 +117,17 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         tecnico.setNome(txtNome.getText());
         tecnico.setEmail(txtEmail.getText());
-        tecnico.setStatus ("Ativo");
+        tecnico.setStatus("Ativo");
         if (novo) {
             tecnicoDAO.insert(tecnico);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
             limparTela();
-            
+
         } else {
             tecnicoDAO.update(tecnico);
             JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso!");
             this.dispose();
-            
+
         }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -193,10 +190,10 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
 Tecnico tecnico = new Tecnico();
     TecnicoDAO tecnicoDAO = new TecnicoDAO();
     boolean novo = true;
-    
+
     public void limparTela() {
         txtNome.setText("");
         txtEmail.setText("");
-        
+
     }
 }

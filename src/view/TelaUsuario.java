@@ -14,10 +14,9 @@ public class TelaUsuario extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         this.setResizable(false);
         btnAtivarUsuario.setText("Ativar");
-
         atualizaTabelaUsuarios();
     }
-    boolean novo = true;
+   // boolean novo = true;
     Usuario usuario;
 
     
@@ -165,6 +164,11 @@ public class TelaUsuario extends javax.swing.JDialog {
                 txtPesquisarUsuarioActionPerformed(evt);
             }
         });
+        txtPesquisarUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesquisarUsuarioKeyReleased(evt);
+            }
+        });
 
         jLabel1.setText("Pesquisar:");
 
@@ -200,9 +204,8 @@ public class TelaUsuario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoUsuarioActionPerformed
-        novo = true;
-        TelaNovoUsuario telaNovoUsuario = new TelaNovoUsuario(null, true, novo, null);
-
+        //novo = true;
+        TelaNovoUsuario telaNovoUsuario = new TelaNovoUsuario(null, true);//, true, null);
         telaNovoUsuario.setVisible(true);
         atualizaTabelaUsuarios();
     }//GEN-LAST:event_btnNovoUsuarioActionPerformed
@@ -211,8 +214,8 @@ public class TelaUsuario extends javax.swing.JDialog {
         int linha = tblUsuario.getSelectedRow();
         if (linha == -1) {
             JOptionPane.showMessageDialog(rootPane, "Selecione o usuário que deseja alterar!");
-        } else if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
-            novo = false;
+        }else{
+            if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
             int id = Integer.parseInt(tblUsuario.getValueAt(linha, 0).toString());
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             Usuario usuario = usuarioDAO.getUsuarioById(id);
@@ -220,17 +223,18 @@ public class TelaUsuario extends javax.swing.JDialog {
             if (usuario.getIdUsuario() == 1) {
                 JOptionPane.showMessageDialog(rootPane, "Não é possível alterar esse usuário!");
             } else {
-                TelaNovoUsuario telaNovoUsuario = new TelaNovoUsuario(null, true, novo, usuario);
+                TelaNovoUsuario telaNovoUsuario = new TelaNovoUsuario(null, true, false, usuario);
                 telaNovoUsuario.setVisible(true);
+                atualizaTabelaUsuarios();
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Não é possível alterar um usuário desativado!");
         }
-        atualizaTabelaUsuarios();
+        
     }//GEN-LAST:event_btnAlterarUsuarioActionPerformed
-
+    }
     private void btnVoltarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarUsuarioActionPerformed
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_btnVoltarUsuarioActionPerformed
 
     private void btnAtivarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarUsuarioActionPerformed
@@ -289,6 +293,12 @@ public class TelaUsuario extends javax.swing.JDialog {
     private void txtPesquisarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisarUsuarioActionPerformed
+
+    private void txtPesquisarUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarUsuarioKeyReleased
+        String nome = txtPesquisarUsuario.getText();
+        buscaNome(nome);
+        
+    }//GEN-LAST:event_txtPesquisarUsuarioKeyReleased
 
     private void mostraTela(List<Usuario> mostraUsuarios) {
         DefaultTableModel model = (DefaultTableModel) this.tblUsuario.getModel();
@@ -380,4 +390,27 @@ public class TelaUsuario extends javax.swing.JDialog {
     private javax.swing.JTable tblUsuario;
     private javax.swing.JTextField txtPesquisarUsuario;
     // End of variables declaration//GEN-END:variables
+public void buscaNome(String nome) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        List<Usuario> filtrada = new ArrayList();
+        List<Usuario> listarUsuarios = usuarioDAO.listarUsuarios();
+        String nomeDigitadoTemp = nome.toLowerCase();
+        for (Usuario usr : listarUsuarios) {
+            String nomeTemp = usr.getNome().toLowerCase();
+            //System.out.println(nomeTemp + " - " + nomeDigitadoTemp);
+            if (nomeTemp.contains(nomeDigitadoTemp)) {
+                filtrada.add(usr);
+            }
+        }
+        DefaultTableModel model = (DefaultTableModel) this.tblUsuario.getModel();
+        model.setNumRows(0);
+        for (int i = 0; i < filtrada.size(); i++) {
+            model.addRow(new Object[]{});
+            model.setValueAt(filtrada.get(i).getIdUsuario(), i, 0);
+            model.setValueAt(filtrada.get(i).getNome(), i, 1);
+            model.setValueAt(filtrada.get(i).getCPF(), i, 2);
+            model.setValueAt(filtrada.get(i).getPerfil(), i, 3);
+            model.setValueAt(filtrada.get(i).getStatus(),i,4);
+        }
+    }
 }

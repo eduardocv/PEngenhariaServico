@@ -19,9 +19,10 @@ public class TelaTecnico extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-       // btnAtivar.setText("Ativar");
+        btnAtivar.setText("Ativar");
         atualizaTabelaTecnicos();
     }
+    //boolean novo = true;
     Tecnico tecnico;
 
     @SuppressWarnings("unchecked")
@@ -224,8 +225,8 @@ public class TelaTecnico extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        TelaNovoTecnico telaCadastroTecnico = new TelaNovoTecnico(null, true);//, true, null);
-        telaCadastroTecnico.setVisible(true);
+        TelaNovoTecnico telaNovoTecnico = new TelaNovoTecnico(null, true);//, true, null);
+        telaNovoTecnico.setVisible(true);
         atualizaTabelaTecnicos();
 
 
@@ -238,10 +239,10 @@ public class TelaTecnico extends javax.swing.JDialog {
         } else {
             if (tbTecnicoLab.getValueAt(linha, 3).equals("Ativo")) {
                 int id = Integer.parseInt(tbTecnicoLab.getValueAt(linha, 0).toString());
-                TecnicoDAO dao = new TecnicoDAO();
-                Tecnico tecnico = dao.getTecnicoById(id);
-                TelaNovoTecnico telaCadastroTecnico = new TelaNovoTecnico(null, true, false, tecnico);
-                telaCadastroTecnico.setVisible(true);
+                TecnicoDAO tecnicoDAO = new TecnicoDAO();
+                Tecnico tecnico = tecnicoDAO.getTecnicoById(id);
+                TelaNovoTecnico telaNovoTecnico = new TelaNovoTecnico(null, true, false, tecnico);
+                telaNovoTecnico.setVisible(true);
                 atualizaTabelaTecnicos();
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Não é possível alterar um técnico Desativado !!!");
