@@ -2,9 +2,9 @@ package view;
 
 import entity.Tecnico;
 import java.awt.Color;
-import java.awt.Font;
-import java.util.ArrayList;
-import javax.swing.JFrame;
+//import java.awt.Font;
+//import java.util.ArrayList;
+//import javax.swing.JFrame;
 
 public class TelaVisualizarTecnico extends javax.swing.JDialog {
 
@@ -13,17 +13,13 @@ public class TelaVisualizarTecnico extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         this.setResizable(false);
 
-        //  lblIdTecnico.setText(Integer.parseInt(tecnico.getIdTecnico()));
-        // tentando por a porra do ID na tela    
+        lblIdTecnico.setText(tecnico.getIdTecnico() + "");
         lblNome.setText(tecnico.getNome());
         lblEmail.setText(tecnico.getEmail());
 
         if (tecnico.getStatus().equals("Ativo")) {
             lblStatus.setText(tecnico.getStatus());
             lblStatus.setForeground(Color.green);
-          // lblStatus.setSize(20, 100);
-            // lblStatus.setBackground(Color.yellow);
-
         } else {
             lblStatus.setText(tecnico.getStatus());
             lblStatus.setForeground(Color.red);
