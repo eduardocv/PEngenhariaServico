@@ -4,6 +4,10 @@ import dao.ProdutoDAO;
 import entity.Produto;
 import java.util.List;
 
+/**
+ *
+ * @author Eduardo C. Vieira
+ */
 public class TelaVisualizarProduto extends javax.swing.JDialog {
 
     public TelaVisualizarProduto(java.awt.Frame parent, boolean modal) {

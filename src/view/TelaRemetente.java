@@ -10,13 +10,10 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author eduardo.vieira
+ * @author Eduardo C. Vieira
  */
 public class TelaRemetente extends javax.swing.JDialog {
 
-    /**
-     * Creates new form TelaRemetente
-     */
     public TelaRemetente(java.awt.Frame parent, boolean modal) {
         initComponents();
         setLocationRelativeTo(null);
@@ -24,7 +21,8 @@ public class TelaRemetente extends javax.swing.JDialog {
         btnAtivar.setText("Ativar");
         atualizaTabelaRemetentes();
     }
-Remetente remetente;
+   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -211,17 +209,17 @@ Remetente remetente;
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         TelaNovoRemetente telaNovoRemetente = new TelaNovoRemetente(null, true);
         telaNovoRemetente.setVisible(true);
-     atualizaTabelaRemetentes();
+        atualizaTabelaRemetentes();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-       int linha = tbRemetente.getSelectedRow();
+        int linha = tbRemetente.getSelectedRow();
         if (linha == -1) {
             JOptionPane.showMessageDialog(rootPane, "Selecione o remetente que deseja alterar !!!");
         } else {
             if (tbRemetente.getValueAt(linha, 5).equals("Ativo")) {
                 int id = Integer.parseInt(tbRemetente.getValueAt(linha, 0).toString());
-                RemetenteDAO remetenteDAO = new RemetenteDAO();
+                //RemetenteDAO remetenteDAO = new RemetenteDAO();
                 Remetente remetente = remetenteDAO.getRemetenteById(id);
                 TelaNovoRemetente telaNovoRemetente = new TelaNovoRemetente(null, true, false, remetente);
                 telaNovoRemetente.setVisible(true);
@@ -233,10 +231,10 @@ Remetente remetente;
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
-       int linha = tbRemetente.getSelectedRow();
+        int linha = tbRemetente.getSelectedRow();
         if (linha != -1) {
             int id = Integer.parseInt(tbRemetente.getValueAt(linha, 0).toString());
-            RemetenteDAO remetenteDAO = new RemetenteDAO();
+            //RemetenteDAO remetenteDAO = new RemetenteDAO();
             remetente = remetenteDAO.getRemetenteById(id);
             TelaVisualizarRemetente telaVisualisarRemetente = new TelaVisualizarRemetente(null, true, remetente);
             telaVisualisarRemetente.setVisible(true);
@@ -274,7 +272,7 @@ Remetente remetente;
         int linha = tbRemetente.getSelectedRow();
         if (linha != -1) {
             int id = Integer.parseInt(tbRemetente.getValueAt(linha, 0).toString());
-            RemetenteDAO remetenteDAO = new RemetenteDAO();
+           // RemetenteDAO remetenteDAO = new RemetenteDAO();
             remetente = remetenteDAO.getRemetenteById(id);
 
             if (remetente.getStatus().equals("Ativo")) {
@@ -354,9 +352,8 @@ Remetente remetente;
 List<Remetente> listaRemetentes = new ArrayList<Remetente>();
     DefaultListModel<Remetente> modelo = new DefaultListModel<Remetente>();
 
-
     private void atualizaTabelaRemetentes() {
-        RemetenteDAO remetenteDAO = new RemetenteDAO();
+       // RemetenteDAO remetenteDAO = new RemetenteDAO();
         List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
         DefaultTableModel model = (DefaultTableModel) this.tbRemetente.getModel();
         model.setRowCount(listarRemetentes.size());
@@ -368,10 +365,11 @@ List<Remetente> listaRemetentes = new ArrayList<Remetente>();
             model.setValueAt(listarRemetentes.get(i).getTelefone(), i, 4);
             model.setValueAt(listarRemetentes.get(i).getStatus(), i, 5);
         }
-        
+
     }
-       public void buscaNome(String nome) {
-        RemetenteDAO remetenteDAO = new RemetenteDAO();
+
+    public void buscaNome(String nome) {
+      //  RemetenteDAO remetenteDAO = new RemetenteDAO();
         List<Remetente> filtrada = new ArrayList();
         List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
         String nomeDigitadoTemp = nome.toLowerCase();
@@ -393,4 +391,6 @@ List<Remetente> listaRemetentes = new ArrayList<Remetente>();
             model.setValueAt(filtrada.get(i).getStatus(), i, 5);
         }
     }
+     Remetente remetente = new Remetente();
+     RemetenteDAO remetenteDAO = new RemetenteDAO();
 }

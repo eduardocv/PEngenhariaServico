@@ -3,7 +3,7 @@ package entity;
 
 /**
  *
- * @author eduardo.vieira
+ * @author Eduardo C. Vieira
  */
 public class Remetente {
    private int idRemetente;

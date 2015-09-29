@@ -8,17 +8,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Eduardo C. Vieira
+ */
 public class ProdutoDAO extends MySQL {
 
     public boolean insert(Produto produto) {
         Connection c = this.getConnection();
 
         try {
-            PreparedStatement ps = c.prepareStatement("insert into Produto ( codProduto, produto) "
+            PreparedStatement ps = c.prepareStatement("insert into Produto ( codProduto, produto, status) "
                     + "values( ? , ? )");
 
             ps.setString(1, produto.getCodProduto());
             ps.setString(2, produto.getProduto());
+            ps.setString(3, produto.getStatus());
 
             ps.execute();
             ps.close();
@@ -40,10 +45,11 @@ public class ProdutoDAO extends MySQL {
         Connection c = this.getConnection();
         try {
             PreparedStatement ps = c.prepareStatement("UPDATE Produto "
-                    + "SET codProduto = ?, produto = ? WHERE idProduto = ?");
+                    + "SET codProduto = ?, produto = ?, status = ? WHERE idProduto = ?");
             ps.setString(1, produto.getCodProduto());
             ps.setString(2, produto.getProduto());
-            ps.setInt(3, produto.getIdProduto());
+            ps.setString(3, produto.getStatus());
+            ps.setInt(4, produto.getIdProduto());
             ps.execute();
 
             ps.close();
@@ -90,7 +96,7 @@ public class ProdutoDAO extends MySQL {
         Connection c = this.getConnection();
         java.util.List<Produto> listaProdutos = new ArrayList<Produto>();
         try {
-            PreparedStatement ps = c.prepareStatement(" select idProduto, codProduto, produto from Produto");
+            PreparedStatement ps = c.prepareStatement(" select idProduto, codProduto, produto, status from Produto");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -99,6 +105,7 @@ public class ProdutoDAO extends MySQL {
                 produto.setIdProduto(rs.getInt("idProduto"));
                 produto.setCodProduto(rs.getString("codProduto"));
                 produto.setProduto(rs.getString("Produto"));
+                produto.setStatus(rs.getString("status"));
 
                 listaProdutos.add(produto);
             }
@@ -118,32 +125,23 @@ public class ProdutoDAO extends MySQL {
         return null;
     }
 
-    public java.util.List<Produto> buscarPorCod(String busca) {
+   
+    
+    public Produto getProdutoById (int id) {
         Connection c = this.getConnection();
-        java.util.List<Produto> listaProdutos = new ArrayList<Produto>();
-
-        try {
-            PreparedStatement ps = c.prepareStatement(" select idProduto, codProduto, produto from Produto where codProduto like ?");
-
-            ps.setString(1, "%" + busca + "%");
-            ps.execute();
-
+        Produto produto = null;
+        try{
+            PreparedStatement ps = c.prepareStatement("SELECT idProduto, codProduto, produto, status from Produto WHERE idProduto = ?");
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-
-                Produto produto = new Produto();
-
+                produto = new Produto();
                 produto.setIdProduto(rs.getInt("idProduto"));
                 produto.setCodProduto(rs.getString("codProduto"));
                 produto.setProduto(rs.getString("produto"));
-
-                listaProdutos.add(produto);
+                produto.setStatus(rs.getString("status"));
             }
-            rs.close();
-            ps.close();
-            return listaProdutos;
-
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
             try {
@@ -152,15 +150,16 @@ public class ProdutoDAO extends MySQL {
                 ex.printStackTrace();
             }
         }
-        return null;
+        return produto;
     }
-
+    
+    
     public java.util.List<Produto> buscarPorDesc(String busca) {
         Connection c = this.getConnection();
         java.util.List<Produto> listaProdutos = new ArrayList<Produto>();
 
         try {
-            PreparedStatement ps = c.prepareStatement(" select idProduto, codProduto, produto from Produto where produto like ?");
+            PreparedStatement ps = c.prepareStatement(" select idProduto, codProduto, produto, status from Produto where produto like ?");
 
             ps.setString(1, "%" + busca + "%");
             ps.execute();
@@ -173,6 +172,7 @@ public class ProdutoDAO extends MySQL {
                 produto.setIdProduto(rs.getInt("idProduto"));
                 produto.setCodProduto(rs.getString("codProduto"));
                 produto.setProduto(rs.getString("produto"));
+                produto.setStatus("status");
 
                 listaProdutos.add(produto);
             }
@@ -191,4 +191,42 @@ public class ProdutoDAO extends MySQL {
         }
         return null;
     }
+     public java.util.List<Produto> buscarPorCod(String busca) {
+        Connection c = this.getConnection();
+        java.util.List<Produto> listaProdutos = new ArrayList<Produto>();
+
+        try {
+            PreparedStatement ps = c.prepareStatement(" select idProduto, codProduto, produto, status from Produto where codProduto like ?");
+
+            ps.setString(1, "%" + busca + "%");
+            ps.execute();
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Produto produto = new Produto();
+
+                produto.setIdProduto(rs.getInt("idProduto"));
+                produto.setCodProduto(rs.getString("codProduto"));
+                produto.setProduto(rs.getString("produto"));
+                produto.setStatus(rs.getString("status"));
+
+                listaProdutos.add(produto);
+            }
+            rs.close();
+            ps.close();
+            return listaProdutos;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                c.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 }

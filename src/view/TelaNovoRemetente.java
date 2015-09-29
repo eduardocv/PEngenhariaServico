@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author eduardo.vieira
+ * @author Eduardo C. Vieira
  */
 public class TelaNovoRemetente extends javax.swing.JDialog {
 
@@ -26,7 +26,6 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
         this.remetente = remetente;
         txtNome.setText(remetente.getNome());
         txtEmail.setText(remetente.getEmail());
-        
         txtTelefone.setText(remetente.getTelefone());
         if (novo) {
             remetente = new Remetente();

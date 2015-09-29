@@ -11,24 +11,32 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Ruivinho
+ * @author Eduardo C. Vieira
  */
 public class TelaNovoProduto extends javax.swing.JDialog {
 
-    /**
-     * Creates new form TelaCadastroProduto
-     */
-    public TelaNovoProduto(java.awt.Frame parent, boolean modal) {
+     public TelaNovoProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
     }
-TelaNovoProduto(java.awt.Frame parent, boolean modal, Produto produto, boolean novo){
+TelaNovoProduto(java.awt.Frame parent, boolean modal, boolean novo, Produto produto){
         super(parent,modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);        
         this.novo = novo;
         this.produto = produto;
         txtCodigo.setText(produto.getCodProduto());
-        txtDescricao.setText(produto.getProduto());
+        txtProduto.setText(produto.getProduto());
+        if (novo){
+            produto = new Produto();
+        }else{
+            txtCodigo.setText(produto.getCodProduto());
+            txtProduto.setText(produto.getProduto());
+            btnSalvar.setText("Alterar");
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -42,7 +50,7 @@ TelaNovoProduto(java.awt.Frame parent, boolean modal, Produto produto, boolean n
         txtObs = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtDescricao = new javax.swing.JTextField();
+        txtProduto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,7 +74,7 @@ TelaNovoProduto(java.awt.Frame parent, boolean modal, Produto produto, boolean n
 
         jLabel1.setText("Código:");
 
-        jLabel2.setText("Descrição:");
+        jLabel2.setText("Produto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,7 +92,7 @@ TelaNovoProduto(java.awt.Frame parent, boolean modal, Produto produto, boolean n
                                 .addComponent(jLabel3))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                                .addComponent(txtProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                                 .addComponent(txtCodigo)
                                 .addComponent(txtObs)))
                         .addGroup(layout.createSequentialGroup()
@@ -92,7 +100,7 @@ TelaNovoProduto(java.awt.Frame parent, boolean modal, Produto produto, boolean n
                             .addComponent(btnVoltar)
                             .addGap(65, 65, 65)
                             .addComponent(btnSalvar)))
-                    .addContainerGap(104, Short.MAX_VALUE)))
+                    .addContainerGap(116, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +114,7 @@ TelaNovoProduto(java.awt.Frame parent, boolean modal, Produto produto, boolean n
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(21, 21, 21)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel3)
@@ -124,7 +132,7 @@ TelaNovoProduto(java.awt.Frame parent, boolean modal, Produto produto, boolean n
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
         produto.setCodProduto(txtCodigo.getText());
-        produto.setProduto(txtDescricao.getText());
+        produto.setProduto(txtProduto.getText());
         ProdutoDAO produtoDAO = new ProdutoDAO();
         if (novo) {
             produtoDAO.insert(produto);
@@ -190,8 +198,8 @@ TelaNovoProduto(java.awt.Frame parent, boolean modal, Produto produto, boolean n
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtObs;
+    private javax.swing.JTextField txtProduto;
     // End of variables declaration//GEN-END:variables
 Produto produto = new Produto();
 boolean novo = true;

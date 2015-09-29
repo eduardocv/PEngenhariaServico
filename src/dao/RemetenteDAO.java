@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author eduardo.vieira
+ * @author Eduardo C. Vieira
  */
 public class RemetenteDAO extends MySQL {
 
@@ -95,41 +95,6 @@ public class RemetenteDAO extends MySQL {
         return false;
     }
 
-//    public java.util.List<Remetente> listaRemetentes() {
-//        Connection c = this.getConnection();
-//        java.util.List<Remetente> listaRemetentes = new ArrayList<Remetente>();
-//        try {
-//            PreparedStatement ps = c.prepareStatement(" select idRemetente, nome, tipo, email, telefone, status from Remetente");
-//
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//
-//                Remetente remetente = new Remetente();
-//
-//                remetente.setIdRemetente(rs.getInt("idRemetente"));
-//                remetente.setNome(rs.getString("nome"));
-//                remetente.setTipo(rs.getString("tipo"));
-//                remetente.setEmail(rs.getString("email"));
-//                remetente.setTelefone(rs.getString("telefone"));
-//                remetente.setStatus(rs.getString("status"));
-//
-//                listaRemetentes.add(remetente);
-//            }
-//            rs.close();
-//            ps.close();
-//            return listaRemetentes;
-//
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        } finally {
-//            try {
-//                c.close();
-//            } catch (SQLException ex) {
-//                ex.printStackTrace();
-//            }
-//        }
-//        return null;
-//    }
 
     public java.util.List<Remetente> listarRemetentes() {
         Connection c = this.getConnection();
