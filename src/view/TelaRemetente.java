@@ -33,11 +33,11 @@ Remetente remetente;
         jPanel2 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
         btnVisualizar = new javax.swing.JButton();
-        btnAtivar = new javax.swing.JToggleButton();
         btnAlterar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbRemetente = new javax.swing.JTable();
+        btnAtivar = new javax.swing.JButton();
         txtPesquisa = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -59,14 +59,6 @@ Remetente remetente;
         btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVisualizarActionPerformed(evt);
-            }
-        });
-
-        btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png"))); // NOI18N
-        btnAtivar.setText("Ativar");
-        btnAtivar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtivarActionPerformed(evt);
             }
         });
 
@@ -120,34 +112,48 @@ Remetente remetente;
             tbRemetente.getColumnModel().getColumn(0).setMinWidth(33);
             tbRemetente.getColumnModel().getColumn(0).setPreferredWidth(22);
             tbRemetente.getColumnModel().getColumn(0).setMaxWidth(22);
+            tbRemetente.getColumnModel().getColumn(2).setMinWidth(39);
+            tbRemetente.getColumnModel().getColumn(2).setPreferredWidth(39);
+            tbRemetente.getColumnModel().getColumn(2).setMaxWidth(39);
+            tbRemetente.getColumnModel().getColumn(4).setMinWidth(100);
+            tbRemetente.getColumnModel().getColumn(4).setPreferredWidth(150);
+            tbRemetente.getColumnModel().getColumn(4).setMaxWidth(150);
             tbRemetente.getColumnModel().getColumn(5).setMinWidth(66);
             tbRemetente.getColumnModel().getColumn(5).setPreferredWidth(22);
             tbRemetente.getColumnModel().getColumn(5).setMaxWidth(66);
         }
+
+        btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png"))); // NOI18N
+        btnAtivar.setText("Ativar");
+        btnAtivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtivarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAtivar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAtivar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnNovo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAlterar)
@@ -156,8 +162,9 @@ Remetente remetente;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVisualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnVoltar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnVoltar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
@@ -175,26 +182,25 @@ Remetente remetente;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(241, 241, 241))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -221,30 +227,10 @@ Remetente remetente;
                 telaNovoRemetente.setVisible(true);
                 atualizaTabelaRemetentes();
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Não é possível alterar um técnico Desativado !!!");
+                JOptionPane.showMessageDialog(rootPane, "Não é possível alterar um remetente Desativado !!!");
             }
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
-
-    private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
-        int linha = tbRemetente.getSelectedRow();
-        if (linha != -1){
-            int id = Integer.parseInt(tbRemetente.getValueAt(linha, 0).toString());
-            RemetenteDAO remetenteDAO = new RemetenteDAO();
-            remetente = remetenteDAO.getRemetenteById(id);
-        }
-        if (remetente.getStatus().equals("Ativo")) {
-            remetente.setStatus("Inativo");
-            btnAtivar.setText("Ativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-            atualizaTabelaRemetentes();
-        } else {
-            remetente.setStatus("Ativo");
-            btnAtivar.setText("Desativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-            atualizaTabelaRemetentes();
-        }
-    }//GEN-LAST:event_btnAtivarActionPerformed
 
     private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
        int linha = tbRemetente.getSelectedRow();
@@ -265,7 +251,7 @@ Remetente remetente;
 
     private void tbRemetenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRemetenteMouseClicked
         int linha = tbRemetente.getSelectedRow();
-        if (tbRemetente.getValueAt(linha, 3).equals("Ativo")) {
+        if (tbRemetente.getValueAt(linha, 5).equals("Ativo")) {
             btnAtivar.setText("Desativar");
             btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
         } else {
@@ -283,6 +269,33 @@ Remetente remetente;
         String nome = txtPesquisa.getText();
         buscaNome(nome);
     }//GEN-LAST:event_txtPesquisaKeyReleased
+
+    private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
+        int linha = tbRemetente.getSelectedRow();
+        if (linha != -1) {
+            int id = Integer.parseInt(tbRemetente.getValueAt(linha, 0).toString());
+            RemetenteDAO remetenteDAO = new RemetenteDAO();
+            remetente = remetenteDAO.getRemetenteById(id);
+
+            if (remetente.getStatus().equals("Ativo")) {
+                remetente.setStatus("Inativo");
+                btnAtivar.setText("Ativar");
+                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+                atualizaTabelaRemetentes();
+            } else {
+                remetente.setStatus("Ativo");
+                btnAtivar.setText("Desativar");
+                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+                atualizaTabelaRemetentes();
+            }
+
+            remetenteDAO.update(remetente);
+            atualizaTabelaRemetentes();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione o remetente que deseja Ativar/Desativar !!!");
+        }
+
+    }//GEN-LAST:event_btnAtivarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,7 +341,7 @@ Remetente remetente;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
-    private javax.swing.JToggleButton btnAtivar;
+    private javax.swing.JButton btnAtivar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton btnVoltar;

@@ -18,11 +18,11 @@ public class RemetenteDAO extends MySQL {
         Connection c = this.getConnection();
 
         try {
-            PreparedStatement ps = c.prepareStatement("insert into Remetente ( nome, email, tipo, telefone, status) "
+            PreparedStatement ps = c.prepareStatement("insert into Remetente ( nome, tipo, email, telefone, status) "
                     + "values( ? , ? , ? , ? , ? )");
             ps.setString(1, remetente.getNome());
-            ps.setString(2, remetente.getEmail());
-            ps.setString(3, remetente.getTipo().toString());
+            ps.setString(2, remetente.getTipo());
+            ps.setString(3, remetente.getEmail());
             ps.setString(4, remetente.getTelefone());
             ps.setString(5, remetente.getStatus());
 
@@ -46,10 +46,10 @@ public class RemetenteDAO extends MySQL {
         Connection c = this.getConnection();
         try {
             PreparedStatement ps = c.prepareStatement("UPDATE Remetente "
-                    + "SET nome = ?, email = ?, tipo = ?, telefone = ?, status = ? WHERE idRemetente = ?");
+                    + "SET nome = ?, tipo = ?, email = ?, telefone = ?, status = ? WHERE idRemetente = ?");
             ps.setString(1, remetente.getNome());
-            ps.setString(2, remetente.getEmail());
-            ps.setString(3, remetente.getTipo().toString());
+            ps.setString(2, remetente.getTipo());
+            ps.setString(3, remetente.getEmail());
             ps.setString(4, remetente.getTelefone());
             ps.setString(5, remetente.getStatus());
             ps.setInt(6, remetente.getIdRemetente());
@@ -95,47 +95,47 @@ public class RemetenteDAO extends MySQL {
         return false;
     }
 
-    public java.util.List<Remetente> listaRemetentes() {
-        Connection c = this.getConnection();
-        java.util.List<Remetente> listaRemetentes = new ArrayList<Remetente>();
-        try {
-            PreparedStatement ps = c.prepareStatement(" select idRemetente, nome, email, tipo, telefone, status from Remetente");
-
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                Remetente remetente = new Remetente();
-
-                remetente.setIdRemetente(rs.getInt("idRemetente"));
-                remetente.setNome(rs.getString("nome"));
-                remetente.setEmail(rs.getString("email"));
-                remetente.setTipo(rs.getString("tipo"));
-                remetente.setTelefone(rs.getString("telefone"));
-                remetente.setStatus(rs.getString("status"));
-
-                listaRemetentes.add(remetente);
-            }
-            rs.close();
-            ps.close();
-            return listaRemetentes;
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                c.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
-        return null;
-    }
+//    public java.util.List<Remetente> listaRemetentes() {
+//        Connection c = this.getConnection();
+//        java.util.List<Remetente> listaRemetentes = new ArrayList<Remetente>();
+//        try {
+//            PreparedStatement ps = c.prepareStatement(" select idRemetente, nome, tipo, email, telefone, status from Remetente");
+//
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//
+//                Remetente remetente = new Remetente();
+//
+//                remetente.setIdRemetente(rs.getInt("idRemetente"));
+//                remetente.setNome(rs.getString("nome"));
+//                remetente.setTipo(rs.getString("tipo"));
+//                remetente.setEmail(rs.getString("email"));
+//                remetente.setTelefone(rs.getString("telefone"));
+//                remetente.setStatus(rs.getString("status"));
+//
+//                listaRemetentes.add(remetente);
+//            }
+//            rs.close();
+//            ps.close();
+//            return listaRemetentes;
+//
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        } finally {
+//            try {
+//                c.close();
+//            } catch (SQLException ex) {
+//                ex.printStackTrace();
+//            }
+//        }
+//        return null;
+//    }
 
     public java.util.List<Remetente> listarRemetentes() {
         Connection c = this.getConnection();
         java.util.List<Remetente> listaRemetentes = new ArrayList<Remetente>();
         try {
-            PreparedStatement ps = c.prepareStatement(" select idRemetente, nome, email, tipo, telefone from Remetente");
+            PreparedStatement ps = c.prepareStatement(" select idRemetente, nome, tipo, email, telefone, status from Remetente");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -143,9 +143,10 @@ public class RemetenteDAO extends MySQL {
 
                 remetente.setIdRemetente(rs.getInt("idRemetente"));
                 remetente.setNome(rs.getString("nome"));
-                remetente.setEmail(rs.getString("email"));
                 remetente.setTipo(rs.getString("tipo"));
+                remetente.setEmail(rs.getString("email"));                
                 remetente.setTelefone(rs.getString("telefone"));
+                remetente.setStatus(rs.getString("status"));
 
                 listaRemetentes.add(remetente);
             }
@@ -170,7 +171,7 @@ public Remetente getRemetenteById(int id) {
         Remetente remetente = null;
         try {
 
-            PreparedStatement ps = c.prepareStatement("SELECT idRemetente, nome, email, status from Remetente"
+            PreparedStatement ps = c.prepareStatement("SELECT idRemetente, nome, tipo, email, telefone, status from Remetente"
                     + " WHERE idRemetente = ? ");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -178,7 +179,9 @@ public Remetente getRemetenteById(int id) {
                 remetente = new Remetente();
                 remetente.setIdRemetente(rs.getInt("idRemetente"));
                 remetente.setNome(rs.getString("nome"));
+                remetente.setTipo(rs.getString("tipo"));
                 remetente.setEmail(rs.getString("email"));
+                remetente.setTelefone(rs.getString("telefone"));
                 remetente.setStatus(rs.getString("status"));
             }
 
@@ -199,7 +202,7 @@ public Remetente getRemetenteById(int id) {
         java.util.List<Remetente> listaRemetentes = new ArrayList<Remetente>();
 
         try {
-            PreparedStatement ps = c.prepareStatement(" select idRemetente, nome, email, tipo, telefone, status from Remetente where nome like ?");
+            PreparedStatement ps = c.prepareStatement(" select idRemetente, nome, tipo, email, telefone, status from Remetente where nome like ?");
 
             ps.setString(1, "%" + busca + "%");
             ps.execute();
@@ -211,8 +214,8 @@ public Remetente getRemetenteById(int id) {
 
                 remetente.setIdRemetente(rs.getInt("idRemetente"));
                 remetente.setNome(rs.getString("nome"));
-                remetente.setEmail(rs.getString("email"));
-                remetente.setTipo(rs.getString("tipo"));
+                remetente.setEmail(rs.getString("tipo"));
+                remetente.setTipo(rs.getString("email"));
                 remetente.setTelefone(rs.getString("telefone"));
                 remetente.setStatus(rs.getString("status"));
 

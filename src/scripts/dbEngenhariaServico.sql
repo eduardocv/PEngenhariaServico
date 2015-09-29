@@ -51,8 +51,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Remetente` (
   `idRemetente` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NULL,
   `tipo` VARCHAR(2) NULL,
+  `email` VARCHAR(45) NULL,  
   `telefone` VARCHAR(15) NULL,
   `status` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idRemetente`))
@@ -177,5 +177,6 @@ insert into remetente values(3,'Ricardo Souto','ricardo@spectp.com.br','TR','(11
 -- select * from dbEngenhariaServico.tecnico;
 -- select * from dbEngenhariaServico.componente;
 -- select * from dbEngenhariaServico.produto;
+-- select * from dbEngenhariaServico.remetente;
 
----------------------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------------

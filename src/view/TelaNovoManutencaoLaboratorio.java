@@ -275,7 +275,7 @@ this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 public void atualizaRemetente(){
         RemetenteDAO remetenteDAO = new RemetenteDAO();
-       List<Remetente> listarRemetentes = remetenteDAO.listaRemetentes();
+       List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
        for (Remetente remetente : listarRemetentes){
            cbRemetente.addItem(remetente);
        }
