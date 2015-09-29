@@ -23,7 +23,7 @@ public class Remetente {
 
     @Override
     public String toString() {
-        return  nome + "  " + tipo;
+        return  tipo + "  " + nome;
     }
    
    

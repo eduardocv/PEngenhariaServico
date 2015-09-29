@@ -21,7 +21,9 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
         this.setResizable(false);
         lblIdRemetente.setText(remetente.getIdRemetente()+ "");
         lblNome.setText(remetente.getNome());
+        lblTipo.setText(remetente.getTipo());
         lblEmail.setText(remetente.getEmail());
+        lblTelefone.setText(remetente.getTelefone());
         
         if (remetente.getStatus().equals("Ativo")){
             lblStatus.setText(remetente.getStatus());
@@ -50,6 +52,10 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
         lblStatus = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblIdRemetente = new javax.swing.JLabel();
+        lblTipo = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lblTelefone = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -78,32 +84,50 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
 
         lblIdRemetente.setText("-");
 
+        lblTipo.setText("-");
+
+        jLabel6.setText("Tipo:");
+
+        jLabel5.setText("Telefone:");
+
+        lblTelefone.setText("-");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel1))
                             .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel3)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblStatus)
                             .addComponent(lblEmail)
-                            .addComponent(lblNome)))
+                            .addComponent(lblNome)
+                            .addComponent(lblTelefone))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblTipo))
+                            .addComponent(btnVoltar)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(36, 36, 36)
                         .addComponent(lblIdRemetente)
-                        .addGap(2, 2, 2)))
-                .addGap(65, 65, 65)
-                .addComponent(btnVoltar)
-                .addContainerGap(149, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,21 +139,28 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(lblNome))
-                .addGap(18, 18, 18)
+                    .addComponent(lblNome)
+                    .addComponent(lblTipo)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblEmail))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(lblTelefone))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(btnVoltar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(lblStatus))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                            .addComponent(lblStatus))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVoltar)
+                        .addGap(45, 45, 45))))
         );
 
         pack();
@@ -190,9 +221,13 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblIdRemetente;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblTelefone;
+    private javax.swing.JLabel lblTipo;
     // End of variables declaration//GEN-END:variables
 }
