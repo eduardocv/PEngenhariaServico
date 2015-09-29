@@ -17,7 +17,7 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
         this.setResizable(false);
     }
 
-    public TelaNovoRemetente(java.awt.Frame parent, boolean modal,boolean novo ,Remetente remetente) {
+    public TelaNovoRemetente(java.awt.Frame parent, boolean modal, boolean novo, Remetente remetente) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -26,7 +26,7 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
         this.remetente = remetente;
         txtNome.setText(remetente.getNome());
         txtEmail.setText(remetente.getEmail());
-        cbTipo.setSelectedItem(remetente.getTipo().toString());
+        
         txtTelefone.setText(remetente.getTelefone());
         if (novo) {
             remetente = new Remetente();
@@ -36,7 +36,12 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
             cbTipo.setSelectedItem(remetente.getTipo());
             txtEmail.setText(remetente.getEmail());
             txtTelefone.setText(remetente.getTelefone());
-
+//             if (remetente.getTipo().toString().equals("TR")) {
+//            cbTipo.setSelectedIndex(0);
+//        } else {
+//
+//            cbTipo.setSelectedIndex(1);
+//        }
             btnSalvar.setText("Alterar");
         }
 
