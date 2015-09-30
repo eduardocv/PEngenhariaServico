@@ -37,10 +37,13 @@ public class TelaProdutos extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbProduto = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        txtPesquisa = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        rbtnCodigo = new javax.swing.JRadioButton();
+        rbtnItem = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Produtos");
-        getContentPane().setLayout(null);
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
         btnVoltar.setText("Voltar");
@@ -156,10 +159,61 @@ public class TelaProdutos extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(18, 64, 760, 170);
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(484, 35, 230, 0);
+        jLabel1.setText("Pesquisa por:");
+
+        rbtnCodigo.setSelected(true);
+        rbtnCodigo.setText("Código");
+        rbtnCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnCodigoActionPerformed(evt);
+            }
+        });
+
+        rbtnItem.setText("Descrição");
+        rbtnItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnItemActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel1)
+                .addGap(55, 55, 55)
+                .addComponent(rbtnCodigo)
+                .addGap(21, 21, 21)
+                .addComponent(rbtnItem)
+                .addGap(93, 93, 93)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1))
+                    .addComponent(rbtnCodigo)
+                    .addComponent(rbtnItem)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel2)))
+                .addGap(16, 16, 16)
+                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -242,6 +296,14 @@ public class TelaProdutos extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbProdutoMouseClicked
 
+    private void rbtnCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnCodigoActionPerformed
+
+    private void rbtnItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,10 +353,14 @@ public class TelaProdutos extends javax.swing.JDialog {
     private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JRadioButton rbtnCodigo;
+    private javax.swing.JRadioButton rbtnItem;
     private javax.swing.JTable tbProduto;
+    private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 //List<Produto> listaProdutos = new ArrayList<Produto>();
 //    DefaultListModel<Produto> modelo = new DefaultListModel<Produto>();
