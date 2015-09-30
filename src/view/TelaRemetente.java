@@ -349,11 +349,9 @@ public class TelaRemetente extends javax.swing.JDialog {
     private javax.swing.JTable tbRemetente;
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
-List<Remetente> listaRemetentes = new ArrayList<Remetente>();
-    DefaultListModel<Remetente> modelo = new DefaultListModel<Remetente>();
 
     private void atualizaTabelaRemetentes() {
-       // RemetenteDAO remetenteDAO = new RemetenteDAO();
+       
         List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
         DefaultTableModel model = (DefaultTableModel) this.tbRemetente.getModel();
         model.setRowCount(listarRemetentes.size());

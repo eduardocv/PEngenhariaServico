@@ -3,12 +3,10 @@ package view;
 import entity.Tecnico;
 import java.awt.Color;
 
-
 /**
  *
  * @author Eduardo C. Vieira
  */
-
 public class TelaVisualizarTecnico extends javax.swing.JDialog {
 
     public TelaVisualizarTecnico(java.awt.Frame parent, boolean modal, Tecnico tecnico) {
@@ -19,12 +17,11 @@ public class TelaVisualizarTecnico extends javax.swing.JDialog {
         lblIdTecnico.setText(tecnico.getIdTecnico() + "");
         lblNome.setText(tecnico.getNome());
         lblEmail.setText(tecnico.getEmail());
+        lblStatus.setText(tecnico.getStatus());
 
         if (tecnico.getStatus().equals("Ativo")) {
-            lblStatus.setText(tecnico.getStatus());
             lblStatus.setForeground(Color.green);
         } else {
-            lblStatus.setText(tecnico.getStatus());
             lblStatus.setForeground(Color.red);
         }
 

@@ -19,12 +19,11 @@ public class ProdutoDAO extends MySQL {
 
         try {
             PreparedStatement ps = c.prepareStatement("insert into Produto ( codProduto, produto, status) "
-                    + "values( ? , ? )");
-
+                    + "values( ? , ? , ? )");
             ps.setString(1, produto.getCodProduto());
             ps.setString(2, produto.getProduto());
             ps.setString(3, produto.getStatus());
-
+                     
             ps.execute();
             ps.close();
             return true;
@@ -172,7 +171,7 @@ public class ProdutoDAO extends MySQL {
                 produto.setIdProduto(rs.getInt("idProduto"));
                 produto.setCodProduto(rs.getString("codProduto"));
                 produto.setProduto(rs.getString("produto"));
-                produto.setStatus("status");
+                produto.setStatus(rs.getString("status"));
 
                 listaProdutos.add(produto);
             }

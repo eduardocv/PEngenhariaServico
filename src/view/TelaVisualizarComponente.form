@@ -34,14 +34,14 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblStatus" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblProduto" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDescricao" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="lblCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblIdProduto" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblIdComponente" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="275" max="32767" attributes="0"/>
+              <EmptySpace pref="274" max="32767" attributes="0"/>
               <Component id="btnVoltar" min="-2" pref="89" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
@@ -53,7 +53,7 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblIdProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblIdComponente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -63,7 +63,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -72,7 +72,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -85,7 +85,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Produto:"/>
+        <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCodigo">
@@ -93,7 +93,7 @@
         <Property name="text" type="java.lang.String" value="-"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblProduto">
+    <Component class="javax.swing.JLabel" name="lblDescricao">
       <Properties>
         <Property name="text" type="java.lang.String" value="-"/>
       </Properties>
@@ -127,7 +127,7 @@
         <Property name="text" type="java.lang.String" value="ID:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblIdProduto">
+    <Component class="javax.swing.JLabel" name="lblIdComponente">
       <Properties>
         <Property name="text" type="java.lang.String" value="-"/>
       </Properties>

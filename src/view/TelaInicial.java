@@ -177,7 +177,7 @@ public class TelaInicial extends javax.swing.JDialog {
     }//GEN-LAST:event_btnProdutosActionPerformed
 
     private void btnComponentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComponentesActionPerformed
-        TelaComponetes telaComponentes = new TelaComponetes(null, true);
+        TelaComponentes telaComponentes = new TelaComponentes(null, true);
         telaComponentes.setVisible(true);
     }//GEN-LAST:event_btnComponentesActionPerformed
 

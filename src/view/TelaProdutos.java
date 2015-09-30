@@ -27,7 +27,7 @@ public class TelaProdutos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        rbtnItem = new javax.swing.JRadioButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
         btnVisualizar = new javax.swing.JButton();
@@ -36,20 +36,11 @@ public class TelaProdutos extends javax.swing.JDialog {
         btnAtivar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbProduto = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        txtPesquisa = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        rbtnCodigo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Produtos");
-
-        rbtnItem.setText("Item");
-        rbtnItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnItemActionPerformed(evt);
-            }
-        });
+        getContentPane().setLayout(null);
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
         btnVoltar.setText("Voltar");
@@ -96,13 +87,36 @@ public class TelaProdutos extends javax.swing.JDialog {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Código", "Produto", "Status"
             }
         ));
+        tbProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbProdutoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbProduto);
+        if (tbProduto.getColumnModel().getColumnCount() > 0) {
+            tbProduto.getColumnModel().getColumn(0).setMinWidth(33);
+            tbProduto.getColumnModel().getColumn(0).setPreferredWidth(22);
+            tbProduto.getColumnModel().getColumn(0).setMaxWidth(22);
+            tbProduto.getColumnModel().getColumn(3).setMinWidth(66);
+            tbProduto.getColumnModel().getColumn(3).setPreferredWidth(22);
+            tbProduto.getColumnModel().getColumn(3).setMaxWidth(66);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -110,22 +124,26 @@ public class TelaProdutos extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVisualizar)
                     .addComponent(btnAtivar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnAtivar, btnNovo, btnVisualizar, btnVoltar});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnNovo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAlterar)
@@ -135,91 +153,16 @@ public class TelaProdutos extends javax.swing.JDialog {
                         .addComponent(btnVisualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVoltar)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jLabel1.setText("Pesquisa por:");
-
-        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPesquisaActionPerformed(evt);
-            }
-        });
-        txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtPesquisaKeyReleased(evt);
-            }
-        });
-
-        rbtnCodigo.setSelected(true);
-        rbtnCodigo.setText("Código");
-        rbtnCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnCodigoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(rbtnCodigo)
-                .addGap(18, 18, 18)
-                .addComponent(rbtnItem)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnCodigo)
-                    .addComponent(rbtnItem)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
-        );
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(18, 64, 760, 170);
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(484, 35, 230, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void rbtnItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbtnItemActionPerformed
-
-    private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
-        String nome = txtPesquisa.getText();
-        buscaCodigo(nome);
-
-        // fazer funcionar a escolha da busca por codigo ou descrição????
-    }//GEN-LAST:event_txtPesquisaKeyReleased
-
-    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPesquisaActionPerformed
-
-    private void rbtnCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbtnCodigoActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         this.dispose();
@@ -229,7 +172,6 @@ public class TelaProdutos extends javax.swing.JDialog {
         int linha = tbProduto.getSelectedRow();
         if (linha != -1) {
             int id = Integer.parseInt(tbProduto.getValueAt(linha, 0).toString());
-            //RemetenteDAO remetenteDAO = new RemetenteDAO();
             produto = produtoDAO.getProdutoById(id);
             TelaVisualizarProduto telaVisualisarProduto = new TelaVisualizarProduto(null, true, produto);
             telaVisualisarProduto.setVisible(true);
@@ -240,20 +182,20 @@ public class TelaProdutos extends javax.swing.JDialog {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         int linha = tbProduto.getSelectedRow();
-        if (linha == -1){
-            JOptionPane.showMessageDialog(rootPane,"Selecione o produto que deseja fazer a alteração!");
-        }else{
-            if (tbProduto.getValueAt(linha, 3).equals("Ativo")){
-            int id = Integer.parseInt(tbProduto.getValueAt(linha, 0).toString());
-            //
-            produto = produtoDAO.getProdutoById(id);
-               TelaNovoProduto telaNovoProduto = new TelaNovoProduto(null, true, false, produto);
-            telaNovoProduto.setVisible(true);
-            atualizaTabelaProdutos();
-        }else{
-                JOptionPane.showMessageDialog(rootPane,"Não é possível alterar um produto Desativado!!!");
-                }
-                }
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione o produto que deseja fazer a alteração!");
+        } else {
+            if (tbProduto.getValueAt(linha, 3).equals("Ativo")) {
+                int id = Integer.parseInt(tbProduto.getValueAt(linha, 0).toString());
+                //
+                produto = produtoDAO.getProdutoById(id);
+                TelaNovoProduto telaNovoProduto = new TelaNovoProduto(null, true, false, produto);
+                telaNovoProduto.setVisible(true);
+                atualizaTabelaProdutos();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Não é possível alterar um produto Desativado!!!");
+            }
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -266,7 +208,7 @@ public class TelaProdutos extends javax.swing.JDialog {
         int linha = tbProduto.getSelectedRow();
         if (linha != -1) {
             int id = Integer.parseInt(tbProduto.getValueAt(linha, 0).toString());
-            ProdutoDAO produtoDAO = new ProdutoDAO();
+
             produto = produtoDAO.getProdutoById(id);
 
             if (produto.getStatus().equals("Ativo")) {
@@ -284,9 +226,21 @@ public class TelaProdutos extends javax.swing.JDialog {
             produtoDAO.update(produto);
             atualizaTabelaProdutos();
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione o remetente que deseja Ativar/Desativar !!!");
+            JOptionPane.showMessageDialog(null, "Selecione o produto que deseja Ativar/Desativar !!!");
         }
     }//GEN-LAST:event_btnAtivarActionPerformed
+
+    private void tbProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProdutoMouseClicked
+        int linha = tbProduto.getSelectedRow();
+        if (tbProduto.getValueAt(linha, 3).equals("Ativo")) {
+            btnAtivar.setText("Desativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+        } else {
+            btnAtivar.setText("Ativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+            atualizaTabelaProdutos();
+        }
+    }//GEN-LAST:event_tbProdutoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -336,32 +290,30 @@ public class TelaProdutos extends javax.swing.JDialog {
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JRadioButton rbtnCodigo;
-    private javax.swing.JRadioButton rbtnItem;
     private javax.swing.JTable tbProduto;
-    private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
-List<Produto> listaProdutos = new ArrayList<Produto>();
-    DefaultListModel<Produto> modelo = new DefaultListModel<Produto>();
-    
-    private void atualizaTabelaProdutos(){
-        ProdutoDAO produtoDAO = new ProdutoDAO();
+//List<Produto> listaProdutos = new ArrayList<Produto>();
+//    DefaultListModel<Produto> modelo = new DefaultListModel<Produto>();
+
+    private void atualizaTabelaProdutos() {
+        //ProdutoDAO produtoDAO = new ProdutoDAO();
         List<Produto> listarProdutos = produtoDAO.listarProdutos();
         DefaultTableModel model = (DefaultTableModel) this.tbProduto.getModel();
         model.setRowCount(listarProdutos.size());
-        for (int i = 0; i < listarProdutos.size(); i++){
+        for (int i = 0; i < listarProdutos.size(); i++) {
             model.setValueAt(listarProdutos.get(i).getIdProduto(), i, 0);
-            model.setValueAt(listarProdutos.get(i).getProduto(), i, 1);
-            model.setValueAt(listarProdutos.get(i).getCodProduto(), i, 2);
+            model.setValueAt(listarProdutos.get(i).getCodProduto(), i, 1);
+            model.setValueAt(listarProdutos.get(i).getProduto(), i, 2);
             model.setValueAt(listarProdutos.get(i).getStatus(), i, 3);
         }
     }
+
     public void buscaCodigo(String nome) {
-      //  RemetenteDAO remetenteDAO = new RemetenteDAO();
+        //  RemetenteDAO remetenteDAO = new RemetenteDAO();
         List<Produto> filtrada = new ArrayList();
         List<Produto> listarProdutos = produtoDAO.listarProdutos();
         String codigoDigitadoTemp = nome.toLowerCase();
@@ -379,15 +331,16 @@ List<Produto> listaProdutos = new ArrayList<Produto>();
             model.setValueAt(filtrada.get(i).getCodProduto(), i, 1);
             model.setValueAt(filtrada.get(i).getProduto(), i, 2);
             model.setValueAt(filtrada.get(i).getStatus(), i, 3);
-            
+
         }
-    }public void buscaProduto(String nome) {
-      //  RemetenteDAO remetenteDAO = new RemetenteDAO();
+    }
+
+    public void buscaProduto(String nome) {
         List<Produto> filtrada = new ArrayList();
         List<Produto> listarProdutos = produtoDAO.listarProdutos();
         String produtoDigitadoTemp = nome.toLowerCase();
         for (Produto rem : listarProdutos) {
-            String prodTemp = rem.getCodProduto().toLowerCase();
+            String prodTemp = rem.getProduto().toLowerCase();
             if (prodTemp.contains(produtoDigitadoTemp)) {
                 filtrada.add(rem);
             }
@@ -400,10 +353,10 @@ List<Produto> listaProdutos = new ArrayList<Produto>();
             model.setValueAt(filtrada.get(i).getCodProduto(), i, 1);
             model.setValueAt(filtrada.get(i).getProduto(), i, 2);
             model.setValueAt(filtrada.get(i).getStatus(), i, 3);
-            
+
         }
     }
-    
-Produto produto = new Produto();
-ProdutoDAO produtoDAO = new ProdutoDAO();
+
+    Produto produto = new Produto();
+    ProdutoDAO produtoDAO = new ProdutoDAO();
 }

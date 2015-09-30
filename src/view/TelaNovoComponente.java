@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import dao.ComponenteDAO;
@@ -11,42 +6,45 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Ruivinho
+ * @author Eduardo C. Vieira
  */
 public class TelaNovoComponente extends javax.swing.JDialog {
 
-    /**
-     * Creates new form TelaCadastroComponente
-     */
     public TelaNovoComponente(java.awt.Frame parent, boolean modal) {
-     // super(parent, modal);
+        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
     }
-TelaNovoComponente(java.awt.Frame parent, boolean modal, Componente componente, boolean novo){
-     // super(parent,modal);
+
+    TelaNovoComponente(java.awt.Frame parent, boolean modal, boolean novo, Componente componente) {
+        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.novo = novo;
         this.componente = componente;
-        txtCodigo.setText(componente.getCodComponente());
-        txtDescricao.setText(componente.getComponente());
+        txtCodComponente.setText(componente.getCodComponente());
+        txtComponente.setText(componente.getComponente());
+        if (novo) {
+            componente = new Componente();
+        } else {
+            txtCodComponente.setText(componente.getCodComponente());
+            txtCodComponente.setText(componente.getCodComponente());
+            btnSalvar.setText("Alterar");
+        }
     }
-      
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtCodigo = new javax.swing.JTextField();
+        txtCodComponente = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        txtObs = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtDescricao = new javax.swing.JTextField();
+        txtComponente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,60 +64,51 @@ TelaNovoComponente(java.awt.Frame parent, boolean modal, Componente componente, 
             }
         });
 
-        jLabel3.setText("Obs.:");
-
         jLabel1.setText("Código:");
 
-        jLabel2.setText("Descrição:");
+        jLabel2.setText("Componente:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(btnVoltar)
+                .addGap(83, 83, 83)
+                .addComponent(btnSalvar)
+                .addContainerGap(134, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
-                                .addComponent(txtCodigo)
-                                .addComponent(txtObs)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(161, 161, 161)
-                            .addComponent(btnVoltar)
-                            .addGap(65, 65, 65)
-                            .addComponent(btnSalvar)))
-                    .addContainerGap(82, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtComponente, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                        .addComponent(txtCodComponente))
+                    .addContainerGap(30, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(124, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnVoltar))
+                .addGap(33, 33, 33))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(47, 47, 47)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCodComponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(21, 21, 21)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(txtObs, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnSalvar)
-                        .addComponent(btnVoltar))
-                    .addGap(48, 48, 48)))
+                        .addComponent(txtComponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(77, Short.MAX_VALUE)))
         );
 
         pack();
@@ -127,16 +116,18 @@ TelaNovoComponente(java.awt.Frame parent, boolean modal, Componente componente, 
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
-        componente.setCodComponente(txtCodigo.getText());
-        componente.setComponente(txtDescricao.getText());
-        
-        ComponenteDAO componenteDAO = new ComponenteDAO();
+        componente.setCodComponente(txtCodComponente.getText());
+        componente.setComponente(txtComponente.getText());
+        componente.setStatus("Ativo");
+
         if (novo) {
             componenteDAO.insert(componente);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
+            limparTela();
         } else {
             componenteDAO.update(componente);
             JOptionPane.showMessageDialog(this, "Alteração efetuada com sucesso!");
+            this.dispose();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -192,11 +183,15 @@ TelaNovoComponente(java.awt.Frame parent, boolean modal, Componente componente, 
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDescricao;
-    private javax.swing.JTextField txtObs;
+    private javax.swing.JTextField txtCodComponente;
+    private javax.swing.JTextField txtComponente;
     // End of variables declaration//GEN-END:variables
 Componente componente = new Componente();
-boolean novo = true;
+    ComponenteDAO componenteDAO = new ComponenteDAO();
+    boolean novo = true;
+
+    public void limparTela() {
+        txtCodComponente.setText("");
+        txtComponente.setText("");
+    }
 }

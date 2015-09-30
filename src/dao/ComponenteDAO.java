@@ -17,11 +17,12 @@ public class ComponenteDAO extends MySQL {
         Connection c = this.getConnection();
 
         try {
-            PreparedStatement ps = c.prepareStatement("insert into Componente ( codComponente, componente) "
-                    + "values( ? , ? )");
+            PreparedStatement ps = c.prepareStatement("insert into Componente ( codComponente, componente, status) "
+                    + "values( ? , ? , ? )");
             
             ps.setString(1, componente.getCodComponente());
             ps.setString(2, componente.getComponente());
+            ps.setString(3, componente.getStatus());
 
             ps.execute();
             ps.close();
@@ -45,10 +46,11 @@ public class ComponenteDAO extends MySQL {
         Connection c = this.getConnection();
         try {
             PreparedStatement ps = c.prepareStatement("UPDATE Componente "
-                    + "SET codComponente = ?, componente = ? WHERE idComponente = ?");
+                    + "SET codComponente = ?, componente = ?, status = ? WHERE idComponente = ?");
             ps.setString(1, componente.getCodComponente());
             ps.setString(2, componente.getComponente());
-            ps.setInt(3, componente.getIdComponente());
+            ps.setString(3, componente.getStatus());
+            ps.setInt(4, componente.getIdComponente());
             ps.execute();
 
             ps.close();
@@ -94,7 +96,7 @@ public class ComponenteDAO extends MySQL {
         Connection c = this.getConnection();
         java.util.List<Componente> listaComponentes = new ArrayList<Componente>();
         try {
-            PreparedStatement ps = c.prepareStatement(" select idComponente, codComponente, componente from Componente");
+            PreparedStatement ps = c.prepareStatement(" select idComponente, codComponente, componente, status from Componente");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -103,6 +105,7 @@ public class ComponenteDAO extends MySQL {
                 componente.setIdComponente(rs.getInt("idComponente"));
                 componente.setCodComponente(rs.getString("codComponente"));
                 componente.setComponente(rs.getString("componente"));
+                componente.setStatus(rs.getString("status"));
                 
                 listaComponentes.add(componente);
             }
@@ -121,12 +124,38 @@ public class ComponenteDAO extends MySQL {
         }
         return null;
     }
+    
+    public Componente getComponenteById (int id) {
+        Connection c = this.getConnection();
+        Componente componente = null;
+        try{
+            PreparedStatement ps = c.prepareStatement("SELECT idComponente, codComponente, componente, status from Componente WHERE idComponente = ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                componente = new Componente();
+                componente.setIdComponente(rs.getInt("idComponente"));
+                componente.setCodComponente(rs.getString("codComponente"));
+                componente.setComponente(rs.getString("componente"));
+                componente.setStatus(rs.getString("status"));
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                c.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return componente;
+    }
         public java.util.List<Componente> buscarPorCod(String busca) {
         Connection c = this.getConnection();
         java.util.List<Componente> listaComponentes = new ArrayList<Componente>();
 
         try {
-            PreparedStatement ps = c.prepareStatement(" select idComponente, codComponente, componente from Componente where codComponente like ?");
+            PreparedStatement ps = c.prepareStatement(" select idComponente, codComponente, componente, status from Componente where codComponente like ?");
 
             ps.setString(1, "%" + busca + "%");
             ps.execute();
@@ -139,6 +168,7 @@ public class ComponenteDAO extends MySQL {
                 componente.setIdComponente(rs.getInt("idComponente"));
                 componente.setCodComponente(rs.getString("codComponente"));
                 componente.setComponente(rs.getString("componente"));
+                 componente.setStatus(rs.getString("status"));
                 
                 
                 listaComponentes.add(componente);
@@ -164,7 +194,7 @@ public class ComponenteDAO extends MySQL {
         java.util.List<Componente> listaComponentes = new ArrayList<Componente>();
 
         try {
-            PreparedStatement ps = c.prepareStatement(" select idComponente, codComponente, componente from Componente where componente like ?");
+            PreparedStatement ps = c.prepareStatement(" select idComponente, codComponente, componente, status from Componente where componente like ?");
 
             ps.setString(1, "%" + busca + "%");
             ps.execute();
@@ -177,7 +207,7 @@ public class ComponenteDAO extends MySQL {
                 componente.setIdComponente(rs.getInt("idComponente"));
                 componente.setCodComponente(rs.getString("codComponente"));
                 componente.setComponente(rs.getString("componente"));
-                
+                componente.setStatus(rs.getString("status"));
                 
                 listaComponentes.add(componente);
             }

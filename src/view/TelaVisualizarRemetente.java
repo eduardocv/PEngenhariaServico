@@ -1,4 +1,3 @@
-
 package view;
 
 import entity.Remetente;
@@ -13,23 +12,20 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
     /**
      * Creates new form TelaDetalhesRemetente
      */
-
-
     public TelaVisualizarRemetente(java.awt.Frame parent, boolean modal, Remetente remetente) {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-        lblIdRemetente.setText(remetente.getIdRemetente()+ "");
+        lblIdRemetente.setText(remetente.getIdRemetente() + "");
         lblNome.setText(remetente.getNome());
         lblTipo.setText(remetente.getTipo());
         lblEmail.setText(remetente.getEmail());
         lblTelefone.setText(remetente.getTelefone());
+        lblStatus.setText(remetente.getStatus());
         
-        if (remetente.getStatus().equals("Ativo")){
-            lblStatus.setText(remetente.getStatus());
+        if (remetente.getStatus().equals("Ativo")) {
             lblStatus.setForeground(Color.green);
-        }else{
-            lblStatus.setText(remetente.getStatus());
+        } else {
             lblStatus.setForeground(Color.red);
         }
     }
