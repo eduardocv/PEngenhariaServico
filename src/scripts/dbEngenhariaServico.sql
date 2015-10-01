@@ -161,13 +161,26 @@ insert into produto values(3,'I07PLA060','Placa Mtouch (usb)','Ativo');
 insert into produto values(4,'I12IMP013','Impressora DAS 6 Botões','Ativo');
 insert into produto values(5,'I12DSP011','Painel GAS OFF 5D','Ativo');
 insert into produto values(6,'I12IMP013','Impressora DAS 6 Botões','Ativo');
+insert into produto values(7,'ImpMecafAd','Impressora Mecaf','Ativo');
+insert into produto values(8,'I07PLA254','Placa PIC 4.1.2','Ativo');
+insert into produto values(9,'P00071','Placa CPU 3.0.2','Ativo');
+insert into produto values(10,'I12IMP009','Impressora DAS 3 Botões','Ativo');
+insert into produto values(11,'I12DSP023','Painel Contact Light 5D','Ativo');
+insert into produto values(12,'I12IMP000','Impressora DAS Triagem','Ativo');
 -- TÉCNICO EM LABORATORIO --
-insert into tecnico values(1,'Eduardo C. Vieira','eduardo.vieira@specto.com.br','Ativo');
-insert into tecnico values(2,'Joel J. Lopes','joel.lopes@specto.com.br','Ativo');
+insert into tecnico values(1,'José da Silva','josesilva@email.com.br','Ativo');
+insert into tecnico values(2,'Maria José','mariajose@email.com.br','Ativo');
+insert into tecnico values(3,'João Correa','jcorrea@email.com.br','Ativo');
+insert into tecnico values(4,'Carlos Santos','csantos@email.com.br','Ativo');
+insert into tecnico values(5,'Fernando Costa','fcosta@email.com.br','Ativo');
+insert into tecnico values(6,'Ana Silveira','anasilveira@email.com.br','Ativo');
 -- COMPONENTE --
 insert into componente values(1,'U03008','CI Max 232','Ativo');
 insert into componente values(2,'I07BAT02','Bateria 3,6V','Ativo');
-insert into componente values(3,'Z0099','SMD PIC','Ativo');
+insert into componente values(3,'Z0991','SMD PIC','Ativo');
+insert into componente values(4,'U03044','CI 80C32','Ativo');
+insert into componente values(5,'I07BAT13','Bateria 9V','Ativo');
+insert into componente values(6,'R0900','Resistor 10k','Ativo');
 -- REMETENTE --
 insert into remetente values(1,'Não Identificado','--','  ','(00)0000-0000','Ativo');
 insert into remetente values(2,'Maintenance','RT','suporte@maintenance.com.br','(21)2215-6354','Ativo');
