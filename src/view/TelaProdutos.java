@@ -159,6 +159,12 @@ public class TelaProdutos extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Pesquisa por:");
 
         rbtnCodigo.setSelected(true);
@@ -303,6 +309,15 @@ public class TelaProdutos extends javax.swing.JDialog {
     private void rbtnItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnItemActionPerformed
+
+    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
+        String pesquisa = txtPesquisa.getText();
+       if (rbtnCodigo.isSelected()){
+           buscaCodigo(pesquisa);
+       }else{
+           buscaProduto(pesquisa);
+       }
+    }//GEN-LAST:event_txtPesquisaActionPerformed
 
     /**
      * @param args the command line arguments

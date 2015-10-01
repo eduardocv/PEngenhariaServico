@@ -322,8 +322,8 @@ public class TelaTecnico extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPesquisaActionPerformed
 
     private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
-        String nome = txtPesquisa.getText();
-        buscaNome(nome);
+        String pesquisa = txtPesquisa.getText();
+        buscaNome(pesquisa);
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     /**
