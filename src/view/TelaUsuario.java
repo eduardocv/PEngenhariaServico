@@ -35,7 +35,7 @@ public class TelaUsuario extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Usuários");
+        setTitle("USUÁRIOS");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela de Usuários"));
 
