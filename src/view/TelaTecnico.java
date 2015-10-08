@@ -1,6 +1,7 @@
 package view;
 
 import dao.TecnicoDAO;
+import entity.EnumPerfil;
 import entity.Tecnico;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,8 @@ public class TelaTecnico extends javax.swing.JDialog {
      * Creates new form TelaTecnico
      */
     public TelaTecnico(java.awt.Frame parent, boolean modal) {
-        initComponents();
-        setLocationRelativeTo(null);
+       initComponents();
+       setLocationRelativeTo(null);
         this.setResizable(false);
         btnAtivar.setText("Ativar");
         atualizaTabelaTecnicos();

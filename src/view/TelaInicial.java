@@ -3,7 +3,6 @@ package view;
 
 import entity.Usuario;
 import entity.EnumPerfil;
-import view.TelaInicial;
 
 /**
  *
@@ -11,20 +10,17 @@ import view.TelaInicial;
  */
 public class TelaInicial extends javax.swing.JDialog {
 
-    /**
-     * Creates new form TelaInicial
-     */
+   
     public TelaInicial(java.awt.Frame parent, boolean modal, Usuario usuario) {
         //super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-      //  this.setResizable(false);
+        this.setResizable(false);
 
-        if (usuario != null) {
+       
+            if (usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
 
-            if (!usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
-
-                btnUsuarios.setEnabled(false);
+                btnUsuarios.setEnabled(true);
                 btnComponentes.setEnabled(true);
                 btnManutencaoLaboratorio.setEnabled(true);
                 btnRemetentes.setEnabled(true);
@@ -33,7 +29,7 @@ public class TelaInicial extends javax.swing.JDialog {
                 btnLogoff.setEnabled(true);
 
             } else {
-                btnUsuarios.setEnabled(true);
+                btnUsuarios.setEnabled(false);
                 btnComponentes.setEnabled(true);
                 btnManutencaoLaboratorio.setEnabled(true);
                 btnRemetentes.setEnabled(true);
@@ -41,7 +37,7 @@ public class TelaInicial extends javax.swing.JDialog {
                 btnProdutos.setEnabled(true);
                 btnLogoff.setEnabled(true);
             }
-        }
+       
     }
 
     /**
