@@ -53,11 +53,11 @@ insert into componente values(25,'I07ABR003','Abraçadeira 20 cm (k22)','Ativo')
 insert into componente values(26,'Z00674','Abraçadeira preta 10 cm(k8)','Ativo');
 insert into componente values(27,'U00404','CI MICROCONTROLADOR P80C32-16 TEMIC','Ativo');
 insert into componente values(28,'I12KIT001','KIT BASE MT212 GUILHOTINA ( REPARO TES DAS)','Ativo');
-insert into componente values(29,'K00042','	Capacitor eletrolítico 1000uF/25v','Ativo');
-insert into componente values(30,'U00305','	SMD Max232','Ativo');
+insert into componente values(29,'K00042','Capacitor eletrolítico 1000uF/25v','Ativo');
+insert into componente values(30,'U00305','SMD Max232','Ativo');
 insert into componente values(31,'I07ANT002','ANTENA AÇO 1/8 REBAIXO E ROSCA M3 C/ PONTEIRA-COR PRETA','Ativo');
 insert into componente values(32,'I07PLA271','PLACA BGO V2.0.1','Ativo');
-insert into componente values(33,'U03105','	CI 27C512 12NS OU 15NS - EPROM','Ativo');
+insert into componente values(33,'U03105','CI 27C512 12NS OU 15NS - EPROM','Ativo');
 insert into componente values(34,'I07PLA203','PLACA DECODER 14P V2.0.1','Ativo');
 insert into componente values(35,'I07ACR025','ACRILICO FRONTAL TES TOUCH – V1.1.0','Ativo');
 insert into componente values(36,'I07CAL005','CALCOS DE PAPELAO P/ TES TOUCH - V1.0.0','Ativo');
