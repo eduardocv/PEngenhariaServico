@@ -12,6 +12,7 @@ public class TelaNovoComponente extends javax.swing.JDialog {
 
     public TelaNovoComponente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setTitle("Cadastro de novo componente");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
@@ -19,6 +20,7 @@ public class TelaNovoComponente extends javax.swing.JDialog {
 
     TelaNovoComponente(java.awt.Frame parent, boolean modal, boolean novo, Componente componente) {
         super(parent, modal);
+        setTitle("Alteração de componente cadastrado");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);

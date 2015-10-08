@@ -12,12 +12,14 @@ public class TelaNovoProduto extends javax.swing.JDialog {
 
      public TelaNovoProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setTitle("Cadastro de novo produto");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
     }
 TelaNovoProduto(java.awt.Frame parent, boolean modal, boolean novo, Produto produto){
         super(parent,modal);
+        setTitle("Alteração de produto cadastrado");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);        

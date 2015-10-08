@@ -12,6 +12,7 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
 
     public TelaNovoRemetente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setTitle("Cadastro de novo remetente");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
@@ -19,6 +20,7 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
 
     public TelaNovoRemetente(java.awt.Frame parent, boolean modal, boolean novo, Remetente remetente) {
         super(parent, modal);
+        setTitle("Alteração de remetente cadastrado");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
@@ -62,7 +64,6 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
         txtTelefone = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tela Cadastro de Remetentes");
 
         jLabel1.setText("Nome:");
 

@@ -8,6 +8,7 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
 
     public TelaNovoTecnico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setTitle("Cadastro de novo técnico");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
@@ -15,6 +16,7 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
 
     public TelaNovoTecnico(java.awt.Frame parent, boolean modal, boolean novo, Tecnico tecnico) {
         super(parent, modal);
+        setTitle("Alteração de técnico cadastrado");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
@@ -48,7 +50,6 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
         txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tela Cadastro de Técnico em Laboratório");
 
         jLabel1.setText("Nome:");
 
