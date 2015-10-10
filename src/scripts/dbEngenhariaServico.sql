@@ -22,12 +22,12 @@ USE `dbEngenhariaServico` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`usuario` (
   `idUsuario` INT(11) NOT NULL AUTO_INCREMENT,
-  `status` VARCHAR(15) NOT NULL,
+  `status` VARCHAR(10) NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
-  `CPF` VARCHAR(45) NOT NULL,
+  `cpf` VARCHAR(15) NOT NULL,
   `perfil` INT(11) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `senha` VARCHAR(240) NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idUsuario`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Produto` (
   `idProduto` INT NOT NULL AUTO_INCREMENT,
   `codProduto` VARCHAR(25) NOT NULL,
   `produto` VARCHAR(45) NOT NULL,
-  `status` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idProduto`))
 ENGINE = InnoDB;
 
@@ -51,10 +51,10 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Remetente` (
   `idRemetente` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `tipo` VARCHAR(2) NULL,
+  `tipo` VARCHAR(10) NULL,
   `email` VARCHAR(45) NULL,  
   `telefone` VARCHAR(15) NULL,
-  `status` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idRemetente`))
 ENGINE = InnoDB;
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Tecnico` (
   `idTecnico` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NULL,
-  `status` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idTecnico`))
 ENGINE = InnoDB;
 
@@ -80,11 +80,11 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`ManutencaoLaboratorio` (
   `produto` VARCHAR(45) NOT NULL,
   `remetente` VARCHAR(15) NOT NULL,
   `defeitoRelatado` VARCHAR(15) NULL,
-  `parecerTecnico` VARCHAR(15) NOT NULL,
+  `defeitoApresentado` VARCHAR(15) NOT NULL,
   `data` VARCHAR(10) NOT NULL,
-  `camadoOat` VARCHAR(5) NULL,
+  `chamadoOat` VARCHAR(5) NULL,
   `descricaoAtividades` VARCHAR(45) NOT NULL,
-  `materialUtilizado` VARCHAR(45) NULL,
+  `componenteUtilizado` VARCHAR(45) NULL,
   `tempoReparo` VARCHAR(10) NOT NULL,
   `Remetente_idRemetente` INT NOT NULL,
   `Tecnico_idTecnico` INT NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Componente` (
   `idComponente` INT NOT NULL AUTO_INCREMENT,
   `codComponente` VARCHAR(25) NOT NULL,
   `componente` VARCHAR(45) NOT NULL,
-  `status` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idComponente`))
 ENGINE = InnoDB;
 
