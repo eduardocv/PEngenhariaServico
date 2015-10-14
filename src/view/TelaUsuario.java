@@ -254,10 +254,10 @@ public class TelaUsuario extends javax.swing.JDialog {
 
             } else {
                 if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
-                    usuario.setStatus("Desativado");
+                    usuario.setStatus(false);
 
                 } else {
-                    usuario.setStatus("Ativo");
+                    usuario.setStatus(true);
                 }
 
                 if (btnAtivarUsuario.getText().equalsIgnoreCase("Ativar")) {
@@ -308,7 +308,7 @@ public class TelaUsuario extends javax.swing.JDialog {
             model.setValueAt(mostraUsuarios.get(i).getNome(), i, 1);
             model.setValueAt(mostraUsuarios.get(i).getCPF(), i, 2);
             model.setValueAt(mostraUsuarios.get(i).getPerfil(), i, 3);
-            model.setValueAt(mostraUsuarios.get(i).getStatus(), i, 4);
+            model.setValueAt(mostraUsuarios.get(i).isStatus(), i, 4);
         }
 
     }
@@ -330,7 +330,7 @@ public class TelaUsuario extends javax.swing.JDialog {
             model.setValueAt(listarUsuarios.get(i).getNome(), i, 1);
             model.setValueAt(listarUsuarios.get(i).getCPF(), i, 2);
             model.setValueAt(listarUsuarios.get(i).getPerfil().getDescricao(), i, 3);
-            model.setValueAt(listarUsuarios.get(i).getStatus(), i, 4);
+            model.setValueAt(listarUsuarios.get(i).isStatus(), i, 4);
 
         }
 
@@ -410,7 +410,7 @@ public void buscaNome(String nome) {
             model.setValueAt(filtrada.get(i).getNome(), i, 1);
             model.setValueAt(filtrada.get(i).getCPF(), i, 2);
             model.setValueAt(filtrada.get(i).getPerfil(), i, 3);
-            model.setValueAt(filtrada.get(i).getStatus(),i,4);
+            model.setValueAt(filtrada.get(i).isStatus(),i,4);
         }
     }
 }

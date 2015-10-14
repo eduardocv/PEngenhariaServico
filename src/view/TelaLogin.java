@@ -144,7 +144,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         if (usuario != null) {
 
-            if(usuario.getStatus().equals("Desativado")){
+            if(usuario.isStatus()== false){
                 JOptionPane.showMessageDialog(rootPane, "Usuário desativado!");
                 
             }  else {
@@ -181,7 +181,7 @@ public class TelaLogin extends javax.swing.JFrame {
              if(usuario.getIdUsuario() == 1){
                   JOptionPane.showMessageDialog(null, "Este usuário não pode ser alterado!");
              }
-             else if(usuario.getStatus().equals("Desativado")){
+             else if(usuario.isStatus()== false){
                  JOptionPane.showMessageDialog(rootPane, "Usuário desativado!");
                 
             }  else {                   

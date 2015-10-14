@@ -22,12 +22,12 @@ USE `dbEngenhariaServico` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`usuario` (
   `idUsuario` INT(11) NOT NULL AUTO_INCREMENT,
-  `status` VARCHAR(15) NOT NULL,
+  `status` VARCHAR(10) NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `CPF` VARCHAR(45) NOT NULL,
   `perfil` INT(11) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `senha` VARCHAR(240) NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idUsuario`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Produto` (
   `idProduto` INT NOT NULL AUTO_INCREMENT,
   `codProduto` VARCHAR(25) NOT NULL,
   `produto` VARCHAR(45) NOT NULL,
-  `status` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idProduto`))
 ENGINE = InnoDB;
 

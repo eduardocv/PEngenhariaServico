@@ -32,7 +32,7 @@ public class UsuarioDAO extends MySQL {
             ps.setString(3, usuario.getCPF());
             ps.setInt(4, usuario.getPerfil().getId());
             ps.setString(5, usuario.getEmail());
-            ps.setString(6, usuario.getStatus());
+            ps.setBoolean(6, usuario.isStatus());
             ps.setString(7, usuario.getSenha());
 
             ps.execute();
@@ -115,7 +115,7 @@ public class UsuarioDAO extends MySQL {
                     + "Set status = ? "
                     + "WHERE idUsuario = ? ");
 
-            ps.setString(1, usuario.getStatus());
+            ps.setBoolean(1, usuario.isStatus());
             ps.setInt(2, usuario.getIdUsuario());
             ps.execute();
             ps.close();
@@ -149,7 +149,7 @@ public class UsuarioDAO extends MySQL {
                 
                 usuario.setPerfil(EnumPerfil.ADMINISTRADOR.getPerfil(rs.getInt("perfil")));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setStatus(rs.getString("status"));
+                usuario.setStatus(rs.getBoolean("status"));
 
             }
             rs.close();
@@ -186,7 +186,7 @@ public class UsuarioDAO extends MySQL {
                 usuario.setCPF(rs.getString("cpf"));
                 usuario.setPerfil(EnumPerfil.ADMINISTRADOR.getPerfil(rs.getInt("perfil")));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setStatus(rs.getString("status"));
+                usuario.setStatus(rs.getBoolean("status"));
 
             }
             rs.close();
@@ -223,7 +223,7 @@ public class UsuarioDAO extends MySQL {
                 
                 usuario.setPerfil(EnumPerfil.ADMINISTRADOR.getPerfil(rs.getInt("perfil")));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setStatus(rs.getString("status"));
+                usuario.setStatus(rs.getBoolean("status"));
 
             }
             rs.close();
@@ -258,7 +258,7 @@ public class UsuarioDAO extends MySQL {
                 usuario.setCPF(rs.getString("cpf"));
                 usuario.setPerfil(EnumPerfil.USUARIO.getPerfil(rs.getInt("perfil")));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setStatus(rs.getString("status"));
+                usuario.setStatus(rs.getBoolean("status"));
 
                 listaUsuarios.add(usuario);
 

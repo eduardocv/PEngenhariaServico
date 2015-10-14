@@ -185,7 +185,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
         usuario.setCPF(ftxtCPF.getText());
         usuario.setEmail(txtEmail.getText());
         usuario.setPerfil((EnumPerfil) cbPerfil.getSelectedItem());
-        usuario.setStatus("Ativo");
+        usuario.setStatus(true);
         usuario.setSenha(txtSenha.getText());
 
         if (txtNome.getText().equals("") || ftxtCPF.getText().equals("") || txtEmail.getText().equals("")) {

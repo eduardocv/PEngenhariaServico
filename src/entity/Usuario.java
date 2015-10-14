@@ -11,7 +11,15 @@ public class Usuario {
     private EnumPerfil Perfil;
     private String email;
     private int idUsuario;
-    private String status;
+    private boolean status;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
     private String senha;
 
     @Override
@@ -27,14 +35,7 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
+    
     public String getNome() {
         return nome;
     }
