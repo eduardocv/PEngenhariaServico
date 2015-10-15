@@ -22,7 +22,7 @@ USE `dbEngenhariaServico` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`usuario` (
   `idUsuario` INT(11) NOT NULL AUTO_INCREMENT,
-  `status` VARCHAR(10) NOT NULL,
+  `status` BOOLEAN NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `cpf` VARCHAR(15) NOT NULL,
   `perfil` INT(11) NOT NULL,
@@ -151,8 +151,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- ---------------------------- INSERT no Banco ---------------------------------------------------
 -- USUARIO --
-INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('1', 'Ativo', 'Administrador', '80295312068', '0', 'admin', 'admin');
-INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('2', 'Ativo', 'Usuario', '12345678900', '1', 'user', 'user');
+INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('1', true, 'Administrador', '80295312068', '0', 'admin', 'admin');
+INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `status`, `nome`, `CPF`, `perfil`, `email`, `senha`) VALUES ('2', true, 'Usuario', '12345678900', '1', 'user', 'user');
 
 -- PRODUTO --
 insert into produto values(1,'I07PLA046','Placa Transceptora RF2','Ativo');

@@ -254,10 +254,10 @@ public class TelaUsuario extends javax.swing.JDialog {
 
             } else {
                 if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
-                    usuario.setStatus(false);
+                    usuario.setStatus(true);
 
                 } else {
-                    usuario.setStatus(true);
+                    usuario.setStatus(false);
                 }
 
                 if (btnAtivarUsuario.getText().equalsIgnoreCase("Ativar")) {
