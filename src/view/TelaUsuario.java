@@ -215,7 +215,7 @@ public class TelaUsuario extends javax.swing.JDialog {
         if (linha == -1) {
             JOptionPane.showMessageDialog(rootPane, "Selecione o usuário que deseja alterar!");
         } else {
-            if (tblUsuario.getValueAt(linha, 4).equals(true)) {
+            if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
                 int id = Integer.parseInt(tblUsuario.getValueAt(linha, 0).toString());
                 UsuarioDAO usuarioDAO = new UsuarioDAO();
                 Usuario usuario = usuarioDAO.getUsuarioById(id);
@@ -253,7 +253,7 @@ public class TelaUsuario extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane, "Não é possível desativar esse usuário!");
 
             } else {
-                if (tblUsuario.getValueAt(linha, 4).equals(true)) {
+                if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
                     usuario.setStatus(false);
 
                 } else {
@@ -314,6 +314,18 @@ public class TelaUsuario extends javax.swing.JDialog {
 
     }
 
+    private String retornaStatus (Boolean status){
+        String strStatus;
+        if (status){
+            strStatus = "Ativo";
+            
+        }else{
+            strStatus = "Inativo";
+        }
+    return strStatus;
+    } 
+    
+    
     private void atualizaTabelaUsuarios() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         List<Usuario> listarUsuarios = usuarioDAO.listarUsuarios();
@@ -327,7 +339,7 @@ public class TelaUsuario extends javax.swing.JDialog {
             model.setValueAt(listarUsuarios.get(i).getNome(), i, 1);
             model.setValueAt(listarUsuarios.get(i).getCPF(), i, 2);
             model.setValueAt(listarUsuarios.get(i).getPerfil().getDescricao(), i, 3);
-            model.setValueAt(listarUsuarios.get(i).isStatus(), i, 4);
+            model.setValueAt(retornaStatus(listarUsuarios.get(i).isStatus()), i, 4);
 
         }
 
