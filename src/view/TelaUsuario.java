@@ -13,14 +13,14 @@ public class TelaUsuario extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-        btnAtivarUsuario.setText("Ativar");
+        btnAtivar.setText("Ativar");
         atualizaTabelaUsuarios();
     }
-   // boolean novo = true;
+    // boolean novo = true;
     Usuario usuario;
 
-    
     @SuppressWarnings("unchecked")
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -29,7 +29,7 @@ public class TelaUsuario extends javax.swing.JDialog {
         tblUsuario = new javax.swing.JTable();
         btnNovoUsuario = new javax.swing.JButton();
         btnAlterarUsuario = new javax.swing.JButton();
-        btnAtivarUsuario = new javax.swing.JButton();
+        btnAtivar = new javax.swing.JButton();
         btnVoltarUsuario = new javax.swing.JButton();
         txtPesquisarUsuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -109,11 +109,11 @@ public class TelaUsuario extends javax.swing.JDialog {
             }
         });
 
-        btnAtivarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png"))); // NOI18N
-        btnAtivarUsuario.setText("Desativar");
-        btnAtivarUsuario.addActionListener(new java.awt.event.ActionListener() {
+        btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png"))); // NOI18N
+        btnAtivar.setText("Desativar");
+        btnAtivar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtivarUsuarioActionPerformed(evt);
+                btnAtivarActionPerformed(evt);
             }
         });
 
@@ -136,11 +136,11 @@ public class TelaUsuario extends javax.swing.JDialog {
                     .addComponent(btnVoltarUsuario)
                     .addComponent(btnAlterarUsuario)
                     .addComponent(btnNovoUsuario)
-                    .addComponent(btnAtivarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAtivar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterarUsuario, btnAtivarUsuario, btnNovoUsuario, btnVoltarUsuario});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterarUsuario, btnAtivar, btnNovoUsuario, btnVoltarUsuario});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +152,7 @@ public class TelaUsuario extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterarUsuario)
                         .addGap(21, 21, 21)
-                        .addComponent(btnAtivarUsuario)
+                        .addComponent(btnAtivar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVoltarUsuario))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -214,30 +214,30 @@ public class TelaUsuario extends javax.swing.JDialog {
         int linha = tblUsuario.getSelectedRow();
         if (linha == -1) {
             JOptionPane.showMessageDialog(rootPane, "Selecione o usuário que deseja alterar!");
-        }else{
-            if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
-            int id = Integer.parseInt(tblUsuario.getValueAt(linha, 0).toString());
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            Usuario usuario = usuarioDAO.getUsuarioById(id);
-
-            if (usuario.getIdUsuario() == 1) {
-                JOptionPane.showMessageDialog(rootPane, "Não é possível alterar esse usuário!");
-            } else {
-                TelaNovoUsuario telaNovoUsuario = new TelaNovoUsuario(null, true, false, usuario);
-                telaNovoUsuario.setVisible(true);
-                atualizaTabelaUsuarios();
-            }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Não é possível alterar um usuário desativado!");
-        }
-        
+            if (tblUsuario.getValueAt(linha, 4).equals(true)) {
+                int id = Integer.parseInt(tblUsuario.getValueAt(linha, 0).toString());
+                UsuarioDAO usuarioDAO = new UsuarioDAO();
+                Usuario usuario = usuarioDAO.getUsuarioById(id);
+
+                if (usuario.getIdUsuario() == 1) {
+                    JOptionPane.showMessageDialog(rootPane, "Não é possível alterar esse usuário!");
+                } else {
+                    TelaNovoUsuario telaNovoUsuario = new TelaNovoUsuario(null, true, false, usuario);
+                    telaNovoUsuario.setVisible(true);
+                    atualizaTabelaUsuarios();
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Não é possível alterar um usuário desativado!");
+            }
     }//GEN-LAST:event_btnAlterarUsuarioActionPerformed
     }
     private void btnVoltarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarUsuarioActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVoltarUsuarioActionPerformed
 
-    private void btnAtivarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarUsuarioActionPerformed
+    private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
+
         int linha = tblUsuario.getSelectedRow();
 
         if (linha == -1) {
@@ -253,26 +253,27 @@ public class TelaUsuario extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane, "Não é possível desativar esse usuário!");
 
             } else {
-                if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
-                    usuario.setStatus(true);
+                if (tblUsuario.getValueAt(linha, 4).equals(true)) {
+                    usuario.setStatus(false);
 
                 } else {
-                    usuario.setStatus(false);
+                    usuario.setStatus(true);
                 }
 
-                if (btnAtivarUsuario.getText().equalsIgnoreCase("Ativar")) {
-                    btnAtivarUsuario.setText("Desativar");
-                    btnAtivarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+                if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
+                    btnAtivar.setText("Desativar");
+                    btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
                 } else {
-                    btnAtivarUsuario.setText("Ativar");
-                    btnAtivarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+                    btnAtivar.setText("Ativar");
+                    btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
                 }
 
                 usuarioDAO.atualizaStatus(usuario);
             }
         }
         atualizaTabelaUsuarios();
-    }//GEN-LAST:event_btnAtivarUsuarioActionPerformed
+
+    }//GEN-LAST:event_btnAtivarActionPerformed
 
     private void tblUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuarioMouseEntered
         atualizaTabelaUsuarios();
@@ -280,12 +281,12 @@ public class TelaUsuario extends javax.swing.JDialog {
 
     private void tblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuarioMouseClicked
         int linha = tblUsuario.getSelectedRow();
-        if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
-            btnAtivarUsuario.setText("Desativar");
-            btnAtivarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+        if (tblUsuario.getValueAt(linha, 4).equals(true)) {
+            btnAtivar.setText("Desativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
         } else {
-            btnAtivarUsuario.setText("Ativar");
-            btnAtivarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+            btnAtivar.setText("Ativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
 
         }
     }//GEN-LAST:event_tblUsuarioMouseClicked
@@ -297,7 +298,7 @@ public class TelaUsuario extends javax.swing.JDialog {
     private void txtPesquisarUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarUsuarioKeyReleased
         String nome = txtPesquisarUsuario.getText();
         buscaNome(nome);
-        
+
     }//GEN-LAST:event_txtPesquisarUsuarioKeyReleased
 
     private void mostraTela(List<Usuario> mostraUsuarios) {
@@ -317,13 +318,9 @@ public class TelaUsuario extends javax.swing.JDialog {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         List<Usuario> listarUsuarios = usuarioDAO.listarUsuarios();
 
-        //pega o modelo da Tabela e coloca na variavel "model"
         DefaultTableModel model
                 = (DefaultTableModel) this.tblUsuario.getModel();
-        //insere na tabela o número de linhas que a lista tem
         model.setRowCount(listarUsuarios.size());
-
-        //laço para inserir os dados dos objetos na Tabela
         for (int i = 0; i < listarUsuarios.size(); i++) {
 
             model.setValueAt(listarUsuarios.get(i).getIdUsuario(), i, 0);
@@ -381,7 +378,7 @@ public class TelaUsuario extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarUsuario;
-    private javax.swing.JButton btnAtivarUsuario;
+    private javax.swing.JButton btnAtivar;
     private javax.swing.JButton btnNovoUsuario;
     private javax.swing.JButton btnVoltarUsuario;
     private javax.swing.JLabel jLabel1;
@@ -410,7 +407,8 @@ public void buscaNome(String nome) {
             model.setValueAt(filtrada.get(i).getNome(), i, 1);
             model.setValueAt(filtrada.get(i).getCPF(), i, 2);
             model.setValueAt(filtrada.get(i).getPerfil(), i, 3);
-            model.setValueAt(filtrada.get(i).isStatus(),i,4);
+            model.setValueAt(filtrada.get(i).isStatus(), i, 4);
+
         }
     }
 }

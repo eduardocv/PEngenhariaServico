@@ -76,7 +76,7 @@
                       <Component id="btnVoltarUsuario" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <Component id="btnAlterarUsuario" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <Component id="btnNovoUsuario" linkSize="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnAtivarUsuario" linkSize="2" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                      <Component id="btnAtivar" linkSize="2" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
@@ -92,7 +92,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnAlterarUsuario" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="btnAtivarUsuario" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAtivar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnVoltarUsuario" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -184,7 +184,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarUsuarioActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAtivarUsuario">
+        <Component class="javax.swing.JButton" name="btnAtivar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/Raise.png"/>
@@ -192,7 +192,7 @@
             <Property name="text" type="java.lang.String" value="Desativar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtivarUsuarioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtivarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnVoltarUsuario">

@@ -150,7 +150,6 @@ public class UsuarioDAO extends MySQL {
                 usuario.setPerfil(EnumPerfil.ADMINISTRADOR.getPerfil(rs.getInt("perfil")));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setStatus(rs.getBoolean("status"));
-
             }
             rs.close();
             ps.close();
