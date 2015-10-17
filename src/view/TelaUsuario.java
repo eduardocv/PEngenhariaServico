@@ -315,16 +315,18 @@ public class TelaUsuario extends javax.swing.JDialog {
     }
 
     private String retornaStatus (Boolean status){
-        String strStatus;
-        if (status){
-            strStatus = "Ativo";
-            
-        }else{
-            strStatus = "Inativo";
-        }
-    return strStatus;
-    } 
-    
+        return (status?"Ativo":"Inativo");        
+    }      
+    String strStatus;
+// private String retornaStatus (Boolean status){  MESMA COISA
+//       if (status){
+//           strStatus = "Ativo";
+//           
+//       }else{
+//           strStatus = "Inativo";
+//       }
+//   return strStatus;
+//    } 
     
     private void atualizaTabelaUsuarios() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
