@@ -281,7 +281,7 @@ public class TelaUsuario extends javax.swing.JDialog {
 
     private void tblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuarioMouseClicked
         int linha = tblUsuario.getSelectedRow();
-        if (tblUsuario.getValueAt(linha, 4).equals(true)) {
+        if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
             btnAtivar.setText("Desativar");
             btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
         } else {
