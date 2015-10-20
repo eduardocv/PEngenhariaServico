@@ -7,6 +7,8 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import entity.Usuario;
+import entity.EnumPerfil;
 
 /**
  *
@@ -14,14 +16,26 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaRemetente extends javax.swing.JDialog {
 
-    public TelaRemetente(java.awt.Frame parent, boolean modal) {
+    public TelaRemetente(java.awt.Frame parent, boolean modal){//, Usuario usuario) {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
+        
+//        if (usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
+//            btnAlterar.setEnabled(true);
+//            btnAtivar.setEnabled(true);
+//            btnNovo.setEnabled(true);
+//            btnVisualizar.setEnabled(true);
+//        } else {
+//            btnAlterar.setEnabled(false);
+//            btnAtivar.setEnabled(false);
+//            btnNovo.setEnabled(true);
+//            btnVisualizar.setEnabled(true);
+//        }
+
         btnAtivar.setText("Ativar");
         atualizaTabelaRemetentes();
     }
-   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -273,7 +287,7 @@ public class TelaRemetente extends javax.swing.JDialog {
         int linha = tbRemetente.getSelectedRow();
         if (linha != -1) {
             int id = Integer.parseInt(tbRemetente.getValueAt(linha, 0).toString());
-           // RemetenteDAO remetenteDAO = new RemetenteDAO();
+            // RemetenteDAO remetenteDAO = new RemetenteDAO();
             remetente = remetenteDAO.getRemetenteById(id);
 
             if (remetente.getStatus().equals("Ativo")) {
@@ -326,7 +340,7 @@ public class TelaRemetente extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaRemetente dialog = new TelaRemetente(new javax.swing.JFrame(), true);
+                TelaRemetente dialog = new TelaRemetente(new javax.swing.JFrame(), true);//, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -352,7 +366,7 @@ public class TelaRemetente extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void atualizaTabelaRemetentes() {
-       
+
         List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
         DefaultTableModel model = (DefaultTableModel) this.tbRemetente.getModel();
         model.setRowCount(listarRemetentes.size());
@@ -368,7 +382,7 @@ public class TelaRemetente extends javax.swing.JDialog {
     }
 
     public void buscaNome(String nome) {
-      //  RemetenteDAO remetenteDAO = new RemetenteDAO();
+        //  RemetenteDAO remetenteDAO = new RemetenteDAO();
         List<Remetente> filtrada = new ArrayList();
         List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
         String nomeDigitadoTemp = nome.toLowerCase();
@@ -390,6 +404,7 @@ public class TelaRemetente extends javax.swing.JDialog {
             model.setValueAt(filtrada.get(i).getStatus(), i, 5);
         }
     }
-     Remetente remetente = new Remetente();
-     RemetenteDAO remetenteDAO = new RemetenteDAO();
+    Remetente remetente = new Remetente();
+    RemetenteDAO remetenteDAO = new RemetenteDAO();
+   
 }

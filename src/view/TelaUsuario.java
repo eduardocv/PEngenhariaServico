@@ -76,9 +76,6 @@ public class TelaUsuario extends javax.swing.JDialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblUsuarioMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tblUsuarioMouseEntered(evt);
-            }
         });
         tblUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -279,10 +276,6 @@ public class TelaUsuario extends javax.swing.JDialog {
         atualizaTabelaUsuarios();
 
     }//GEN-LAST:event_btnAtivarActionPerformed
-
-    private void tblUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuarioMouseEntered
-        atualizaTabelaUsuarios();
-    }//GEN-LAST:event_tblUsuarioMouseEntered
 
     private void tblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuarioMouseClicked
         int linha = tblUsuario.getSelectedRow();
