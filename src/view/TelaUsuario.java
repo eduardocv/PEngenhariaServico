@@ -293,7 +293,7 @@ public class TelaUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPesquisarUsuarioKeyReleased
 
     private void tblUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUsuarioKeyReleased
-       atualizaBotaoAtivar();  // TODO add your handling code here:
+        atualizaBotaoAtivar();
     }//GEN-LAST:event_tblUsuarioKeyReleased
     private void atualizaBotaoAtivar() {
         int linha = tblUsuario.getSelectedRow();
@@ -303,21 +303,8 @@ public class TelaUsuario extends javax.swing.JDialog {
         } else {
             btnAtivar.setText("Ativar");
             btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-
         }
     }
-//    private void mostraTela(List<Usuario> mostraUsuarios) {
-//        DefaultTableModel model = (DefaultTableModel) this.tblUsuario.getModel();
-//        model.setRowCount(mostraUsuarios.size());
-//        for (int i = 0; i < mostraUsuarios.size(); i++) {
-//            model.setValueAt(mostraUsuarios.get(i).getIdUsuario(), i, 0);
-//            model.setValueAt(mostraUsuarios.get(i).getNome(), i, 1);
-//            model.setValueAt(mostraUsuarios.get(i).getCPF(), i, 2);
-//            model.setValueAt(mostraUsuarios.get(i).getPerfil(), i, 3);
-//            model.setValueAt(mostraUsuarios.get(i).isStatus(), i, 4);
-//        }
-//
-//    }
 
     private String retornaStatus(Boolean status) {
         return (status ? "Ativo" : "Inativo");

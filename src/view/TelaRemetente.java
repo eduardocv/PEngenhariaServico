@@ -16,22 +16,23 @@ import entity.EnumPerfil;
  */
 public class TelaRemetente extends javax.swing.JDialog {
 
-    public TelaRemetente(java.awt.Frame parent, boolean modal){//, Usuario usuario) {
+    public TelaRemetente(java.awt.Frame parent, boolean modal) {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-        
-//        if (usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
-//            btnAlterar.setEnabled(true);
-//            btnAtivar.setEnabled(true);
-//            btnNovo.setEnabled(true);
-//            btnVisualizar.setEnabled(true);
-//        } else {
-//            btnAlterar.setEnabled(false);
-//            btnAtivar.setEnabled(false);
-//            btnNovo.setEnabled(true);
-//            btnVisualizar.setEnabled(true);
-//        }
+        btnAtivar.setText("Ativar");
+        atualizaTabelaRemetentes();
+    }
+
+    public TelaRemetente(java.awt.Frame parent, boolean modal, Usuario usuario) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
+
+        if (usuario.getPerfil().equals(EnumPerfil.USUARIO)) {
+            btnAlterar.setEnabled(false);
+            btnAtivar.setEnabled(false);
+        }
 
         btnAtivar.setText("Ativar");
         atualizaTabelaRemetentes();
@@ -406,5 +407,5 @@ public class TelaRemetente extends javax.swing.JDialog {
     }
     Remetente remetente = new Remetente();
     RemetenteDAO remetenteDAO = new RemetenteDAO();
-   
+
 }

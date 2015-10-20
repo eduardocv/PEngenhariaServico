@@ -151,7 +151,7 @@ public class TelaInicial extends javax.swing.JDialog {
     }//GEN-LAST:event_btnTecnicosActionPerformed
 
     private void btnRemetentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemetentesActionPerformed
-        TelaRemetente telaRemetente = new TelaRemetente(null, true);//, null);
+        TelaRemetente telaRemetente = new TelaRemetente(null, true, usuario);
         telaRemetente.setVisible(true);
     }//GEN-LAST:event_btnRemetentesActionPerformed
 
