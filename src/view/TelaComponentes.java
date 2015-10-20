@@ -97,6 +97,11 @@ public class TelaComponentes extends javax.swing.JDialog {
                 tbComponenteMouseClicked(evt);
             }
         });
+        tbComponente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbComponenteKeyPressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbComponente);
         if (tbComponente.getColumnModel().getColumnCount() > 0) {
             tbComponente.getColumnModel().getColumn(0).setMinWidth(33);
@@ -296,15 +301,28 @@ public class TelaComponentes extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPesquisaActionPerformed
 
     private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
-       String pesquisa = txtPesquisa.getText();
-       if (rbtnCodigo.isSelected()){
-           buscaCodigo(pesquisa);
-       }else{
-           buscaComponente(pesquisa);
-       }
-       
-        
+        String pesquisa = txtPesquisa.getText();
+        if (rbtnCodigo.isSelected()) {
+            buscaCodigo(pesquisa);
+        } else {
+            buscaComponente(pesquisa);
+        }
+
+
     }//GEN-LAST:event_txtPesquisaKeyReleased
+
+    private void tbComponenteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbComponenteKeyPressed
+        int linha = tbComponente.getSelectedRow();
+        if (tbComponente.getValueAt(linha, 3).equals("Ativo")) {
+            btnAtivar.setText("Desativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+            atualizaTabelaComponentes();
+        } else {
+            btnAtivar.setText("Ativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+            atualizaTabelaComponentes();
+        }
+    }//GEN-LAST:event_tbComponenteKeyPressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
