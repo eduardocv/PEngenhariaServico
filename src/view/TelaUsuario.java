@@ -80,6 +80,11 @@ public class TelaUsuario extends javax.swing.JDialog {
                 tblUsuarioMouseEntered(evt);
             }
         });
+        tblUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblUsuarioKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblUsuario);
         if (tblUsuario.getColumnModel().getColumnCount() > 0) {
             tblUsuario.getColumnModel().getColumn(0).setMinWidth(33);
@@ -301,18 +306,30 @@ public class TelaUsuario extends javax.swing.JDialog {
 
     }//GEN-LAST:event_txtPesquisarUsuarioKeyReleased
 
-    private void mostraTela(List<Usuario> mostraUsuarios) {
-        DefaultTableModel model = (DefaultTableModel) this.tblUsuario.getModel();
-        model.setRowCount(mostraUsuarios.size());
-        for (int i = 0; i < mostraUsuarios.size(); i++) {
-            model.setValueAt(mostraUsuarios.get(i).getIdUsuario(), i, 0);
-            model.setValueAt(mostraUsuarios.get(i).getNome(), i, 1);
-            model.setValueAt(mostraUsuarios.get(i).getCPF(), i, 2);
-            model.setValueAt(mostraUsuarios.get(i).getPerfil(), i, 3);
-            model.setValueAt(mostraUsuarios.get(i).isStatus(), i, 4);
-        }
+    private void tblUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUsuarioKeyPressed
+      int linha = tblUsuario.getSelectedRow();
+        if (tblUsuario.getValueAt(linha, 4).equals("Inativo")) {
+            btnAtivar.setText("Desativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+        } else {
+            btnAtivar.setText("Ativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
 
-    }
+        }
+    }//GEN-LAST:event_tblUsuarioKeyPressed
+
+//    private void mostraTela(List<Usuario> mostraUsuarios) {
+//        DefaultTableModel model = (DefaultTableModel) this.tblUsuario.getModel();
+//        model.setRowCount(mostraUsuarios.size());
+//        for (int i = 0; i < mostraUsuarios.size(); i++) {
+//            model.setValueAt(mostraUsuarios.get(i).getIdUsuario(), i, 0);
+//            model.setValueAt(mostraUsuarios.get(i).getNome(), i, 1);
+//            model.setValueAt(mostraUsuarios.get(i).getCPF(), i, 2);
+//            model.setValueAt(mostraUsuarios.get(i).getPerfil(), i, 3);
+//            model.setValueAt(mostraUsuarios.get(i).isStatus(), i, 4);
+//        }
+//
+//    }
 
     private String retornaStatus (Boolean status){
         return (status?"Ativo":"Inativo");        
@@ -420,8 +437,11 @@ public void buscaNome(String nome) {
             model.setValueAt(filtrada.get(i).getIdUsuario(), i, 0);
             model.setValueAt(filtrada.get(i).getNome(), i, 1);
             model.setValueAt(filtrada.get(i).getCPF(), i, 2);
-            model.setValueAt(filtrada.get(i).getPerfil(), i, 3);
-            model.setValueAt(filtrada.get(i).isStatus(), i, 4);
+//            model.setValueAt(filtrada.get(i).getPerfil(), i, 3);
+//            model.setValueAt(filtrada.get(i).isStatus(), i, 4);
+            model.setValueAt(listarUsuarios.get(i).getPerfil().getDescricao(), i, 3);
+            model.setValueAt(retornaStatus(listarUsuarios.get(i).isStatus()), i, 4);
+
 
         }
     }
