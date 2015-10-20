@@ -78,8 +78,8 @@ public class TelaUsuario extends javax.swing.JDialog {
             }
         });
         tblUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tblUsuarioKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblUsuarioKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(tblUsuario);
@@ -278,15 +278,8 @@ public class TelaUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAtivarActionPerformed
 
     private void tblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuarioMouseClicked
-        int linha = tblUsuario.getSelectedRow();
-        if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
-            btnAtivar.setText("Desativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-        } else {
-            btnAtivar.setText("Ativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+        atualizaBotaoAtivar();
 
-        }
     }//GEN-LAST:event_tblUsuarioMouseClicked
 
     private void txtPesquisarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarUsuarioActionPerformed
@@ -299,9 +292,12 @@ public class TelaUsuario extends javax.swing.JDialog {
 
     }//GEN-LAST:event_txtPesquisarUsuarioKeyReleased
 
-    private void tblUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUsuarioKeyPressed
-      int linha = tblUsuario.getSelectedRow();
-        if (tblUsuario.getValueAt(linha, 4).equals("Inativo")) {
+    private void tblUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUsuarioKeyReleased
+       atualizaBotaoAtivar();  // TODO add your handling code here:
+    }//GEN-LAST:event_tblUsuarioKeyReleased
+    private void atualizaBotaoAtivar() {
+        int linha = tblUsuario.getSelectedRow();
+        if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
             btnAtivar.setText("Desativar");
             btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
         } else {
@@ -309,8 +305,7 @@ public class TelaUsuario extends javax.swing.JDialog {
             btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
 
         }
-    }//GEN-LAST:event_tblUsuarioKeyPressed
-
+    }
 //    private void mostraTela(List<Usuario> mostraUsuarios) {
 //        DefaultTableModel model = (DefaultTableModel) this.tblUsuario.getModel();
 //        model.setRowCount(mostraUsuarios.size());
@@ -324,9 +319,9 @@ public class TelaUsuario extends javax.swing.JDialog {
 //
 //    }
 
-    private String retornaStatus (Boolean status){
-        return (status?"Ativo":"Inativo");        
-    }      
+    private String retornaStatus(Boolean status) {
+        return (status ? "Ativo" : "Inativo");
+    }
     String strStatus;
 // private String retornaStatus (Boolean status){  MESMA COISA
 //       if (status){
@@ -337,7 +332,7 @@ public class TelaUsuario extends javax.swing.JDialog {
 //       }
 //   return strStatus;
 //    } 
-    
+
     private void atualizaTabelaUsuarios() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         List<Usuario> listarUsuarios = usuarioDAO.listarUsuarios();
@@ -430,11 +425,8 @@ public void buscaNome(String nome) {
             model.setValueAt(filtrada.get(i).getIdUsuario(), i, 0);
             model.setValueAt(filtrada.get(i).getNome(), i, 1);
             model.setValueAt(filtrada.get(i).getCPF(), i, 2);
-//            model.setValueAt(filtrada.get(i).getPerfil(), i, 3);
-//            model.setValueAt(filtrada.get(i).isStatus(), i, 4);
-            model.setValueAt(listarUsuarios.get(i).getPerfil().getDescricao(), i, 3);
-            model.setValueAt(retornaStatus(listarUsuarios.get(i).isStatus()), i, 4);
-
+            model.setValueAt(filtrada.get(i).getPerfil().getDescricao(), i, 3);
+            model.setValueAt(retornaStatus(filtrada.get(i).isStatus()), i, 4);
 
         }
     }

@@ -14,7 +14,8 @@ public class TelaInicial extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-
+        this.usuario = usuario;
+        
         if (usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
 
             btnUsuarios.setEnabled(true);
@@ -165,7 +166,7 @@ public class TelaInicial extends javax.swing.JDialog {
     }//GEN-LAST:event_btnProdutosActionPerformed
 
     private void btnComponentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComponentesActionPerformed
-        TelaComponentes telaComponentes = new TelaComponentes(null, true);
+        TelaComponentes telaComponentes = new TelaComponentes(null, true, usuario);
         telaComponentes.setVisible(true);
     }//GEN-LAST:event_btnComponentesActionPerformed
 
@@ -232,4 +233,5 @@ public class TelaInicial extends javax.swing.JDialog {
     private javax.swing.JButton btnTecnicos;
     private javax.swing.JButton btnUsuarios;
     // End of variables declaration//GEN-END:variables
+    Usuario usuario;
 }

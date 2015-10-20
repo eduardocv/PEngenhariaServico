@@ -3,19 +3,33 @@ package view;
 import dao.ComponenteDAO;
 import entity.Componente;
 import java.util.ArrayList;
-//import java.util.ArrayList;
 import java.util.List;
-//import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-//import javax.swing.Spring;
 import javax.swing.table.DefaultTableModel;
-
+import entity.Usuario;
+import entity.EnumPerfil;
+        
 public class TelaComponentes extends javax.swing.JDialog {
 
     public TelaComponentes(java.awt.Frame parent, boolean modal) {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
+        atualizaTabelaComponentes();
+    }
+    
+    public TelaComponentes(java.awt.Frame parent, boolean modal, Usuario usuario) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
+        
+        
+        if (usuario.getPerfil().equals(EnumPerfil.USUARIO)) {
+            btnAlterar.setEnabled(false);
+            btnAtivar.setEnabled(false);
+        } 
+
+        
         btnAtivar.setText("Ativar");
         atualizaTabelaComponentes();
     }
