@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Componente` (
   `idComponente` INT NOT NULL AUTO_INCREMENT,
   `codComponente` VARCHAR(25) NOT NULL,
   `componente` VARCHAR(45) NOT NULL,
-  `status` VARCHAR(10) NOT NULL,
+  `status` BOOLEAN NOT NULL,
   PRIMARY KEY (`idComponente`))
 ENGINE = InnoDB;
 
@@ -176,45 +176,45 @@ insert into tecnico values(4,'Carlos Santos','csantos@email.com.br','Ativo');
 insert into tecnico values(5,'Fernando Costa','fcosta@email.com.br','Ativo');
 insert into tecnico values(6,'Ana Silveira','anasilveira@email.com.br','Ativo');
 -- COMPONENTE --
-insert into componente values(1,'BAT001','BATERIA NICD 3,6 V / 60 M A H  2T','Ativo');
-insert into componente values(2,'Z10200','CONECTOR MINI MODUL 1X10 180G','Ativo');
-insert into componente values(3,'U03203','CI 14C232 ADM / HARRIS','Ativo');
-insert into componente values(4,'U03202','CI 75176 - DRIVER','Ativo');
-insert into componente values(5,'U03001','CI 62256 - RAM','Ativo');
-insert into componente values(6,'U03004','CI DS1307P - RTC','Ativo');
-insert into componente values(7,'U00005','CI CD4046','Ativo');
-insert into componente values(8,'F00000','CRISTAL OSC. 32,768 KHZ - 2 TERMINAIS','Ativo');
-insert into componente values(9,'D00003','DIODO ZENER 3V3/1W - 1N4728','Ativo');
-insert into componente values(10,'R00038','RESISTOR CR25 5K6','Ativo');
-insert into componente values(11,'K00008','CAPACITOR CERAMICO 100NF/50V','Ativo');
-insert into componente values(12,'I07ACR012','ACRILICO P/ PAINEL CONTACT - V1.0.0','Ativo');
-insert into componente values(13,'Z10021','CONECTOR RJ11 6P 6C 6 x 6 MACHO','Ativo');
-insert into componente values(14,'Z10020','CONECTOR RJ11 6P 6C 6 x 6 FEMEA 90G','Ativo');
-insert into componente values(15,'Z10018','CONECTOR P4 FEMEA 90G P/ PCI-PINO INT. 2,1 MM-DJK2','Ativo');
-insert into componente values(16,'I07SUP055','ESTRUTURA METALICA PAINEL CONTACT - V2.2.0','Ativo');
-insert into componente values(17,'I07MOD010','MODULO RC1140-RC232','Ativo');
-insert into componente values(18,'I07LCD003','DISPLAY LCD OPINE','Ativo');
-insert into componente values(19,'PON00006','CABO USB A MACHO X USB B MACHO 1,80M','Ativo');
-insert into componente values(20,'Z00405','CABO IMPRESSORA DASS1 <> CPU ( SPEC03 )','Ativo');
-insert into componente values(21,'I07POL010','POLICARBONATO P/ TES CONTACT 5 BOTOES','Ativo');
-insert into componente values(22,'U03362','CI DS1511W-RELOGIO DE TEMPO REAL c/Y2K-MOD28-PTH','Ativo');
-insert into componente values(23,'P00012','PLACA DISPLAY 3 DIGITOS','Ativo');
-insert into componente values(24,'I07CAP048','Capac. Elet, Radial Unilat 2200uF/ 16vF00020','Ativo');
-insert into componente values(25,'I07ABR003','Abraçadeira 20 cm (k22)','Ativo');
-insert into componente values(26,'Z00674','Abraçadeira preta 10 cm(k8)','Ativo');
-insert into componente values(27,'U00404','CI MICROCONTROLADOR P80C32-16 TEMIC','Ativo');
-insert into componente values(28,'I12KIT001','KIT BASE MT212 GUILHOTINA ( REPARO TES DAS)','Ativo');
-insert into componente values(29,'K00042','Capacitor eletrolítico 1000uF/25v','Ativo');
-insert into componente values(30,'U00305','SMD Max232','Ativo');
-insert into componente values(31,'I07ANT002','ANTENA AÇO 1/8 REBAIXO E ROSCA M3 C/ PONTEIRA-COR PRETA','Ativo');
-insert into componente values(32,'I07PLA271','PLACA BGO V2.0.1','Ativo');
-insert into componente values(33,'U03105','CI 27C512 12NS OU 15NS - EPROM','Ativo');
-insert into componente values(34,'I07PLA203','PLACA DECODER 14P V2.0.1','Ativo');
-insert into componente values(35,'I07ACR025','ACRILICO FRONTAL TES TOUCH – V1.1.0','Ativo');
-insert into componente values(36,'I07CAL005','CALCOS DE PAPELAO P/ TES TOUCH - V1.0.0','Ativo');
-insert into componente values(37,'I07CAX109','CAIXA DE PAPELAO P/ TES TOUCH – V1.1.0','Ativo');
-insert into componente values(38,'I07COJ058','ESTRUTURA METALICA TES TOUCH INOX – V6.0.0','Ativo');
-insert into componente values(39,'I07COJ059','CONJUNTO DE ISOPORES P/ TES TOUCH – V1.1.0','Ativo');
+insert into componente values(1,'BAT001','BATERIA NICD 3,6 V / 60 M A H  2T',true);
+insert into componente values(2,'Z10200','CONECTOR MINI MODUL 1X10 180G',true);
+insert into componente values(3,'U03203','CI 14C232 ADM / HARRIS',true);
+insert into componente values(4,'U03202','CI 75176 - DRIVER',true);
+insert into componente values(5,'U03001','CI 62256 - RAM',true);
+insert into componente values(6,'U03004','CI DS1307P - RTC',true);
+insert into componente values(7,'U00005','CI CD4046',true);
+insert into componente values(8,'F00000','CRISTAL OSC. 32,768 KHZ - 2 TERMINAIS',true);
+insert into componente values(9,'D00003','DIODO ZENER 3V3/1W - 1N4728',true);
+insert into componente values(10,'R00038','RESISTOR CR25 5K6',true);
+insert into componente values(11,'K00008','CAPACITOR CERAMICO 100NF/50V',true);
+insert into componente values(12,'I07ACR012','ACRILICO P/ PAINEL CONTACT - V1.0.0',true);
+insert into componente values(13,'Z10021','CONECTOR RJ11 6P 6C 6 x 6 MACHO',true);
+insert into componente values(14,'Z10020','CONECTOR RJ11 6P 6C 6 x 6 FEMEA 90G',true);
+insert into componente values(15,'Z10018','CONECTOR P4 FEMEA 90G P/ PCI-PINO INT. 2,1 MM-DJK2',true);
+insert into componente values(16,'I07SUP055','ESTRUTURA METALICA PAINEL CONTACT - V2.2.0',true);
+insert into componente values(17,'I07MOD010','MODULO RC1140-RC232',true);
+insert into componente values(18,'I07LCD003','DISPLAY LCD OPINE',true);
+insert into componente values(19,'PON00006','CABO USB A MACHO X USB B MACHO 1,80M',true);
+insert into componente values(20,'Z00405','CABO IMPRESSORA DASS1 <> CPU ( SPEC03 )',true);
+insert into componente values(21,'I07POL010','POLICARBONATO P/ TES CONTACT 5 BOTOES',true);
+insert into componente values(22,'U03362','CI DS1511W-RELOGIO DE TEMPO REAL c/Y2K-MOD28-PTH',true);
+insert into componente values(23,'P00012','PLACA DISPLAY 3 DIGITOS',true);
+insert into componente values(24,'I07CAP048','Capac. Elet, Radial Unilat 2200uF/ 16vF00020',true);
+insert into componente values(25,'I07ABR003','Abraçadeira 20 cm (k22)',true);
+insert into componente values(26,'Z00674','Abraçadeira preta 10 cm(k8)',true);
+insert into componente values(27,'U00404','CI MICROCONTROLADOR P80C32-16 TEMIC',true);
+insert into componente values(28,'I12KIT001','KIT BASE MT212 GUILHOTINA ( REPARO TES DAS)',true);
+insert into componente values(29,'K00042','Capacitor eletrolítico 1000uF/25v',true);
+insert into componente values(30,'U00305','SMD Max232',true);
+insert into componente values(31,'I07ANT002','ANTENA AÇO 1/8 REBAIXO E ROSCA M3 C/ PONTEIRA-COR PRETA',true);
+insert into componente values(32,'I07PLA271','PLACA BGO V2.0.1',true);
+insert into componente values(33,'U03105','CI 27C512 12NS OU 15NS - EPROM',true);
+insert into componente values(34,'I07PLA203','PLACA DECODER 14P V2.0.1',true);
+insert into componente values(35,'I07ACR025','ACRILICO FRONTAL TES TOUCH – V1.1.0',true);
+insert into componente values(36,'I07CAL005','CALCOS DE PAPELAO P/ TES TOUCH - V1.0.0',true);
+insert into componente values(37,'I07CAX109','CAIXA DE PAPELAO P/ TES TOUCH – V1.1.0',true);
+insert into componente values(38,'I07COJ058','ESTRUTURA METALICA TES TOUCH INOX – V6.0.0',true);
+insert into componente values(39,'I07COJ059','CONJUNTO DE ISOPORES P/ TES TOUCH – V1.1.0',true);
 
 -- REMETENTE --
 insert into remetente values(1,'Não Identificado','--','  ','(00)0000-0000','Ativo');

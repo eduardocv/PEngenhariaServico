@@ -154,7 +154,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="99" minWidth="99" prefWidth="99" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -164,7 +164,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="66" minWidth="66" prefWidth="22" resizable="true">
+                <Column maxWidth="66" minWidth="66" prefWidth="66" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -177,7 +177,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbComponenteMouseClicked"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbComponenteKeyPressed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbComponenteKeyReleased"/>
           </Events>
         </Component>
       </SubComponents>

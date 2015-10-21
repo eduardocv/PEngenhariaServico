@@ -22,7 +22,7 @@ public class ComponenteDAO extends MySQL {
             
             ps.setString(1, componente.getCodComponente());
             ps.setString(2, componente.getComponente());
-            ps.setString(3, componente.getStatus());
+            ps.setBoolean(3, componente.isStatus());
 
             ps.execute();
             ps.close();
@@ -49,7 +49,7 @@ public class ComponenteDAO extends MySQL {
                     + "SET codComponente = ?, componente = ?, status = ? WHERE idComponente = ?");
             ps.setString(1, componente.getCodComponente());
             ps.setString(2, componente.getComponente());
-            ps.setString(3, componente.getStatus());
+            ps.setBoolean(3, componente.isStatus());
             ps.setInt(4, componente.getIdComponente());
             ps.execute();
 
@@ -105,7 +105,7 @@ public class ComponenteDAO extends MySQL {
                 componente.setIdComponente(rs.getInt("idComponente"));
                 componente.setCodComponente(rs.getString("codComponente"));
                 componente.setComponente(rs.getString("componente"));
-                componente.setStatus(rs.getString("status"));
+                componente.setStatus(rs.getBoolean("status"));
                 
                 listaComponentes.add(componente);
             }
@@ -137,7 +137,7 @@ public class ComponenteDAO extends MySQL {
                 componente.setIdComponente(rs.getInt("idComponente"));
                 componente.setCodComponente(rs.getString("codComponente"));
                 componente.setComponente(rs.getString("componente"));
-                componente.setStatus(rs.getString("status"));
+                componente.setStatus(rs.getBoolean("status"));
             }
         }catch (SQLException ex) {
             ex.printStackTrace();
@@ -168,7 +168,7 @@ public class ComponenteDAO extends MySQL {
                 componente.setIdComponente(rs.getInt("idComponente"));
                 componente.setCodComponente(rs.getString("codComponente"));
                 componente.setComponente(rs.getString("componente"));
-                 componente.setStatus(rs.getString("status"));
+                 componente.setStatus(rs.getBoolean("status"));
                 
                 
                 listaComponentes.add(componente);
@@ -207,7 +207,7 @@ public class ComponenteDAO extends MySQL {
                 componente.setIdComponente(rs.getInt("idComponente"));
                 componente.setCodComponente(rs.getString("codComponente"));
                 componente.setComponente(rs.getString("componente"));
-                componente.setStatus(rs.getString("status"));
+                componente.setStatus(rs.getBoolean("status"));
                 
                 listaComponentes.add(componente);
             }
@@ -226,4 +226,30 @@ public class ComponenteDAO extends MySQL {
         }
         return null;
     }
+ 
+ public void atualizaStatus(Componente componente) {
+        Connection c = this.getConnection();
+
+        try {
+
+            PreparedStatement ps = c.prepareStatement("UPDATE componente "
+                    + "Set status = ? "
+                    + "WHERE idComponente = ? ");
+
+            ps.setBoolean(1, componente.isStatus());
+            ps.setInt(2, componente.getIdComponente());
+            ps.execute();
+            ps.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                c.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+ 
 }

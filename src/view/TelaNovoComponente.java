@@ -120,7 +120,7 @@ public class TelaNovoComponente extends javax.swing.JDialog {
 
         componente.setCodComponente(txtCodComponente.getText());
         componente.setComponente(txtComponente.getText());
-        componente.setStatus("Ativo");
+        componente.setStatus(true);
 
         if (novo) {
             componenteDAO.insert(componente);

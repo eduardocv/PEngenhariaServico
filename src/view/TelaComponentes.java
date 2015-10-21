@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import entity.Usuario;
 import entity.EnumPerfil;
-        
+
 public class TelaComponentes extends javax.swing.JDialog {
 
     public TelaComponentes(java.awt.Frame parent, boolean modal) {
@@ -17,19 +17,17 @@ public class TelaComponentes extends javax.swing.JDialog {
         this.setResizable(false);
         atualizaTabelaComponentes();
     }
-    
+
     public TelaComponentes(java.awt.Frame parent, boolean modal, Usuario usuario) {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-        
-        
+
         if (usuario.getPerfil().equals(EnumPerfil.USUARIO)) {
             btnAlterar.setEnabled(false);
             btnAtivar.setEnabled(false);
-        } 
+        }
 
-        
         btnAtivar.setText("Ativar");
         atualizaTabelaComponentes();
     }
@@ -112,8 +110,8 @@ public class TelaComponentes extends javax.swing.JDialog {
             }
         });
         tbComponente.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbComponenteKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbComponenteKeyReleased(evt);
             }
         });
         jScrollPane2.setViewportView(tbComponente);
@@ -121,8 +119,11 @@ public class TelaComponentes extends javax.swing.JDialog {
             tbComponente.getColumnModel().getColumn(0).setMinWidth(33);
             tbComponente.getColumnModel().getColumn(0).setPreferredWidth(22);
             tbComponente.getColumnModel().getColumn(0).setMaxWidth(22);
+            tbComponente.getColumnModel().getColumn(1).setMinWidth(99);
+            tbComponente.getColumnModel().getColumn(1).setPreferredWidth(99);
+            tbComponente.getColumnModel().getColumn(1).setMaxWidth(99);
             tbComponente.getColumnModel().getColumn(3).setMinWidth(66);
-            tbComponente.getColumnModel().getColumn(3).setPreferredWidth(22);
+            tbComponente.getColumnModel().getColumn(3).setPreferredWidth(66);
             tbComponente.getColumnModel().getColumn(3).setMaxWidth(66);
         }
 
@@ -250,28 +251,29 @@ public class TelaComponentes extends javax.swing.JDialog {
 
     private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
         int linha = tbComponente.getSelectedRow();
-        if (linha != -1) {
-            int id = Integer.parseInt(tbComponente.getValueAt(linha, 0).toString());
-
-            componente = componenteDAO.getComponenteById(id);
-
-            if (componente.getStatus().equals("Ativo")) {
-                componente.setStatus("Inativo");
-                btnAtivar.setText("Ativar");
-                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-                atualizaTabelaComponentes();
-            } else {
-                componente.setStatus("Ativo");
-                btnAtivar.setText("Desativar");
-                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-                atualizaTabelaComponentes();
-            }
-
-            componenteDAO.update(componente);
-            atualizaTabelaComponentes();
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione o componente que deseja ativar/desativar!");
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione o componente que deseja Ativar/Desativar !!!");
-        }
+            int id = Integer.parseInt(tbComponente.getValueAt(linha, 0).toString());
+            
+            componente = componenteDAO.getComponenteById(id);
+           
+                if (tbComponente.getValueAt(linha, 3).equals("Ativo")) {
+                    componente.setStatus(false);
+                } else {
+                    componente.setStatus(true);
+                }
+                if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
+                    btnAtivar.setText("Desativar");
+                    btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+                } else {
+                    btnAtivar.setText("Ativar");
+                    btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+                }
+                componenteDAO.atualizaStatus(componente);
+            }
+        
+        atualizaTabelaComponentes();
     }//GEN-LAST:event_btnAtivarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -279,9 +281,8 @@ public class TelaComponentes extends javax.swing.JDialog {
         if (linha == -1) {
             JOptionPane.showMessageDialog(rootPane, "Selecione o produto que deseja fazer a alteração!");
         } else {
-            if (tbComponente.getValueAt(linha, 3).equals("Ativo")) {
+            if (tbComponente.getValueAt(linha, 3).equals(true)) {
                 int id = Integer.parseInt(tbComponente.getValueAt(linha, 0).toString());
-                //
                 componente = componenteDAO.getComponenteById(id);
                 TelaNovoComponente telaNovoComponente = new TelaNovoComponente(null, true, false, componente);
                 telaNovoComponente.setVisible(true);
@@ -299,15 +300,7 @@ public class TelaComponentes extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void tbComponenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbComponenteMouseClicked
-        int linha = tbComponente.getSelectedRow();
-        if (tbComponente.getValueAt(linha, 3).equals("Ativo")) {
-            btnAtivar.setText("Desativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-        } else {
-            btnAtivar.setText("Ativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-            atualizaTabelaComponentes();
-        }
+        atualizaBotaoAtivar();
     }//GEN-LAST:event_tbComponenteMouseClicked
 
     private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
@@ -321,22 +314,11 @@ public class TelaComponentes extends javax.swing.JDialog {
         } else {
             buscaComponente(pesquisa);
         }
-
-
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
-    private void tbComponenteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbComponenteKeyPressed
-        int linha = tbComponente.getSelectedRow();
-        if (tbComponente.getValueAt(linha, 3).equals("Ativo")) {
-            btnAtivar.setText("Desativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-            atualizaTabelaComponentes();
-        } else {
-            btnAtivar.setText("Ativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-            atualizaTabelaComponentes();
-        }
-    }//GEN-LAST:event_tbComponenteKeyPressed
+    private void tbComponenteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbComponenteKeyReleased
+        atualizaBotaoAtivar();
+    }//GEN-LAST:event_tbComponenteKeyReleased
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -399,6 +381,17 @@ public class TelaComponentes extends javax.swing.JDialog {
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 
+    private void atualizaBotaoAtivar() {
+        int linha = tbComponente.getSelectedRow();
+        if (tbComponente.getValueAt(linha, 3).equals("Ativo")) {
+            btnAtivar.setText("Desativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+        } else {
+            btnAtivar.setText("Ativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+        }
+    }
+
     private void atualizaTabelaComponentes() {
         //ProdutoDAO produtoDAO = new ProdutoDAO();
         List<Componente> listarComponentes = componenteDAO.listarComponentes();
@@ -408,9 +401,13 @@ public class TelaComponentes extends javax.swing.JDialog {
             model.setValueAt(listarComponentes.get(i).getIdComponente(), i, 0);
             model.setValueAt(listarComponentes.get(i).getCodComponente(), i, 1);
             model.setValueAt(listarComponentes.get(i).getComponente(), i, 2);
-            model.setValueAt(listarComponentes.get(i).getStatus(), i, 3);
+            model.setValueAt(retornaStatus(listarComponentes.get(i).isStatus()), i, 3);
         }
     }
+    private String retornaStatus(Boolean status) {
+        return (status ? "Ativo" : "Inativo");
+    }
+    String strStatus;
 
     public void buscaCodigo(String nome) {
         List<Componente> filtrada = new ArrayList();
@@ -429,7 +426,7 @@ public class TelaComponentes extends javax.swing.JDialog {
             model.setValueAt(filtrada.get(i).getIdComponente(), i, 0);
             model.setValueAt(filtrada.get(i).getCodComponente(), i, 1);
             model.setValueAt(filtrada.get(i).getComponente(), i, 2);
-            model.setValueAt(filtrada.get(i).getStatus(), i, 3);
+            model.setValueAt(retornaStatus(filtrada.get(i).isStatus()), i, 3);
 
         }
     }
@@ -451,7 +448,7 @@ public class TelaComponentes extends javax.swing.JDialog {
             model.setValueAt(filtrada.get(i).getIdComponente(), i, 0);
             model.setValueAt(filtrada.get(i).getCodComponente(), i, 1);
             model.setValueAt(filtrada.get(i).getComponente(), i, 2);
-            model.setValueAt(filtrada.get(i).getStatus(), i, 3);
+            model.setValueAt(retornaStatus(filtrada.get(i).isStatus()), i, 3);
 
         }
 

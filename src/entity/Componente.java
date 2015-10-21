@@ -9,21 +9,22 @@ public class Componente {
     private int idComponente;
     private String codComponente;
     private String componente;
-    private String status;
-
-    @Override
+    private boolean status;
+    
+     @Override
     public String toString() {
         return codComponente + "  " + componente;
     }
 
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
+       
     public int getIdComponente() {
         return idComponente;
     }
