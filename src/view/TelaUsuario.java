@@ -239,29 +239,21 @@ public class TelaUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltarUsuarioActionPerformed
 
     private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
-
         int linha = tblUsuario.getSelectedRow();
-
         if (linha == -1) {
             JOptionPane.showMessageDialog(rootPane, "Selecione o usuário que deseja ativar/desativar!");
-
         } else {
             int id = Integer.parseInt(tblUsuario.getValueAt(linha, 0).toString());
-
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             usuario = usuarioDAO.getUsuarioById(id);
-
             if (usuario.getIdUsuario() == 1) {
                 JOptionPane.showMessageDialog(rootPane, "Não é possível desativar esse usuário!");
-
             } else {
                 if (tblUsuario.getValueAt(linha, 4).equals("Ativo")) {
                     usuario.setStatus(false);
-
                 } else {
                     usuario.setStatus(true);
                 }
-
                 if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
                     btnAtivar.setText("Desativar");
                     btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
@@ -269,29 +261,21 @@ public class TelaUsuario extends javax.swing.JDialog {
                     btnAtivar.setText("Ativar");
                     btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
                 }
-
                 usuarioDAO.atualizaStatus(usuario);
             }
         }
         atualizaTabelaUsuarios();
-
     }//GEN-LAST:event_btnAtivarActionPerformed
-
     private void tblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuarioMouseClicked
         atualizaBotaoAtivar();
-
     }//GEN-LAST:event_tblUsuarioMouseClicked
-
     private void txtPesquisarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisarUsuarioActionPerformed
-
     private void txtPesquisarUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarUsuarioKeyReleased
         String nome = txtPesquisarUsuario.getText();
         buscaNome(nome);
-
     }//GEN-LAST:event_txtPesquisarUsuarioKeyReleased
-
     private void tblUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUsuarioKeyReleased
         atualizaBotaoAtivar();
     }//GEN-LAST:event_tblUsuarioKeyReleased
@@ -310,33 +294,20 @@ public class TelaUsuario extends javax.swing.JDialog {
         return (status ? "Ativo" : "Inativo");
     }
     String strStatus;
-// private String retornaStatus (Boolean status){  MESMA COISA
-//       if (status){
-//           strStatus = "Ativo";
-//           
-//       }else{
-//           strStatus = "Inativo";
-//       }
-//   return strStatus;
-//    } 
 
     private void atualizaTabelaUsuarios() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         List<Usuario> listarUsuarios = usuarioDAO.listarUsuarios();
-
         DefaultTableModel model
                 = (DefaultTableModel) this.tblUsuario.getModel();
         model.setRowCount(listarUsuarios.size());
         for (int i = 0; i < listarUsuarios.size(); i++) {
-
             model.setValueAt(listarUsuarios.get(i).getIdUsuario(), i, 0);
             model.setValueAt(listarUsuarios.get(i).getNome(), i, 1);
             model.setValueAt(listarUsuarios.get(i).getCPF(), i, 2);
             model.setValueAt(listarUsuarios.get(i).getPerfil().getDescricao(), i, 3);
             model.setValueAt(retornaStatus(listarUsuarios.get(i).isStatus()), i, 4);
-
         }
-
     }
 
     /**
@@ -414,7 +385,6 @@ public void buscaNome(String nome) {
             model.setValueAt(filtrada.get(i).getCPF(), i, 2);
             model.setValueAt(filtrada.get(i).getPerfil().getDescricao(), i, 3);
             model.setValueAt(retornaStatus(filtrada.get(i).isStatus()), i, 4);
-
         }
     }
 }
