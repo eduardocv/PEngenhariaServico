@@ -255,24 +255,24 @@ public class TelaComponentes extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Selecione o componente que deseja ativar/desativar!");
         } else {
             int id = Integer.parseInt(tbComponente.getValueAt(linha, 0).toString());
-            
+
             componente = componenteDAO.getComponenteById(id);
-           
-                if (tbComponente.getValueAt(linha, 3).equals("Ativo")) {
-                    componente.setStatus(false);
-                } else {
-                    componente.setStatus(true);
-                }
-                if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
-                    btnAtivar.setText("Desativar");
-                    btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-                } else {
-                    btnAtivar.setText("Ativar");
-                    btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-                }
-                componenteDAO.atualizaStatus(componente);
+
+            if (tbComponente.getValueAt(linha, 3).equals("Ativo")) {
+                componente.setStatus(false);
+            } else {
+                componente.setStatus(true);
             }
-        
+            if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
+                btnAtivar.setText("Desativar");
+                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+            } else {
+                btnAtivar.setText("Ativar");
+                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+            }
+            componenteDAO.atualizaStatus(componente);
+        }
+
         atualizaTabelaComponentes();
     }//GEN-LAST:event_btnAtivarActionPerformed
 
@@ -404,6 +404,7 @@ public class TelaComponentes extends javax.swing.JDialog {
             model.setValueAt(retornaStatus(listarComponentes.get(i).isStatus()), i, 3);
         }
     }
+
     private String retornaStatus(Boolean status) {
         return (status ? "Ativo" : "Inativo");
     }

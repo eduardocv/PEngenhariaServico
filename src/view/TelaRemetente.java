@@ -4,7 +4,6 @@ import dao.RemetenteDAO;
 import entity.Remetente;
 import java.util.ArrayList;
 import java.util.List;
-//import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import entity.Usuario;
@@ -269,7 +268,7 @@ public class TelaRemetente extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void tbRemetenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRemetenteMouseClicked
-     atualizaBotaoAtivar();
+        atualizaBotaoAtivar();
     }//GEN-LAST:event_tbRemetenteMouseClicked
 
     private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
@@ -287,24 +286,24 @@ public class TelaRemetente extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Selecione o remetente que deseja ativar/desativar!");
         } else {
             int id = Integer.parseInt(tbRemetente.getValueAt(linha, 0).toString());
-            
+
             remetente = remetenteDAO.getRemetenteById(id);
-           
-                if (tbRemetente.getValueAt(linha, 5).equals("Ativo")) {
-                    remetente.setStatus(false);
-                } else {
-                    remetente.setStatus(true);
-                }
-                if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
-                    btnAtivar.setText("Desativar");
-                    btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-                } else {
-                    btnAtivar.setText("Ativar");
-                    btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-                }
-                remetenteDAO.atualizaStatus(remetente);
+
+            if (tbRemetente.getValueAt(linha, 5).equals("Ativo")) {
+                remetente.setStatus(false);
+            } else {
+                remetente.setStatus(true);
             }
-        
+            if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
+                btnAtivar.setText("Desativar");
+                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+            } else {
+                btnAtivar.setText("Ativar");
+                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+            }
+            remetenteDAO.atualizaStatus(remetente);
+        }
+
         atualizaTabelaRemetentes();
 
     }//GEN-LAST:event_btnAtivarActionPerformed
@@ -378,7 +377,7 @@ public class TelaRemetente extends javax.swing.JDialog {
             btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
         }
     }
-    
+
     private void atualizaTabelaRemetentes() {
 
         List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
@@ -393,14 +392,14 @@ public class TelaRemetente extends javax.swing.JDialog {
             model.setValueAt(retornaStatus(listarRemetentes.get(i).isStatus()), i, 5);
         }
     }
-    
+
     private String retornaStatus(Boolean status) {
         return (status ? "Ativo" : "Inativo");
     }
     String strStatus;
 
     public void buscaNome(String nome) {
-       
+
         List<Remetente> filtrada = new ArrayList();
         List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
         String nomeDigitadoTemp = nome.toLowerCase();

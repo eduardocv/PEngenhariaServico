@@ -1,4 +1,3 @@
-
 package entity;
 
 /**
@@ -6,18 +5,19 @@ package entity;
  * @author Eduardo C. Vieira
  */
 public class Remetente {
-   private int idRemetente;
-   private String nome;
-   private String tipo;
-   private String email;
-   private String telefone;
-   private boolean status;
 
-   @Override
+    private int idRemetente;
+    private String nome;
+    private String tipo;
+    private String email;
+    private String telefone;
+    private boolean status;
+
+    @Override
     public String toString() {
-        return  tipo + "  " + nome;
+        return tipo + "  " + nome;
     }
-   
+
     public boolean isStatus() {
         return status;
     }
@@ -25,9 +25,8 @@ public class Remetente {
     public void setStatus(boolean status) {
         this.status = status;
     }
-     
 
-    public int getIdRemetente() { 
+    public int getIdRemetente() {
         return idRemetente;
     }
 
@@ -67,5 +66,4 @@ public class Remetente {
         this.telefone = telefone;
     }
 
-   
 }

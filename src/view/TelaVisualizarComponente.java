@@ -24,7 +24,7 @@ public class TelaVisualizarComponente extends javax.swing.JDialog {
         lblCodigo.setText(componente.getCodComponente());
         lblDescricao.setText(componente.getComponente());
         
-        if (componente.isStatus()== true) {
+        if (componente.isStatus() == true) {
             lblStatus.setText("Ativo");
             lblStatus.setForeground(Color.green);
         } else {

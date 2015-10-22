@@ -95,7 +95,6 @@ public class RemetenteDAO extends MySQL {
         return false;
     }
 
-
     public java.util.List<Remetente> listarRemetentes() {
         Connection c = this.getConnection();
         java.util.List<Remetente> listaRemetentes = new ArrayList<Remetente>();
@@ -109,7 +108,7 @@ public class RemetenteDAO extends MySQL {
                 remetente.setIdRemetente(rs.getInt("idRemetente"));
                 remetente.setNome(rs.getString("nome"));
                 remetente.setTipo(rs.getString("tipo"));
-                remetente.setEmail(rs.getString("email"));                
+                remetente.setEmail(rs.getString("email"));
                 remetente.setTelefone(rs.getString("telefone"));
                 remetente.setStatus(rs.getBoolean("status"));
 
@@ -131,7 +130,8 @@ public class RemetenteDAO extends MySQL {
         return null;
 
     }
-public Remetente getRemetenteById(int id) {
+
+    public Remetente getRemetenteById(int id) {
         Connection c = this.getConnection();
         Remetente remetente = null;
         try {
@@ -201,8 +201,8 @@ public Remetente getRemetenteById(int id) {
         }
         return null;
     }
-    
-     public void atualizaStatus(Remetente remetente) {
+
+    public void atualizaStatus(Remetente remetente) {
         Connection c = this.getConnection();
 
         try {
@@ -226,5 +226,5 @@ public Remetente getRemetenteById(int id) {
             }
         }
     }
-    
+
 }

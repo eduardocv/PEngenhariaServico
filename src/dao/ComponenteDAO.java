@@ -227,7 +227,7 @@ public class ComponenteDAO extends MySQL {
         return null;
     }
  
- public void atualizaStatus(Componente componente) {
+    public void atualizaStatus(Componente componente) {
         Connection c = this.getConnection();
 
         try {

@@ -21,8 +21,8 @@ public class TelaVisualizarRemetente extends javax.swing.JDialog {
         lblTipo.setText(remetente.getTipo());
         lblEmail.setText(remetente.getEmail());
         lblTelefone.setText(remetente.getTelefone());
-        
-       if (remetente.isStatus()== true) {
+
+        if (remetente.isStatus() == true) {
             lblStatus.setText("Ativo");
             lblStatus.setForeground(Color.green);
         } else {
