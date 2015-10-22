@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Produto` (
   `idProduto` INT NOT NULL AUTO_INCREMENT,
   `codProduto` VARCHAR(25) NOT NULL,
   `produto` VARCHAR(45) NOT NULL,
-  `status` VARCHAR(10) NOT NULL,
+  `status` BOOLEAN NOT NULL,
   PRIMARY KEY (`idProduto`))
 ENGINE = InnoDB;
 
@@ -155,18 +155,18 @@ INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `nome`, `CPF`, `perfil
 INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `nome`, `CPF`, `perfil`, `status`, `email`, `senha`) VALUES ('2', 'Usuario', '12345678900', '1', true, 'user', 'user');
 
 -- PRODUTO --
-insert into produto values(1,'I07PLA046','Placa Transceptora RF2','Ativo');
-insert into produto values(2,'I07PLA055','Placa Mtouch (flat)','Ativo');
-insert into produto values(3,'I07PLA060','Placa Mtouch (usb)','Ativo');
-insert into produto values(4,'I12IMP013','Impressora DAS 6 Botões','Ativo');
+insert into produto values(1,'I07PLA046','Placa Transceptora RF2',true);
+insert into produto values(2,'I07PLA055','Placa Mtouch (flat)',true);
+insert into produto values(3,'I07PLA060','Placa Mtouch (usb)',true);
+insert into produto values(4,'I12IMP013','Impressora DAS 6 Botões',true);
 insert into produto values(5,'I12DSP011','Painel GAS OFF 5D','Ativo');
-insert into produto values(6,'I12IMP013','Impressora DAS 6 Botões','Ativo');
-insert into produto values(7,'ImpMecafAd','Impressora Mecaf','Ativo');
-insert into produto values(8,'I07PLA254','Placa PIC 4.1.2','Ativo');
-insert into produto values(9,'P00071','Placa CPU 3.0.2','Ativo');
-insert into produto values(10,'I12IMP009','Impressora DAS 3 Botões','Ativo');
-insert into produto values(11,'I12DSP023','Painel Contact Light 5D','Ativo');
-insert into produto values(12,'I12IMP000','Impressora DAS Triagem','Ativo');
+insert into produto values(6,'I12IMP013','Impressora DAS 6 Botões',true);
+insert into produto values(7,'ImpMecafAd','Impressora Mecaf',true);
+insert into produto values(8,'I07PLA254','Placa PIC 4.1.2',true);
+insert into produto values(9,'P00071','Placa CPU 3.0.2',true);
+insert into produto values(10,'I12IMP009','Impressora DAS 3 Botões',true);
+insert into produto values(11,'I12DSP023','Painel Contact Light 5D',true);
+insert into produto values(12,'I12IMP000','Impressora DAS Triagem',true);
 
 -- TÉCNICO EM LABORATORIO --
 insert into tecnico values(1,'José da Silva','josesilva@email.com.br','Ativo');

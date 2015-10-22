@@ -10,18 +10,18 @@ public class Produto {
     private int idProduto;
     private String codProduto;
     private String produto;
-    private String status;
+    private boolean status;
 
     @Override
     public String toString() {
         return codProduto + "  " + produto;
     }
     
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 

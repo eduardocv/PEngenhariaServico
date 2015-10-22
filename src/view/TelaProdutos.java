@@ -69,6 +69,11 @@ public class TelaProdutos extends javax.swing.JDialog {
                 tbProdutoMouseClicked(evt);
             }
         });
+        tbProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbProdutoKeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbProduto);
         if (tbProduto.getColumnModel().getColumnCount() > 0) {
             tbProduto.getColumnModel().getColumn(0).setMinWidth(33);
@@ -252,40 +257,33 @@ public class TelaProdutos extends javax.swing.JDialog {
 
     private void btnAtivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivarActionPerformed
         int linha = tbProduto.getSelectedRow();
-        if (linha != -1) {
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione o produto que deseja ativar/desativar!");
+        } else {
             int id = Integer.parseInt(tbProduto.getValueAt(linha, 0).toString());
 
             produto = produtoDAO.getProdutoById(id);
 
-            if (produto.getStatus().equals("Ativo")) {
-                produto.setStatus("Inativo");
-                btnAtivar.setText("Ativar");
-                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-                atualizaTabelaProdutos();
+            if (tbProduto.getValueAt(linha, 3).equals("Ativo")) {
+                produto.setStatus(false);
             } else {
-                produto.setStatus("Ativo");
+                produto.setStatus(true);
+            }
+            if (btnAtivar.getText().equalsIgnoreCase("Ativar")) {
                 btnAtivar.setText("Desativar");
                 btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-                atualizaTabelaProdutos();
+            } else {
+                btnAtivar.setText("Ativar");
+                btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
             }
-
-            produtoDAO.update(produto);
-            atualizaTabelaProdutos();
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione o produto que deseja Ativar/Desativar !!!");
+            produtoDAO.atualizaStatus(produto);
         }
+
+        atualizaTabelaProdutos();
     }//GEN-LAST:event_btnAtivarActionPerformed
 
     private void tbProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProdutoMouseClicked
-        int linha = tbProduto.getSelectedRow();
-        if (tbProduto.getValueAt(linha, 3).equals("Ativo")) {
-            btnAtivar.setText("Desativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
-        } else {
-            btnAtivar.setText("Ativar");
-            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
-            atualizaTabelaProdutos();
-        }
+        atualizaBotaoAtivar();
     }//GEN-LAST:event_tbProdutoMouseClicked
 
     private void rbtnCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnCodigoActionPerformed
@@ -302,13 +300,17 @@ public class TelaProdutos extends javax.swing.JDialog {
 
     private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
         String pesquisa = txtPesquisa.getText();
-        if (rbtnCodigo.isSelected()){
+        if (rbtnCodigo.isSelected()) {
             buscaCodigo(pesquisa);
-        }else{
+        } else {
             buscaProduto(pesquisa);
         }
 
     }//GEN-LAST:event_txtPesquisaKeyReleased
+
+    private void tbProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbProdutoKeyReleased
+        atualizaBotaoAtivar();
+    }//GEN-LAST:event_tbProdutoKeyReleased
 
     /**
      * @param args the command line arguments
@@ -366,8 +368,17 @@ public class TelaProdutos extends javax.swing.JDialog {
     private javax.swing.JTable tbProduto;
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
-//List<Produto> listaProdutos = new ArrayList<Produto>();
-//    DefaultListModel<Produto> modelo = new DefaultListModel<Produto>();
+
+    private void atualizaBotaoAtivar() {
+        int linha = tbProduto.getSelectedRow();
+        if (tbProduto.getValueAt(linha, 3).equals("Ativo")) {
+            btnAtivar.setText("Desativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fall.png")));
+        } else {
+            btnAtivar.setText("Ativar");
+            btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png")));
+        }
+    }
 
     private void atualizaTabelaProdutos() {
         //ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -378,9 +389,14 @@ public class TelaProdutos extends javax.swing.JDialog {
             model.setValueAt(listarProdutos.get(i).getIdProduto(), i, 0);
             model.setValueAt(listarProdutos.get(i).getCodProduto(), i, 1);
             model.setValueAt(listarProdutos.get(i).getProduto(), i, 2);
-            model.setValueAt(listarProdutos.get(i).getStatus(), i, 3);
+            model.setValueAt(retornaStatus(listarProdutos.get(i).isStatus()), i, 3);
         }
     }
+
+    private String retornaStatus(Boolean status) {
+        return (status ? "Ativo" : "Inativo");
+    }
+    String strStatus;
 
     public void buscaCodigo(String nome) {
         //  RemetenteDAO remetenteDAO = new RemetenteDAO();
@@ -400,7 +416,7 @@ public class TelaProdutos extends javax.swing.JDialog {
             model.setValueAt(filtrada.get(i).getIdProduto(), i, 0);
             model.setValueAt(filtrada.get(i).getCodProduto(), i, 1);
             model.setValueAt(filtrada.get(i).getProduto(), i, 2);
-            model.setValueAt(filtrada.get(i).getStatus(), i, 3);
+            model.setValueAt(retornaStatus(filtrada.get(i).isStatus()), i, 3);
 
         }
     }
@@ -422,7 +438,7 @@ public class TelaProdutos extends javax.swing.JDialog {
             model.setValueAt(filtrada.get(i).getIdProduto(), i, 0);
             model.setValueAt(filtrada.get(i).getCodProduto(), i, 1);
             model.setValueAt(filtrada.get(i).getProduto(), i, 2);
-            model.setValueAt(filtrada.get(i).getStatus(), i, 3);
+            model.setValueAt(retornaStatus(filtrada.get(i).isStatus()), i, 3);
 
         }
     }

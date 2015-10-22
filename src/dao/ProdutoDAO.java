@@ -22,7 +22,7 @@ public class ProdutoDAO extends MySQL {
                     + "values( ? , ? , ? )");
             ps.setString(1, produto.getCodProduto());
             ps.setString(2, produto.getProduto());
-            ps.setString(3, produto.getStatus());
+            ps.setBoolean(3, produto.isStatus());
                      
             ps.execute();
             ps.close();
@@ -47,7 +47,7 @@ public class ProdutoDAO extends MySQL {
                     + "SET codProduto = ?, produto = ?, status = ? WHERE idProduto = ?");
             ps.setString(1, produto.getCodProduto());
             ps.setString(2, produto.getProduto());
-            ps.setString(3, produto.getStatus());
+            ps.setBoolean(3, produto.isStatus());
             ps.setInt(4, produto.getIdProduto());
             ps.execute();
 
@@ -104,7 +104,7 @@ public class ProdutoDAO extends MySQL {
                 produto.setIdProduto(rs.getInt("idProduto"));
                 produto.setCodProduto(rs.getString("codProduto"));
                 produto.setProduto(rs.getString("Produto"));
-                produto.setStatus(rs.getString("status"));
+                produto.setStatus(rs.getBoolean("status"));
 
                 listaProdutos.add(produto);
             }
@@ -138,7 +138,7 @@ public class ProdutoDAO extends MySQL {
                 produto.setIdProduto(rs.getInt("idProduto"));
                 produto.setCodProduto(rs.getString("codProduto"));
                 produto.setProduto(rs.getString("produto"));
-                produto.setStatus(rs.getString("status"));
+                produto.setStatus(rs.getBoolean("status"));
             }
         }catch (SQLException ex) {
             ex.printStackTrace();
@@ -171,7 +171,7 @@ public class ProdutoDAO extends MySQL {
                 produto.setIdProduto(rs.getInt("idProduto"));
                 produto.setCodProduto(rs.getString("codProduto"));
                 produto.setProduto(rs.getString("produto"));
-                produto.setStatus(rs.getString("status"));
+                produto.setStatus(rs.getBoolean("status"));
 
                 listaProdutos.add(produto);
             }
@@ -208,7 +208,7 @@ public class ProdutoDAO extends MySQL {
                 produto.setIdProduto(rs.getInt("idProduto"));
                 produto.setCodProduto(rs.getString("codProduto"));
                 produto.setProduto(rs.getString("produto"));
-                produto.setStatus(rs.getString("status"));
+                produto.setStatus(rs.getBoolean("status"));
 
                 listaProdutos.add(produto);
             }
@@ -227,5 +227,28 @@ public class ProdutoDAO extends MySQL {
         }
         return null;
     }
+ public void atualizaStatus(Produto produto) {
+        Connection c = this.getConnection();
 
+        try {
+
+            PreparedStatement ps = c.prepareStatement("UPDATE produto "
+                    + "Set status = ? "
+                    + "WHERE idProduto = ? ");
+
+            ps.setBoolean(1, produto.isStatus());
+            ps.setInt(2, produto.getIdProduto());
+            ps.execute();
+            ps.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                c.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 }

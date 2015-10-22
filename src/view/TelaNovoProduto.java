@@ -119,7 +119,7 @@ TelaNovoProduto(java.awt.Frame parent, boolean modal, boolean novo, Produto prod
 
         produto.setCodProduto(txtCodProduto.getText());
         produto.setProduto(txtProduto.getText());
-        produto.setStatus("Ativo");
+        produto.setStatus(true);
         if (novo) {
             produtoDAO.insert(produto);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");

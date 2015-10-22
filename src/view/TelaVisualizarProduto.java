@@ -23,11 +23,12 @@ public class TelaVisualizarProduto extends javax.swing.JDialog {
         lblIdProduto.setText(produto.getIdProduto() + "");
         lblCodigo.setText(produto.getCodProduto());
         lblProduto.setText(produto.getProduto());
-        lblStatus.setText(produto.getStatus());
-
-        if (produto.getStatus().equals("Ativo")) {
+        
+        if (produto.isStatus()== true) {
+            lblStatus.setText("Ativo");
             lblStatus.setForeground(Color.green);
         } else {
+            lblStatus.setText("Inativo");
             lblStatus.setForeground(Color.red);
         }
     }
