@@ -1,9 +1,6 @@
 package entity;
 
-/**
- *
- * @author Ruivinho
- */
+
 public class Componente {
 
     private int idComponente;

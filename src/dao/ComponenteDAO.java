@@ -8,10 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Ruivinho
- */
+
 public class ComponenteDAO extends MySQL {
     public boolean insert(Componente componente) {
         Connection c = this.getConnection();

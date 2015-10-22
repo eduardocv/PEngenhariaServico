@@ -4,10 +4,7 @@ import dao.ComponenteDAO;
 import entity.Componente;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Eduardo C. Vieira
- */
+
 public class TelaNovoComponente extends javax.swing.JDialog {
 
     public TelaNovoComponente(java.awt.Frame parent, boolean modal) {

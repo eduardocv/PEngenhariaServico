@@ -3,10 +3,7 @@ package view;
 import entity.Componente;
 import java.awt.Color;
 
-/**
- *
- * @author Eduardo C. Vieira
- */
+
 public class TelaVisualizarComponente extends javax.swing.JDialog {
 
     public TelaVisualizarComponente(java.awt.Frame parent, boolean modal) {
