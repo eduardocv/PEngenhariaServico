@@ -24,7 +24,7 @@ public class RemetenteDAO extends MySQL {
             ps.setString(2, remetente.getTipo());
             ps.setString(3, remetente.getEmail());
             ps.setString(4, remetente.getTelefone());
-            ps.setString(5, remetente.getStatus());
+            ps.setBoolean(5, remetente.isStatus());
 
             ps.execute();
             ps.close();
@@ -51,7 +51,7 @@ public class RemetenteDAO extends MySQL {
             ps.setString(2, remetente.getTipo());
             ps.setString(3, remetente.getEmail());
             ps.setString(4, remetente.getTelefone());
-            ps.setString(5, remetente.getStatus());
+            ps.setBoolean(5, remetente.isStatus());
             ps.setInt(6, remetente.getIdRemetente());
             ps.execute();
 
@@ -111,7 +111,7 @@ public class RemetenteDAO extends MySQL {
                 remetente.setTipo(rs.getString("tipo"));
                 remetente.setEmail(rs.getString("email"));                
                 remetente.setTelefone(rs.getString("telefone"));
-                remetente.setStatus(rs.getString("status"));
+                remetente.setStatus(rs.getBoolean("status"));
 
                 listaRemetentes.add(remetente);
             }
@@ -147,7 +147,7 @@ public Remetente getRemetenteById(int id) {
                 remetente.setTipo(rs.getString("tipo"));
                 remetente.setEmail(rs.getString("email"));
                 remetente.setTelefone(rs.getString("telefone"));
-                remetente.setStatus(rs.getString("status"));
+                remetente.setStatus(rs.getBoolean("status"));
             }
 
         } catch (SQLException ex) {
@@ -182,7 +182,7 @@ public Remetente getRemetenteById(int id) {
                 remetente.setEmail(rs.getString("tipo"));
                 remetente.setTipo(rs.getString("email"));
                 remetente.setTelefone(rs.getString("telefone"));
-                remetente.setStatus(rs.getString("status"));
+                remetente.setStatus(rs.getBoolean("status"));
 
                 listaRemetentes.add(remetente);
             }
@@ -201,4 +201,30 @@ public Remetente getRemetenteById(int id) {
         }
         return null;
     }
+    
+     public void atualizaStatus(Remetente remetente) {
+        Connection c = this.getConnection();
+
+        try {
+
+            PreparedStatement ps = c.prepareStatement("UPDATE remetente "
+                    + "Set status = ? "
+                    + "WHERE idRemetente = ? ");
+
+            ps.setBoolean(1, remetente.isStatus());
+            ps.setInt(2, remetente.getIdRemetente());
+            ps.execute();
+            ps.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                c.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    
 }

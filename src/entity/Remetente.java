@@ -11,22 +11,21 @@ public class Remetente {
    private String tipo;
    private String email;
    private String telefone;
-   private String Status;
+   private boolean status;
 
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String Status) {
-        this.Status = Status;
-    }
-
-    @Override
+   @Override
     public String toString() {
         return  tipo + "  " + nome;
     }
    
-   
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+     
 
     public int getIdRemetente() { 
         return idRemetente;

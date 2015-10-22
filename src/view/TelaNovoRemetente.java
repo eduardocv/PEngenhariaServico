@@ -176,7 +176,7 @@ public class TelaNovoRemetente extends javax.swing.JDialog {
         remetente.setTipo(cbTipo.getSelectedItem().toString());
         remetente.setTelefone(txtTelefone.getText());
         remetente.setEmail(txtEmail.getText());
-        remetente.setStatus("Ativo");
+        remetente.setStatus(true);
         if (novo) {
             remetenteDAO.insert(remetente);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");

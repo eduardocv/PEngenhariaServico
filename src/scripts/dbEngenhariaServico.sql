@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Remetente` (
   `tipo` VARCHAR(10) NULL,
   `email` VARCHAR(45) NULL,  
   `telefone` VARCHAR(15) NULL,
-  `status` VARCHAR(10) NOT NULL,
+  `status` BOOLEAN NOT NULL,
   PRIMARY KEY (`idRemetente`))
 ENGINE = InnoDB;
 
@@ -217,9 +217,9 @@ insert into componente values(38,'I07COJ058','ESTRUTURA METALICA TES TOUCH INOX 
 insert into componente values(39,'I07COJ059','CONJUNTO DE ISOPORES P/ TES TOUCH – V1.1.0',true);
 
 -- REMETENTE --
-insert into remetente values(1,'Não Identificado','--','  ','(00)0000-0000','Ativo');
-insert into remetente values(2,'Maintenance','RT','suporte@maintenance.com.br','(21)2215-6354','Ativo');
-insert into remetente values(3,'Ricardo Souto','TR','ricardo@spectp.com.br','(11)1111-1111','Ativo');
+insert into remetente values(1,'Não Identificado','--','  ','(00)0000-0000',true);
+insert into remetente values(2,'Maintenance','RT','suporte@maintenance.com.br','(21)2215-6354',true);
+insert into remetente values(3,'Ricardo Souto','TR','ricardo@spectp.com.br','(11)1111-1111',true);
 
 -- select * from dbEngenhariaServico.usuario;
 -- select * from dbEngenhariaServico.tecnico;
