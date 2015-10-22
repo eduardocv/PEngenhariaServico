@@ -281,7 +281,7 @@ public class TelaComponentes extends javax.swing.JDialog {
         if (linha == -1) {
             JOptionPane.showMessageDialog(rootPane, "Selecione o produto que deseja fazer a alteração!");
         } else {
-            if (tbComponente.getValueAt(linha, 3).equals(true)) {
+            if (tbComponente.getValueAt(linha, 3).equals("Ativo")) {
                 int id = Integer.parseInt(tbComponente.getValueAt(linha, 0).toString());
                 componente = componenteDAO.getComponenteById(id);
                 TelaNovoComponente telaNovoComponente = new TelaNovoComponente(null, true, false, componente);
