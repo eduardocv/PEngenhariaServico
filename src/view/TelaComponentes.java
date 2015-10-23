@@ -51,10 +51,12 @@ public class TelaComponentes extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("COMPONENTES");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         gbtnBuscaCodItem.add(rbtnCodigo);
         rbtnCodigo.setSelected(true);
         rbtnCodigo.setText("Código");
+        rbtnCodigo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rbtnCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtnCodigoActionPerformed(evt);
@@ -63,6 +65,7 @@ public class TelaComponentes extends javax.swing.JDialog {
 
         gbtnBuscaCodItem.add(rbtnProduto);
         rbtnProduto.setText("Componente");
+        rbtnProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rbtnProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtnProdutoActionPerformed(evt);
@@ -104,6 +107,7 @@ public class TelaComponentes extends javax.swing.JDialog {
                 "ID", "Código", "Produto", "Status"
             }
         ));
+        tbComponente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tbComponente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbComponenteMouseClicked(evt);
@@ -129,6 +133,7 @@ public class TelaComponentes extends javax.swing.JDialog {
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
         btnVoltar.setText("Voltar");
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -137,6 +142,7 @@ public class TelaComponentes extends javax.swing.JDialog {
 
         btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
         btnVisualizar.setText("Visualizar");
+        btnVisualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVisualizarActionPerformed(evt);
@@ -145,6 +151,7 @@ public class TelaComponentes extends javax.swing.JDialog {
 
         btnAtivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Raise.png"))); // NOI18N
         btnAtivar.setText("Ativar");
+        btnAtivar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAtivar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtivarActionPerformed(evt);
@@ -153,6 +160,7 @@ public class TelaComponentes extends javax.swing.JDialog {
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Modify.png"))); // NOI18N
         btnAlterar.setText("Alterar");
+        btnAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
@@ -161,6 +169,7 @@ public class TelaComponentes extends javax.swing.JDialog {
 
         btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Create.png"))); // NOI18N
         btnNovo.setText("Novo");
+        btnNovo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoActionPerformed(evt);

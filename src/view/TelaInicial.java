@@ -51,9 +51,10 @@ public class TelaInicial extends javax.swing.JDialog {
         btnLogoff = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnTecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/TecLab3.png"))); // NOI18N
+        btnTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTecnicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTecnicosActionPerformed(evt);
@@ -61,6 +62,7 @@ public class TelaInicial extends javax.swing.JDialog {
         });
 
         btnRemetentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/remetentes.jpg"))); // NOI18N
+        btnRemetentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRemetentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemetentesActionPerformed(evt);
@@ -68,6 +70,7 @@ public class TelaInicial extends javax.swing.JDialog {
         });
 
         btnManutencaoLaboratorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/manutencao.jpg"))); // NOI18N
+        btnManutencaoLaboratorio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnManutencaoLaboratorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManutencaoLaboratorioActionPerformed(evt);
@@ -75,6 +78,7 @@ public class TelaInicial extends javax.swing.JDialog {
         });
 
         btnProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ProdutosPequeno.png"))); // NOI18N
+        btnProdutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProdutosActionPerformed(evt);
@@ -82,6 +86,7 @@ public class TelaInicial extends javax.swing.JDialog {
         });
 
         btnComponentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ComponentesPequenos.jpg"))); // NOI18N
+        btnComponentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnComponentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComponentesActionPerformed(evt);
@@ -90,6 +95,7 @@ public class TelaInicial extends javax.swing.JDialog {
 
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/User group.png"))); // NOI18N
         btnUsuarios.setText("Usuários");
+        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuariosActionPerformed(evt);
@@ -98,6 +104,7 @@ public class TelaInicial extends javax.swing.JDialog {
 
         btnLogoff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Abort.png"))); // NOI18N
         btnLogoff.setText("Logoff");
+        btnLogoff.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogoff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoffActionPerformed(evt);
