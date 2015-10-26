@@ -87,11 +87,11 @@ public class TelaNovoTecnico extends javax.swing.JDialog {
                             .addComponent(txtNome)
                             .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(btnVoltar)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnSalvar)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addGap(114, 114, 114)
+                        .addComponent(btnSalvar)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnVoltar)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

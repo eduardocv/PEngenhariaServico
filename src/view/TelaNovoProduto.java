@@ -57,7 +57,7 @@ TelaNovoProduto(java.awt.Frame parent, boolean modal, boolean novo, Produto prod
             }
         });
 
-        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Redo.png"))); // NOI18N
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,11 +74,11 @@ TelaNovoProduto(java.awt.Frame parent, boolean modal, boolean novo, Produto prod
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(btnVoltar)
-                .addGap(75, 75, 75)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addComponent(btnSalvar)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGap(86, 86, 86)
+                .addComponent(btnVoltar)
+                .addGap(120, 120, 120))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()

@@ -118,9 +118,9 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnVoltar)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnSalvar))
+                        .addComponent(btnSalvar)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnVoltar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -166,11 +166,11 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnVoltar))
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnSalvar))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
