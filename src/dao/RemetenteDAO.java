@@ -18,13 +18,14 @@ public class RemetenteDAO extends MySQL {
         Connection c = this.getConnection();
 
         try {
-            PreparedStatement ps = c.prepareStatement("insert into Remetente ( nome, tipo, email, telefone, status) "
-                    + "values( ? , ? , ? , ? , ? )");
+            PreparedStatement ps = c.prepareStatement("insert into Remetente ( nome, tipo, email, telefone, status, outrasInfo) "
+                    + "values( ? , ? , ? , ? , ? , ? )");
             ps.setString(1, remetente.getNome());
             ps.setString(2, remetente.getTipo());
             ps.setString(3, remetente.getEmail());
             ps.setString(4, remetente.getTelefone());
             ps.setBoolean(5, remetente.isStatus());
+            ps.setString(6, remetente.getOutrasInfo());
 
             ps.execute();
             ps.close();
@@ -46,13 +47,14 @@ public class RemetenteDAO extends MySQL {
         Connection c = this.getConnection();
         try {
             PreparedStatement ps = c.prepareStatement("UPDATE Remetente "
-                    + "SET nome = ?, tipo = ?, email = ?, telefone = ?, status = ? WHERE idRemetente = ?");
+                    + "SET nome = ?, tipo = ?, email = ?, telefone = ?, status = ?, outrasInfo = ? WHERE idRemetente = ?");
             ps.setString(1, remetente.getNome());
             ps.setString(2, remetente.getTipo());
             ps.setString(3, remetente.getEmail());
             ps.setString(4, remetente.getTelefone());
             ps.setBoolean(5, remetente.isStatus());
-            ps.setInt(6, remetente.getIdRemetente());
+            ps.setString(6, remetente.getOutrasInfo());
+            ps.setInt(7, remetente.getIdRemetente());
             ps.execute();
 
             ps.close();
@@ -99,7 +101,7 @@ public class RemetenteDAO extends MySQL {
         Connection c = this.getConnection();
         java.util.List<Remetente> listaRemetentes = new ArrayList<Remetente>();
         try {
-            PreparedStatement ps = c.prepareStatement(" select idRemetente, nome, tipo, email, telefone, status from Remetente");
+            PreparedStatement ps = c.prepareStatement(" select idRemetente, nome, tipo, email, telefone, status, outrasInfo from Remetente");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -111,6 +113,7 @@ public class RemetenteDAO extends MySQL {
                 remetente.setEmail(rs.getString("email"));
                 remetente.setTelefone(rs.getString("telefone"));
                 remetente.setStatus(rs.getBoolean("status"));
+                remetente.setOutrasInfo(rs.getString("outrasInfo"));
 
                 listaRemetentes.add(remetente);
             }
@@ -136,7 +139,7 @@ public class RemetenteDAO extends MySQL {
         Remetente remetente = null;
         try {
 
-            PreparedStatement ps = c.prepareStatement("SELECT idRemetente, nome, tipo, email, telefone, status from Remetente"
+            PreparedStatement ps = c.prepareStatement("SELECT idRemetente, nome, tipo, email, telefone, status, outrasInfo from Remetente"
                     + " WHERE idRemetente = ? ");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -148,6 +151,7 @@ public class RemetenteDAO extends MySQL {
                 remetente.setEmail(rs.getString("email"));
                 remetente.setTelefone(rs.getString("telefone"));
                 remetente.setStatus(rs.getBoolean("status"));
+                remetente.setOutrasInfo(rs.getString("outrasInfo"));
             }
 
         } catch (SQLException ex) {

@@ -12,12 +12,22 @@ public class Remetente {
     private String email;
     private String telefone;
     private boolean status;
+    private String outrasInfo;
 
+    
     @Override
     public String toString() {
         return tipo + "  " + nome;
     }
 
+    public String getOutrasInfo() {
+        return outrasInfo;
+    }
+
+    public void setOutrasInfo(String outrasInfo) {
+        this.outrasInfo = outrasInfo;
+    }
+    
     public boolean isStatus() {
         return status;
     }

@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Remetente` (
   `email` VARCHAR(45) NULL,  
   `telefone` VARCHAR(15) NULL,
   `status` BOOLEAN NOT NULL,
+  `outrasInfo` VARCHAR(500) NULL,
   PRIMARY KEY (`idRemetente`))
 ENGINE = InnoDB;
 
@@ -75,7 +76,7 @@ ENGINE = InnoDB;
 -- Table `dbEngenhariaServico`.`ManutencaoLaboratorio`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`ManutencaoLaboratorio` (
-  `idManutencaoLaboratorio` INT NOT NULL AUTO_INCREMENT,
+  `idManut` INT NOT NULL AUTO_INCREMENT,
   `numSerie` VARCHAR(5) NULL,
   `produto` VARCHAR(45) NOT NULL,
   `remetente` VARCHAR(15) NOT NULL,
@@ -88,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`ManutencaoLaboratorio` (
   `tempoReparo` VARCHAR(10) NOT NULL,
   `Remetente_idRemetente` INT NOT NULL,
   `Tecnico_idTecnico` INT NOT NULL,
-  PRIMARY KEY (`idManutencaoLaboratorio`),
+  PRIMARY KEY (`idManut`),
   INDEX `fk_ManutencaoLaboratorio_Remetente1_idx` (`Remetente_idRemetente` ASC),
   INDEX `fk_ManutencaoLaboratorio_Tecnico1_idx` (`Tecnico_idTecnico` ASC),
   CONSTRAINT `fk_ManutencaoLaboratorio_Remetente1`
@@ -110,7 +111,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Componente` (
   `idComponente` INT NOT NULL AUTO_INCREMENT,
   `codComponente` VARCHAR(25) NOT NULL,
-  `componente` VARCHAR(45) NOT NULL,
+  `componente` VARCHAR(55) NOT NULL,
   `status` BOOLEAN NOT NULL,
   PRIMARY KEY (`idComponente`))
 ENGINE = InnoDB;
@@ -121,10 +122,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Produto_has_ManutencaoLaboratorio` (
   `Produto_idProduto` INT NOT NULL,
-  `ManutencaoLaboratorio_idManutencaoLaboratorio` INT NOT NULL,
+  `ManutencaoLaboratorio_idManut` INT NOT NULL,
   `Componente_idComponente` INT NOT NULL,
-  PRIMARY KEY (`Produto_idProduto`, `ManutencaoLaboratorio_idManutencaoLaboratorio`, `Componente_idComponente`),
-  INDEX `fk_Produto_has_ManutencaoLaboratorio_ManutencaoLaboratorio1_idx` (`ManutencaoLaboratorio_idManutencaoLaboratorio` ASC),
+  PRIMARY KEY (`Produto_idProduto`, `ManutencaoLaboratorio_idManut`, `Componente_idComponente`),
+  INDEX `fk_Produto_has_ManutencaoLaboratorio_ManutencaoLaboratorio1_idx` (`ManutencaoLaboratorio_idManut` ASC),
   INDEX `fk_Produto_has_ManutencaoLaboratorio_Produto1_idx` (`Produto_idProduto` ASC),
   INDEX `fk_Produto_has_ManutencaoLaboratorio_Componente1_idx` (`Componente_idComponente` ASC),
   CONSTRAINT `fk_Produto_has_ManutencaoLaboratorio_Produto1`
@@ -133,8 +134,8 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Produto_has_ManutencaoLaborato
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Produto_has_ManutencaoLaboratorio_ManutencaoLaboratorio1`
-    FOREIGN KEY (`ManutencaoLaboratorio_idManutencaoLaboratorio`)
-    REFERENCES `mydb`.`ManutencaoLaboratorio` (`idManutencaoLaboratorio`)
+    FOREIGN KEY (`ManutencaoLaboratorio_idManut`)
+    REFERENCES `mydb`.`ManutencaoLaboratorio` (`idManut`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Produto_has_ManutencaoLaboratorio_Componente1`
@@ -159,7 +160,7 @@ insert into produto values(1,'I07PLA046','Placa Transceptora RF2',true);
 insert into produto values(2,'I07PLA055','Placa Mtouch (flat)',true);
 insert into produto values(3,'I07PLA060','Placa Mtouch (usb)',true);
 insert into produto values(4,'I12IMP013','Impressora DAS 6 Botões',true);
-insert into produto values(5,'I12DSP011','Painel GAS OFF 5D','Ativo');
+insert into produto values(5,'I12DSP011','Painel GAS OFF 5D',true);
 insert into produto values(6,'I12IMP013','Impressora DAS 6 Botões',true);
 insert into produto values(7,'ImpMecafAd','Impressora Mecaf',true);
 insert into produto values(8,'I07PLA254','Placa PIC 4.1.2',true);
@@ -217,57 +218,57 @@ insert into componente values(38,'I07COJ058','ESTRUTURA METALICA TES TOUCH INOX 
 insert into componente values(39,'I07COJ059','CONJUNTO DE ISOPORES P/ TES TOUCH – V1.1.0',true);
 
 -- REMETENTE --
-insert into remetente values(1,'INFORSERVICE - RIO BRANCO','RT','coordenacao-ac@assistecnica.com.br','(68)3224-0100',false);
-insert into remetente values(2,'FABIO ROGERIO MOURA MAIA','RT','fabiomaiaeng@gmail.com','(92)8228-5628',false);
-insert into remetente values(3,'TECNOPOINT','RT','fabio@portaltecnopoint.com.br','(85)3046-1100',false);
-insert into remetente values(4,'FÊNIX SERVIÇOS E COMÉRCIO','RT','anderson@latecnologia.com.br','(27)3033-8486',true);
-insert into remetente values(5,'MAQPECAS INFORMÁTICA','RT','maqinfo@terra.com.br','(62)3225-9877',true);
-insert into remetente values(6,'TELEBRAE TELECOM','RT','telebrae@telebrae.com.br','(98)3231-3821',true);
-insert into remetente values(7,'CONECTAR','RT','suporte@conectar.inf.br','(31)3821-0966',false);
-insert into remetente values(8,'F4TI','RT','suporte.f4ti@f4ti.com.br','(38)3083-1744',false);
-insert into remetente values(9,'BELAITECH AUTOMAÇÃO','RT','assistencia@belaitech.com.br','(67)3383-1270',true);
-insert into remetente values(10,'TELETRON TELECOM','RT','vendas@teletron.com.br','(65)3623-2679',true);
-insert into remetente values(11,'COMPUSERVIS INFORMÁTICA','RT','adelton@compuservis.com.br','(86)3223-0619',true);
-insert into remetente values(12,'DICOREL','RT','dicorel@onda.com.br','(41)3022-7686',false);
-insert into remetente values(13,'HARDTEC','RT','hardtec@onda.com.br','(41)3027-6603',true);
-insert into remetente values(14,'AUTOMATEQ','RT','cleber@automateq.com.br','(43)3356-3133',true);
-insert into remetente values(15,'RB SYSTEM','RT','suporte@rbsystem.com.br','(45)3035-5622',true);
-insert into remetente values(16,'MAINTENANCE','RT','suporte@maintenance.com.br','(21)2215-6354',true);
-insert into remetente values(17,'HENDRIK RAMMI','RT','hendrikrammi@gmail.com','(21)3576-0127',true);
-insert into remetente values(18,'EXPRESSOINFO','RT','contato@expressoinfo.com.br','(24)3337-5312',true);
-insert into remetente values(19,'NOVA ASSISTÊNCIA','RT','mariano@assistecnica.com.br','(69)3229-3620',true);
-insert into remetente values(20,'N&B AUTOMAÇÃO','RT','adm@nbautomacao.com.br','(49)3322-1243',true);
-insert into remetente values(21,'INOVEE INFORMATICA','RT','renan@inovee.com.br','(47)3804-3132',true);
-insert into remetente values(22,'TOP INFORMÁTICA','RT','alisson@top.inf.br','(48)3045-1166',true);
-insert into remetente values(23,'FHORTEC DO BRASIL INF.','RT','fhortec@iscc.com.br','(49)3251-6112',true);
-insert into remetente values(24,'YAMASOFT AUTOMACAO','RT','yamasoft@yamasoft.com.br','(14)3413-2107',true);
-insert into remetente values(25,'TECHNOEASY','RT','jvalderio@technoeasy.com.br','(18)3903-3139',true);
-insert into remetente values(26,'BBS INFORMATICA','RT','comercial@bbsinformatica.com.br','(34)3236-9080',true);
-insert into remetente values(27,'RIOPREMAC INFORMATICA','RT','riopremac@hotmail.com','(17)3235-3831',false);
-insert into remetente values(28,'SMART SYSTEMS','RT','financeiro@ssystems.com.br','(12)3923-4183',true);
-insert into remetente values(29,'SANTANA SEGURANÇA','RT','suportebh@santanaseguranca.com.br','(31)3492-1330',true);
-insert into remetente values(30,'CS COMPUTADORES','RT','csassistenciatecnica@cscomputadores.com.br','(55)3025-7070',true);
-insert into remetente values(31,'SUPORTE INFORMÁTICA','RT','tmariani@suporteprime.com.br','(54)3601-2930',false);
-insert into remetente values(32,'INTEREX TEC','RT','interex@interex.com.br','(51)3303-9444',false);
-insert into remetente values(33,'ALTEC TELECOM','RT','larissa.nunes@altectelecom.com.br','(91)4008-6700',true);
-insert into remetente values(34,'VELIT SOLUÇÕES PUBLICITÁRIAS','RT','producao@velitmidia.com.br','(55)3402-3536',false);
-insert into remetente values(35,'INSTALE','RT','sac@instale.com.br','(71)2106-4200',true);
-insert into remetente values(36,'Renato da Silva Godoi','TR','renato.godoi@specto.com.br','(11)9815-77214',true);
-insert into remetente values(37,'Fabio Eduardo Paiva','TR','fabio.eduardo@specto.com.br','(19)9813-43592',true);
-insert into remetente values(38,'Helio Rubens Soliano','TR','helio.soliano@specto.com.br','(11)9825-14685',true);
-insert into remetente values(39,'Jaime Cruz Gouveia Filho','TR','jaime.gouveia@specto.com.br','(81)9647-7800',true);
-insert into remetente values(40,'José Eduardo Pedreira Nunes','TR','jose.eduardo@specto.com.br','(71)9109-0381',true);
-insert into remetente values(41,'Juliano de Oliveira Bitencourt','TR','juliano.oliveira@specto.com.br','(51)8574-7006',false);
-insert into remetente values(42,'Leandro dos Santos Honorato','TR','leandro.santos@specto.com.br','(11)9828-82370',true);
-insert into remetente values(43,'Leonardo Goudinho Colares','TR','leonardo.goudinho@specto.com.br','(51)8131-4855',true);
-insert into remetente values(44,'Fernando Souza de Alexandria','TR','fernando.souza@specto.com.br','(11)9827-1154',false);
-insert into remetente values(45,'Marcus Vinicius Jorge','TR','marcus.jorge@specto.com.br','(11)9828-82339',false);
-insert into remetente values(46,'Orlando Maraccini Neto','TR','orlando.maraccini@specto.com.br','(21)9811-25305',true);
-insert into remetente values(47,'Reinaldo Alexandre Avelino de Souza','TR','reinaldo.avelino@specto.com.br','(11)9825-14161',true);
-insert into remetente values(48,'Ricardo Souto da Silva','TR','ricardo@specto.com.br','(14)9811-25305',true);
-insert into remetente values(49,'Geraldo Lopes dos Santos','TR','geraldo.santos@specto.com.br','(11)9823-30789',false);
-insert into remetente values(50,'Vanderlei Pereira do Nascimento','TR','vanderlei.nascimento@specto.com.br','(11)9825-14689',true);
-insert into remetente values(51,'Wagner Jorge Pimentel','TR','wagner.pimentel@specto.com.br','(31)6963-4075',true);
+insert into remetente values(1,'INFORSERVICE - RIO BRANCO','RT','coordenacao-ac@assistecnica.com.br','(68)3224-0100',false,'');
+insert into remetente values(2,'FABIO ROGERIO MOURA MAIA','RT','fabiomaiaeng@gmail.com','(92)8228-5628',false,'');
+insert into remetente values(3,'TECNOPOINT','RT','fabio@portaltecnopoint.com.br','(85)3046-1100',false,'');
+insert into remetente values(4,'FÊNIX SERVIÇOS E COMÉRCIO','RT','anderson@latecnologia.com.br','(27)3033-8486',true,'');
+insert into remetente values(5,'MAQPECAS INFORMÁTICA','RT','maqinfo@terra.com.br','(62)3225-9877',true,'');
+insert into remetente values(6,'TELEBRAE TELECOM','RT','telebrae@telebrae.com.br','(98)3231-3821',true,'');
+insert into remetente values(7,'CONECTAR','RT','suporte@conectar.inf.br','(31)3821-0966',false,'');
+insert into remetente values(8,'F4TI','RT','suporte.f4ti@f4ti.com.br','(38)3083-1744',false,'');
+insert into remetente values(9,'BELAITECH AUTOMAÇÃO','RT','assistencia@belaitech.com.br','(67)3383-1270',true,'');
+insert into remetente values(10,'TELETRON TELECOM','RT','vendas@teletron.com.br','(65)3623-2679',true,'');
+insert into remetente values(11,'COMPUSERVIS INFORMÁTICA','RT','adelton@compuservis.com.br','(86)3223-0619',true,'');
+insert into remetente values(12,'DICOREL','RT','dicorel@onda.com.br','(41)3022-7686',false,'');
+insert into remetente values(13,'HARDTEC','RT','hardtec@onda.com.br','(41)3027-6603',true,'');
+insert into remetente values(14,'AUTOMATEQ','RT','cleber@automateq.com.br','(43)3356-3133',true,'');
+insert into remetente values(15,'RB SYSTEM','RT','suporte@rbsystem.com.br','(45)3035-5622',true,'');
+insert into remetente values(16,'MAINTENANCE','RT','suporte@maintenance.com.br','(21)2215-6354',true,'');
+insert into remetente values(17,'HENDRIK RAMMI','RT','hendrikrammi@gmail.com','(21)3576-0127',true,'');
+insert into remetente values(18,'EXPRESSOINFO','RT','contato@expressoinfo.com.br','(24)3337-5312',true,'');
+insert into remetente values(19,'NOVA ASSISTÊNCIA','RT','mariano@assistecnica.com.br','(69)3229-3620',true,'');
+insert into remetente values(20,'N&B AUTOMAÇÃO','RT','adm@nbautomacao.com.br','(49)3322-1243',true,'');
+insert into remetente values(21,'INOVEE INFORMATICA','RT','renan@inovee.com.br','(47)3804-3132',true,'');
+insert into remetente values(22,'TOP INFORMÁTICA','RT','alisson@top.inf.br','(48)3045-1166',true,'');
+insert into remetente values(23,'FHORTEC DO BRASIL INF.','RT','fhortec@iscc.com.br','(49)3251-6112',true,'');
+insert into remetente values(24,'YAMASOFT AUTOMACAO','RT','yamasoft@yamasoft.com.br','(14)3413-2107',true,'');
+insert into remetente values(25,'TECHNOEASY','RT','jvalderio@technoeasy.com.br','(18)3903-3139',true,'');
+insert into remetente values(26,'BBS INFORMATICA','RT','comercial@bbsinformatica.com.br','(34)3236-9080',true,'');
+insert into remetente values(27,'RIOPREMAC INFORMATICA','RT','riopremac@hotmail.com','(17)3235-3831',false,'');
+insert into remetente values(28,'SMART SYSTEMS','RT','financeiro@ssystems.com.br','(12)3923-4183',true,'');
+insert into remetente values(29,'SANTANA SEGURANÇA','RT','suportebh@santanaseguranca.com.br','(31)3492-1330',true,'');
+insert into remetente values(30,'CS COMPUTADORES','RT','csassistenciatecnica@cscomputadores.com.br','(55)3025-7070',true,'');
+insert into remetente values(31,'SUPORTE INFORMÁTICA','RT','tmariani@suporteprime.com.br','(54)3601-2930',false,'');
+insert into remetente values(32,'INTEREX TEC','RT','interex@interex.com.br','(51)3303-9444',false,'');
+insert into remetente values(33,'ALTEC TELECOM','RT','larissa.nunes@altectelecom.com.br','(91)4008-6700',true,'');
+insert into remetente values(34,'VELIT SOLUÇÕES PUBLICITÁRIAS','RT','producao@velitmidia.com.br','(55)3402-3536',false,'');
+insert into remetente values(35,'INSTALE','RT','sac@instale.com.br','(71)2106-4200',true,'');
+insert into remetente values(36,'Renato da Silva Godoi','TR','renato.godoi@specto.com.br','(11)9815-77214',true,'');
+insert into remetente values(37,'Fabio Eduardo Paiva','TR','fabio.eduardo@specto.com.br','(19)9813-43592',true,'');
+insert into remetente values(38,'Helio Rubens Soliano','TR','helio.soliano@specto.com.br','(11)9825-14685',true,'');
+insert into remetente values(39,'Jaime Cruz Gouveia Filho','TR','jaime.gouveia@specto.com.br','(81)9647-7800',true,'');
+insert into remetente values(40,'José Eduardo Pedreira Nunes','TR','jose.eduardo@specto.com.br','(71)9109-0381',true,'');
+insert into remetente values(41,'Juliano de Oliveira Bitencourt','TR','juliano.oliveira@specto.com.br','(51)8574-7006',false,'');
+insert into remetente values(42,'Leandro dos Santos Honorato','TR','leandro.santos@specto.com.br','(11)9828-82370',true,'');
+insert into remetente values(43,'Leonardo Goudinho Colares','TR','leonardo.goudinho@specto.com.br','(51)8131-4855',true,'');
+insert into remetente values(44,'Fernando Souza de Alexandria','TR','fernando.souza@specto.com.br','(11)9827-1154',false,'');
+insert into remetente values(45,'Marcus Vinicius Jorge','TR','marcus.jorge@specto.com.br','(11)9828-82339',false,'');
+insert into remetente values(46,'Orlando Maraccini Neto','TR','orlando.maraccini@specto.com.br','(21)9811-25305',true,'');
+insert into remetente values(47,'Reinaldo Alexandre Avelino de Souza','TR','reinaldo.avelino@specto.com.br','(11)9825-14161',true,'');
+insert into remetente values(48,'Ricardo Souto da Silva','TR','ricardo@specto.com.br','(14)9811-25305',true,'');
+insert into remetente values(49,'Geraldo Lopes dos Santos','TR','geraldo.santos@specto.com.br','(11)9823-30789',false,'');
+insert into remetente values(50,'Vanderlei Pereira do Nascimento','TR','vanderlei.nascimento@specto.com.br','(11)9825-14689',true,'');
+insert into remetente values(51,'Wagner Jorge Pimentel','TR','wagner.pimentel@specto.com.br','(31)6963-4075',true,'');
 
 -- select * from dbEngenhariaServico.usuario;
 -- select * from dbEngenhariaServico.tecnico;
