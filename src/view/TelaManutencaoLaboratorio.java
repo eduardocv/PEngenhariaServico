@@ -17,13 +17,14 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-        atualizaTabelaManut();
+        //atualizaTabelaManut();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gbtnPesquisar = new javax.swing.ButtonGroup();
         txtPesquisa = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JButton();
         btnVisualizar = new javax.swing.JButton();
@@ -33,10 +34,10 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbManut = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        rbtnProduto = new javax.swing.JRadioButton();
+        rbtnNumSerie = new javax.swing.JRadioButton();
+        rbtnRemetente = new javax.swing.JRadioButton();
+        rbtnData = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -159,37 +160,42 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Pesquisar");
 
-        jRadioButton1.setText("Produto");
+        gbtnPesquisar.add(rbtnProduto);
+        rbtnProduto.setText("Produto");
 
-        jRadioButton2.setText("Nº de Série");
+        gbtnPesquisar.add(rbtnNumSerie);
+        rbtnNumSerie.setText("Nº de Série");
 
-        jRadioButton3.setText("Remetente");
+        gbtnPesquisar.add(rbtnRemetente);
+        rbtnRemetente.setText("Remetente");
 
-        jRadioButton4.setText("Data");
+        gbtnPesquisar.add(rbtnData);
+        rbtnData.setText("Data");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 739, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(rbtnProduto)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2)
+                                .addComponent(rbtnNumSerie)
                                 .addGap(21, 21, 21)
-                                .addComponent(jRadioButton3))
+                                .addComponent(rbtnRemetente))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(103, 103, 103)
                                 .addComponent(jLabel1)))
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton4)
+                        .addComponent(rbtnData)
                         .addGap(18, 18, 18)
                         .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -216,21 +222,20 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(btnVisualizar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnVoltar)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btnVoltar))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton3)
-                            .addComponent(jRadioButton4))
-                        .addGap(13, 13, 13)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(rbtnProduto)
+                            .addComponent(rbtnNumSerie)
+                            .addComponent(rbtnRemetente)
+                            .addComponent(rbtnData))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -307,12 +312,13 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     private javax.swing.JToggleButton btnRelatorios;
     private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.ButtonGroup gbtnPesquisar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JRadioButton rbtnData;
+    private javax.swing.JRadioButton rbtnNumSerie;
+    private javax.swing.JRadioButton rbtnProduto;
+    private javax.swing.JRadioButton rbtnRemetente;
     private javax.swing.JTable tbManut;
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
