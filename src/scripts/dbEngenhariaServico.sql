@@ -10,10 +10,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `dbEngenhariaServico` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `dbEngenhariaServico` ;
 
@@ -77,15 +73,16 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`ManutencaoLaboratorio` (
   `idManut` INT NOT NULL AUTO_INCREMENT,
-  `numSerie` VARCHAR(5) NULL,
-  `produto` VARCHAR(45) NOT NULL,
   `remetente` VARCHAR(15) NOT NULL,
-  `defeitoRelatado` VARCHAR(15) NULL,
-  `defeitoApresentado` VARCHAR(15) NOT NULL,
+  `produto` VARCHAR(45) NOT NULL,
+  `defRelatado` VARCHAR(15) NULL,
+  `defApresentado` VARCHAR(15) NOT NULL,
   `data` VARCHAR(10) NOT NULL,
+  `numSerie` VARCHAR(5) NULL,
   `chamadoOat` VARCHAR(5) NULL,
-  `descricaoAtividades` VARCHAR(45) NOT NULL,
-  `componenteUtilizado` VARCHAR(45) NULL,
+  `corrigidoEmCampo` BOOLEAN NOT NULL,
+  `descAtividades` VARCHAR(45) NOT NULL,
+  `componentes` VARCHAR(500) NULL,
   `tempoReparo` VARCHAR(10) NOT NULL,
   `Remetente_idRemetente` INT NOT NULL,
   `Tecnico_idTecnico` INT NOT NULL,

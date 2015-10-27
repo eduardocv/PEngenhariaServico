@@ -1,45 +1,49 @@
-
-
 package view;
 
 import dao.ComponenteDAO;
 import dao.ProdutoDAO;
 import dao.RemetenteDAO;
 import entity.Componente;
+import entity.ManutLaboratorio;
 import entity.Produto;
 import entity.Remetente;
 import entity.Usuario;
 import java.text.SimpleDateFormat;
+import java.util.AbstractSequentialList;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import entity.Usuario;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author eduardo.vieira
  */
 public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
-
+List<Componente> componentes = new ArrayList<Componente>();
+Componente componente;
+ManutLaboratorio manutLaboratorio;
     /**
      * Creates new form TelaManutencaoLaboratorio
      */
-    public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal) {
+    public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal, ManutLaboratorio manutLaboratorio) {
         super(parent, modal);
-        setTitle("Manutenção de equipamentos");       
+        setTitle("Manutenção de equipamentos");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
         atualizaProduto();
         atualizaRemetente();
         atualizaComponente();
+        
         lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-    //    uhuuulll manda a hora atual para o label.
-   lblUsuario.setText(usuario.getNome());
-   // fazer uma maneira que o nome do usuario apareça aqui.
+        //    uhuuulll manda a data atual para o label.
+        lblUsuario.setText(usuario.getNome());
+        // fazer uma maneira que o nome do usuario apareça aqui.
+        
+       
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -48,7 +52,7 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         txtTempoReparo = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        lstMaterialUtilizado = new javax.swing.JList();
+        lstComponentes = new javax.swing.JList();
         btnExcluir = new javax.swing.JButton();
         btnIncluir = new javax.swing.JButton();
         cbComponente = new javax.swing.JComboBox();
@@ -65,17 +69,17 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         lblData = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        chbCorrigidoEmCampo = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtDescAtividades = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
-        txtDefeitoRelatado = new javax.swing.JTextField();
-        txtDefeitoConstatado = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtDefRelatado = new javax.swing.JTextField();
+        txtDefApresentado = new javax.swing.JTextField();
+        btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -90,13 +94,18 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
 
         jLabel8.setText("Tempo aproximado de reparo:");
 
-        jScrollPane2.setViewportView(lstMaterialUtilizado);
+        jScrollPane2.setViewportView(lstComponentes);
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Bad mark.png"))); // NOI18N
         btnExcluir.setText("Excluir");
 
         btnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Good mark.png"))); // NOI18N
         btnIncluir.setText("Incluir");
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
+            }
+        });
 
         cbComponente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,18 +174,18 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("Defeito Constatado:");
+        jLabel2.setText("Defeito Apresentado:");
 
         lblData.setText("-");
 
         jLabel3.setText("Data:");
 
-        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jCheckBox1.setText("Poderia ter sido corrigido em campo");
+        chbCorrigidoEmCampo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        chbCorrigidoEmCampo.setText("Poderia ter sido corrigido em campo");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Descrição das atividades"));
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(txtDescAtividades);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -232,7 +241,7 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblUsuario))
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jCheckBox1)
+                                .addComponent(chbCorrigidoEmCampo)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
@@ -252,14 +261,14 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
                                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtDefeitoRelatado, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDefeitoConstatado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(txtDefRelatado, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDefApresentado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cbProduto, cbRemetente, txtDefeitoConstatado, txtDefeitoRelatado});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cbProduto, cbRemetente, txtDefApresentado, txtDefRelatado});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,11 +289,11 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtDefeitoRelatado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDefRelatado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtDefeitoConstatado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDefApresentado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -294,13 +303,18 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(lblData))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(chbCorrigidoEmCampo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Save.png"))); // NOI18N
-        jButton1.setText("Salvar");
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Save.png"))); // NOI18N
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
         btnVoltar.setText("Voltar");
@@ -322,7 +336,7 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
                         .addGap(10, 10, 10)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnSalvar)
                         .addGap(33, 33, 33)
                         .addComponent(btnVoltar)
                         .addGap(46, 46, 46)))
@@ -337,7 +351,7 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnSalvar)
                     .addComponent(btnVoltar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -346,41 +360,70 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProdutoActionPerformed
-    
+
     }//GEN-LAST:event_cbProdutoActionPerformed
 
     private void cbRemetenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRemetenteActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cbRemetenteActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void cbComponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbComponenteActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cbComponenteActionPerformed
-public void atualizaRemetente(){
+
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+       if (componente == null) {
+           componente = new Componente();
+       }else{
+           componentes.remove(componente);
+       }
+    
+        componente.setComponente((String)cbComponente.getSelectedItem());
+    }//GEN-LAST:event_btnIncluirActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    manutLaboratorio.setRemetente(cbRemetente.getSelectedItem().toString());
+    manutLaboratorio.setProduto(cbProduto.getSelectedItem().toString());
+    manutLaboratorio.setDefRelatado(txtDefRelatado.getText());
+    manutLaboratorio.setDefApresentado(txtDefApresentado.getText());
+    manutLaboratorio.setData(lblData.getText());//esta pegando STRING
+    manutLaboratorio.setNumSerie(txtNumSerie.getText());
+    manutLaboratorio.setChamadoOat(txtChamadoOat.getText());
+    manutLaboratorio.setCorrigidoEmCampo(rootPaneCheckingEnabled);
+    manutLaboratorio.setDescAtividades(txtDescAtividades.getText());
+    
+    
+    }//GEN-LAST:event_btnSalvarActionPerformed
+    public void atualizaRemetente() {
         RemetenteDAO remetenteDAO = new RemetenteDAO();
-       List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
-       for (Remetente remetente : listarRemetentes){
-           cbRemetente.addItem(remetente);
-       }
+        List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
+        for (Remetente remetente : listarRemetentes) {
+            cbRemetente.addItem(remetente);
+        }
     }
-    public void atualizaProduto(){
+
+    public void atualizaProduto() {
         ProdutoDAO produtoDAO = new ProdutoDAO();
-       List<Produto> listarProduto = produtoDAO.listarProdutos();
-       for (Produto produto : listarProduto){
-           cbProduto.addItem(produto);
-       }
-          }
-     public void atualizaComponente(){
+        List<Produto> listarProduto = produtoDAO.listarProdutos();
+        for (Produto produto : listarProduto) {
+            cbProduto.addItem(produto);
+        }
+    }
+
+    public void atualizaComponente() {
         ComponenteDAO componenteDAO = new ComponenteDAO();
         List<Componente> listarComponentes = componenteDAO.listarComponentes();
-        for (Componente componente : listarComponentes){
+        for (Componente componente : listarComponentes) {
             cbComponente.addItem(componente);
         }
-       }
+    }
+    
+    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -409,7 +452,7 @@ public void atualizaRemetente(){
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaNovoManutencaoLaboratorio dialog = new TelaNovoManutencaoLaboratorio(new javax.swing.JFrame(), true);
+                TelaNovoManutencaoLaboratorio dialog = new TelaNovoManutencaoLaboratorio(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -424,12 +467,12 @@ public void atualizaRemetente(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnIncluir;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox cbComponente;
     private javax.swing.JComboBox cbProduto;
     private javax.swing.JComboBox cbRemetente;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox chbCorrigidoEmCampo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -445,18 +488,17 @@ public void atualizaRemetente(){
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JList lstMaterialUtilizado;
+    private javax.swing.JList lstComponentes;
     private javax.swing.JTextField txtChamadoOat;
-    private javax.swing.JTextField txtDefeitoConstatado;
-    private javax.swing.JTextField txtDefeitoRelatado;
+    private javax.swing.JTextField txtDefApresentado;
+    private javax.swing.JTextField txtDefRelatado;
+    private javax.swing.JTextPane txtDescAtividades;
     private javax.swing.JTextField txtNumSerie;
     private javax.swing.JFormattedTextField txtTempoReparo;
     // End of variables declaration//GEN-END:variables
 
-
-Usuario usuario = new Usuario();
+    Usuario usuario = new Usuario();
 }
