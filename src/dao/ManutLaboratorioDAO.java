@@ -135,4 +135,30 @@ public class ManutLaboratorioDAO extends MySQL {
         return null;
     }
     
+    public ManutLaboratorio getManutById (int id) {
+        Connection c = this.getConnection();
+        ManutLaboratorio manutLaboratorio = null;
+        try{
+            PreparedStatement ps = c.prepareStatement("SELECT idManutLaboratorio, codProduto, produto, status from Produto WHERE idProduto = ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                manutLaboratorio = new ManutLaboratorio();
+                manutLaboratorio.setIdManutLaboratorio(rs.getInt("idManutLaboratorio"));
+               // manutLaboratorio.set(rs.getString("codProduto"));
+                manutLaboratorio.setProduto(rs.getString("produto"));
+                manutLaboratorio.setRemetente(rs.getString("remetente"));
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                c.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return manutLaboratorio;
+    }
+    
 }
