@@ -51,6 +51,7 @@ public class TelaInicial extends javax.swing.JDialog {
         btnLogoff = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle(".");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnTecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/TecLab3.png"))); // NOI18N
