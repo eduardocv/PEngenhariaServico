@@ -5,6 +5,7 @@ import dao.ProdutoDAO;
 import dao.RemetenteDAO;
 import entity.Componente;
 import entity.ManutLaboratorio;
+import dao.ManutLaboratorioDAO;
 import entity.Produto;
 import entity.Remetente;
 import entity.Usuario;
@@ -14,18 +15,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author eduardo.vieira
- */
+import java.awt.FlowLayout;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+
+
 public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
 List<Componente> componentes = new ArrayList<Componente>();
 Componente componente;
-ManutLaboratorio manutLaboratorio;
-    /**
-     * Creates new form TelaManutencaoLaboratorio
-     */
+//ManutLaboratorio manutLaboratorio;
+   
     public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal, ManutLaboratorio manutLaboratorio) {
         super(parent, modal);
         setTitle("Manutenção de equipamentos");
@@ -380,10 +381,26 @@ ManutLaboratorio manutLaboratorio;
     manutLaboratorio.setData(lblData.getText());//esta pegando STRING
     manutLaboratorio.setNumSerie(txtNumSerie.getText());
     manutLaboratorio.setChamadoOat(txtChamadoOat.getText());
-    manutLaboratorio.setCorrigidoEmCampo(rootPaneCheckingEnabled);
+    //manutLaboratorio.isCorrigidoEmCampo(chbCorrigidoEmCampo.isSelected());
+   if (chbCorrigidoEmCampo.isSelected()){
+      //TRUE
+   }else{
+       //FALSE
+   }
+   
     manutLaboratorio.setDescAtividades(txtDescAtividades.getText());
+    manutLaboratorio.setTempoReparo(txtTempoReparo.getText());
     
-    
+    if (novo) {
+    manutLaboratorioDAO.insert(manutLaboratorio);
+        JOptionPane.showMessageDialog(null,"Cadastro efetuado com sucesso!");
+        limparTela();
+    }else{
+        manutLaboratorioDAO.update(manutLaboratorio);
+        JOptionPane.showMessageDialog(null,"Alteração efetuada com sucesso!");
+        this.dispose();
+    }
+
     }//GEN-LAST:event_btnSalvarActionPerformed
     public void atualizaRemetente() {
         RemetenteDAO remetenteDAO = new RemetenteDAO();
@@ -488,4 +505,13 @@ ManutLaboratorio manutLaboratorio;
     // End of variables declaration//GEN-END:variables
 
     Usuario usuario = new Usuario();
+    ManutLaboratorio manutLaboratorio = new ManutLaboratorio();
+    ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
+    boolean novo = true;
+    
+  
+    
+    public void limparTela(){
+       //por os campos a serem limpos
+    }
 }

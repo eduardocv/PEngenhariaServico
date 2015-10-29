@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ManutLaboratorioDAO extends MySQL {
 
@@ -32,7 +33,7 @@ public class ManutLaboratorioDAO extends MySQL {
             ps.setBoolean(8, manutLaboratorio.isCorrigidoEmCampo());
             ps.setString(9, manutLaboratorio.getDescAtividades());
             ps.setString(10, manutLaboratorio.getTempoReparo());
-            //ps.setComponentes(11,manutLaboratorio.getComponentes(List<Componente>));
+           // ps.setComponentes(11,manutLaboratorio.getComponentes());
             //manutLaboratorio.getComponentes());
 
             ps.execute();
