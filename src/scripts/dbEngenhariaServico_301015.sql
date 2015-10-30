@@ -78,8 +78,8 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`ManutencaoLaboratorio` (
   `defRelatado` VARCHAR(15) NULL,
   `defApresentado` VARCHAR(15) NULL,
   `data` VARCHAR(10) NULL,
-  `numSerie` VARCHAR(5) NULL,
-  `chamadoOat` VARCHAR(5) NULL,
+  `numSerie` VARCHAR(10) NULL,
+  `chamadoOat` VARCHAR(10) NULL,
   `corrigidoEmCampo` BOOLEAN NULL,
   `descAtividades` VARCHAR(45) NOT NULL,
   `componentes` VARCHAR(500) NULL,
@@ -275,4 +275,3 @@ insert into remetente values(51,'Wagner Jorge Pimentel','TR','wagner.pimentel@sp
 -- select * from dbengenhariaservico.ManutencaoLaboratorio;
 
 -- -------------------------------------------------------------------------------------------------
-

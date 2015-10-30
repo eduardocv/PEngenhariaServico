@@ -174,10 +174,10 @@
                 <Column editable="true" title="Produto" type="java.lang.Object"/>
                 <Column editable="true" title="Def. Relatado" type="java.lang.Object"/>
                 <Column editable="true" title="Def. Apresentado" type="java.lang.Object"/>
-                <Column editable="true" title="Data" type="java.lang.Object"/>
                 <Column editable="true" title="Num. Serie" type="java.lang.Object"/>
                 <Column editable="true" title="Cham. OAT" type="java.lang.Object"/>
-                <Column editable="true" title="Corre&#xe7;&#xe3;o poderia ser feita em campo?" type="java.lang.Object"/>
+                <Column editable="true" title="Desc. Atividades" type="java.lang.Object"/>
+                <Column editable="true" title="Tempo Rep." type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

@@ -17,7 +17,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-        //atualizaTabelaManut();
+        atualizaTabelaManut();
     }
 
     @SuppressWarnings("unchecked")
@@ -136,7 +136,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Remetente", "Produto", "Def. Relatado", "Def. Apresentado", "Data", "Num. Serie", "Cham. OAT", "Correção poderia ser feita em campo?"
+                "ID", "Remetente", "Produto", "Def. Relatado", "Def. Apresentado", "Num. Serie", "Cham. OAT", "Desc. Atividades", "Tempo Rep."
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -327,7 +327,6 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
 
         List<ManutLaboratorio> listarManuts = manutLaboratorioDAO.listarManuts();
         DefaultTableModel model = (DefaultTableModel) this.tbManut.getModel();
-
         model.setRowCount(listarManuts.size());
         for (int i = 0; i < listarManuts.size(); i++) {
             model.setValueAt(listarManuts.get(i).getIdManutLaboratorio(), i, 0);
@@ -335,11 +334,12 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             model.setValueAt(listarManuts.get(i).getProduto(), i, 2);
             model.setValueAt(listarManuts.get(i).getDefRelatado(), i, 3);
             model.setValueAt(listarManuts.get(i).getDefApresentado(), i, 4);
-            model.setValueAt(listarManuts.get(i).getData(), i, 5);
-            model.setValueAt(listarManuts.get(i).getNumSerie(), i, 6);
-            model.setValueAt(listarManuts.get(i).getChamadoOat(), i, 7);
-            model.setValueAt(listarManuts.get(i).isCorrigidoEmCampo(), i, 8);
-
+            //model.setValueAt(listarManuts.get(i).getData(), i, 5);
+            model.setValueAt(listarManuts.get(i).getNumSerie(), i, 5);
+            model.setValueAt(listarManuts.get(i).getChamadoOat(), i, 6);
+            //model.setValueAt(listarManuts.get(i).isCorrigidoEmCampo(), i, 8);
+            model.setValueAt(listarManuts.get(i).getDescAtividades(), i, 7);
+            model.setValueAt(listarManuts.get(i).getTempoReparo(), i, 8);
         }
     }
     ManutLaboratorio manutLaboratorio = new ManutLaboratorio();
