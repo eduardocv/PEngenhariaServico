@@ -378,15 +378,15 @@ Componente componente;
     manutLaboratorio.setProduto(cbProduto.getSelectedItem().toString());
     manutLaboratorio.setDefRelatado(txtDefRelatado.getText());
     manutLaboratorio.setDefApresentado(txtDefApresentado.getText());
-    manutLaboratorio.setData(lblData.getText());//esta pegando STRING
+   // manutLaboratorio.setData(lblData.getText());//esta pegando STRING
     manutLaboratorio.setNumSerie(txtNumSerie.getText());
     manutLaboratorio.setChamadoOat(txtChamadoOat.getText());
     //manutLaboratorio.isCorrigidoEmCampo(chbCorrigidoEmCampo.isSelected());
-   if (chbCorrigidoEmCampo.isSelected()){
+   //if (chbCorrigidoEmCampo.isSelected()){
       //TRUE
-   }else{
+   //}else{
        //FALSE
-   }
+   //}
    
     manutLaboratorio.setDescAtividades(txtDescAtividades.getText());
     manutLaboratorio.setTempoReparo(txtTempoReparo.getText());
@@ -512,6 +512,11 @@ Componente componente;
   
     
     public void limparTela(){
-       //por os campos a serem limpos
+     txtChamadoOat.setText("");
+     txtDefApresentado.setText("");
+     txtDefRelatado.setText("");
+     txtDescAtividades.setText("");
+     txtNumSerie.setText("");
+     txtTempoReparo.setText("");
     }
 }
