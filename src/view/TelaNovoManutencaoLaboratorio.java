@@ -33,9 +33,9 @@ Componente componente;
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-        atualizaProduto();
-        atualizaRemetente();
-        atualizaComponente();
+        //atualizaProduto();
+        //atualizaRemetente();
+        //atualizaComponente();
         
         lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
         //    uhuuulll manda a data atual para o label.
@@ -50,14 +50,19 @@ Componente componente;
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
+        this.novo = novo;
+        this.manutLaboratorio = manutLaboratorio;
         atualizaProduto();
         atualizaRemetente();
         atualizaComponente();
+        if (novo){
+            lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+             lblUsuario.setText(usuario.getNome());
+        }else{
+            
+        }
         
-        lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-        //    uhuuulll manda a data atual para o label.
-        lblUsuario.setText(usuario.getNome());
-        // fazer uma maneira que o nome do usuario apareça aqui.
+        
         
        
     }

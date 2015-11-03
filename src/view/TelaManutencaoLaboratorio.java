@@ -13,14 +13,14 @@ import entity.EnumPerfil;
 public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
 
     public TelaManutencaoLaboratorio(java.awt.Frame parent, boolean modal) {
-                initComponents();
+        initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
         atualizaTabelaManut();
     }
-    
-     public TelaManutencaoLaboratorio(java.awt.Frame parent, boolean modal, Usuario usuario) {
-        
+
+    public TelaManutencaoLaboratorio(java.awt.Frame parent, boolean modal, Usuario usuario) {
+
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
@@ -28,19 +28,9 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             btnAlterar.setEnabled(false);
             btnRelatorios.setEnabled(false);
         }
-      
+
         atualizaTabelaManut();
     }
-        
-        
-       
-        
-        
-        
-        
-    
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -277,19 +267,19 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     }//GEN-LAST:event_btnRelatoriosActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-int linha = tbManut.getSelectedRow();
+        int linha = tbManut.getSelectedRow();
         if (linha == -1) {
             JOptionPane.showMessageDialog(rootPane, "Selecione manutenção a ser alterada!!!");
         } else {
-                int id = Integer.parseInt(tbManut.getValueAt(linha, 0).toString());
-                ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
-                ManutLaboratorio manutLaboratorio = manutLaboratorioDAO.getManutById(id);
-               TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true,manutLaboratorio);
-                telaCadManutecaoLaboratorio.setVisible(true);
-                atualizaTabelaManut();
-           
-            }
-        
+            int id = Integer.parseInt(tbManut.getValueAt(linha, 0).toString());
+            //ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
+            ManutLaboratorio manutLaboratorio = manutLaboratorioDAO.getManutById(id);
+            TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true, manutLaboratorio);
+            telaCadManutecaoLaboratorio.setVisible(true);
+            atualizaTabelaManut();
+
+        }
+
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
