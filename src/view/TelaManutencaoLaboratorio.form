@@ -176,7 +176,7 @@
                 <Column editable="true" title="Def. Apresentado" type="java.lang.Object"/>
                 <Column editable="true" title="Num. Serie" type="java.lang.Object"/>
                 <Column editable="true" title="Cham. OAT" type="java.lang.Object"/>
-                <Column editable="true" title="Desc. Atividades" type="java.lang.Object"/>
+                <Column editable="true" title="Data" type="java.lang.Object"/>
                 <Column editable="true" title="Tempo Rep." type="java.lang.Object"/>
               </Table>
             </Property>

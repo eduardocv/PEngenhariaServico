@@ -378,7 +378,7 @@ Componente componente;
     manutLaboratorio.setProduto(cbProduto.getSelectedItem().toString());
     manutLaboratorio.setDefRelatado(txtDefRelatado.getText());
     manutLaboratorio.setDefApresentado(txtDefApresentado.getText());
-   // manutLaboratorio.setData(lblData.getText());//esta pegando STRING
+    manutLaboratorio.setData(lblData.getText());//esta pegando STRING
     manutLaboratorio.setNumSerie(txtNumSerie.getText());
     manutLaboratorio.setChamadoOat(txtChamadoOat.getText());
     //manutLaboratorio.isCorrigidoEmCampo(chbCorrigidoEmCampo.isSelected());

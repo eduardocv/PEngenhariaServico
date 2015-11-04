@@ -153,7 +153,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Remetente", "Produto", "Def. Relatado", "Def. Apresentado", "Num. Serie", "Cham. OAT", "Desc. Atividades", "Tempo Rep."
+                "ID", "Remetente", "Produto", "Def. Relatado", "Def. Apresentado", "Num. Serie", "Cham. OAT", "Data", "Tempo Rep."
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -367,7 +367,8 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             model.setValueAt(listarManuts.get(i).getNumSerie(), i, 5);
             model.setValueAt(listarManuts.get(i).getChamadoOat(), i, 6);
             //model.setValueAt(listarManuts.get(i).isCorrigidoEmCampo(), i, 8);
-            model.setValueAt(listarManuts.get(i).getDescAtividades(), i, 7);
+            //model.setValueAt(listarManuts.get(i).getDescAtividades(), i, 7);
+            model.setValueAt(listarManuts.get(i).getData(), i, 7);
             model.setValueAt(listarManuts.get(i).getTempoReparo(), i, 8);
         }
     }
