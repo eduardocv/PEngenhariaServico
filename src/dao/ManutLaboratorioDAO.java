@@ -1,4 +1,8 @@
 package dao;
+/**
+ *
+ * @author eduardo.vieira
+ */
 
 import entity.ManutLaboratorio;
 import entity.Componente;

@@ -1,5 +1,10 @@
 package view;
 
+/**
+ *
+ * @author eduardo.vieira
+ */
+
 import dao.ComponenteDAO;
 import dao.ProdutoDAO;
 import dao.RemetenteDAO;

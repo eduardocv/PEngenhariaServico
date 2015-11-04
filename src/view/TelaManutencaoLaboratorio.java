@@ -1,5 +1,10 @@
 package view;
 
+/**
+ *
+ * @author eduardo.vieira
+ */
+
 import dao.ManutLaboratorioDAO;
 import entity.ManutLaboratorio;
 import java.util.ArrayList;

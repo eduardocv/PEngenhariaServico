@@ -2,7 +2,6 @@ package view;
 
 import entity.Usuario;
 import entity.EnumPerfil;
-
 /**
  *
  * @author eduardo.vieira
