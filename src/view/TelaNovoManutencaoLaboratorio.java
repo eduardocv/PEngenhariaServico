@@ -1,10 +1,5 @@
 package view;
 
-/**
- *
- * @author eduardo.vieira
- */
-
 import dao.ComponenteDAO;
 import dao.ProdutoDAO;
 import dao.RemetenteDAO;
@@ -32,42 +27,20 @@ List<Componente> componentes = new ArrayList<Componente>();
 Componente componente;
 //ManutLaboratorio manutLaboratorio;
    
-    public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        setTitle("Manutenção de equipamentos");
-        initComponents();
-        setLocationRelativeTo(null);
-        this.setResizable(false);
-        //atualizaProduto();
-        //atualizaRemetente();
-        //atualizaComponente();
-        
-        lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-        //    uhuuulll manda a data atual para o label.
-        lblUsuario.setText(usuario.getNome());
-        // fazer uma maneira que o nome do usuario apareça aqui.
-        
-       
-    }
     public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal, ManutLaboratorio manutLaboratorio) {
         super(parent, modal);
         setTitle("Manutenção de equipamentos");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-        this.novo = novo;
-        this.manutLaboratorio = manutLaboratorio;
         atualizaProduto();
         atualizaRemetente();
         atualizaComponente();
-        if (novo){
-            lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-             lblUsuario.setText(usuario.getNome());
-        }else{
-            
-        }
         
-        
+        lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+        //    uhuuulll manda a data atual para o label.
+        lblUsuario.setText(usuario.getNome());
+        // fazer uma maneira que o nome do usuario apareça aqui.
         
        
     }
@@ -477,6 +450,8 @@ Componente componente;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaNovoManutencaoLaboratorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
