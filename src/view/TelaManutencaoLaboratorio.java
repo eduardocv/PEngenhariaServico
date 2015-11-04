@@ -13,10 +13,22 @@ import entity.EnumPerfil;
 public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
 
     public TelaManutencaoLaboratorio(java.awt.Frame parent, boolean modal) {
-        //super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
+        atualizaTabelaManut();
+    }
+
+    public TelaManutencaoLaboratorio(java.awt.Frame parent, boolean modal, Usuario usuario) {
+
+        initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
+        if (usuario.getPerfil().equals(EnumPerfil.USUARIO)) {
+            btnAlterar.setEnabled(false);
+            btnRelatorios.setEnabled(false);
+        }
+
         atualizaTabelaManut();
     }
 
@@ -255,13 +267,25 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     }//GEN-LAST:event_btnRelatoriosActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        int linha = tbManut.getSelectedRow();
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione manutenção a ser alterada!!!");
+        } else {
+            int id = Integer.parseInt(tbManut.getValueAt(linha, 0).toString());
+            //ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
+            ManutLaboratorio manutLaboratorio = manutLaboratorioDAO.getManutById(id);
+            TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true, manutLaboratorio);
+            telaCadManutecaoLaboratorio.setVisible(true);
+            atualizaTabelaManut();
+
+        }
 
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true, null);
-        telaCadManutecaoLaboratorio.setVisible(true);
-
+        TelaNovoManutencaoLaboratorio telaNovoManut = new TelaNovoManutencaoLaboratorio(null, true, null);
+        telaNovoManut.setVisible(true);
+        atualizaTabelaManut();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     /**

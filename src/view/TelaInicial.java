@@ -164,7 +164,7 @@ public class TelaInicial extends javax.swing.JDialog {
     }//GEN-LAST:event_btnRemetentesActionPerformed
 
     private void btnManutencaoLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManutencaoLaboratorioActionPerformed
-        TelaManutencaoLaboratorio telaManutencaoLaboratorio = new TelaManutencaoLaboratorio(null, true);
+        TelaManutencaoLaboratorio telaManutencaoLaboratorio = new TelaManutencaoLaboratorio(null, true, usuario);
         telaManutencaoLaboratorio.setVisible(true);
     }//GEN-LAST:event_btnManutencaoLaboratorioActionPerformed
 

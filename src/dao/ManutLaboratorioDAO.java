@@ -152,7 +152,7 @@ public class ManutLaboratorioDAO extends MySQL {
                 manutLaboratorio.setDefApresentado(rs.getString("defApresentado"));
                 manutLaboratorio.setNumSerie(rs.getString("numSerie"));
                 manutLaboratorio.setChamadoOat(rs.getString("chamadoOat"));
-                manutLaboratorio.setDescAtividades(rs.getString("desAtividades"));
+                manutLaboratorio.setDescAtividades(rs.getString("descAtividades"));
                 manutLaboratorio.setTempoReparo(rs.getString("tempoReparo"));
                 
             }
