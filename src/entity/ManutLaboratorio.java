@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class ManutLaboratorio {
 
+    private String tecnico;
     private int idManutLaboratorio;
     private String remetente;
     private String produto;
@@ -21,6 +22,14 @@ public class ManutLaboratorio {
     private List<Componente> componentes;
     private String tempoReparo;
 
+    public String getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(String tecnico) {
+        this.tecnico = tecnico;
+    }
+        
     public int getIdManutLaboratorio() {
         return idManutLaboratorio;
     }
