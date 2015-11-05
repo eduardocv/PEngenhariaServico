@@ -21,28 +21,63 @@ import java.awt.FlowLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
-
 public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
-List<Componente> componentes = new ArrayList<Componente>();
-Componente componente;
+
+    List<Componente> componentes = new ArrayList<Componente>();
+    Componente componente;
 //ManutLaboratorio manutLaboratorio;
-   
-    public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal, ManutLaboratorio manutLaboratorio) {
+
+    public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        setTitle("Nova manutenção");
+        initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
+         atualizaProduto();
+        atualizaRemetente();
+        atualizaComponente();
+        
+    }
+
+    public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal, boolean novo,ManutLaboratorio manutLaboratorio, Usuario usuario) {
         super(parent, modal);
         setTitle("Manutenção de equipamentos");
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
+        this.novo = novo;
+        this.manutLaboratorio = manutLaboratorio;
+        if (novo){
+            
+        
         atualizaProduto();
         atualizaRemetente();
         atualizaComponente();
-        
+        manutLaboratorio = new ManutLaboratorio();
         lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
         //    uhuuulll manda a data atual para o label.
         lblUsuario.setText(usuario.getNome());
         // fazer uma maneira que o nome do usuario apareça aqui.
-        
-       
+
+        //if (novo == false){
+         }else{
+           
+        lblId.setText(manutLaboratorio.getIdManutLaboratorio() + "");
+        lblUsuario.setText(usuario.getNome());
+        cbRemetente.setSelectedItem(manutLaboratorio.getRemetente());
+        cbProduto.setSelectedItem(manutLaboratorio.getProduto());
+        txtDefRelatado.setText(manutLaboratorio.getDefRelatado());
+        txtDefApresentado.setText(manutLaboratorio.getDefApresentado());
+        lblData.setText(manutLaboratorio.getData());
+        txtNumSerie.setText(manutLaboratorio.getNumSerie());
+        txtChamadoOat.setText(manutLaboratorio.getChamadoOat());
+        //chbCorrigidoEmCampo.setSelected(manutLaboratorio.isCorrigidoEmCampo());
+        txtDescAtividades.setText(manutLaboratorio.getDescAtividades());
+        txtTempoReparo.setText(manutLaboratorio.getTempoReparo());
+
+        btnSalvar.setText("Alterar");
+        }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -364,42 +399,43 @@ Componente componente;
     }//GEN-LAST:event_cbComponenteActionPerformed
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-       if (componente == null) {
-           componente = new Componente();
-       }else{
-           componentes.remove(componente);
-       }
-    
-        componente.setComponente((String)cbComponente.getSelectedItem());
+        if (componente == null) {
+            componente = new Componente();
+        } else {
+            componentes.remove(componente);
+        }
+
+        componente.setComponente((String) cbComponente.getSelectedItem());
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-    manutLaboratorio.setRemetente(cbRemetente.getSelectedItem().toString());
-    manutLaboratorio.setProduto(cbProduto.getSelectedItem().toString());
-    manutLaboratorio.setDefRelatado(txtDefRelatado.getText());
-    manutLaboratorio.setDefApresentado(txtDefApresentado.getText());
-    manutLaboratorio.setData(lblData.getText());//esta pegando STRING
-    manutLaboratorio.setNumSerie(txtNumSerie.getText());
-    manutLaboratorio.setChamadoOat(txtChamadoOat.getText());
+        manutLaboratorio.setTecnico(lblUsuario.getText());
+        manutLaboratorio.setRemetente(cbRemetente.getSelectedItem().toString());
+        manutLaboratorio.setProduto(cbProduto.getSelectedItem().toString());
+        manutLaboratorio.setDefRelatado(txtDefRelatado.getText());
+        manutLaboratorio.setDefApresentado(txtDefApresentado.getText());
+        manutLaboratorio.setData(lblData.getText());//esta pegando STRING
+        manutLaboratorio.setNumSerie(txtNumSerie.getText());
+        manutLaboratorio.setChamadoOat(txtChamadoOat.getText());
     //manutLaboratorio.isCorrigidoEmCampo(chbCorrigidoEmCampo.isSelected());
-   //if (chbCorrigidoEmCampo.isSelected()){
-      //TRUE
-   //}else{
-       //FALSE
-   //}
-   
-    manutLaboratorio.setDescAtividades(txtDescAtividades.getText());
-    manutLaboratorio.setTempoReparo(txtTempoReparo.getText());
-    
-    if (novo) {
-    manutLaboratorioDAO.insert(manutLaboratorio);
-        JOptionPane.showMessageDialog(null,"Cadastro efetuado com sucesso!");
-        limparTela();
-    }else{
-        manutLaboratorioDAO.update(manutLaboratorio);
-        JOptionPane.showMessageDialog(null,"Alteração efetuada com sucesso!");
-        this.dispose();
-    }
+        //if (chbCorrigidoEmCampo.isSelected()){
+        //TRUE
+        //}else{
+        //FALSE
+        //}
+
+        manutLaboratorio.setDescAtividades(txtDescAtividades.getText());
+        manutLaboratorio.setTempoReparo(txtTempoReparo.getText());
+
+        if (novo) {
+            manutLaboratorioDAO.insert(manutLaboratorio, usuario);
+            JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
+            limparTela();
+        } else {
+            manutLaboratorioDAO.update(manutLaboratorio);
+            JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso!");
+            this.dispose();
+        }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
     public void atualizaRemetente() {
@@ -425,8 +461,6 @@ Componente componente;
             cbComponente.addItem(componente);
         }
     }
-    
-    
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -458,7 +492,7 @@ Componente componente;
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaNovoManutencaoLaboratorio dialog = new TelaNovoManutencaoLaboratorio(new javax.swing.JFrame(), true, null);
+                TelaNovoManutencaoLaboratorio dialog = new TelaNovoManutencaoLaboratorio(new javax.swing.JFrame(), true);//, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -510,15 +544,13 @@ Componente componente;
     ManutLaboratorio manutLaboratorio = new ManutLaboratorio();
     ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
     boolean novo = true;
-    
-  
-    
-    public void limparTela(){
-     txtChamadoOat.setText("");
-     txtDefApresentado.setText("");
-     txtDefRelatado.setText("");
-     txtDescAtividades.setText("");
-     txtNumSerie.setText("");
-     txtTempoReparo.setText("");
+
+    public void limparTela() {
+        txtChamadoOat.setText("");
+        txtDefApresentado.setText("");
+        txtDefRelatado.setText("");
+        txtDescAtividades.setText("");
+        txtNumSerie.setText("");
+        txtTempoReparo.setText("");
     }
 }

@@ -55,8 +55,10 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         rbtnNumSerie = new javax.swing.JRadioButton();
         rbtnRemetente = new javax.swing.JRadioButton();
         rbtnData = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Manutenção de equipamentos");
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
         btnVoltar.setText("Voltar");
@@ -139,21 +141,10 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Remetente", "Produto", "Def. Relatado", "Def. Apresentado", "Num. Serie", "Cham. OAT", "Data", "Tempo Rep."
+                "ID", "Remetente", "Produto", "Responsável", "Def. Apresentado", "Num. Serie", "Cham. OAT", "Data", "Tempo Rep."
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -169,9 +160,15 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             tbManut.getColumnModel().getColumn(0).setMinWidth(44);
             tbManut.getColumnModel().getColumn(0).setPreferredWidth(44);
             tbManut.getColumnModel().getColumn(0).setMaxWidth(44);
-            tbManut.getColumnModel().getColumn(1).setMinWidth(66);
-            tbManut.getColumnModel().getColumn(1).setPreferredWidth(66);
-            tbManut.getColumnModel().getColumn(1).setMaxWidth(66);
+            tbManut.getColumnModel().getColumn(5).setMinWidth(77);
+            tbManut.getColumnModel().getColumn(5).setPreferredWidth(77);
+            tbManut.getColumnModel().getColumn(5).setMaxWidth(77);
+            tbManut.getColumnModel().getColumn(7).setMinWidth(77);
+            tbManut.getColumnModel().getColumn(7).setPreferredWidth(77);
+            tbManut.getColumnModel().getColumn(7).setMaxWidth(77);
+            tbManut.getColumnModel().getColumn(8).setMinWidth(77);
+            tbManut.getColumnModel().getColumn(8).setPreferredWidth(77);
+            tbManut.getColumnModel().getColumn(8).setMaxWidth(77);
         }
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -189,6 +186,9 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         gbtnPesquisar.add(rbtnData);
         rbtnData.setText("Data");
 
+        gbtnPesquisar.add(jRadioButton1);
+        jRadioButton1.setText("Responsável");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -196,23 +196,23 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 739, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 655, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(rbtnRemetente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rbtnProduto)
-                                .addGap(18, 18, 18)
-                                .addComponent(rbtnNumSerie)
-                                .addGap(21, 21, 21)
-                                .addComponent(rbtnRemetente))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(103, 103, 103)
-                                .addComponent(jLabel1)))
-                        .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRadioButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbtnNumSerie)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbtnData)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -220,7 +220,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
                     .addComponent(btnRelatorios)
                     .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(33, 33, 33))
+                .addGap(21, 21, 21))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnNovo, btnRelatorios, btnVisualizar, btnVoltar});
@@ -249,10 +249,11 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
                             .addComponent(rbtnProduto)
                             .addComponent(rbtnNumSerie)
                             .addComponent(rbtnRemetente)
-                            .addComponent(rbtnData))
+                            .addComponent(rbtnData)
+                            .addComponent(jRadioButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -279,16 +280,16 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             int id = Integer.parseInt(tbManut.getValueAt(linha, 0).toString());
             //ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
             ManutLaboratorio manutLaboratorio = manutLaboratorioDAO.getManutById(id);
-            TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true, manutLaboratorio);
+            TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true, false,manutLaboratorio, usuario);
             telaCadManutecaoLaboratorio.setVisible(true);
             atualizaTabelaManut();
-
+//(java.awt.Frame parent, boolean modal, ManutLaboratorio manutLaboratorio, Usuario usuario)
         }
 
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        TelaNovoManutencaoLaboratorio telaNovoManut = new TelaNovoManutencaoLaboratorio(null, true, null);
+        TelaNovoManutencaoLaboratorio telaNovoManut = new TelaNovoManutencaoLaboratorio(null, true);//, null);
         telaNovoManut.setVisible(true);
         atualizaTabelaManut();
     }//GEN-LAST:event_btnNovoActionPerformed
@@ -343,6 +344,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     private javax.swing.JButton btnVoltar;
     private javax.swing.ButtonGroup gbtnPesquisar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton rbtnData;
     private javax.swing.JRadioButton rbtnNumSerie;
@@ -372,6 +374,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             model.setValueAt(listarManuts.get(i).getTempoReparo(), i, 8);
         }
     }
+    Usuario usuario = new Usuario();
     ManutLaboratorio manutLaboratorio = new ManutLaboratorio();
     ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
 }

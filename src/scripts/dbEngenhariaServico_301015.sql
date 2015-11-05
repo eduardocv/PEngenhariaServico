@@ -18,7 +18,7 @@ USE `dbEngenhariaServico` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`usuario` (
   `idUsuario` INT(11) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
   `cpf` VARCHAR(15) NOT NULL,
   `perfil` INT(11) NOT NULL,
   `status` BOOLEAN NOT NULL,
@@ -35,7 +35,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Produto` (
   `idProduto` INT NOT NULL AUTO_INCREMENT,
   `codProduto` VARCHAR(25) NOT NULL,
-  `produto` VARCHAR(45) NOT NULL,
+  `produto` VARCHAR(100) NOT NULL,
   `status` BOOLEAN NOT NULL,
   PRIMARY KEY (`idProduto`))
 ENGINE = InnoDB;
@@ -46,7 +46,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Remetente` (
   `idRemetente` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
   `tipo` VARCHAR(10) NULL,
   `email` VARCHAR(45) NULL,  
   `telefone` VARCHAR(15) NULL,
@@ -61,7 +61,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Tecnico` (
   `idTecnico` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
   `email` VARCHAR(45) NULL,
   `status` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idTecnico`))
@@ -73,19 +73,20 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`ManutencaoLaboratorio` (
   `idManut` INT NOT NULL AUTO_INCREMENT,
-  `remetente` VARCHAR(45) NOT NULL,
-  `produto` VARCHAR(45) NOT NULL,
-  `defRelatado` VARCHAR(15) NULL,
-  `defApresentado` VARCHAR(15) NULL,
+  `remetente` VARCHAR(100) NOT NULL,
+  `produto` VARCHAR(100) NOT NULL,
+  `defRelatado` VARCHAR(100) NULL,
+  `defApresentado` VARCHAR(100) NULL,
   `data` VARCHAR(10) NULL,
   `numSerie` VARCHAR(10) NULL,
   `chamadoOat` VARCHAR(10) NULL,
   `corrigidoEmCampo` BOOLEAN NULL,
-  `descAtividades` VARCHAR(45) NOT NULL,
+  `descAtividades` VARCHAR(500) NOT NULL,
   `componentes` VARCHAR(500) NULL,
   `tempoReparo` VARCHAR(10) NULL,
-  `Remetente_idRemetente` INT NULL,
-  `Tecnico_idTecnico` INT NULL,
+  `tecnico`VARCHAR(100) NULL,
+   -- `Remetente_idRemetente` INT NULL,
+   -- `Tecnico_idTecnico` INT NULL,
   PRIMARY KEY (`idManut`))
  -- INDEX `fk_ManutencaoLaboratorio_Remetente1_idx` (`Remetente_idRemetente` ASC),
  -- INDEX `fk_ManutencaoLaboratorio_Tecnico1_idx` (`Tecnico_idTecnico` ASC),

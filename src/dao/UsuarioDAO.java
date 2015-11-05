@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao;
 
 import entity.EnumPerfil;
@@ -16,8 +12,9 @@ import java.util.List;
 
 /**
  *
- * @author ricardo_jose_santana
+ * @author eduardo.vieira
  */
+
 public class UsuarioDAO extends MySQL {
 
     public boolean insert(Usuario usuario) {
