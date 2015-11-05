@@ -17,12 +17,7 @@ import entity.EnumPerfil;
 
 public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
 
-    public TelaManutencaoLaboratorio(java.awt.Frame parent, boolean modal) {
-        initComponents();
-        setLocationRelativeTo(null);
-        this.setResizable(false);
-        atualizaTabelaManut();
-    }
+
 
     public TelaManutencaoLaboratorio(java.awt.Frame parent, boolean modal, Usuario usuario) {
 
@@ -275,7 +270,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         int linha = tbManut.getSelectedRow();
         if (linha == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione manutenção a ser alterada!!!");
+            JOptionPane.showMessageDialog(rootPane, "Selecione a manutenção que será alterada!!!");
         } else {
             int id = Integer.parseInt(tbManut.getValueAt(linha, 0).toString());
             //ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
@@ -283,7 +278,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true, false,manutLaboratorio, usuario);
             telaCadManutecaoLaboratorio.setVisible(true);
             atualizaTabelaManut();
-//(java.awt.Frame parent, boolean modal, ManutLaboratorio manutLaboratorio, Usuario usuario)
+
         }
 
     }//GEN-LAST:event_btnAlterarActionPerformed
@@ -322,9 +317,9 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() { 
             public void run() {
-                TelaManutencaoLaboratorio dialog = new TelaManutencaoLaboratorio(new javax.swing.JFrame(), true);
+                TelaManutencaoLaboratorio dialog = new TelaManutencaoLaboratorio(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -372,6 +367,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             //model.setValueAt(listarManuts.get(i).getDescAtividades(), i, 7);
             model.setValueAt(listarManuts.get(i).getData(), i, 7);
             model.setValueAt(listarManuts.get(i).getTempoReparo(), i, 8);
+        //model.setValueAt(listarManuts.get(i).getTecnico(),i,9);
         }
     }
     Usuario usuario = new Usuario();

@@ -10,16 +10,16 @@ import entity.Produto;
 import entity.Remetente;
 import entity.Usuario;
 import java.text.SimpleDateFormat;
-import java.util.AbstractSequentialList;
+//import java.util.AbstractSequentialList;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.swing.DefaultListModel;
+//import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-import java.awt.FlowLayout;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
+//import java.awt.FlowLayout;
+//import javax.swing.JCheckBox;
+//import javax.swing.JFrame;
 
 public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
 
@@ -33,13 +33,13 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-         atualizaProduto();
+        atualizaProduto();
         atualizaRemetente();
         atualizaComponente();
-        
+
     }
 
-    public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal, boolean novo,ManutLaboratorio manutLaboratorio, Usuario usuario) {
+    public TelaNovoManutencaoLaboratorio(java.awt.Frame parent, boolean modal, boolean novo, ManutLaboratorio manutLaboratorio, Usuario usuario) {
         super(parent, modal);
         setTitle("Manutenção de equipamentos");
         initComponents();
@@ -47,35 +47,34 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         this.setResizable(false);
         this.novo = novo;
         this.manutLaboratorio = manutLaboratorio;
-        if (novo){
-            
-        
-        atualizaProduto();
-        atualizaRemetente();
-        atualizaComponente();
-        manutLaboratorio = new ManutLaboratorio();
-        lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-        //    uhuuulll manda a data atual para o label.
-        lblUsuario.setText(usuario.getNome());
+        if (novo) {
+
+            atualizaProduto();
+            atualizaRemetente();
+            atualizaComponente();
+            manutLaboratorio = new ManutLaboratorio();
+            lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+            //    uhuuulll manda a data atual para o label.
+            lblUsuario.setText(usuario.getNome());
         // fazer uma maneira que o nome do usuario apareça aqui.
 
-        //if (novo == false){
-         }else{
-           
-        lblId.setText(manutLaboratorio.getIdManutLaboratorio() + "");
-        lblUsuario.setText(usuario.getNome());
-        cbRemetente.setSelectedItem(manutLaboratorio.getRemetente());
-        cbProduto.setSelectedItem(manutLaboratorio.getProduto());
-        txtDefRelatado.setText(manutLaboratorio.getDefRelatado());
-        txtDefApresentado.setText(manutLaboratorio.getDefApresentado());
-        lblData.setText(manutLaboratorio.getData());
-        txtNumSerie.setText(manutLaboratorio.getNumSerie());
-        txtChamadoOat.setText(manutLaboratorio.getChamadoOat());
-        //chbCorrigidoEmCampo.setSelected(manutLaboratorio.isCorrigidoEmCampo());
-        txtDescAtividades.setText(manutLaboratorio.getDescAtividades());
-        txtTempoReparo.setText(manutLaboratorio.getTempoReparo());
+            //if (novo == false){
+        } else {
 
-        btnSalvar.setText("Alterar");
+            lblId.setText(manutLaboratorio.getIdManutLaboratorio() + "");
+           // lblUsuario.setText(manutLaboratorio.getTecnico());
+            cbRemetente.setSelectedItem(manutLaboratorio.getRemetente());
+            cbProduto.setSelectedItem(manutLaboratorio.getProduto());
+            txtDefRelatado.setText(manutLaboratorio.getDefRelatado());
+            txtDefApresentado.setText(manutLaboratorio.getDefApresentado());
+            lblData.setText(manutLaboratorio.getData());
+            txtNumSerie.setText(manutLaboratorio.getNumSerie());
+            txtChamadoOat.setText(manutLaboratorio.getChamadoOat());
+            //chbCorrigidoEmCampo.setSelected(manutLaboratorio.isCorrigidoEmCampo());
+            txtDescAtividades.setText(manutLaboratorio.getDescAtividades());
+            txtTempoReparo.setText(manutLaboratorio.getTempoReparo());
+
+            btnSalvar.setText("Alterar");
         }
 
     }
@@ -417,7 +416,7 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         manutLaboratorio.setData(lblData.getText());//esta pegando STRING
         manutLaboratorio.setNumSerie(txtNumSerie.getText());
         manutLaboratorio.setChamadoOat(txtChamadoOat.getText());
-    //manutLaboratorio.isCorrigidoEmCampo(chbCorrigidoEmCampo.isSelected());
+        //manutLaboratorio.isCorrigidoEmCampo(chbCorrigidoEmCampo.isSelected());
         //if (chbCorrigidoEmCampo.isSelected()){
         //TRUE
         //}else{
