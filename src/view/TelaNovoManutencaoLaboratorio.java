@@ -20,7 +20,6 @@ import javax.swing.JOptionPane;
 //import java.awt.FlowLayout;
 //import javax.swing.JCheckBox;
 //import javax.swing.JFrame;
-
 public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
 
     List<Componente> componentes = new ArrayList<Componente>();
@@ -47,11 +46,12 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         this.setResizable(false);
         this.novo = novo;
         this.manutLaboratorio = manutLaboratorio;
+        atualizaProduto();
+        atualizaRemetente();
+        atualizaComponente();
+
         if (novo) {
 
-            atualizaProduto();
-            atualizaRemetente();
-            atualizaComponente();
             manutLaboratorio = new ManutLaboratorio();
             lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
             //    uhuuulll manda a data atual para o label.
@@ -60,11 +60,23 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
 
             //if (novo == false){
         } else {
-
+            int index1 = 0;
+            int index2 = 0;
             lblId.setText(manutLaboratorio.getIdManutLaboratorio() + "");
-           // lblUsuario.setText(manutLaboratorio.getTecnico());
-            cbRemetente.setSelectedItem(manutLaboratorio.getRemetente());
-            cbProduto.setSelectedItem(manutLaboratorio.getProduto());
+            // lblUsuario.setText(manutLaboratorio.getTecnico());
+            for (int i = 0; i < cbRemetente.getModel().getSize(); i++) {
+                System.out.println("2" + cbRemetente.getItemAt(i).toString());
+                if (manutLaboratorio.getRemetente().equals(cbRemetente.getItemAt(i).toString())) {
+                    index1 = i;
+                }
+            }
+            for (int i = 0; i < cbProduto.getModel().getSize(); i++) {
+                if (manutLaboratorio.getProduto().equals(cbProduto.getItemAt(i).toString())) {
+                    index2 = i;
+                }
+            }
+            cbRemetente.setSelectedIndex(index1);
+            cbProduto.setSelectedIndex(index2);
             txtDefRelatado.setText(manutLaboratorio.getDefRelatado());
             txtDefApresentado.setText(manutLaboratorio.getDefApresentado());
             lblData.setText(manutLaboratorio.getData());
