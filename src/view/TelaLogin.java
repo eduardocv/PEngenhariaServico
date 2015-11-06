@@ -2,6 +2,7 @@
 package view;
 
 import dao.UsuarioDAO;
+import entity.Login;
 import entity.Usuario;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
@@ -118,7 +119,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
         String email = txtUsuario.getText();
-        String senha = txtSenha.getText();       
+        String senha = txtSenha.getText();
         
         UsuarioDAO usuarioDAO = new UsuarioDAO();
 
@@ -131,9 +132,10 @@ public class TelaLogin extends javax.swing.JFrame {
                 
             }  else {
                 TelaInicial telaInicial = new TelaInicial(this, false, usuario);
+               Login.getInstancia().setNome(usuario.getNome());
                 this.dispose();
                 
-                telaInicial.setVisible(true);
+               
                 telaInicial.setVisible(true);
             }
                  

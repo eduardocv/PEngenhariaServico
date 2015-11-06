@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 //import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import entity.Login;
 
 //import java.awt.FlowLayout;
 //import javax.swing.JCheckBox;
@@ -35,7 +36,7 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         atualizaProduto();
         atualizaRemetente();
         atualizaComponente();
-        lblUsuario.setText("nome que eu quero");
+        lblUsuario.setText(Login.getInstancia().getNome());
         lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
 
     }
@@ -236,7 +237,7 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
 
         jLabel9.setText("Remetente:");
 
-        lblUsuario.setText("USUÁRIO");
+        lblUsuario.setText("-");
 
         jScrollPane1.setViewportView(txtDescAtividades);
 

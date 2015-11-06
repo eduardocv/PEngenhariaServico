@@ -1,4 +1,3 @@
-
 package entity;
 
 /**
@@ -6,12 +5,15 @@ package entity;
  * @author VDISOO0219
  */
 public class Usuario {
+
     private String nome;
     private String CPF;
     private EnumPerfil Perfil;
     private String email;
     private int idUsuario;
     private boolean status;
+    private String senha;
+    
 
     public boolean isStatus() {
         return status;
@@ -20,7 +22,6 @@ public class Usuario {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    private String senha;
 
     @Override
     public String toString() {
@@ -35,7 +36,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    
     public String getNome() {
         return nome;
     }
@@ -56,8 +56,6 @@ public class Usuario {
         this.Perfil = Perfil;
     }
 
-    
-
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
@@ -77,7 +75,5 @@ public class Usuario {
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
-    
-    
-    
+
 }

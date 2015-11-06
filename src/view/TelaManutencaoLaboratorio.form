@@ -28,15 +28,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane2" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="655" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="rbtnRemetente" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="rbtnProduto" min="-2" max="-2" attributes="0"/>
@@ -51,8 +49,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtPesquisa" min="-2" pref="419" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane2" min="-2" pref="1032" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnNovo" linkSize="3" max="32767" attributes="0"/>
                   <Component id="btnAlterar" linkSize="3" max="32767" attributes="0"/>
@@ -60,7 +59,7 @@
                   <Component id="btnVisualizar" linkSize="3" max="32767" attributes="0"/>
                   <Component id="btnVoltar" linkSize="3" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,10 +92,10 @@
                           <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="667" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="581" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -169,7 +168,7 @@
         <Component class="javax.swing.JTable" name="tbManut">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="9" rowCount="40">
+              <Table columnCount="9" rowCount="35">
                 <Column editable="false" title="ID" type="java.lang.Object"/>
                 <Column editable="false" title="Remetente" type="java.lang.Object"/>
                 <Column editable="true" title="Produto" type="java.lang.Object"/>
@@ -213,7 +212,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="77" minWidth="77" prefWidth="77" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>

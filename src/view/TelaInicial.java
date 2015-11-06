@@ -183,6 +183,7 @@ public class TelaInicial extends javax.swing.JDialog {
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoffActionPerformed
+             
         this.dispose();
         TelaLogin telaLogin = new TelaLogin();
         telaLogin.setVisible(true);
