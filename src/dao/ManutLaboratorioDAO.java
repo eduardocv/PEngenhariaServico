@@ -27,7 +27,7 @@ public class ManutLaboratorioDAO extends MySQL {
                             + "(tecnico, remetente, produto, defRelatado, defApresentado, data, numSerie, chamadoOat, "
                             + "descAtividades, tempoReparo )  "
                             + "VALUES (?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, usuario.getNome());
+            ps.setString(1, manutLaboratorio.getTecnico());
             ps.setString(2, manutLaboratorio.getRemetente());
             ps.setString(3, manutLaboratorio.getProduto());
             ps.setString(4, manutLaboratorio.getDefRelatado());
