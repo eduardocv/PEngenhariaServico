@@ -44,6 +44,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+        setIconImages(null);
 
         lblEsqueceuSenha.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         lblEsqueceuSenha.setForeground(new java.awt.Color(51, 102, 255));

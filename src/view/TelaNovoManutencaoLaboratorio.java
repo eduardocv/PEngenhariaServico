@@ -35,6 +35,8 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         atualizaProduto();
         atualizaRemetente();
         atualizaComponente();
+        lblUsuario.setText("nome que eu quero");
+        lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
 
     }
 
@@ -46,6 +48,7 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         this.setResizable(false);
         this.novo = novo;
         this.manutLaboratorio = manutLaboratorio;
+        //lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
         atualizaProduto();
         atualizaRemetente();
         atualizaComponente();
@@ -53,30 +56,27 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         if (novo) {
 
             manutLaboratorio = new ManutLaboratorio();
-            lblData.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-            //    uhuuulll manda a data atual para o label.
-            lblUsuario.setText(usuario.getNome());
-        // fazer uma maneira que o nome do usuario apareça aqui.
 
-            //if (novo == false){
+            //lblUsuario.setText(usuario.getNome());
+
         } else {
-            int index1 = 0;
-            int index2 = 0;
+            int remetindex = 0;
+            int prodtindex = 0;
             lblId.setText(manutLaboratorio.getIdManutLaboratorio() + "");
             // lblUsuario.setText(manutLaboratorio.getTecnico());
             for (int i = 0; i < cbRemetente.getModel().getSize(); i++) {
-                System.out.println("2" + cbRemetente.getItemAt(i).toString());
+                // System.out.println("2" + cbRemetente.getItemAt(i).toString());
                 if (manutLaboratorio.getRemetente().equals(cbRemetente.getItemAt(i).toString())) {
-                    index1 = i;
+                    remetindex = i;
                 }
             }
             for (int i = 0; i < cbProduto.getModel().getSize(); i++) {
                 if (manutLaboratorio.getProduto().equals(cbProduto.getItemAt(i).toString())) {
-                    index2 = i;
+                    prodtindex = i;
                 }
             }
-            cbRemetente.setSelectedIndex(index1);
-            cbProduto.setSelectedIndex(index2);
+            cbRemetente.setSelectedIndex(remetindex);
+            cbProduto.setSelectedIndex(prodtindex);
             txtDefRelatado.setText(manutLaboratorio.getDefRelatado());
             txtDefApresentado.setText(manutLaboratorio.getDefApresentado());
             lblData.setText(manutLaboratorio.getData());

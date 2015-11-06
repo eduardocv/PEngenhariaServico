@@ -148,12 +148,12 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
--- ---------------------------- INSERT no Banco ---------------------------------------------------
+-- ---------------------------- INSERT no Banco ---------------------------------------------------------------------------------------------------------------------------------------
 -- USUARIO --
 INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `nome`, `CPF`, `perfil`, `status`, `email`, `senha`) VALUES ('1', 'Administrador', '80295312068', '0', true, 'admin', 'admin');
 INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `nome`, `CPF`, `perfil`, `status`, `email`, `senha`) VALUES ('2', 'Usuario', '12345678900', '1', true, 'user', 'user');
 
--- PRODUTO --
+-- PRODUTO -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into produto values(1,'I07PLA046','Placa Transceptora RF2',true);
 insert into produto values(2,'I07PLA055','Placa Mtouch (flat)',true);
 insert into produto values(3,'I07PLA060','Placa Mtouch (usb)',true);
@@ -167,14 +167,14 @@ insert into produto values(10,'I12IMP009','Impressora DAS 3 Botões',true);
 insert into produto values(11,'I12DSP023','Painel Contact Light 5D',true);
 insert into produto values(12,'I12IMP000','Impressora DAS Triagem',true);
 
--- TÉCNICO EM LABORATORIO --
+-- TÉCNICO EM LABORATORIO -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into tecnico values(1,'José da Silva','josesilva@email.com.br','Ativo');
 insert into tecnico values(2,'Maria José','mariajose@email.com.br','Ativo');
 insert into tecnico values(3,'João Correa','jcorrea@email.com.br','Ativo');
 insert into tecnico values(4,'Carlos Santos','csantos@email.com.br','Ativo');
 insert into tecnico values(5,'Fernando Costa','fcosta@email.com.br','Ativo');
 insert into tecnico values(6,'Ana Silveira','anasilveira@email.com.br','Ativo');
--- COMPONENTE --
+-- COMPONENTE ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into componente values(1,'BAT001','BATERIA NICD 3,6 V / 60 M A H  2T',true);
 insert into componente values(2,'Z10200','CONECTOR MINI MODUL 1X10 180G',true);
 insert into componente values(3,'U03203','CI 14C232 ADM / HARRIS',true);
@@ -215,7 +215,7 @@ insert into componente values(37,'I07CAX109','CAIXA DE PAPELAO P/ TES TOUCH – 
 insert into componente values(38,'I07COJ058','ESTRUTURA METALICA TES TOUCH INOX – V6.0.0',true);
 insert into componente values(39,'I07COJ059','CONJUNTO DE ISOPORES P/ TES TOUCH – V1.1.0',true);
 
--- REMETENTE --
+-- REMETENTE ---------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into remetente values(1,'INFORSERVICE - RIO BRANCO','RT','coordenacao-ac@assistecnica.com.br','(68)3224-0100',false,'');
 insert into remetente values(2,'FABIO ROGERIO MOURA MAIA','RT','fabiomaiaeng@gmail.com','(92)8228-5628',false,'');
 insert into remetente values(3,'TECNOPOINT','RT','fabio@portaltecnopoint.com.br','(85)3046-1100',false,'');
@@ -268,6 +268,15 @@ insert into remetente values(49,'Geraldo Lopes dos Santos','TR','geraldo.santos@
 insert into remetente values(50,'Vanderlei Pereira do Nascimento','TR','vanderlei.nascimento@specto.com.br','(11)9825-14689',true,'');
 insert into remetente values(51,'Wagner Jorge Pimentel','TR','wagner.pimentel@specto.com.br','(31)6963-4075',true,'');
 
+-- Manutenção --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into manutencaolaboratorio values(1,'TR Wagner Jorge Pimentel','I12IMP000 Impressora DAS Triagem','não corta papel','sujeira na guilhotina','06/11/2015','1254','33874',true,'limpeza de guilhotina','componentes','00:20','técnico qualquer'); 
+insert into manutencaolaboratorio values(2,'RT BBS INFORMATICA','I12IMP013 Impressora DAS 6 Botões','não imprime','não imprime','06/11/2015','157','32873',true,'ci de comunicação queimado','componentes','00:25','técnico qualquer'); 
+
+
+
+
+
+-- SELECT --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- select * from dbEngenhariaServico.usuario;
 -- select * from dbEngenhariaServico.tecnico;
 -- select * from dbEngenhariaServico.componente;
@@ -275,4 +284,4 @@ insert into remetente values(51,'Wagner Jorge Pimentel','TR','wagner.pimentel@sp
 -- select * from dbEngenhariaServico.remetente;
 -- select * from dbengenhariaservico.ManutencaoLaboratorio;
 
--- -------------------------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

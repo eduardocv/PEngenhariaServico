@@ -358,8 +358,9 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             model.setValueAt(listarManuts.get(i).getIdManutLaboratorio(), i, 0);
             model.setValueAt(listarManuts.get(i).getRemetente(), i, 1);
             model.setValueAt(listarManuts.get(i).getProduto(), i, 2);
-            model.setValueAt(listarManuts.get(i).getDefRelatado(), i, 3);
+            model.setValueAt(listarManuts.get(i).getTecnico(), i, 3);
             model.setValueAt(listarManuts.get(i).getDefApresentado(), i, 4);
+            
             //model.setValueAt(listarManuts.get(i).getData(), i, 5);
             model.setValueAt(listarManuts.get(i).getNumSerie(), i, 5);
             model.setValueAt(listarManuts.get(i).getChamadoOat(), i, 6);
