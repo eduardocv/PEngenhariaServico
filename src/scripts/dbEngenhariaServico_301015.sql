@@ -271,6 +271,9 @@ insert into remetente values(51,'Wagner Jorge Pimentel','TR','wagner.pimentel@sp
 -- Manutenção --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into manutencaolaboratorio values(1,'TR Wagner Jorge Pimentel','I12IMP000 Impressora DAS Triagem','não corta papel','sujeira na guilhotina','06/11/2015','1254','33874',true,'limpeza de guilhotina','componentes','00:20','técnico qualquer'); 
 insert into manutencaolaboratorio values(2,'RT BBS INFORMATICA','I12IMP013 Impressora DAS 6 Botões','não imprime','não imprime','06/11/2015','157','32873',true,'ci de comunicação queimado','componentes','00:25','técnico qualquer'); 
+insert into manutencaolaboratorio values(3,'TR Ricardo Souto','I07PLA055 Placa Mtouch(flat)','não reconhece toque','solda fria','06/11/2015','1234','44125',true,'ressolda em componentes','componentes','00:40','Administrador');
+insert into manutencaolaboratorio values(4,'TR Orlando Maraccini Neto','ImpMecafAd Impressora Mecaf','não puxa papel','baud rate','06/11/2015','2154','38554',true,'configuração de baud rate','componentes','00:10','Usuário');
+
 
 
 
