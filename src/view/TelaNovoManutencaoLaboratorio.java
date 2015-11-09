@@ -86,7 +86,7 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
             //chbCorrigidoEmCampo.setSelected(manutLaboratorio.isCorrigidoEmCampo());
             txtDescAtividades.setText(manutLaboratorio.getDescAtividades());
             txtTempoReparo.setText(manutLaboratorio.getTempoReparo());
-
+            lblUsuario.setText(manutLaboratorio.getTecnico());
             btnSalvar.setText("Alterar");
         }
 

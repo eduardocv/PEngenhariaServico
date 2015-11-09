@@ -4,10 +4,10 @@ package view;
 import dao.UsuarioDAO;
 import entity.Login;
 import entity.Usuario;
-import java.awt.Font;
-import java.awt.font.TextAttribute;
-import java.util.HashMap;
-import java.util.Map;
+//import java.awt.Font;
+//import java.awt.font.TextAttribute;
+//import java.util.HashMap;
+//import java.util.Map;
 import javax.swing.JOptionPane;
 
 
@@ -37,7 +37,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         txtSenha = new javax.swing.JPasswordField();
-        lblEsqueceuSenha = new javax.swing.JLabel();
         btnEntrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
@@ -47,22 +46,7 @@ public class TelaLogin extends javax.swing.JFrame {
         setTitle("Login");
         setIconImages(null);
 
-        lblEsqueceuSenha.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        lblEsqueceuSenha.setForeground(new java.awt.Color(51, 102, 255));
-        lblEsqueceuSenha.setText("Esqueceu a senha?");
-        lblEsqueceuSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblEsqueceuSenha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblEsqueceuSenhaMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblEsqueceuSenhaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblEsqueceuSenhaMouseExited(evt);
-            }
-        });
-
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Load.png"))); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,15 +69,11 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEsqueceuSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnEntrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(30, 30, 30))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +88,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEntrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblEsqueceuSenha)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,47 +127,6 @@ public class TelaLogin extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnEntrarActionPerformed
-
-    private void lblEsqueceuSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEsqueceuSenhaMouseClicked
-        String email = txtUsuario.getText(); 
-        
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        
-        Usuario usuario = usuarioDAO.getLogin(email);
-        
-         if (usuario == null) {
-             JOptionPane.showMessageDialog(null, "Usuário incorreto!");
-             
-         } else{
-            
-             if(usuario.getIdUsuario() == 1){
-                  JOptionPane.showMessageDialog(null, "Este usuário não pode ser alterado!");
-             }
-             else if(usuario.isStatus()== false){
-                 JOptionPane.showMessageDialog(rootPane, "Usuário desativado!");
-                
-            }  else {                   
-                 String senhaAlterada;
-                 senhaAlterada = usuario.getSenha();
-                 senhaAlterada = usuario.getCPF();
-               //  senhaAlterada += usuario.getCPF().substring(4, 7);
-                 usuario.setSenha(senhaAlterada);
-                // ir no bd e fazer essa porra funcionar               
-                 JOptionPane.showMessageDialog(null, "Senha alterada! \nNova senha: 6 primeiros dígitos do seu CPF.");
-             }
-         }
-        
-    }//GEN-LAST:event_lblEsqueceuSenhaMouseClicked
-
-    private void lblEsqueceuSenhaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEsqueceuSenhaMouseEntered
-        Map<TextAttribute, Object> atributos = new HashMap<TextAttribute, Object>();
-        atributos.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-        lblEsqueceuSenha.setFont(new Font("Tahoma Simples", Font.BOLD, 12).deriveFont(atributos));
-    }//GEN-LAST:event_lblEsqueceuSenhaMouseEntered
-
-    private void lblEsqueceuSenhaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEsqueceuSenhaMouseExited
-        lblEsqueceuSenha.setFont(new Font("Tahoma Simples", 1, 9));
-    }//GEN-LAST:event_lblEsqueceuSenhaMouseExited
 
     public void limparCampos(){
         txtSenha.setText(null);
@@ -237,7 +174,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton btnEntrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblEsqueceuSenha;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
