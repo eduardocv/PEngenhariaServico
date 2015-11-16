@@ -4,7 +4,6 @@ package view;
  *
  * @author eduardo.vieira
  */
-
 import dao.ManutLaboratorioDAO;
 import entity.ManutLaboratorio;
 import java.util.ArrayList;
@@ -16,8 +15,6 @@ import entity.Usuario;
 import entity.EnumPerfil;
 
 public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
-
-
 
     public TelaManutencaoLaboratorio(java.awt.Frame parent, boolean modal, Usuario usuario) {
 
@@ -47,13 +44,23 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         tbManut = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         rbtnProduto = new javax.swing.JRadioButton();
-        rbtnNumSerie = new javax.swing.JRadioButton();
         rbtnRemetente = new javax.swing.JRadioButton();
         rbtnData = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rbtnResponsavel = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Manutenção de equipamentos");
+
+        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaActionPerformed(evt);
+            }
+        });
+        txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesquisaKeyReleased(evt);
+            }
+        });
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Back.png"))); // NOI18N
         btnVoltar.setText("Voltar");
@@ -170,17 +177,14 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         gbtnPesquisar.add(rbtnProduto);
         rbtnProduto.setText("Produto");
 
-        gbtnPesquisar.add(rbtnNumSerie);
-        rbtnNumSerie.setText("Nº de Série");
-
         gbtnPesquisar.add(rbtnRemetente);
         rbtnRemetente.setText("Remetente");
 
         gbtnPesquisar.add(rbtnData);
         rbtnData.setText("Data");
 
-        gbtnPesquisar.add(jRadioButton1);
-        jRadioButton1.setText("Responsável");
+        gbtnPesquisar.add(rbtnResponsavel);
+        rbtnResponsavel.setText("Responsável");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,18 +195,18 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(130, 130, 130))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rbtnRemetente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rbtnProduto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtnNumSerie)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtnData)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbtnResponsavel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rbtnData)
+                                .addGap(18, 18, 18)))
                         .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1032, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -239,10 +243,9 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rbtnProduto)
-                            .addComponent(rbtnNumSerie)
                             .addComponent(rbtnRemetente)
                             .addComponent(rbtnData)
-                            .addComponent(jRadioButton1))
+                            .addComponent(rbtnResponsavel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -272,7 +275,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             int id = Integer.parseInt(tbManut.getValueAt(linha, 0).toString());
             //ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
             ManutLaboratorio manutLaboratorio = manutLaboratorioDAO.getManutById(id);
-            TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true, false,manutLaboratorio, usuario);
+            TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true, false, manutLaboratorio, usuario);
             telaCadManutecaoLaboratorio.setVisible(true);
             atualizaTabelaManut();
 
@@ -285,6 +288,24 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         telaNovoManut.setVisible(true);
         atualizaTabelaManut();
     }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
+        String pesquisa = txtPesquisa.getText();
+        if (rbtnRemetente.isSelected()) {
+            buscaRemetente(pesquisa);
+        } else if (rbtnProduto.isSelected()) {
+            buscaProduto(pesquisa);
+        } else if (rbtnResponsavel.isSelected()) {
+            buscaResponsavel(pesquisa);
+        } else if (rbtnData.isSelected()) {
+            buscaData(pesquisa);
+        }
+
+    }//GEN-LAST:event_txtPesquisaKeyReleased
+
+    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,7 +335,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() { 
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 TelaManutencaoLaboratorio dialog = new TelaManutencaoLaboratorio(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -336,12 +357,11 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     private javax.swing.JButton btnVoltar;
     private javax.swing.ButtonGroup gbtnPesquisar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton rbtnData;
-    private javax.swing.JRadioButton rbtnNumSerie;
     private javax.swing.JRadioButton rbtnProduto;
     private javax.swing.JRadioButton rbtnRemetente;
+    private javax.swing.JRadioButton rbtnResponsavel;
     private javax.swing.JTable tbManut;
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
@@ -357,7 +377,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             model.setValueAt(listarManuts.get(i).getProduto(), i, 2);
             model.setValueAt(listarManuts.get(i).getTecnico(), i, 3);
             model.setValueAt(listarManuts.get(i).getDefApresentado(), i, 4);
-            
+
             //model.setValueAt(listarManuts.get(i).getData(), i, 5);
             model.setValueAt(listarManuts.get(i).getNumSerie(), i, 5);
             model.setValueAt(listarManuts.get(i).getChamadoOat(), i, 6);
@@ -365,9 +385,118 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             //model.setValueAt(listarManuts.get(i).getDescAtividades(), i, 7);
             model.setValueAt(listarManuts.get(i).getData(), i, 7);
             model.setValueAt(listarManuts.get(i).getTempoReparo(), i, 8);
-        //model.setValueAt(listarManuts.get(i).getTecnico(),i,9);
+            //model.setValueAt(listarManuts.get(i).getTecnico(),i,9);
         }
     }
+
+    public void buscaRemetente(String manut) {
+        List<ManutLaboratorio> filtrada = new ArrayList();
+        List<ManutLaboratorio> listarManuts = manutLaboratorioDAO.listarManuts();
+        String manutDigitadoTemp = manut.toLowerCase();
+        for (ManutLaboratorio man : listarManuts) {
+            String manutTemp = man.getRemetente().toLowerCase();
+            if (manutTemp.contains(manutDigitadoTemp)){
+                filtrada.add(man);
+            }
+        }
+        DefaultTableModel model = (DefaultTableModel) this.tbManut.getModel();
+        model.setNumRows(0);
+        for (int i = 0; i < filtrada.size(); i++) {
+            model.addRow(new Object[]{});
+            model.setValueAt(filtrada.get(i).getIdManutLaboratorio(), i, 0);
+            model.setValueAt(filtrada.get(i).getRemetente(), i, 1);
+            model.setValueAt(filtrada.get(i).getProduto(), i, 2);
+            model.setValueAt(filtrada.get(i).getTecnico(), i, 3);
+            model.setValueAt(filtrada.get(i).getDefApresentado(), i, 4);
+            model.setValueAt(filtrada.get(i).getNumSerie(), i, 5);
+            model.setValueAt(filtrada.get(i).getChamadoOat(), i, 6);
+            model.setValueAt(filtrada.get(i).getData(), i, 7);
+            model.setValueAt(filtrada.get(i).getTempoReparo(), i, 8);
+
+        }
+    }
+
+    public void buscaProduto(String manut) {
+  List<ManutLaboratorio> filtrada = new ArrayList();
+        List<ManutLaboratorio> listarManuts = manutLaboratorioDAO.listarManuts();
+        String manutDigitadoTemp = manut.toLowerCase();
+        for (ManutLaboratorio man : listarManuts) {
+            String manutTemp = man.getProduto().toLowerCase();
+            if (manutTemp.contains(manutDigitadoTemp)){
+                filtrada.add(man);
+            }
+        }
+        DefaultTableModel model = (DefaultTableModel) this.tbManut.getModel();
+        model.setNumRows(0);
+        for (int i = 0; i < filtrada.size(); i++) {
+            model.addRow(new Object[]{});
+            model.setValueAt(filtrada.get(i).getIdManutLaboratorio(), i, 0);
+            model.setValueAt(filtrada.get(i).getRemetente(), i, 1);
+            model.setValueAt(filtrada.get(i).getProduto(), i, 2);
+            model.setValueAt(filtrada.get(i).getTecnico(), i, 3);
+            model.setValueAt(filtrada.get(i).getDefApresentado(), i, 4);
+            model.setValueAt(filtrada.get(i).getNumSerie(), i, 5);
+            model.setValueAt(filtrada.get(i).getChamadoOat(), i, 6);
+            model.setValueAt(filtrada.get(i).getData(), i, 7);
+            model.setValueAt(filtrada.get(i).getTempoReparo(), i, 8);
+
+        }
+    }
+
+    public void buscaResponsavel(String manut) {
+List<ManutLaboratorio> filtrada = new ArrayList();
+        List<ManutLaboratorio> listarManuts = manutLaboratorioDAO.listarManuts();
+        String manutDigitadoTemp = manut.toLowerCase();
+        for (ManutLaboratorio man : listarManuts) {
+            String manutTemp = man.getTecnico().toLowerCase();
+            if (manutTemp.contains(manutDigitadoTemp)){
+                filtrada.add(man);
+            }
+        }
+        DefaultTableModel model = (DefaultTableModel) this.tbManut.getModel();
+        model.setNumRows(0);
+        for (int i = 0; i < filtrada.size(); i++) {
+            model.addRow(new Object[]{});
+            model.setValueAt(filtrada.get(i).getIdManutLaboratorio(), i, 0);
+            model.setValueAt(filtrada.get(i).getRemetente(), i, 1);
+            model.setValueAt(filtrada.get(i).getProduto(), i, 2);
+            model.setValueAt(filtrada.get(i).getTecnico(), i, 3);
+            model.setValueAt(filtrada.get(i).getDefApresentado(), i, 4);
+            model.setValueAt(filtrada.get(i).getNumSerie(), i, 5);
+            model.setValueAt(filtrada.get(i).getChamadoOat(), i, 6);
+            model.setValueAt(filtrada.get(i).getData(), i, 7);
+            model.setValueAt(filtrada.get(i).getTempoReparo(), i, 8);
+
+        }
+    }
+
+    public void buscaData(String manut) {
+List<ManutLaboratorio> filtrada = new ArrayList();
+        List<ManutLaboratorio> listarManuts = manutLaboratorioDAO.listarManuts();
+        String manutDigitadoTemp = manut.toLowerCase();
+        for (ManutLaboratorio man : listarManuts) {
+            String manutTemp = man.getData().toLowerCase();
+            if (manutTemp.contains(manutDigitadoTemp)){
+                filtrada.add(man);
+            }
+        }
+        DefaultTableModel model = (DefaultTableModel) this.tbManut.getModel();
+        model.setNumRows(0);
+        for (int i = 0; i < filtrada.size(); i++) {
+            model.addRow(new Object[]{});
+            model.setValueAt(filtrada.get(i).getIdManutLaboratorio(), i, 0);
+            model.setValueAt(filtrada.get(i).getRemetente(), i, 1);
+            model.setValueAt(filtrada.get(i).getProduto(), i, 2);
+            model.setValueAt(filtrada.get(i).getTecnico(), i, 3);
+            model.setValueAt(filtrada.get(i).getDefApresentado(), i, 4);
+            model.setValueAt(filtrada.get(i).getNumSerie(), i, 5);
+            model.setValueAt(filtrada.get(i).getChamadoOat(), i, 6);
+            model.setValueAt(filtrada.get(i).getData(), i, 7);
+            model.setValueAt(filtrada.get(i).getTempoReparo(), i, 8);
+
+        }
+    }
+
     Usuario usuario = new Usuario();
     ManutLaboratorio manutLaboratorio = new ManutLaboratorio();
     ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
