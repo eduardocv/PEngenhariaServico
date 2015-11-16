@@ -2,6 +2,7 @@ package view;
 
 import entity.Usuario;
 import entity.EnumPerfil;
+
 /**
  *
  * @author eduardo.vieira
@@ -14,14 +15,13 @@ public class TelaInicial extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.usuario = usuario;
-        
+
         if (usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
 
             btnUsuarios.setEnabled(true);
             btnComponentes.setEnabled(true);
             btnManutencaoLaboratorio.setEnabled(true);
             btnRemetentes.setEnabled(true);
-            btnTecnicos.setEnabled(true);
             btnProdutos.setEnabled(true);
             btnLogoff.setEnabled(true);
 
@@ -30,7 +30,6 @@ public class TelaInicial extends javax.swing.JDialog {
             btnComponentes.setEnabled(true);
             btnManutencaoLaboratorio.setEnabled(true);
             btnRemetentes.setEnabled(true);
-            btnTecnicos.setEnabled(true);
             btnProdutos.setEnabled(true);
             btnLogoff.setEnabled(true);
         }
@@ -41,7 +40,6 @@ public class TelaInicial extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnTecnicos = new javax.swing.JButton();
         btnRemetentes = new javax.swing.JButton();
         btnManutencaoLaboratorio = new javax.swing.JButton();
         btnProdutos = new javax.swing.JButton();
@@ -52,14 +50,6 @@ public class TelaInicial extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(".");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        btnTecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/TecLab3.png"))); // NOI18N
-        btnTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTecnicos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTecnicosActionPerformed(evt);
-            }
-        });
 
         btnRemetentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/remetentes.jpg"))); // NOI18N
         btnRemetentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -118,7 +108,6 @@ public class TelaInicial extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnRemetentes, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnManutencaoLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -138,24 +127,17 @@ public class TelaInicial extends javax.swing.JDialog {
                 .addComponent(btnManutencaoLaboratorio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRemetentes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnTecnicos)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUsuarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogoff)
                 .addGap(6, 6, 6))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnComponentes, btnManutencaoLaboratorio, btnProdutos, btnRemetentes, btnTecnicos});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnComponentes, btnManutencaoLaboratorio, btnProdutos, btnRemetentes, btnUsuarios});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnTecnicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTecnicosActionPerformed
-        TelaTecnico telaTecnico = new TelaTecnico(null, true);
-        telaTecnico.setVisible(true);
-    }//GEN-LAST:event_btnTecnicosActionPerformed
 
     private void btnRemetentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemetentesActionPerformed
         TelaRemetente telaRemetente = new TelaRemetente(null, true, usuario);
@@ -183,7 +165,7 @@ public class TelaInicial extends javax.swing.JDialog {
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoffActionPerformed
-             
+
         this.dispose();
         TelaLogin telaLogin = new TelaLogin();
         telaLogin.setVisible(true);
@@ -238,7 +220,6 @@ public class TelaInicial extends javax.swing.JDialog {
     private javax.swing.JButton btnManutencaoLaboratorio;
     private javax.swing.JButton btnProdutos;
     private javax.swing.JButton btnRemetentes;
-    private javax.swing.JButton btnTecnicos;
     private javax.swing.JButton btnUsuarios;
     // End of variables declaration//GEN-END:variables
     Usuario usuario;

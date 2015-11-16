@@ -10,7 +10,7 @@ public class Componente {
     
      @Override
     public String toString() {
-        return codComponente + "  " + componente;
+        return codComponente + " " + componente;
     }
 
     public boolean isStatus() {

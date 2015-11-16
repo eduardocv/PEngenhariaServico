@@ -17,7 +17,7 @@ public class Remetente {
     
     @Override
     public String toString() {
-        return tipo + "  " + nome;
+        return tipo + " " + nome;
     }
 
     public String getOutrasInfo() {

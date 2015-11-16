@@ -14,7 +14,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return codProduto + "  " + produto;
+        return codProduto + " " + produto;
     }
     
     public boolean isStatus() {
