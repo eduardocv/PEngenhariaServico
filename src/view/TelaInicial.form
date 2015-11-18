@@ -31,12 +31,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="btnUsuarios" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="btnComponentes" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnProdutos" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnManutencaoLaboratorio" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnRemetentes" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btnComponentes" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="btnProdutos" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="btnManutencaoLaboratorio" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="btnRemetentes" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                   <Component id="btnLogoff" alignment="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -50,15 +48,15 @@
               <Component id="btnComponentes" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnProdutos" min="-2" pref="103" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnManutencaoLaboratorio" min="-2" pref="103" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnRemetentes" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="btnUsuarios" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnLogoff" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnLogoff" min="-2" pref="63" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,7 +65,7 @@
     <Component class="javax.swing.JButton" name="btnRemetentes">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/RemetentesIcon.png"/>
+          <Image iconType="3" name="/image/Bot&#xe3;oRemetentes.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor em Forma de M&#xe3;o"/>
@@ -80,7 +78,7 @@
     <Component class="javax.swing.JButton" name="btnManutencaoLaboratorio">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/Manuten&#xe7;&#xe3;o.png"/>
+          <Image iconType="3" name="/image/Bot&#xe3;oManuten&#xe7;&#xe3;o.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor em Forma de M&#xe3;o"/>
@@ -93,7 +91,7 @@
     <Component class="javax.swing.JButton" name="btnProdutos">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/ProdutosBot&#xe3;o.png"/>
+          <Image iconType="3" name="/image/Bot&#xe3;oProdutos.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor em Forma de M&#xe3;o"/>
@@ -106,7 +104,7 @@
     <Component class="javax.swing.JButton" name="btnComponentes">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/ComponentesPequenos.jpg"/>
+          <Image iconType="3" name="/image/Bot&#xe3;oComponentes.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor em Forma de M&#xe3;o"/>
@@ -119,7 +117,7 @@
     <Component class="javax.swing.JButton" name="btnUsuarios">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/usu&#xe1;rios.png"/>
+          <Image iconType="3" name="/image/Bot&#xe3;oUsu&#xe1;rios.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor em Forma de M&#xe3;o"/>
@@ -132,7 +130,7 @@
     <Component class="javax.swing.JButton" name="btnLogoff">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/logout.png"/>
+          <Image iconType="3" name="/image/Bot&#xe3;oSair.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor em Forma de M&#xe3;o"/>
