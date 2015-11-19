@@ -1,11 +1,7 @@
-
 package entity;
 
 import java.util.List;
-/**
- *
- * @author eduardo.vieira
- */
+
 public class ManutLaboratorio {
 
     private String tecnico;
@@ -29,7 +25,7 @@ public class ManutLaboratorio {
     public void setTecnico(String tecnico) {
         this.tecnico = tecnico;
     }
-        
+
     public int getIdManutLaboratorio() {
         return idManutLaboratorio;
     }
@@ -125,7 +121,5 @@ public class ManutLaboratorio {
     public void setTempoReparo(String tempoReparo) {
         this.tempoReparo = tempoReparo;
     }
-
-   
 
 }

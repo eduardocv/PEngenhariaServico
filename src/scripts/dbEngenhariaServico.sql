@@ -18,7 +18,7 @@ USE `dbEngenhariaServico` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`usuario` (
   `idUsuario` INT(11) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
   `cpf` VARCHAR(15) NOT NULL,
   `perfil` INT(11) NOT NULL,
   `status` BOOLEAN NOT NULL,
@@ -35,7 +35,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Produto` (
   `idProduto` INT NOT NULL AUTO_INCREMENT,
   `codProduto` VARCHAR(25) NOT NULL,
-  `produto` VARCHAR(45) NOT NULL,
+  `produto` VARCHAR(100) NOT NULL,
   `status` BOOLEAN NOT NULL,
   PRIMARY KEY (`idProduto`))
 ENGINE = InnoDB;
@@ -46,7 +46,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Remetente` (
   `idRemetente` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
   `tipo` VARCHAR(10) NULL,
   `email` VARCHAR(45) NULL,  
   `telefone` VARCHAR(15) NULL,
@@ -61,7 +61,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Tecnico` (
   `idTecnico` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
   `email` VARCHAR(45) NULL,
   `status` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idTecnico`))
@@ -73,32 +73,33 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`ManutencaoLaboratorio` (
   `idManut` INT NOT NULL AUTO_INCREMENT,
-  `remetente` VARCHAR(15) NOT NULL,
-  `produto` VARCHAR(45) NOT NULL,
-  `defRelatado` VARCHAR(15) NULL,
-  `defApresentado` VARCHAR(15) NOT NULL,
-  `data` VARCHAR(10) NOT NULL,
-  `numSerie` VARCHAR(5) NULL,
-  `chamadoOat` VARCHAR(5) NULL,
-  `corrigidoEmCampo` BOOLEAN NOT NULL,
-  `descAtividades` VARCHAR(45) NOT NULL,
+  `remetente` VARCHAR(100) NOT NULL,
+  `produto` VARCHAR(100) NOT NULL,
+  `defRelatado` VARCHAR(100) NULL,
+  `defApresentado` VARCHAR(100) NULL,
+  `data` VARCHAR(10) NULL,
+  `numSerie` VARCHAR(10) NULL,
+  `chamadoOat` VARCHAR(10) NULL,
+  `corrigidoEmCampo` BOOLEAN NULL,
+  `descAtividades` VARCHAR(500) NOT NULL,
   `componentes` VARCHAR(500) NULL,
-  `tempoReparo` VARCHAR(10) NOT NULL,
-  `Remetente_idRemetente` INT NOT NULL,
-  `Tecnico_idTecnico` INT NOT NULL,
-  PRIMARY KEY (`idManut`),
-  INDEX `fk_ManutencaoLaboratorio_Remetente1_idx` (`Remetente_idRemetente` ASC),
-  INDEX `fk_ManutencaoLaboratorio_Tecnico1_idx` (`Tecnico_idTecnico` ASC),
-  CONSTRAINT `fk_ManutencaoLaboratorio_Remetente1`
-    FOREIGN KEY (`Remetente_idRemetente`)
-    REFERENCES `mydb`.`Remetente` (`idRemetente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ManutencaoLaboratorio_Tecnico1`
-    FOREIGN KEY (`Tecnico_idTecnico`)
-    REFERENCES `mydb`.`Tecnico` (`idTecnico`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `tempoReparo` VARCHAR(10) NULL,
+  `tecnico`VARCHAR(100) NULL,
+   -- `Remetente_idRemetente` INT NULL,
+   -- `Tecnico_idTecnico` INT NULL,
+  PRIMARY KEY (`idManut`))
+ -- INDEX `fk_ManutencaoLaboratorio_Remetente1_idx` (`Remetente_idRemetente` ASC),
+ -- INDEX `fk_ManutencaoLaboratorio_Tecnico1_idx` (`Tecnico_idTecnico` ASC),
+ -- CONSTRAINT `fk_ManutencaoLaboratorio_Remetente1`
+ --   FOREIGN KEY (`Remetente_idRemetente`)
+  --  REFERENCES `mydb`.`Remetente` (`idRemetente`)
+  --  ON DELETE NO ACTION
+   -- ON UPDATE NO ACTION,
+ -- CONSTRAINT `fk_ManutencaoLaboratorio_Tecnico1`
+   -- FOREIGN KEY (`Tecnico_idTecnico`)
+   -- REFERENCES `mydb`.`Tecnico` (`idTecnico`)
+   -- ON DELETE NO ACTION
+   -- ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -147,12 +148,12 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
--- ---------------------------- INSERT no Banco ---------------------------------------------------
+-- ---------------------------- INSERT no Banco ---------------------------------------------------------------------------------------------------------------------------------------
 -- USUARIO --
 INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `nome`, `CPF`, `perfil`, `status`, `email`, `senha`) VALUES ('1', 'Administrador', '80295312068', '0', true, 'admin', 'admin');
 INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `nome`, `CPF`, `perfil`, `status`, `email`, `senha`) VALUES ('2', 'Usuario', '12345678900', '1', true, 'user', 'user');
 
--- PRODUTO --
+-- PRODUTO -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into produto values(1,'I07PLA046','Placa Transceptora RF2',true);
 insert into produto values(2,'I07PLA055','Placa Mtouch (flat)',true);
 insert into produto values(3,'I07PLA060','Placa Mtouch (usb)',true);
@@ -166,14 +167,14 @@ insert into produto values(10,'I12IMP009','Impressora DAS 3 Botões',true);
 insert into produto values(11,'I12DSP023','Painel Contact Light 5D',true);
 insert into produto values(12,'I12IMP000','Impressora DAS Triagem',true);
 
--- TÉCNICO EM LABORATORIO --
+-- TÉCNICO EM LABORATORIO -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into tecnico values(1,'José da Silva','josesilva@email.com.br','Ativo');
 insert into tecnico values(2,'Maria José','mariajose@email.com.br','Ativo');
 insert into tecnico values(3,'João Correa','jcorrea@email.com.br','Ativo');
 insert into tecnico values(4,'Carlos Santos','csantos@email.com.br','Ativo');
 insert into tecnico values(5,'Fernando Costa','fcosta@email.com.br','Ativo');
 insert into tecnico values(6,'Ana Silveira','anasilveira@email.com.br','Ativo');
--- COMPONENTE --
+-- COMPONENTE ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into componente values(1,'BAT001','BATERIA NICD 3,6 V / 60 M A H  2T',true);
 insert into componente values(2,'Z10200','CONECTOR MINI MODUL 1X10 180G',true);
 insert into componente values(3,'U03203','CI 14C232 ADM / HARRIS',true);
@@ -214,7 +215,7 @@ insert into componente values(37,'I07CAX109','CAIXA DE PAPELAO P/ TES TOUCH – 
 insert into componente values(38,'I07COJ058','ESTRUTURA METALICA TES TOUCH INOX – V6.0.0',true);
 insert into componente values(39,'I07COJ059','CONJUNTO DE ISOPORES P/ TES TOUCH – V1.1.0',true);
 
--- REMETENTE --
+-- REMETENTE ---------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into remetente values(1,'INFORSERVICE - RIO BRANCO','RT','coordenacao-ac@assistecnica.com.br','(68)3224-0100',false,'');
 insert into remetente values(2,'FABIO ROGERIO MOURA MAIA','RT','fabiomaiaeng@gmail.com','(92)8228-5628',false,'');
 insert into remetente values(3,'TECNOPOINT','RT','fabio@portaltecnopoint.com.br','(85)3046-1100',false,'');
@@ -267,10 +268,23 @@ insert into remetente values(49,'Geraldo Lopes dos Santos','TR','geraldo.santos@
 insert into remetente values(50,'Vanderlei Pereira do Nascimento','TR','vanderlei.nascimento@specto.com.br','(11)9825-14689',true,'');
 insert into remetente values(51,'Wagner Jorge Pimentel','TR','wagner.pimentel@specto.com.br','(31)6963-4075',true,'');
 
+-- Manutenção --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into manutencaolaboratorio values(1,'TR Wagner Jorge Pimentel','I12IMP000 Impressora DAS Triagem','não corta papel','sujeira na guilhotina','06/11/2015','1254','33874',true,'limpeza de guilhotina','componentes','00:20','técnico qualquer'); 
+insert into manutencaolaboratorio values(2,'RT BBS INFORMATICA','I12IMP013 Impressora DAS 6 Botões','não imprime','não imprime','06/11/2015','157','32873',true,'ci de comunicação queimado','componentes','00:25','técnico qualquer'); 
+insert into manutencaolaboratorio values(3,'TR Ricardo Souto','I07PLA055 Placa Mtouch(flat)','não reconhece toque','solda fria','06/11/2015','1234','44125',true,'ressolda em componentes','componentes','00:40','Administrador');
+insert into manutencaolaboratorio values(4,'TR Orlando Maraccini Neto','ImpMecafAd Impressora Mecaf','não puxa papel','baud rate','06/11/2015','2154','38554',true,'configuração de baud rate','componentes','00:10','Usuário');
+
+
+
+
+
+
+-- SELECT --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- select * from dbEngenhariaServico.usuario;
 -- select * from dbEngenhariaServico.tecnico;
 -- select * from dbEngenhariaServico.componente;
 -- select * from dbEngenhariaServico.produto;
 -- select * from dbEngenhariaServico.remetente;
+-- select * from dbengenhariaservico.ManutencaoLaboratorio;
 
--- -------------------------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

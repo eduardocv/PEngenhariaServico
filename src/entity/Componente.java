@@ -1,14 +1,13 @@
 package entity;
 
-
 public class Componente {
 
     private int idComponente;
     private String codComponente;
     private String componente;
     private boolean status;
-    
-     @Override
+
+    @Override
     public String toString() {
         return codComponente + " " + componente;
     }
@@ -21,7 +20,6 @@ public class Componente {
         this.status = status;
     }
 
-       
     public int getIdComponente() {
         return idComponente;
     }

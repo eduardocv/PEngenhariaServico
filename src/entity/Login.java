@@ -1,9 +1,5 @@
 package entity;
 
-/**
- *
- * @author eduardo_ciepanski
- */
 public class Login {
 
     private String nome;

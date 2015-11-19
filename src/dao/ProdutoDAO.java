@@ -8,10 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Eduardo C. Vieira
- */
 public class ProdutoDAO extends MySQL {
 
     public boolean insert(Produto produto) {
@@ -23,7 +19,7 @@ public class ProdutoDAO extends MySQL {
             ps.setString(1, produto.getCodProduto());
             ps.setString(2, produto.getProduto());
             ps.setBoolean(3, produto.isStatus());
-                     
+
             ps.execute();
             ps.close();
             return true;
@@ -124,12 +120,10 @@ public class ProdutoDAO extends MySQL {
         return null;
     }
 
-   
-    
-    public Produto getProdutoById (int id) {
+    public Produto getProdutoById(int id) {
         Connection c = this.getConnection();
         Produto produto = null;
-        try{
+        try {
             PreparedStatement ps = c.prepareStatement("SELECT idProduto, codProduto, produto, status from Produto WHERE idProduto = ?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -140,7 +134,7 @@ public class ProdutoDAO extends MySQL {
                 produto.setProduto(rs.getString("produto"));
                 produto.setStatus(rs.getBoolean("status"));
             }
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
             try {
@@ -151,8 +145,7 @@ public class ProdutoDAO extends MySQL {
         }
         return produto;
     }
-    
-    
+
     public java.util.List<Produto> buscarPorDesc(String busca) {
         Connection c = this.getConnection();
         java.util.List<Produto> listaProdutos = new ArrayList<Produto>();
@@ -190,7 +183,8 @@ public class ProdutoDAO extends MySQL {
         }
         return null;
     }
-     public java.util.List<Produto> buscarPorCod(String busca) {
+
+    public java.util.List<Produto> buscarPorCod(String busca) {
         Connection c = this.getConnection();
         java.util.List<Produto> listaProdutos = new ArrayList<Produto>();
 
@@ -227,7 +221,8 @@ public class ProdutoDAO extends MySQL {
         }
         return null;
     }
- public void atualizaStatus(Produto produto) {
+
+    public void atualizaStatus(Produto produto) {
         Connection c = this.getConnection();
 
         try {

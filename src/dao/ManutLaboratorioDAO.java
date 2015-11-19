@@ -1,8 +1,4 @@
 package dao;
-/**
- *
- * @author eduardo.vieira
- */
 
 import entity.ManutLaboratorio;
 import entity.Componente;
@@ -122,7 +118,7 @@ public class ManutLaboratorioDAO extends MySQL {
                 manutLaboratorio.setChamadoOat(rs.getString("chamadoOat"));
                 //manutLaboratorio.setCorrigidoEmCampo(rs.getBoolean("corrigidoEmCampo"));
                 manutLaboratorio.setTempoReparo(rs.getString("tempoReparo"));
-                
+
                 listaManuts.add(manutLaboratorio);
             }
             rs.close();
@@ -162,7 +158,7 @@ public class ManutLaboratorioDAO extends MySQL {
                 manutLaboratorio.setChamadoOat(rs.getString("chamadoOat"));
                 manutLaboratorio.setDescAtividades(rs.getString("descAtividades"));
                 manutLaboratorio.setTempoReparo(rs.getString("tempoReparo"));
-                
+
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -1,4 +1,3 @@
-
 package dao;
 
 import entity.Componente;
@@ -8,15 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 public class ComponenteDAO extends MySQL {
+
     public boolean insert(Componente componente) {
         Connection c = this.getConnection();
 
         try {
             PreparedStatement ps = c.prepareStatement("insert into Componente ( codComponente, componente, status) "
                     + "values( ? , ? , ? )");
-            
+
             ps.setString(1, componente.getCodComponente());
             ps.setString(2, componente.getComponente());
             ps.setBoolean(3, componente.isStatus());
@@ -31,13 +30,11 @@ public class ComponenteDAO extends MySQL {
             try {
                 c.close();
             } catch (SQLException ex) {
-               ex.printStackTrace();
+                ex.printStackTrace();
             }
         }
         return false;
     }
-
-   
 
     public boolean update(Componente componente) {
         Connection c = this.getConnection();
@@ -89,6 +86,7 @@ public class ComponenteDAO extends MySQL {
         }
         return false;
     }
+
     public java.util.List<Componente> listarComponentes() {
         Connection c = this.getConnection();
         java.util.List<Componente> listaComponentes = new ArrayList<Componente>();
@@ -103,7 +101,7 @@ public class ComponenteDAO extends MySQL {
                 componente.setCodComponente(rs.getString("codComponente"));
                 componente.setComponente(rs.getString("componente"));
                 componente.setStatus(rs.getBoolean("status"));
-                
+
                 listaComponentes.add(componente);
             }
             rs.close();
@@ -121,11 +119,11 @@ public class ComponenteDAO extends MySQL {
         }
         return null;
     }
-    
-    public Componente getComponenteById (int id) {
+
+    public Componente getComponenteById(int id) {
         Connection c = this.getConnection();
         Componente componente = null;
-        try{
+        try {
             PreparedStatement ps = c.prepareStatement("SELECT idComponente, codComponente, componente, status from Componente WHERE idComponente = ?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -136,7 +134,7 @@ public class ComponenteDAO extends MySQL {
                 componente.setComponente(rs.getString("componente"));
                 componente.setStatus(rs.getBoolean("status"));
             }
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
             try {
@@ -147,7 +145,8 @@ public class ComponenteDAO extends MySQL {
         }
         return componente;
     }
-        public java.util.List<Componente> buscarPorCod(String busca) {
+
+    public java.util.List<Componente> buscarPorCod(String busca) {
         Connection c = this.getConnection();
         java.util.List<Componente> listaComponentes = new ArrayList<Componente>();
 
@@ -165,9 +164,8 @@ public class ComponenteDAO extends MySQL {
                 componente.setIdComponente(rs.getInt("idComponente"));
                 componente.setCodComponente(rs.getString("codComponente"));
                 componente.setComponente(rs.getString("componente"));
-                 componente.setStatus(rs.getBoolean("status"));
-                
-                
+                componente.setStatus(rs.getBoolean("status"));
+
                 listaComponentes.add(componente);
             }
             rs.close();
@@ -186,7 +184,7 @@ public class ComponenteDAO extends MySQL {
         return null;
     }
 
- public java.util.List<Componente> buscarPorDesc(String busca) {
+    public java.util.List<Componente> buscarPorDesc(String busca) {
         Connection c = this.getConnection();
         java.util.List<Componente> listaComponentes = new ArrayList<Componente>();
 
@@ -205,7 +203,7 @@ public class ComponenteDAO extends MySQL {
                 componente.setCodComponente(rs.getString("codComponente"));
                 componente.setComponente(rs.getString("componente"));
                 componente.setStatus(rs.getBoolean("status"));
-                
+
                 listaComponentes.add(componente);
             }
             rs.close();
@@ -223,7 +221,7 @@ public class ComponenteDAO extends MySQL {
         }
         return null;
     }
- 
+
     public void atualizaStatus(Componente componente) {
         Connection c = this.getConnection();
 
@@ -248,5 +246,5 @@ public class ComponenteDAO extends MySQL {
             }
         }
     }
- 
+
 }

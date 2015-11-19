@@ -8,10 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Eduardo C. Vieira
- */
 public class RemetenteDAO extends MySQL {
 
     public boolean insert(Remetente remetente) {

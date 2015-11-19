@@ -1,4 +1,3 @@
-
 package dao;
 
 import entity.EnumPerfil;
@@ -9,11 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- *
- * @author eduardo.vieira
- */
 
 public class UsuarioDAO extends MySQL {
 
@@ -143,7 +137,7 @@ public class UsuarioDAO extends MySQL {
                 usuario.setIdUsuario(rs.getInt("idUsuario"));
                 usuario.setNome(rs.getString("nome"));
                 usuario.setCPF(rs.getString("cpf"));
-                
+
                 usuario.setPerfil(EnumPerfil.ADMINISTRADOR.getPerfil(rs.getInt("perfil")));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setStatus(rs.getBoolean("status"));
@@ -163,7 +157,7 @@ public class UsuarioDAO extends MySQL {
         }
         return null;
     }
-    
+
     public Usuario getLoginSenha(String email, String senha) {
         Usuario usuario = null;
         Connection c = this.getConnection();
@@ -200,7 +194,7 @@ public class UsuarioDAO extends MySQL {
         }
         return null;
     }
-    
+
     public Usuario getLogin(String email) {
         Usuario usuario = null;
         Connection c = this.getConnection();
@@ -216,7 +210,7 @@ public class UsuarioDAO extends MySQL {
                 usuario.setIdUsuario(rs.getInt("idUsuario"));
                 usuario.setNome(rs.getString("nome"));
                 usuario.setCPF(rs.getString("cpf"));
-                
+
                 usuario.setPerfil(EnumPerfil.ADMINISTRADOR.getPerfil(rs.getInt("perfil")));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setStatus(rs.getBoolean("status"));
