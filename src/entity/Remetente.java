@@ -1,9 +1,5 @@
 package entity;
 
-/**
- *
- * @author Eduardo C. Vieira
- */
 public class Remetente {
 
     private int idRemetente;
@@ -14,7 +10,6 @@ public class Remetente {
     private boolean status;
     private String outrasInfo;
 
-    
     @Override
     public String toString() {
         return tipo + " " + nome;
@@ -27,7 +22,7 @@ public class Remetente {
     public void setOutrasInfo(String outrasInfo) {
         this.outrasInfo = outrasInfo;
     }
-    
+
     public boolean isStatus() {
         return status;
     }

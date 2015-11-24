@@ -1,10 +1,5 @@
-
 package entity;
 
-/**
- *
- * @author Eduardo C. Vieira
- */
 public class Produto {
 
     private int idProduto;
@@ -16,7 +11,7 @@ public class Produto {
     public String toString() {
         return codProduto + " " + produto;
     }
-    
+
     public boolean isStatus() {
         return status;
     }
@@ -49,5 +44,4 @@ public class Produto {
         this.produto = produto;
     }
 
-    
 }

@@ -1,16 +1,13 @@
 package entity;
 
-/**
- *
- * @author VDISOO0219
- */
+
 public class Usuario {
 
+    private int idUsuario;
     private String nome;
     private String CPF;
     private EnumPerfil Perfil;
     private String email;
-    private int idUsuario;
     private boolean status;
     private String senha;
     

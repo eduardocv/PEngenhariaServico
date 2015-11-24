@@ -3,14 +3,9 @@ package view;
 import entity.Usuario;
 import entity.EnumPerfil;
 
-/**
- *
- * @author eduardo.vieira
- */
 public class TelaInicial extends javax.swing.JDialog {
 
     public TelaInicial(java.awt.Frame parent, boolean modal, Usuario usuario) {
-        //super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
