@@ -1,14 +1,10 @@
 package view;
 
-/**
- *
- * @author eduardo.vieira
- */
 import dao.ManutLaboratorioDAO;
 import entity.ManutLaboratorio;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultListModel;
+//import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import entity.Usuario;
@@ -259,7 +255,8 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
-
+        TelaVisualizarManut telaVisualizarManut = new TelaVisualizarManut(null, true);
+        telaVisualizarManut.setVisible(true);
     }//GEN-LAST:event_btnVisualizarActionPerformed
 
     private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
@@ -273,7 +270,6 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Selecione a manutenção que será alterada!!!");
         } else {
             int id = Integer.parseInt(tbManut.getValueAt(linha, 0).toString());
-            //ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
             ManutLaboratorio manutLaboratorio = manutLaboratorioDAO.getManutById(id);
             TelaNovoManutencaoLaboratorio telaCadManutecaoLaboratorio = new TelaNovoManutencaoLaboratorio(null, true, false, manutLaboratorio, usuario);
             telaCadManutecaoLaboratorio.setVisible(true);
@@ -395,7 +391,7 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
         String manutDigitadoTemp = manut.toLowerCase();
         for (ManutLaboratorio man : listarManuts) {
             String manutTemp = man.getRemetente().toLowerCase();
-            if (manutTemp.contains(manutDigitadoTemp)){
+            if (manutTemp.contains(manutDigitadoTemp)) {
                 filtrada.add(man);
             }
         }
@@ -417,12 +413,12 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     }
 
     public void buscaProduto(String manut) {
-  List<ManutLaboratorio> filtrada = new ArrayList();
+        List<ManutLaboratorio> filtrada = new ArrayList();
         List<ManutLaboratorio> listarManuts = manutLaboratorioDAO.listarManuts();
         String manutDigitadoTemp = manut.toLowerCase();
         for (ManutLaboratorio man : listarManuts) {
             String manutTemp = man.getProduto().toLowerCase();
-            if (manutTemp.contains(manutDigitadoTemp)){
+            if (manutTemp.contains(manutDigitadoTemp)) {
                 filtrada.add(man);
             }
         }
@@ -444,12 +440,12 @@ public class TelaManutencaoLaboratorio extends javax.swing.JDialog {
     }
 
     public void buscaResponsavel(String manut) {
-List<ManutLaboratorio> filtrada = new ArrayList();
+        List<ManutLaboratorio> filtrada = new ArrayList();
         List<ManutLaboratorio> listarManuts = manutLaboratorioDAO.listarManuts();
         String manutDigitadoTemp = manut.toLowerCase();
         for (ManutLaboratorio man : listarManuts) {
             String manutTemp = man.getTecnico().toLowerCase();
-            if (manutTemp.contains(manutDigitadoTemp)){
+            if (manutTemp.contains(manutDigitadoTemp)) {
                 filtrada.add(man);
             }
         }
@@ -471,12 +467,12 @@ List<ManutLaboratorio> filtrada = new ArrayList();
     }
 
     public void buscaData(String manut) {
-List<ManutLaboratorio> filtrada = new ArrayList();
+        List<ManutLaboratorio> filtrada = new ArrayList();
         List<ManutLaboratorio> listarManuts = manutLaboratorioDAO.listarManuts();
         String manutDigitadoTemp = manut.toLowerCase();
         for (ManutLaboratorio man : listarManuts) {
             String manutTemp = man.getData().toLowerCase();
-            if (manutTemp.contains(manutDigitadoTemp)){
+            if (manutTemp.contains(manutDigitadoTemp)) {
                 filtrada.add(man);
             }
         }

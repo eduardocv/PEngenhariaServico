@@ -21,8 +21,8 @@ public class ManutLaboratorioDAO extends MySQL {
             PreparedStatement ps
                     = c.prepareStatement("INSERT INTO ManutencaoLaboratorio "
                             + "(tecnico, remetente, produto, defRelatado, defApresentado, data, numSerie, chamadoOat, "
-                            + "descAtividades, tempoReparo )  "
-                            + "VALUES (?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                            + "corrigidoEmCampo, descAtividades, tempoReparo )  "
+                            + "VALUES (?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, manutLaboratorio.getTecnico());
             ps.setString(2, manutLaboratorio.getRemetente());
             ps.setString(3, manutLaboratorio.getProduto());
@@ -31,9 +31,9 @@ public class ManutLaboratorioDAO extends MySQL {
             ps.setString(6, manutLaboratorio.getData());
             ps.setString(7, manutLaboratorio.getNumSerie());
             ps.setString(8, manutLaboratorio.getChamadoOat());
-            //ps.setBoolean(8, manutLaboratorio.isCorrigidoEmCampo());
-            ps.setString(9, manutLaboratorio.getDescAtividades());
-            ps.setString(10, manutLaboratorio.getTempoReparo());
+            ps.setBoolean(9, manutLaboratorio.isCorrigidoEmCampo());
+            ps.setString(10, manutLaboratorio.getDescAtividades());
+            ps.setString(11, manutLaboratorio.getTempoReparo());
             // ps.setComponentes(11,manutLaboratorio.getComponentes());
             //manutLaboratorio.getComponentes());
 
@@ -65,7 +65,7 @@ public class ManutLaboratorioDAO extends MySQL {
         try {
             PreparedStatement ps = c.prepareStatement("UPDATE ManutencaoLaboratorio "
                     + "SET remetente = ?, produto = ?, defRelatado = ?, defApresentado = ?, numSerie = ?,"
-                    + " chamadoOat = ?, descAtividades = ?, tempoReparo = ? WHERE idManut = ?");
+                    + " chamadoOat = ?, corrigidoEmCampo = ?, descAtividades = ?, tempoReparo = ? WHERE idManut = ?");
 
             ps.setString(1, manutLaboratorio.getRemetente());
             ps.setString(2, manutLaboratorio.getProduto());
@@ -74,12 +74,12 @@ public class ManutLaboratorioDAO extends MySQL {
             //ps.setString(5, manutLaboratorio.getData()); ///PEGAR A DATA
             ps.setString(5, manutLaboratorio.getNumSerie());
             ps.setString(6, manutLaboratorio.getChamadoOat());
-            //ps.setBoolean(8, manutLaboratorio.isCorrigidoEmCampo());
-            ps.setString(7, manutLaboratorio.getDescAtividades());
-            ps.setString(8, manutLaboratorio.getTempoReparo());
+            ps.setBoolean(7, manutLaboratorio.isCorrigidoEmCampo());
+            ps.setString(8, manutLaboratorio.getDescAtividades());
+            ps.setString(9, manutLaboratorio.getTempoReparo());
             //ps.setComponentes(11,manutLaboratorio.getComponentes(List<Componente>));
             //manutLaboratorio.getComponentes());
-            ps.setInt(9, manutLaboratorio.getIdManutLaboratorio());
+            ps.setInt(10, manutLaboratorio.getIdManutLaboratorio());
             ps.execute();
 
             ps.execute();
@@ -101,7 +101,7 @@ public class ManutLaboratorioDAO extends MySQL {
         List<ManutLaboratorio> listaManuts = new ArrayList<ManutLaboratorio>();
         try {
             PreparedStatement ps = c.prepareStatement(" select idManut, tecnico, remetente, produto, defRelatado, defApresentado,"
-                    + " data, numSerie, chamadoOat, tempoReparo from ManutencaoLaboratorio");
+                    + " data, numSerie, chamadoOat, corrigidoEmCampo, tempoReparo from ManutencaoLaboratorio");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -116,7 +116,7 @@ public class ManutLaboratorioDAO extends MySQL {
                 manutLaboratorio.setData(rs.getString("data")); //PASSAR DATA
                 manutLaboratorio.setNumSerie(rs.getString("numSerie"));
                 manutLaboratorio.setChamadoOat(rs.getString("chamadoOat"));
-                //manutLaboratorio.setCorrigidoEmCampo(rs.getBoolean("corrigidoEmCampo"));
+                manutLaboratorio.setCorrigidoEmCampo(rs.getBoolean("corrigidoEmCampo"));
                 manutLaboratorio.setTempoReparo(rs.getString("tempoReparo"));
 
                 listaManuts.add(manutLaboratorio);
@@ -142,7 +142,7 @@ public class ManutLaboratorioDAO extends MySQL {
         ManutLaboratorio manutLaboratorio = null;
         try {
             PreparedStatement ps = c.prepareStatement("SELECT idManut, tecnico, remetente, produto, defRelatado, defApresentado,"
-                    + " numSerie, chamadoOat, descAtividades, data, tempoReparo from ManutencaoLaboratorio WHERE idManut = ?");
+                    + " numSerie, chamadoOat, corrigidoEmCampo, descAtividades, data, tempoReparo from ManutencaoLaboratorio WHERE idManut = ?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -156,6 +156,7 @@ public class ManutLaboratorioDAO extends MySQL {
                 manutLaboratorio.setData(rs.getString("data"));
                 manutLaboratorio.setNumSerie(rs.getString("numSerie"));
                 manutLaboratorio.setChamadoOat(rs.getString("chamadoOat"));
+                manutLaboratorio.setCorrigidoEmCampo(rs.getBoolean("corrigidoEmCampo"));
                 manutLaboratorio.setDescAtividades(rs.getString("descAtividades"));
                 manutLaboratorio.setTempoReparo(rs.getString("tempoReparo"));
 

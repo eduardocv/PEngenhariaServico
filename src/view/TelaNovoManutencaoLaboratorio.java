@@ -83,7 +83,7 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
             lblData.setText(manutLaboratorio.getData());
             txtNumSerie.setText(manutLaboratorio.getNumSerie());
             txtChamadoOat.setText(manutLaboratorio.getChamadoOat());
-            //chbCorrigidoEmCampo.setSelected(manutLaboratorio.isCorrigidoEmCampo());
+            chbCorrigidoEmCampo.setSelected(manutLaboratorio.isCorrigidoEmCampo());
             txtDescAtividades.setText(manutLaboratorio.getDescAtividades());
             txtTempoReparo.setText(manutLaboratorio.getTempoReparo());
             lblUsuario.setText(manutLaboratorio.getTecnico());
@@ -429,6 +429,11 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         manutLaboratorio.setData(lblData.getText());//esta pegando STRING
         manutLaboratorio.setNumSerie(txtNumSerie.getText());
         manutLaboratorio.setChamadoOat(txtChamadoOat.getText());
+        if (chbCorrigidoEmCampo.isSelected()){
+        manutLaboratorio.setCorrigidoEmCampo(true);
+        }else{
+            manutLaboratorio.setCorrigidoEmCampo(false);
+        }
         //manutLaboratorio.isCorrigidoEmCampo(chbCorrigidoEmCampo.isSelected());
         //if (chbCorrigidoEmCampo.isSelected()){
         //TRUE
