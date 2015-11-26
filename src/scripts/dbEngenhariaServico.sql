@@ -57,18 +57,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dbEngenhariaServico`.`Tecnico`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`Tecnico` (
-  `idTecnico` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(100) NOT NULL,
-  `email` VARCHAR(45) NULL,
-  `status` VARCHAR(10) NOT NULL,
-  PRIMARY KEY (`idTecnico`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `dbEngenhariaServico`.`ManutencaoLaboratorio`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`ManutencaoLaboratorio` (
@@ -85,22 +73,8 @@ CREATE TABLE IF NOT EXISTS `dbEngenhariaServico`.`ManutencaoLaboratorio` (
   `componentes` VARCHAR(500) NULL,
   `tempoReparo` VARCHAR(10) NULL,
   `tecnico`VARCHAR(100) NULL,
-   -- `Remetente_idRemetente` INT NULL,
-   -- `Tecnico_idTecnico` INT NULL,
-  PRIMARY KEY (`idManut`))
- -- INDEX `fk_ManutencaoLaboratorio_Remetente1_idx` (`Remetente_idRemetente` ASC),
- -- INDEX `fk_ManutencaoLaboratorio_Tecnico1_idx` (`Tecnico_idTecnico` ASC),
- -- CONSTRAINT `fk_ManutencaoLaboratorio_Remetente1`
- --   FOREIGN KEY (`Remetente_idRemetente`)
-  --  REFERENCES `mydb`.`Remetente` (`idRemetente`)
-  --  ON DELETE NO ACTION
-   -- ON UPDATE NO ACTION,
- -- CONSTRAINT `fk_ManutencaoLaboratorio_Tecnico1`
-   -- FOREIGN KEY (`Tecnico_idTecnico`)
-   -- REFERENCES `mydb`.`Tecnico` (`idTecnico`)
-   -- ON DELETE NO ACTION
-   -- ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    PRIMARY KEY (`idManut`))
+ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -148,10 +122,12 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+
 -- ---------------------------- INSERT no Banco ---------------------------------------------------------------------------------------------------------------------------------------
 -- USUARIO --
 INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `nome`, `CPF`, `perfil`, `status`, `email`, `senha`) VALUES ('1', 'Administrador', '80295312068', '0', true, 'admin', 'admin');
 INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `nome`, `CPF`, `perfil`, `status`, `email`, `senha`) VALUES ('2', 'Usuario', '12345678900', '1', true, 'user', 'user');
+INSERT INTO `dbEngenhariaServico`.`usuario` (`idUsuario`, `nome`, `CPF`, `perfil`, `status`, `email`, `senha`) VALUES ('3', 'Eduardo C.V.', '80295312068', '0', true, 'ed', '1');
 
 -- PRODUTO -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into produto values(1,'I07PLA046','Placa Transceptora RF2',true);
@@ -167,13 +143,6 @@ insert into produto values(10,'I12IMP009','Impressora DAS 3 Botões',true);
 insert into produto values(11,'I12DSP023','Painel Contact Light 5D',true);
 insert into produto values(12,'I12IMP000','Impressora DAS Triagem',true);
 
--- TÉCNICO EM LABORATORIO -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-insert into tecnico values(1,'José da Silva','josesilva@email.com.br','Ativo');
-insert into tecnico values(2,'Maria José','mariajose@email.com.br','Ativo');
-insert into tecnico values(3,'João Correa','jcorrea@email.com.br','Ativo');
-insert into tecnico values(4,'Carlos Santos','csantos@email.com.br','Ativo');
-insert into tecnico values(5,'Fernando Costa','fcosta@email.com.br','Ativo');
-insert into tecnico values(6,'Ana Silveira','anasilveira@email.com.br','Ativo');
 -- COMPONENTE ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 insert into componente values(1,'BAT001','BATERIA NICD 3,6 V / 60 M A H  2T',true);
 insert into componente values(2,'Z10200','CONECTOR MINI MODUL 1X10 180G',true);
@@ -269,11 +238,11 @@ insert into remetente values(50,'Vanderlei Pereira do Nascimento','TR','vanderle
 insert into remetente values(51,'Wagner Jorge Pimentel','TR','wagner.pimentel@specto.com.br','(31)6963-4075',true,'');
 
 -- Manutenção --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-insert into manutencaolaboratorio values(1,'TR Wagner Jorge Pimentel','I12IMP000 Impressora DAS Triagem','não corta papel','sujeira na guilhotina','06/11/2015','1254','33874',true,'limpeza de guilhotina','componentes','00:20','técnico qualquer'); 
-insert into manutencaolaboratorio values(2,'RT BBS INFORMATICA','I12IMP013 Impressora DAS 6 Botões','não imprime','não imprime','06/11/2015','157','32873',true,'ci de comunicação queimado','componentes','00:25','técnico qualquer'); 
-insert into manutencaolaboratorio values(3,'TR Ricardo Souto','I07PLA055 Placa Mtouch(flat)','não reconhece toque','solda fria','06/11/2015','1234','44125',true,'ressolda em componentes','componentes','00:40','Administrador');
-insert into manutencaolaboratorio values(4,'TR Orlando Maraccini Neto','ImpMecafAd Impressora Mecaf','não puxa papel','baud rate','06/11/2015','2154','38554',true,'configuração de baud rate','componentes','00:10','Usuário');
-
+insert into manutencaolaboratorio values(1,'TR Wagner Jorge Pimentel','I12IMP000 Impressora DAS Triagem','não corta papel','sujeira na guilhotina','06/11/2015','1254','33874',true,'limpeza de guilhotina','componentes','00:20','João da Silva'); 
+insert into manutencaolaboratorio values(2,'RT BBS INFORMATICA','I12IMP013 Impressora DAS 6 Botões','não imprime','não imprime','06/11/2015','157','32873',false,'ci de comunicação queimado','componentes','00:25','Maria José'); 
+insert into manutencaolaboratorio values(3,'TR Ricardo Souto','I07PLA055 Placa Mtouch(flat)','não reconhece toque','solda fria','07/11/2015','1234','44125',false,'ressolda em componentes','componentes','00:40','Camila Philippi');
+insert into manutencaolaboratorio values(4,'TR Orlando Maraccini Neto','I12IMP013 Impressora DAS 6 Botões','não salva data/hora','bateria fraca','07/11/2015','2154','38554',true,'troca da bateria da CPU','componentes','00:10','Eduardo C.V.');
+insert into manutencaolaboratorio values(5,'TR Orlando Maraccini Neto','ImpMecafAd Impressora Mecaf','não puxa papel','baud rate','07/11/2015','2154','38554',true,'configuração de baud rate','componentes','00:10','Eduardo C.V.');
 
 
 
@@ -288,3 +257,4 @@ insert into manutencaolaboratorio values(4,'TR Orlando Maraccini Neto','ImpMecaf
 -- select * from dbengenhariaservico.ManutencaoLaboratorio;
 
 -- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

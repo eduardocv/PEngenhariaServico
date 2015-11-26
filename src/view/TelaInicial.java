@@ -7,7 +7,7 @@ public class TelaInicial extends javax.swing.JDialog {
 
     public TelaInicial(java.awt.Frame parent, boolean modal, Usuario usuario) {
         initComponents();
-        setLocation((int) this.BOTTOM_ALIGNMENT, 150);//me explica? FDP
+        setLocation((int) 1100, 250);//me explica? FDP
         this.setResizable(false);
         this.usuario = usuario;
 
