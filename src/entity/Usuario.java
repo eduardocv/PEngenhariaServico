@@ -1,6 +1,5 @@
 package entity;
 
-
 public class Usuario {
 
     private int idUsuario;
@@ -10,7 +9,6 @@ public class Usuario {
     private String email;
     private boolean status;
     private String senha;
-    
 
     public boolean isStatus() {
         return status;
@@ -45,16 +43,16 @@ public class Usuario {
         return CPF;
     }
 
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
     public EnumPerfil getPerfil() {
         return Perfil;
     }
 
     public void setPerfil(EnumPerfil Perfil) {
         this.Perfil = Perfil;
-    }
-
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
     }
 
     public String getEmail() {
