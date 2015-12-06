@@ -14,8 +14,7 @@ public class UsuarioDAO extends MySQL {
     public boolean insert(Usuario usuario) {
         Connection c = this.getConnection();
         try {
-            PreparedStatement ps
-                    = c.prepareStatement("INSERT INTO usuario "
+            PreparedStatement ps = c.prepareStatement("INSERT INTO usuario "
                             + "(idUsuario, nome, cpf, perfil, email, status, senha )  "
                             + "VALUES ( ?, ?, ?, ?, ?, ?, ? )");
             ps.setInt(1, usuario.getIdUsuario());

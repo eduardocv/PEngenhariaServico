@@ -1,0 +1,14 @@
+---------------------------------------------------------------------------------------------
+INSTRUÇÔES PARA BAIXAR O PROGRAMA E RODAR
+---------------------------------------------------------------------------------------------
+1º-rodar o programa NetBeans(aba Equipe, Remoto e clonar)
+2º-baixar o projeto no GIT HUB pelo link://github.com/eduardocv/PEngenhariaServico.git ;
+3º-rodar o programa Xampp Control Panel e iniciar o serviço MySQL; 
+4º-rodar o programa MySQL Workbench(criar nova conexão) 
+5º-abrir o arquivo dbEngenhariaServico.sql no NetBeans e copiar para a conexão do WorkBench;
+6º-executar a query;
+
+Obs.: o usuário e senha para o usuário Administrador é admin e para o Usuário é user. 
+--------------------------------------------------------------------------------------------
+Eduardo Ciepanski Vieira - eduardo.cvieira@hotmail.com
+--------------------------------------------------------------------------------------------

@@ -17,6 +17,7 @@ import java.util.List;
 //import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import entity.Login;
+import javax.swing.DefaultListModel;
 
 //import java.awt.FlowLayout;
 //import javax.swing.JCheckBox;
@@ -59,7 +60,6 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
             manutLaboratorio = new ManutLaboratorio();
 
             //lblUsuario.setText(usuario.getNome());
-
         } else {
             int remetindex = 0;
             int prodtindex = 0;
@@ -146,6 +146,11 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Bad mark.png"))); // NOI18N
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Good mark.png"))); // NOI18N
         btnIncluir.setText("Incluir");
@@ -253,16 +258,10 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(cbRemetente, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(80, 80, 80)
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(54, 54, 54)
                                 .addComponent(jLabel6)
@@ -297,7 +296,11 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtDefRelatado, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDefApresentado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(txtDefApresentado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbRemetente, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -369,13 +372,15 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSalvar)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnVoltar))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalvar)
+                .addGap(33, 33, 33)
+                .addComponent(btnVoltar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,13 +416,21 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
     }//GEN-LAST:event_cbComponenteActionPerformed
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-        if (componente == null) {
-            componente = new Componente();
-        } else {
-            componentes.remove(componente);
-        }
+        manutLaboratorio.setTecnico(lblUsuario.getText());
+          //private List<Componente> componentes;
+// public List<Componente> getComponentes() {
+//        return componentes;
+//    }
+//
+//    public void setComponentes(List<Componente> componentes) {
+//        this.componentes = componentes;
+//    }
 
-        componente.setComponente((String) cbComponente.getSelectedItem());
+//List<Componente> componentes = new ArrayList<Componente>();
+//    Componente componente;
+        //     componentes.add(cbComponente.getSelectedItem());
+        // manutLaboratorio.setComponentes(cbComponente.getSelectedItem());
+        atualizaListaComponentes();
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -429,9 +442,9 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         manutLaboratorio.setData(lblData.getText());//esta pegando STRING
         manutLaboratorio.setNumSerie(txtNumSerie.getText());
         manutLaboratorio.setChamadoOat(txtChamadoOat.getText());
-        if (chbCorrigidoEmCampo.isSelected()){
-        manutLaboratorio.setCorrigidoEmCampo(true);
-        }else{
+        if (chbCorrigidoEmCampo.isSelected()) {
+            manutLaboratorio.setCorrigidoEmCampo(true);
+        } else {
             manutLaboratorio.setCorrigidoEmCampo(false);
         }
         //manutLaboratorio.isCorrigidoEmCampo(chbCorrigidoEmCampo.isSelected());
@@ -455,6 +468,20 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if (lstComponentes.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Selecione um componente para excluir!!!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Exclusão de Componente", JOptionPane.YES_NO_OPTION);
+            if (confirm == 0) {
+                ManutLaboratorio manutLaboratorio = (ManutLaboratorio) lstComponentes.getSelectedValue();
+                componentes.remove(componente);
+                atualizaListaComponentes();
+                JOptionPane.showMessageDialog(null, "Componente excluído com sucesso!!!");
+            }
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
     public void atualizaRemetente() {
         RemetenteDAO remetenteDAO = new RemetenteDAO();
         List<Remetente> listarRemetentes = remetenteDAO.listarRemetentes();
@@ -561,6 +588,18 @@ public class TelaNovoManutencaoLaboratorio extends javax.swing.JDialog {
     ManutLaboratorio manutLaboratorio = new ManutLaboratorio();
     ManutLaboratorioDAO manutLaboratorioDAO = new ManutLaboratorioDAO();
     boolean novo = true;
+
+    public void atualizaListaComponentes() {
+
+        DefaultListModel model = new DefaultListModel();
+
+        //   for (ManutLaboratorio manutLaboratorio :  {
+        model.addElement(componente);
+        //    }
+
+        lstComponentes.setModel(model);
+
+    }
 
     public void limparTela() {
         txtChamadoOat.setText("");
